@@ -24,9 +24,5 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-    render: (args) => (
-        // <div className='max-w-dvw w-[500px]'>
-        <ImageSwitch {...args} />
-        // </div>
-    ),
+    render: (args) => <ImageSwitch {...args} />,
 }
