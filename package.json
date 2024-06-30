@@ -14,7 +14,8 @@
         "format": "bash -c 'prettier --write . --ignore-file <(cat .gitignore .prettierignore)'",
         "prepare": "husky",
         "lint-staged": "lint-staged --config .lintstagedrc.js",
-        "typecheck": "tsc --noEmit"
+        "typecheck": "tsc --noEmit",
+        "cp:env": "cp .env.sample .env"
     },
     "dependencies": {
         "class-variance-authority": "^0.7.0",
