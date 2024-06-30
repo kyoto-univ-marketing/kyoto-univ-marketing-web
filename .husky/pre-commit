@@ -1,0 +1,3 @@
+# 参考： https://zenn.dev/risu729/articles/latest-husky-lint-staged
+
+pnpm lint-staged

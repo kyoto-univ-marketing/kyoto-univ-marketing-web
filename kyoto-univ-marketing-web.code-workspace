@@ -7,6 +7,7 @@
     "settings": {
         "files.associations": {
             "*.css": "postcss",
+            "pre-commit": "shellscript",
         },
         "files.autoSave": "afterDelay",
         "editor.defaultFormatter": "esbenp.prettier-vscode",
