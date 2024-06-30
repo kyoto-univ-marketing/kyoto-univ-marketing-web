@@ -2,10 +2,10 @@
 to: src/components/<%= name %>/<%= name %>.tsx
 ---
 
-import React from 'react';
+import { FC } from 'react';
 
 export interface <%= name %>Props {}
 
-export const <%= name %>: React.FC<<%= name %>Props> = ({ ...props }) => {
-  return <div><%= name %></div>;
+export const <%= name %>: FC<<%= name %>Props> = ({ ...props }) => {
+    return <div><%= name %></div>;
 };
