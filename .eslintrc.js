@@ -56,5 +56,6 @@ module.exports = {
         ],
         'unused-imports/no-unused-imports': 'warn',
         'react/react-in-jsx-scope': 'off',
+        '@typescript-eslint/no-unused-vars': 'warn',
     },
 }

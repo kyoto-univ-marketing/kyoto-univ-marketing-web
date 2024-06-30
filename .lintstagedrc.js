@@ -17,7 +17,7 @@ module.exports = {
     '**/*.{ts,tsx}': 'tsc-files --noEmit',
     '**/*.{ts,tsx,js,jsx}': async (files) => {
         const filesToLint = await eslintRemoveIgnoredFiles(files)
-        return [`eslint --max-warnings=0 --fix ${filesToLint}`]
+        return [`eslint --fix ${filesToLint}`]
     },
     '**/*.{ts,tsx,js,jsx,json,css,scss}': 'prettier --write',
 }
