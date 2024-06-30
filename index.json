@@ -1,1 +1,1 @@
-{"v":5,"entries":{}}
+{"v":5,"entries":{"breadcrumb--docs":{"id":"breadcrumb--docs","title":"BreadCrumb","name":"Docs","importPath":"./src/components/BreadCrumb/BreadCrumb.stories.tsx","type":"docs","tags":["dev","test","autodocs"],"storiesImports":[]},"breadcrumb--default":{"type":"story","id":"breadcrumb--default","name":"Default","title":"BreadCrumb","importPath":"./src/components/BreadCrumb/BreadCrumb.stories.tsx","tags":["dev","test","autodocs"]}}}
