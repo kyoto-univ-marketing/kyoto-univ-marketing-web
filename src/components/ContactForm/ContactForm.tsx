@@ -1,4 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import { useRouter } from 'next/navigation'
 import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
@@ -18,31 +19,50 @@ import {
 } from '../ui/alert-dialog'
 import { Button } from '../ui/button'
 import { Form } from '../ui/form'
+import { useToast } from '../ui/use-toast'
 
-export interface ContactFormProps {}
+export interface ContactFormProps {
+    onSubmit: (values: ContactFormSchema) => Promise<void>
+}
 
-export const schema = z.object({
+// 参考： https://zenn.dev/monicle/articles/4868424f22d6f5#1.-zod%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6schema%E3%82%92%E5%AE%9A%E7%BE%A9
+const castToValOrNull = <T extends Parameters<typeof z.preprocess>[1]>(schema: T) =>
+    z.preprocess((val) => {
+        if (typeof val === 'string') {
+            const trimmedVal = val.trim()
+            return trimmedVal.length > 0 ? trimmedVal : null
+        }
+        return null
+    }, schema)
+
+export const contactFormSchema = z.object({
     /** お名前 */
-    name: z.string({
-        required_error: 'お名前は必須です。',
-    }),
-    /** メールアドレス */
-    email: z
-        .string({
-            required_error: 'メールアドレスは必須です。',
-        })
-        .email({
-            message: 'メールアドレスの形式が正しくありません。',
+    name: castToValOrNull(
+        z.string({
+            message: 'お名前は必須です。',
         }),
+    ),
+    /** メールアドレス */
+    email: castToValOrNull(
+        z
+            .string({
+                message: 'メールアドレスは必須です。',
+            })
+            .email({
+                message: 'メールアドレスの形式が正しくありません。',
+            }),
+    ),
     /** お問い合わせ内容 */
-    message: z.string({
-        required_error: 'お問い合わせ内容は必須です。',
-    }),
+    message: castToValOrNull(
+        z.string({
+            message: 'お問い合わせ内容は必須です。',
+        }),
+    ),
     /** ご所属 */
-    affiliation: z.string().optional(),
+    affiliation: castToValOrNull(z.string().nullable()),
 })
 
-type ContactFormSchema = z.infer<typeof schema>
+type ContactFormSchema = z.infer<typeof contactFormSchema>
 
 const keyToLabel: Record<keyof ContactFormSchema, string> = {
     name: 'お名前',
@@ -51,25 +71,55 @@ const keyToLabel: Record<keyof ContactFormSchema, string> = {
     affiliation: 'ご所属(大学名、企業名、団体名)',
 } as const
 
-export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
+export const ContactForm: FC<ContactFormProps> = ({ onSubmit, ...props }) => {
     const form = useForm<ContactFormSchema>({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(contactFormSchema),
     })
     const [dialogOpen, setDialogOpen] = useState(false)
+    const [disabled, setDisabled] = useState(false)
+    const { toast } = useToast()
+    const router = useRouter()
 
-    const handleConfirm = () => {
-        console.log(form.getValues())
+    const handleConfirm = async () => {
+        setDisabled(true)
+        const values = form.getValues()
+        onSubmit(values)
+            .then(() => {
+                // 成功時は、成功ページに移動
+                router.push('/contact/success')
+            })
+            .catch(() => {
+                // 失敗時は、トーストを表示して再入力可能な状態にする
+                toast({
+                    title: '送信に失敗しました',
+                    description: '時間を置いて、もう一度お試しください。',
+                    variant: 'destructive',
+                })
+                setDisabled(false)
+            })
     }
 
     return (
         <>
             <Form {...form}>
                 <form className='space-y-8' onSubmit={form.handleSubmit(() => setDialogOpen(true))}>
-                    <FormInput control={form.control} name='name' label={keyToLabel.name} />
-                    <FormInput control={form.control} name='affiliation' label={keyToLabel.affiliation} />
-                    <FormInput control={form.control} name='email' label={keyToLabel.email} />
-                    <FormTextarea control={form.control} name='message' label={keyToLabel.message} />
-                    <Button type='submit'>入力内容の確認へ</Button>
+                    <FormInput disabled={disabled} control={form.control} name='name' label={keyToLabel.name} />
+                    <FormInput
+                        disabled={disabled}
+                        control={form.control}
+                        name='affiliation'
+                        label={keyToLabel.affiliation}
+                    />
+                    <FormInput disabled={disabled} control={form.control} name='email' label={keyToLabel.email} />
+                    <FormTextarea
+                        disabled={disabled}
+                        control={form.control}
+                        name='message'
+                        label={keyToLabel.message}
+                    />
+                    <Button disabled={disabled} type='button' onClick={() => setDialogOpen(true)}>
+                        入力内容の確認へ
+                    </Button>
                 </form>
             </Form>
             <ConfirmDialog

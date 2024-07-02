@@ -1,6 +1,8 @@
 import { BIZ_UDPMincho } from 'next/font/google'
 import { ReactNode } from 'react'
 
+import { Toaster } from '@/components/ui/toaster'
+
 import type { Metadata } from 'next'
 
 import './globals.css'
@@ -22,7 +24,12 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='ja'>
-            <body className={bizUdpMincho.className}>{children}</body>
+            <body className={bizUdpMincho.className}>
+                <>
+                    {children}
+                    <Toaster />
+                </>
+            </body>
         </html>
     )
 }
