@@ -47,7 +47,7 @@ export const Email: Story = {
                     message: 'メールアドレスの形式が正しくありません',
                 }),
         })
-        const form = useForm<{ email: string }>({
+        const form = useForm<z.infer<typeof schema>>({
             resolver: zodResolver(schema),
         })
         return (
