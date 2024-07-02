@@ -12,5 +12,8 @@
         "files.autoSave": "afterDelay",
         "editor.defaultFormatter": "esbenp.prettier-vscode",
         "editor.formatOnSave": true,
+        "[dotenv]": {
+            "editor.defaultFormatter": "foxundermoon.shell-format"
+        },
     },
 }
