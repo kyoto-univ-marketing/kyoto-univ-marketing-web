@@ -3,6 +3,8 @@ import { FC, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
+import getKeys from '@/lib/getKeys'
+
 import { FormInput } from '../FormInput/FormInput'
 import { FormTextarea } from '../FormTextarea/FormTextarea'
 import {
@@ -10,7 +12,6 @@ import {
     AlertDialogAction,
     AlertDialogCancel,
     AlertDialogContent,
-    AlertDialogDescription,
     AlertDialogFooter,
     AlertDialogHeader,
     AlertDialogTitle,
@@ -43,13 +44,20 @@ export const schema = z.object({
 
 type ContactFormSchema = z.infer<typeof schema>
 
+const keyToLabel: Record<keyof ContactFormSchema, string> = {
+    name: 'お名前',
+    email: 'メールアドレス',
+    message: 'お問い合わせ内容',
+    affiliation: 'ご所属(大学名、企業名、団体名)',
+} as const
+
 export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
     const form = useForm<ContactFormSchema>({
         resolver: zodResolver(schema),
     })
     const [dialogOpen, setDialogOpen] = useState(false)
 
-    const sendForm = () => {
+    const handleConfirm = () => {
         console.log(form.getValues())
     }
 
@@ -57,14 +65,19 @@ export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
         <>
             <Form {...form}>
                 <form className='space-y-8' onSubmit={form.handleSubmit(() => setDialogOpen(true))}>
-                    <FormInput control={form.control} name='name' label='お名前' />
-                    <FormInput control={form.control} name='affiliation' label='ご所属' />
-                    <FormInput control={form.control} name='email' label='メールアドレス' />
-                    <FormTextarea control={form.control} name='message' label='お問い合わせ内容' />
-                    <Button type='submit'>送信</Button>
+                    <FormInput control={form.control} name='name' label={keyToLabel.name} />
+                    <FormInput control={form.control} name='affiliation' label={keyToLabel.affiliation} />
+                    <FormInput control={form.control} name='email' label={keyToLabel.email} />
+                    <FormTextarea control={form.control} name='message' label={keyToLabel.message} />
+                    <Button type='submit'>入力内容の確認へ</Button>
                 </form>
             </Form>
-            <ConfirmDialog open={dialogOpen} onOpenChange={setDialogOpen} onConfirm={sendForm} />
+            <ConfirmDialog
+                open={dialogOpen}
+                onOpenChange={setDialogOpen}
+                onConfirm={handleConfirm}
+                values={form.getValues()}
+            />
         </>
     )
 }
@@ -73,24 +86,34 @@ const ConfirmDialog = ({
     open,
     onOpenChange,
     onConfirm,
+    values,
 }: {
     open: boolean
     onOpenChange: (open: boolean) => void
     onConfirm: () => void
+    values: ContactFormSchema
 }) => {
     return (
         <AlertDialog open={open} onOpenChange={onOpenChange}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete your account and remove your data
-                        from our servers.
-                    </AlertDialogDescription>
+                    <AlertDialogTitle>入力内容のご確認</AlertDialogTitle>
                 </AlertDialogHeader>
+                <div className='space-y-4'>
+                    {getKeys(values).map((key) => (
+                        <div key={key} className='space-y-1'>
+                            <p className='text-sm text-gray-500 underline underline-offset-2'>{keyToLabel[key]}</p>
+                            {values[key] ? (
+                                <p className='whitespace-pre-wrap break-all'>{values[key]}</p>
+                            ) : (
+                                <p className='whitespace-pre-wrap break-all text-gray-500'>（入力なし）</p>
+                            )}
+                        </div>
+                    ))}
+                </div>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction onClick={onConfirm}>Continue</AlertDialogAction>
+                    <AlertDialogCancel>キャンセル</AlertDialogCancel>
+                    <AlertDialogAction onClick={onConfirm}>送信</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>
