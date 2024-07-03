@@ -25,41 +25,24 @@ export interface ContactFormProps {
     onSubmit: (values: ContactFormSchema) => Promise<void>
 }
 
-// 参考： https://zenn.dev/monicle/articles/4868424f22d6f5#1.-zod%E3%82%92%E7%94%A8%E3%81%84%E3%81%A6schema%E3%82%92%E5%AE%9A%E7%BE%A9
-const castToValOrNull = <T extends Parameters<typeof z.preprocess>[1]>(schema: T) =>
-    z.preprocess((val) => {
-        if (typeof val === 'string') {
-            const trimmedVal = val.trim()
-            return trimmedVal.length > 0 ? trimmedVal : null
-        }
-        return null
-    }, schema)
-
 export const contactFormSchema = z.object({
     /** お名前 */
-    name: castToValOrNull(
-        z.string({
-            message: 'お名前は必須です。',
-        }),
-    ),
+    name: z.string().refine((value) => value.trim() !== '', {
+        message: 'お名前は必須です。',
+    }),
     /** メールアドレス */
-    email: castToValOrNull(
-        z
-            .string({
-                message: 'メールアドレスは必須です。',
-            })
-            .email({
-                message: 'メールアドレスの形式が正しくありません。',
-            }),
-    ),
+    email: z.string().email({
+        message: 'メールアドレスの形式が正しくありません。',
+    }),
     /** お問い合わせ内容 */
-    message: castToValOrNull(
-        z.string({
-            message: 'お問い合わせ内容は必須です。',
-        }),
-    ),
+    message: z.string().refine((value) => value.trim() !== '', {
+        message: 'お問い合わせ内容は必須です。',
+    }),
     /** ご所属 */
-    affiliation: castToValOrNull(z.string().nullable()),
+    affiliation: z
+        .string()
+        .optional()
+        .transform((value) => value || null),
 })
 
 type ContactFormSchema = z.infer<typeof contactFormSchema>
@@ -74,6 +57,12 @@ const keyToLabel: Record<keyof ContactFormSchema, string> = {
 export const ContactForm: FC<ContactFormProps> = ({ onSubmit, ...props }) => {
     const form = useForm<ContactFormSchema>({
         resolver: zodResolver(contactFormSchema),
+        defaultValues: {
+            name: '',
+            email: '',
+            message: '',
+            affiliation: '',
+        },
     })
     const [dialogOpen, setDialogOpen] = useState(false)
     const [disabled, setDisabled] = useState(false)
@@ -82,7 +71,7 @@ export const ContactForm: FC<ContactFormProps> = ({ onSubmit, ...props }) => {
 
     const handleConfirm = async () => {
         setDisabled(true)
-        const values = form.getValues()
+        const values = contactFormSchema.parse(form.getValues())
         onSubmit(values)
             .then(() => {
                 // 成功時は、成功ページに移動
@@ -117,7 +106,7 @@ export const ContactForm: FC<ContactFormProps> = ({ onSubmit, ...props }) => {
                         name='message'
                         label={keyToLabel.message}
                     />
-                    <Button disabled={disabled} type='button' onClick={() => setDialogOpen(true)}>
+                    <Button disabled={disabled} type='submit'>
                         入力内容の確認へ
                     </Button>
                 </form>
