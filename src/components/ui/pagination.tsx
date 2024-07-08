@@ -5,6 +5,8 @@ import { ComponentProps, forwardRef } from 'react'
 import { ButtonProps, buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
+import { NextLink } from '../NextLink/NextLink'
+
 const Pagination = ({ className, ...props }: ComponentProps<'nav'>) => (
     <nav
         role='navigation'
@@ -31,7 +33,7 @@ type PaginationLinkProps = {
     ComponentProps<typeof Link>
 
 const PaginationLink = ({ className, isActive, size = 'icon', ...props }: PaginationLinkProps) => (
-    <Link
+    <NextLink
         aria-current={isActive ? 'page' : undefined}
         className={cn(
             buttonVariants({
