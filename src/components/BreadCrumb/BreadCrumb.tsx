@@ -1,7 +1,7 @@
 import { Slash } from 'lucide-react'
-import Link from 'next/link'
 import { FC } from 'react'
 
+import { NextLink } from '../NextLink/NextLink'
 import {
     Breadcrumb,
     BreadcrumbItem as BreadCrumbItem,
@@ -31,7 +31,7 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
                         <BreadCrumbItem key={index}>
                             {item.href ? (
                                 <BreadcrumbLink asChild>
-                                    <Link href={item.href}>{item.label}</Link>
+                                    <NextLink href={item.href}>{item.label}</NextLink>
                                 </BreadcrumbLink>
                             ) : (
                                 <BreadcrumbPage>{item.label}</BreadcrumbPage>
