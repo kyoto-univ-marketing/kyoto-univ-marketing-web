@@ -1,37 +1,12 @@
-import Link from 'next/link'
 import { FC } from 'react'
 import { FaBars } from 'react-icons/fa6'
 
+import pageLinks from '@/constants/pageLinks'
+
+import { NextLink } from '../NextLink/NextLink'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
 
 export interface HamburgerMenuProps {}
-
-const linkList = [
-    {
-        href: '/',
-        text: 'ホーム',
-    },
-    {
-        href: '/about',
-        text: 'サークルについて',
-    },
-    {
-        href: '/articles',
-        text: '活動記録',
-    },
-    {
-        href: '/projects',
-        text: 'プロジェクト',
-    },
-    {
-        href: '/links',
-        text: 'リンク集',
-    },
-    {
-        href: '/contact',
-        text: 'お問い合わせ',
-    },
-] as const satisfies { href: string; text: string }[] // TODO: 別ファイルに移動して使いまわしたい
 
 export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
     return (
@@ -44,9 +19,9 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
                     <SheetTitle>京大マーケティング研究所</SheetTitle>
                 </SheetHeader>
                 <ul className='mt-8 space-y-4'>
-                    {linkList.map((link) => (
+                    {pageLinks.map((link) => (
                         <li key={link.href}>
-                            <Link href={link.href}>{link.text}</Link>
+                            <NextLink href={link.href}>{link.text}</NextLink>
                         </li>
                     ))}
                 </ul>
