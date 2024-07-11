@@ -16,7 +16,7 @@ const imageList = [
 
 export const TopPage: FC<TopPageProps> = ({ ...props }) => {
     return (
-        <div className='w-full'>
+        <div className='relative w-full'>
             <ImageSwitch
                 className='absolute -z-50 brightness-50'
                 imageList={imageList}
