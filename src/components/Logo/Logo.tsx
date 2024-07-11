@@ -6,9 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 import { AvatarProps } from '../ui/avatar'
 
-export interface LogoProps {
-    size?: AvatarProps['size']
-}
+export interface LogoProps extends AvatarProps {}
 
 export const Logo: FC<LogoProps> = ({ ...props }) => {
     return (
