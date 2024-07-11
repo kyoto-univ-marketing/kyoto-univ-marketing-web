@@ -1,5 +1,5 @@
+import { Menu } from 'lucide-react'
 import { FC } from 'react'
-import { FaBars } from 'react-icons/fa6'
 
 import pageLinks from '@/constants/pageLinks'
 
@@ -12,7 +12,7 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
     return (
         <Sheet>
             <SheetTrigger>
-                <FaBars />
+                <Menu />
             </SheetTrigger>
             <SheetContent>
                 <SheetHeader>

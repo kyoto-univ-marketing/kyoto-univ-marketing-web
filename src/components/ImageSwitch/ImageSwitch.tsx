@@ -10,9 +10,10 @@ export interface ImageSwitchProps {
     interval: number
     /** 切り替えアニメーションの長さ（ms） */
     transitionDuration: number
+    className?: string
 }
 
-export const ImageSwitch: FC<ImageSwitchProps> = ({ imageList, interval, transitionDuration, ...props }) => {
+export const ImageSwitch: FC<ImageSwitchProps> = ({ imageList, interval, transitionDuration, className, ...props }) => {
     const [current, setCurrent] = useState(0)
     const imageLen = imageList.length
 
@@ -24,7 +25,7 @@ export const ImageSwitch: FC<ImageSwitchProps> = ({ imageList, interval, transit
     }, [imageLen, interval])
 
     return (
-        <div className='h-dvh w-full'>
+        <div className={cn('h-svh w-full', className)}>
             {imageList.map(({ src, alt }, index) => (
                 <Img
                     key={index}
