@@ -1,6 +1,7 @@
 import { BIZ_UDPMincho } from 'next/font/google'
 import { ReactNode } from 'react'
 
+import { Footer } from '@/components/Footer/Footer'
 import { Toaster } from '@/components/ui/toaster'
 
 import type { Metadata } from 'next'
@@ -26,7 +27,10 @@ export default function RootLayout({
         <html lang='ja'>
             <body className={bizUdpMincho.className}>
                 <>
-                    {children}
+                    <div className='mx-auto max-w-screen-sm'>
+                        {children}
+                        <Footer />
+                    </div>
                     <Toaster />
                 </>
             </body>
