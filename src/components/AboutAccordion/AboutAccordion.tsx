@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { CircleOutline } from './CircleOutline/CircleOutline'
+import { Origin } from './Origin/Origin'
 import { Policy } from './Policy/Policy'
 import { Accordion } from '../Accordion/Accordion'
 
@@ -24,7 +25,7 @@ export const AboutAccordion: FC<AboutAccordionProps> = ({ ...props }) => {
                     {
                         title: '創立の経緯',
                         value: 'origin',
-                        content: <>origin</>,
+                        content: <Origin />,
                     },
                 ]}
             />
