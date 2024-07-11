@@ -3,6 +3,7 @@ import { FC } from 'react'
 
 import pageLinks from '@/constants/pageLinks'
 
+import { Logo } from '../Logo/Logo'
 import { NextLink } from '../NextLink/NextLink'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '../ui/sheet'
 
@@ -16,6 +17,7 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
             </SheetTrigger>
             <SheetContent>
                 <SheetHeader>
+                    <Logo className='mx-auto' size='xl' />
                     <SheetTitle>京大マーケティング研究所</SheetTitle>
                 </SheetHeader>
                 <ul className='mt-8 space-y-4'>
