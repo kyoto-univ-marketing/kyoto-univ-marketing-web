@@ -30,7 +30,7 @@ export const TopPage: FC<TopPageProps> = ({ ...props }) => {
                 <div>
                     <Logo className='size-32 outline outline-4 outline-white' />
                 </div>
-                <h1 className='text-5xl font-bold leading-[1.2]'>
+                <h1 className='font-title text-5xl font-bold leading-[1.2]'>
                     <span className='inline-block'>京大</span>
                     <span className='inline-block'>マーケティング</span>
                     <span className='inline-block'>研究所</span>

@@ -18,7 +18,7 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
             <SheetContent>
                 <SheetHeader>
                     <Logo className='mx-auto' size='xl' />
-                    <SheetTitle>京大マーケティング研究所</SheetTitle>
+                    <SheetTitle className='font-title'>京大マーケティング研究所</SheetTitle>
                 </SheetHeader>
                 <ul className='mt-8 space-y-4'>
                     {pageLinks.map((link) => (
