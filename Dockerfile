@@ -7,6 +7,9 @@ RUN corepack enable pnpm
 
 FROM base as builder
 
+# 参考: https://stackoverflow.com/questions/70608086/i-am-getting-error-while-converting-my-next-js-project-to-docker
+ENV NEXT_PRIVATE_STANDALONE=true
+
 COPY package.json pnpm-lock.yaml ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
