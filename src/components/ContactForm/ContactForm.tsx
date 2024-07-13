@@ -1,3 +1,5 @@
+'use client'
+
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useRouter } from 'next/navigation'
 import { FC, useState } from 'react'
@@ -21,9 +23,7 @@ import { Button } from '../ui/button'
 import { Form } from '../ui/form'
 import { useToast } from '../ui/use-toast'
 
-export interface ContactFormProps {
-    onSubmit: (values: ContactFormSchema) => Promise<void>
-}
+export interface ContactFormProps {}
 
 export const contactFormSchema = z.object({
     /** お名前 */
@@ -45,7 +45,7 @@ export const contactFormSchema = z.object({
         .transform((value) => value || null),
 })
 
-type ContactFormSchema = z.infer<typeof contactFormSchema>
+export type ContactFormSchema = z.infer<typeof contactFormSchema>
 
 const keyToLabel: Record<keyof ContactFormSchema, string> = {
     name: 'お名前',
@@ -54,14 +54,14 @@ const keyToLabel: Record<keyof ContactFormSchema, string> = {
     affiliation: 'ご所属(大学名、企業名、団体名)',
 } as const
 
-export const ContactForm: FC<ContactFormProps> = ({ onSubmit, ...props }) => {
+export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
     const form = useForm<ContactFormSchema>({
         resolver: zodResolver(contactFormSchema),
         defaultValues: {
             name: '',
+            affiliation: '',
             email: '',
             message: '',
-            affiliation: '',
         },
     })
     const [dialogOpen, setDialogOpen] = useState(false)
@@ -71,9 +71,17 @@ export const ContactForm: FC<ContactFormProps> = ({ onSubmit, ...props }) => {
 
     const handleConfirm = async () => {
         setDisabled(true)
-        const values = contactFormSchema.parse(form.getValues())
-        onSubmit(values)
-            .then(() => {
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(form.getValues()),
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error('送信に失敗しました')
+                }
                 // 成功時は、成功ページに移動
                 router.push('/contact/success')
             })
@@ -92,15 +100,28 @@ export const ContactForm: FC<ContactFormProps> = ({ onSubmit, ...props }) => {
         <>
             <Form {...form}>
                 <form className='space-y-8' onSubmit={form.handleSubmit(() => setDialogOpen(true))}>
-                    <FormInput disabled={disabled} control={form.control} name='name' label={keyToLabel.name} />
+                    <FormInput
+                        rules={{ required: true }}
+                        disabled={disabled}
+                        control={form.control}
+                        name='name'
+                        label={keyToLabel.name}
+                    />
                     <FormInput
                         disabled={disabled}
                         control={form.control}
                         name='affiliation'
                         label={keyToLabel.affiliation}
                     />
-                    <FormInput disabled={disabled} control={form.control} name='email' label={keyToLabel.email} />
+                    <FormInput
+                        disabled={disabled}
+                        control={form.control}
+                        rules={{ required: true }}
+                        name='email'
+                        label={keyToLabel.email}
+                    />
                     <FormTextarea
+                        rules={{ required: true }}
                         disabled={disabled}
                         control={form.control}
                         name='message'

@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 import { Footer } from '@/components/Footer/Footer'
 import { Toaster } from '@/components/ui/toaster'
 
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 
 import './globals.css'
 
@@ -16,6 +16,12 @@ export const metadata: Metadata = {
         template: `%s | 京大マーケティング研究所`,
     },
     description: '', // TODO
+}
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1.0,
+    maximumScale: 1.0,
 }
 
 export default function RootLayout({

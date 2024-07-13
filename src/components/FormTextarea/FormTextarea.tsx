@@ -26,7 +26,12 @@ export const FormTextarea = <
             {...props}
             render={({ field }) => (
                 <FormItem>
-                    {label && <FormLabel>{label}</FormLabel>}
+                    {label && (
+                        <FormLabel>
+                            {label}
+                            {props.rules?.required && <span className='ml-1 text-red-500'>*</span>}
+                        </FormLabel>
+                    )}
                     <FormControl>
                         <Textarea {...field} placeholder={placeholder} />
                     </FormControl>
