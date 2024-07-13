@@ -5,9 +5,10 @@ import { ContactForm } from '../ContactForm/ContactForm'
 
 export interface ContactPageProps {}
 
+/** お問い合わせページ */
 export const ContactPage: FC<ContactPageProps> = ({ ...props }) => {
     return (
-        <div>
+        <>
             <div className='p-4'>
                 <BreadCrumb items={[{ label: 'ホーム', href: '/' }, { label: 'お問い合わせ' }]} />
             </div>
@@ -34,6 +35,6 @@ export const ContactPage: FC<ContactPageProps> = ({ ...props }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     )
 }

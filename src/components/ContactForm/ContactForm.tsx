@@ -54,24 +54,14 @@ const keyToLabel: Record<keyof ContactFormSchema, string> = {
     affiliation: 'ご所属(大学名、企業名、団体名)',
 } as const
 
-const onSubmit = async (value: ContactFormSchema) => {
-    return fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(value),
-    })
-}
-
 export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
     const form = useForm<ContactFormSchema>({
         resolver: zodResolver(contactFormSchema),
         defaultValues: {
             name: '',
+            affiliation: '',
             email: '',
             message: '',
-            affiliation: '',
         },
     })
     const [dialogOpen, setDialogOpen] = useState(false)
@@ -81,9 +71,17 @@ export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
 
     const handleConfirm = async () => {
         setDisabled(true)
-        const values = contactFormSchema.parse(form.getValues())
-        onSubmit(values)
-            .then(() => {
+        fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(form.getValues()),
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error('送信に失敗しました')
+                }
                 // 成功時は、成功ページに移動
                 router.push('/contact/success')
             })
