@@ -11,6 +11,7 @@ const meta = {
         slug: 'study-1',
         date: new Date(),
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Kyoto_University_Clock_Tower.jpg/1200px-Kyoto_University_Clock_Tower.jpg',
+        tag: '勉強会',
     },
 } satisfies Meta<typeof ArticleCard>
 

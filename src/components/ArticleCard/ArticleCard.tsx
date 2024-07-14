@@ -2,7 +2,7 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import { FC } from 'react'
 
-import { activityTagList } from '@/lib/microcms'
+import { activityTagList } from '@/constants/activity'
 
 import { NextLink } from '../NextLink/NextLink'
 
