@@ -1,7 +1,9 @@
+'use client'
+
 import { FilterIcon } from 'lucide-react'
 import { FC, useMemo, useState } from 'react'
 
-import { activityTagList } from '@/lib/microcms'
+import { activityTagList } from '@/constants/activity'
 
 import { ArticleCardProps } from '../ArticleCard/ArticleCard'
 import { ArticleCardList } from '../ArticleCardList/ArticleCardList'

@@ -8,6 +8,7 @@ import {
     MicroCMSImage,
 } from 'microcms-ts-sdk'
 
+import { activityTagList } from '@/constants/activity'
 import { mockActivities } from '@/mocks/activities'
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
@@ -17,8 +18,6 @@ if (!process.env.MICROCMS_SERVICE_DOMAIN) {
 if (!process.env.MICROCMS_API_KEY) {
     throw new Error('MICROCMS_API_KEY is required')
 }
-
-export const activityTagList = ['勉強会', 'イベント', 'その他'] as const
 
 export type Activity = Required<MicroCMSDate> &
     MicroCMSContentId & {
