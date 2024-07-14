@@ -41,14 +41,20 @@ export const client = createClient<Endpoints>({
 })
 
 /** 活動記録のリストを取得する */
-export const getActivityList = async (): Promise<MicroCMSGetListResponse<Endpoints, { endpoint: 'activities' }>> => {
+export const getActivityList = async (option?: {
+    limit?: number
+    offset?: number
+    tag?: string
+}): Promise<MicroCMSGetListResponse<Endpoints, { endpoint: 'activities' }>> => {
     if (process.env.NODE_ENV === 'development') {
         // 開発環境の場合はモックデータを返す
         const res = {
-            contents: mockActivities,
-            totalCount: mockActivities.length,
-            offset: 0,
-            limit: mockActivities.length,
+            contents: mockActivities
+                .filter((ac) => !option?.tag || ac.tag[0] === option.tag)
+                .slice(option?.offset ?? 0, (option?.offset ?? 0) + (option?.limit ?? mockActivities.length)),
+            totalCount: mockActivities.filter((ac) => !option?.tag || ac.tag[0] === option.tag).length,
+            offset: option?.offset ?? 0,
+            limit: option?.limit ?? mockActivities.length,
         } satisfies MicroCMSGetListResponse<Endpoints, { endpoint: 'activities' }>
         return res
     }
@@ -56,6 +62,11 @@ export const getActivityList = async (): Promise<MicroCMSGetListResponse<Endpoin
     // 本番環境の場合はmicroCMSからデータを取得する
     const res = await client.getList({
         endpoint: 'activities',
+        queries: {
+            limit: option?.limit,
+            offset: option?.offset,
+            filters: option?.tag ? `tag[contains]${option.tag}` : undefined,
+        },
     })
     return res
 }
