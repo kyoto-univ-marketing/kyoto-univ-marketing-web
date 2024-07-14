@@ -31,9 +31,8 @@ type PaginationLinkProps = {
 } & Pick<ButtonProps, 'size'> &
     ComponentProps<typeof NextLink>
 
-const PaginationLink = ({ className, isActive, size = 'icon', href, ...props }: PaginationLinkProps) => (
+const PaginationLink = ({ className, isActive, size = 'icon', ...props }: PaginationLinkProps) => (
     <NextLink
-        href={href || '#'}
         aria-current={isActive ? 'page' : undefined}
         className={cn(
             buttonVariants({
