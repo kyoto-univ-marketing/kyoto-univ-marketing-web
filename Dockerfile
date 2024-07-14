@@ -13,6 +13,9 @@ ENV NEXT_PRIVATE_STANDALONE=true
 COPY package.json pnpm-lock.yaml ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
+ARG MICROCMS_SERVICE_DOMAIN
+ARG MICROCMS_API_KEY
+
 COPY . .
 RUN pnpm run build
 
