@@ -1,5 +1,4 @@
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
-import Link from 'next/link'
 import { ComponentProps, forwardRef } from 'react'
 
 import { ButtonProps, buttonVariants } from '@/components/ui/button'
@@ -30,7 +29,7 @@ PaginationItem.displayName = 'PaginationItem'
 type PaginationLinkProps = {
     isActive?: boolean
 } & Pick<ButtonProps, 'size'> &
-    ComponentProps<typeof Link>
+    ComponentProps<typeof NextLink>
 
 const PaginationLink = ({ className, isActive, size = 'icon', ...props }: PaginationLinkProps) => (
     <NextLink

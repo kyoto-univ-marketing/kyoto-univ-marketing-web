@@ -10,7 +10,7 @@ export const ArticleCardList: FC<ArticleCardListProps> = ({ cardList, ...props }
     return (
         <div className='space-y-6'>
             {cardList.map((card) => {
-                return <ArticleCard key={card.slug} {...card} />
+                return <ArticleCard key={card.id} {...card} />
             })}
         </div>
     )
