@@ -7,13 +7,15 @@ const card1 = {
     slug: 'study-1',
     date: new Date(),
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Kyoto_University_Clock_Tower.jpg/1200px-Kyoto_University_Clock_Tower.jpg',
-}
+    tag: '勉強会',
+} as const
 const card2 = {
     title: '長いタイトル長いタイトル長いタイトル長いタイトル長いタイトル長いタイトル長いタイトル',
     slug: 'event-1',
     date: new Date(),
     image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Kyoto_University_Clock_Tower.jpg/1200px-Kyoto_University_Clock_Tower.jpg',
-}
+    tag: 'イベント',
+} as const
 
 const meta = {
     title: 'ArticleCardList',

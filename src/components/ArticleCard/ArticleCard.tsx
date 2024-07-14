@@ -2,6 +2,8 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import { FC } from 'react'
 
+import { activityTagList } from '@/lib/microcms'
+
 import { NextLink } from '../NextLink/NextLink'
 
 export interface ArticleCardProps {
@@ -9,6 +11,7 @@ export interface ArticleCardProps {
     slug: string
     date: Date
     image: string
+    tag: (typeof activityTagList)[number]
 }
 
 export const ArticleCard: FC<ArticleCardProps> = ({ title, slug, date, image, ...props }) => {
