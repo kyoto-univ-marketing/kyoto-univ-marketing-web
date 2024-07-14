@@ -26,7 +26,7 @@ export type Activity = Required<MicroCMSDate> &
         description: string
         thumbnail: MicroCMSImage
         content: string
-        tag: (typeof activityTagList)[number][]
+        tag: [(typeof activityTagList)[number]]
     }
 
 interface Endpoints extends ClientEndPoints {
