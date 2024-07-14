@@ -1,5 +1,5 @@
 import { Slash } from 'lucide-react'
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 
 import { NextLink } from '../NextLink/NextLink'
 import {
@@ -27,8 +27,8 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
         <Breadcrumb>
             <BreadcrumbList>
                 {items.map((item, index) => (
-                    <>
-                        <BreadCrumbItem key={index}>
+                    <Fragment key={index}>
+                        <BreadCrumbItem>
                             {item.href ? (
                                 <BreadcrumbLink asChild>
                                     <NextLink href={item.href}>{item.label}</NextLink>
@@ -42,7 +42,7 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
                                 <Slash />
                             </BreadcrumbSeparator>
                         )}
-                    </>
+                    </Fragment>
                 ))}
             </BreadcrumbList>
         </Breadcrumb>
