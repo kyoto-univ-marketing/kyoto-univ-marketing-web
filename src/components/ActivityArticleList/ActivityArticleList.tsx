@@ -55,7 +55,7 @@ export const ActivityArticleList: FC<ActivityArticleListProps> = ({ ...props }) 
                         options={activityTagList.map((tag) => ({ label: tag, value: tag }))}
                         value={filterTag}
                         onChange={setFilterTag}
-                        eraseable
+                        erasable
                     />
                 </div>
             </div>

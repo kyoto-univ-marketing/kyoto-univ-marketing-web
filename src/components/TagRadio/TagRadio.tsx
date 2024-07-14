@@ -39,11 +39,11 @@ export interface TagRadioProps {
     value: string
     onChange: (value: string) => void
     options: TagRadioOption[]
-    eraseable?: boolean
+    erasable?: boolean
 }
 
 /** タグの単一選択 */
-export const TagRadio: FC<TagRadioProps> = ({ value, onChange, options, eraseable = false, ...props }) => {
+export const TagRadio: FC<TagRadioProps> = ({ value, onChange, options, erasable = false, ...props }) => {
     return (
         <RadioGroup className='flex flex-wrap items-center' value={value} onValueChange={onChange}>
             {options.map((option) => (
@@ -54,7 +54,7 @@ export const TagRadio: FC<TagRadioProps> = ({ value, onChange, options, eraseabl
                     selected={option.value === value}
                 />
             ))}
-            {eraseable && (
+            {erasable && (
                 <Button className='size-fit p-1' variant='ghost' onClick={() => onChange('')}>
                     <XIcon className='size-3.5 text-red-500'></XIcon>
                 </Button>
