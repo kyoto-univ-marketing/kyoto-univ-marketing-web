@@ -1,3 +1,5 @@
+import { mockActivities } from '@/mocks/activities'
+
 import { ArticleCard } from './ArticleCard'
 
 import type { Meta, StoryObj } from '@storybook/react'
@@ -7,11 +9,7 @@ const meta = {
     component: ArticleCard,
     tags: ['autodocs'],
     args: {
-        title: '第◯回勉強会',
-        slug: 'study-1',
-        date: new Date(),
-        image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Kyoto_University_Clock_Tower.jpg/1200px-Kyoto_University_Clock_Tower.jpg',
-        tag: '勉強会',
+        ...mockActivities[0],
     },
 } satisfies Meta<typeof ArticleCard>
 

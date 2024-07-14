@@ -31,14 +31,7 @@ export default async function Page({
                 </p>
             </div>
             <ActivityArticleList
-                activityArticleList={activities.contents.map((item) => ({
-                    slug: item.id,
-                    title: item.title,
-                    description: item.description,
-                    image: item.thumbnail.url,
-                    tag: item.tag[0],
-                    date: new Date(item.publishedAt),
-                }))}
+                activityArticleList={activities.contents}
                 page={page - 1} // 0-indexed
                 totalPage={Math.ceil(activities.totalCount / LIMIT)}
                 tag={tag}

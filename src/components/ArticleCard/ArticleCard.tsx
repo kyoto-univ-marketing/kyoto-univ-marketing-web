@@ -2,31 +2,25 @@ import dayjs from 'dayjs'
 import Image from 'next/image'
 import { FC } from 'react'
 
-import { activityTagList } from '@/constants/activity'
+import { Activity } from '@/lib/microcms'
 
 import { NextLink } from '../NextLink/NextLink'
 
-export interface ArticleCardProps {
-    title: string
-    slug: string
-    date: Date
-    image: string
-    tag: (typeof activityTagList)[number]
-}
+export interface ArticleCardProps extends Activity {}
 
-export const ArticleCard: FC<ArticleCardProps> = ({ title, slug, date, image, ...props }) => {
+export const ArticleCard: FC<ArticleCardProps> = ({ title, id, publishedAt, thumbnail, ...props }) => {
     return (
         <div className=''>
-            <NextLink href={`/articles/${slug}`}>
+            <NextLink href={`/articles/${id}`}>
                 <div className='flex items-stretch'>
                     <div className='flex flex-1 flex-col gap-2 rounded-l-md border-y border-l p-6'>
-                        <p className='text-sm text-gray-700'>{dayjs(date).format('YYYY/MM/DD')}</p>
+                        <p className='text-sm text-gray-700'>{dayjs(publishedAt).format('YYYY/MM/DD')}</p>
                         <div className='flex flex-1 items-center'>
                             <p className='line-clamp-2 text-xl'>{title}</p>
                         </div>
                     </div>
                     <div className='relative aspect-[4/3] w-1/3'>
-                        <Image fill className='rounded-r-md object-cover' src={image} alt={title} />
+                        <Image fill className='rounded-r-md object-cover' src={thumbnail.url} alt={title} />
                     </div>
                 </div>
             </NextLink>
