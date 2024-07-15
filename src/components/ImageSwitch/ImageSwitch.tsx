@@ -48,14 +48,15 @@ interface ImgProps extends ComponentProps<typeof Image> {
     transitionDuration: number
 }
 
-const Img: FC<ImgProps> = ({ src, alt, isShow, transitionDuration }) => {
+const Img: FC<ImgProps> = ({ src, alt, isShow, transitionDuration, style, ...props }) => {
     return (
         <Image
+            {...props}
             className={cn(
                 'h-full w-full object-cover transition-opacity ease-in-out',
                 isShow ? 'opacity-100' : 'opacity-0',
             )}
-            style={{ transitionDuration: `${transitionDuration}ms` }}
+            style={{ transitionDuration: `${transitionDuration}ms`, ...style }}
             fill
             src={src}
             alt={alt}
