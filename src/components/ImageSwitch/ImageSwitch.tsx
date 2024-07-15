@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { FC, useEffect, useState } from 'react'
+import { ComponentProps, FC, useEffect, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -30,9 +30,11 @@ export const ImageSwitch: FC<ImageSwitchProps> = ({ imageList, interval, transit
         <div className={cn('h-svh w-full', className)}>
             {imageList.map(({ src, alt }, index) => (
                 <Img
+                    priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                     key={index}
                     src={src}
-                    alt={alt}
+                    alt={alt ?? ''}
                     isShow={current === index}
                     transitionDuration={transitionDuration}
                 />
@@ -41,14 +43,12 @@ export const ImageSwitch: FC<ImageSwitchProps> = ({ imageList, interval, transit
     )
 }
 
-interface ImgProps {
-    src: string
-    alt?: string
+interface ImgProps extends ComponentProps<typeof Image> {
     isShow: boolean
     transitionDuration: number
 }
 
-const Img: FC<ImgProps> = ({ src, alt = '', isShow, transitionDuration }) => {
+const Img: FC<ImgProps> = ({ src, alt, isShow, transitionDuration }) => {
     return (
         <Image
             className={cn(
