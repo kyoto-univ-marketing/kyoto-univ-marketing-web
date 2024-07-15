@@ -1,4 +1,4 @@
-import { contactFormSchema } from '@/components/ContactForm/ContactForm'
+import { contactFormSchema } from '@/components/contact/ContactForm/ContactForm'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 

@@ -1,7 +1,7 @@
 import { BIZ_UDPMincho } from 'next/font/google'
 import { ReactNode } from 'react'
 
-import { Footer } from '@/components/Footer/Footer'
+import { Footer } from '@/components/common/Footer/Footer'
 import { Toaster } from '@/components/ui/toaster'
 
 import type { Metadata, Viewport } from 'next'

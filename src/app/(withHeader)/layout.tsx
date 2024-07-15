@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { Navigation } from '@/components/Navigation/Navigation'
+import { Navigation } from '@/components/common/Navigation/Navigation'
 
 export default function Layout({
     children,
