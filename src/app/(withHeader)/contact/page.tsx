@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { ContactPage } from '@/components/ContactPage/ContactPage'
+import { ContactPage } from '@/components/contact/ContactPage/ContactPage'
 
 export const metadata: Metadata = {
     title: 'お問い合わせ',

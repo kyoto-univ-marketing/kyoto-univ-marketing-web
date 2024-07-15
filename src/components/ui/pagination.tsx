@@ -4,7 +4,7 @@ import { ComponentProps, forwardRef } from 'react'
 import { ButtonProps, buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
-import { NextLink } from '../NextLink/NextLink'
+import { NextLink } from '../common/NextLink/NextLink'
 
 const Pagination = ({ className, ...props }: ComponentProps<'nav'>) => (
     <nav

@@ -1,6 +1,6 @@
 import { Metadata } from 'next'
 
-import { ContactSuccessPage } from '@/components/ContactSuccessPage/ContactSuccessPage'
+import { ContactSuccessPage } from '@/components/contact/ContactSuccessPage/ContactSuccessPage'
 
 export const metadata: Metadata = {
     title: 'お問い合わせ完了',

@@ -1,4 +1,4 @@
-import { TopPage } from '@/components/TopPage/TopPage'
+import { TopPage } from '@/components/top/TopPage/TopPage'
 
 export default function Home() {
     return (

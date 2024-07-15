@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 
-import { ActivityArticleList } from '@/components/ActivityArticleList/ActivityArticleList'
-import { BreadCrumb } from '@/components/BreadCrumb/BreadCrumb'
+import { ActivityArticleList } from '@/components/articles/ActivityArticleList/ActivityArticleList'
+import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { getActivityList } from '@/lib/microcms'
 
 export const metadata: Metadata = {
