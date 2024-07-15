@@ -5,7 +5,6 @@ import { ArticleCard } from './ArticleCard'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'ArticleCard',
     component: ArticleCard,
     tags: ['autodocs'],
     args: {

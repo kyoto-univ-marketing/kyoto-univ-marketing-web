@@ -3,7 +3,6 @@ import { Navigation } from './Navigation'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'Navigation',
     component: Navigation,
     tags: ['autodocs'],
     parameters: {

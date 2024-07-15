@@ -3,7 +3,6 @@ import { ImageSwitch } from './ImageSwitch'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'ImageSwitch',
     component: ImageSwitch,
     tags: ['autodocs'],
     parameters: {

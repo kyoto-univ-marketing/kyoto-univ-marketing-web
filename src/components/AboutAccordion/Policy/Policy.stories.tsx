@@ -3,7 +3,6 @@ import { Policy } from './Policy'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'Policy',
     component: Policy,
     tags: ['autodocs'],
 } satisfies Meta<typeof Policy>

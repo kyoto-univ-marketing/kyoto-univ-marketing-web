@@ -5,7 +5,6 @@ import { TagRadio } from './TagRadio'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'TagRadio',
     component: TagRadio,
     tags: ['autodocs'],
     args: {

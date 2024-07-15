@@ -4,7 +4,6 @@ import { Toaster } from '../ui/toaster'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'ContactForm',
     component: ContactForm,
     tags: ['autodocs'],
 } satisfies Meta<typeof ContactForm>

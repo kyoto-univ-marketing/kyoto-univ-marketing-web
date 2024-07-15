@@ -9,7 +9,6 @@ import { Form } from '../ui/form'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'FormTextarea',
     component: FormTextarea,
     tags: ['autodocs'],
 } satisfies Meta<typeof FormTextarea>

@@ -3,7 +3,6 @@ import { TopPage } from './TopPage'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'TopPage',
     component: TopPage,
     tags: ['autodocs'],
     parameters: {

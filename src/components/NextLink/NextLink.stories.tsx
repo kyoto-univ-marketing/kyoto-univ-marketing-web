@@ -3,7 +3,6 @@ import { NextLink } from './NextLink'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'NextLink',
     component: NextLink,
     tags: ['autodocs'],
 } satisfies Meta<typeof NextLink>

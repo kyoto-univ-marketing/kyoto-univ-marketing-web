@@ -3,7 +3,6 @@ import { BreadCrumb } from './BreadCrumb'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'BreadCrumb',
     component: BreadCrumb,
     tags: ['autodocs'],
 } satisfies Meta<typeof BreadCrumb>

@@ -3,7 +3,6 @@ import { LatestArticlesPresenter } from './LatestArticlesPresenter'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'LatestArticles',
     component: LatestArticlesPresenter,
     tags: ['autodocs'],
     args: {

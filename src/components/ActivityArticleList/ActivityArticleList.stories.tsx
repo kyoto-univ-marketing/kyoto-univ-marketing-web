@@ -5,7 +5,6 @@ import { ActivityArticleList } from './ActivityArticleList'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'ActivityArticleList',
     component: ActivityArticleList,
     tags: ['autodocs'],
     parameters: {

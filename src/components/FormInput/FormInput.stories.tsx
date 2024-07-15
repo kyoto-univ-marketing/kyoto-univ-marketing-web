@@ -9,7 +9,6 @@ import { Form } from '../ui/form'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'FormInput',
     component: FormInput,
     tags: ['autodocs'],
     args: {},

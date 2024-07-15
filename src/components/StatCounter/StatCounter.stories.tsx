@@ -3,7 +3,6 @@ import { StatCounter } from './StatCounter'
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    title: 'StatCounter',
     component: StatCounter,
     tags: ['autodocs'],
     args: {
