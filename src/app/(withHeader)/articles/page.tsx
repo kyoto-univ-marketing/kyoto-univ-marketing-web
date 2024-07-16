@@ -2,13 +2,10 @@ import { Metadata } from 'next'
 
 import { ActivityArticleList } from '@/components/articles/ActivityArticleList/ActivityArticleList'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
-import { getActivityList } from '@/lib/microcms'
 
 export const metadata: Metadata = {
     title: '活動記録',
 }
-
-const LIMIT = 10
 
 export default async function Page({
     searchParams,
@@ -17,7 +14,7 @@ export default async function Page({
 }) {
     const page = Number(searchParams.page) || 1
     const tag = (searchParams.tag as string) || undefined
-    const activities = await getActivityList({ limit: LIMIT, offset: (page - 1) * LIMIT, tag })
+
     return (
         <main className='px-4 pb-12'>
             <div className='py-4'>
@@ -31,9 +28,7 @@ export default async function Page({
                 </p>
             </div>
             <ActivityArticleList
-                activityArticleList={activities.contents}
                 page={page - 1} // 0-indexed
-                totalPage={Math.ceil(activities.totalCount / LIMIT)}
                 tag={tag}
             />
         </main>
