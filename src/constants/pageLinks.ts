@@ -2,26 +2,32 @@
 export default [
     {
         href: '/',
-        text: 'TOP',
+        text: 'トップページ',
+        textEng: 'TOP',
     },
     {
         href: '/about',
         text: 'サークルについて',
+        textEng: 'ABOUT',
     },
     {
         href: '/articles',
         text: '活動記録',
+        textEng: 'ARCHIVE',
     },
     {
         href: '/projects',
         text: 'プロジェクト',
+        textEng: 'PROJECT',
     },
     {
         href: '/links',
         text: 'リンク集',
+        textEng: 'LINKS',
     },
     {
         href: '/contact',
         text: 'お問い合わせ',
+        textEng: 'CONTACT',
     },
-] as const satisfies { href: string; text: string }[]
+] as const satisfies { href: string; text: string; textEng: string }[]
