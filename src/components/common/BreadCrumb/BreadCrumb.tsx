@@ -24,7 +24,7 @@ export interface BreadCrumbProps {
 /** パンくずリスト */
 export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
     return (
-        <Breadcrumb>
+        <Breadcrumb className='bg-backgroundSecondary px-6 py-2'>
             <BreadcrumbList>
                 {items.map((item, index) => (
                     <Fragment key={index}>

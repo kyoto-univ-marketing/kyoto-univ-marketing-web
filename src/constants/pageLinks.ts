@@ -1,5 +1,11 @@
+interface PageLink {
+    href: string
+    text: string
+    textEng: string
+}
+
 /** 各ページへのリンク */
-export default [
+const pageLinks = [
     {
         href: '/',
         text: 'トップページ',
@@ -30,4 +36,16 @@ export default [
         text: 'お問い合わせ',
         textEng: 'CONTACT',
     },
-] as const satisfies { href: string; text: string; textEng: string }[]
+] as const satisfies PageLink[]
+
+export default pageLinks
+
+type PageLinkKeys = (typeof pageLinks)[number]['textEng']
+
+export const pageLinkObject: { [K in PageLinkKeys]: Extract<(typeof pageLinks)[number], { textEng: K }> } =
+    pageLinks.reduce(
+        (acc, pageLink) => {
+            return { ...acc, [pageLink.textEng]: pageLink }
+        },
+        {} as { [K in PageLinkKeys]: Extract<(typeof pageLinks)[number], { textEng: K }> },
+    )

@@ -1,3 +1,5 @@
+import { pageLinkObject } from '@/constants/pageLinks'
+
 import { BreadCrumb } from './BreadCrumb'
 
 import type { Meta, StoryObj } from '@storybook/react'
@@ -12,6 +14,10 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
     args: {
-        items: [{ label: 'HOME', href: '/' }, { label: '活動記録', href: '/articles' }, { label: '第◯回勉強会' }],
+        items: [
+            { label: pageLinkObject.TOP.textEng, href: pageLinkObject.TOP.href },
+            { label: pageLinkObject.ARCHIVE.text, href: pageLinkObject.ARCHIVE.href },
+            { label: '第◯回勉強会' },
+        ],
     },
 }
