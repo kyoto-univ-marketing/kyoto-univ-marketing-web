@@ -23,17 +23,22 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
                         京大マーケティング研究所
                     </SheetTitle>
                 </SheetHeader>
-                <ul className='mt-12 space-y-6 px-6'>
+                <ul className='mt-12 space-y-4 px-6'>
                     {pageLinks.map((link) => (
                         <li key={link.href}>
                             <NextLink href={link.href}>
-                                <p className='text-heading'>{link.textEng}</p>
-                                <p className='text-accent-sm'>{link.text}</p>
+                                <p className='text-lg'>{link.textEng}</p>
+                                <p className='text-xs'>{link.text}</p>
                             </NextLink>
                         </li>
                     ))}
                 </ul>
-                <MailAndSNS iconSize={24} className='mt-auto justify-self-end text-accent-sm' />
+                <MailAndSNS
+                    mailIconSize={16}
+                    mailTextClassName='text-xs'
+                    snsIconSize={24}
+                    className='mt-auto justify-self-end'
+                />
             </SheetContent>
         </Sheet>
     )

@@ -8,24 +8,32 @@ import { cn } from '@/lib/utils'
 import { NextLink } from '../NextLink/NextLink'
 
 export interface MailAndSNSProps extends ComponentProps<'div'> {
-    iconSize?: number
+    snsIconSize?: number
+    mailIconSize?: number
+    mailTextClassName?: string
 }
 
-export const MailAndSNS: FC<MailAndSNSProps> = ({ iconSize = 32, className, ...props }) => {
+export const MailAndSNS: FC<MailAndSNSProps> = ({
+    snsIconSize = 32,
+    mailIconSize = 24,
+    mailTextClassName,
+    className,
+    ...props
+}) => {
     return (
         <div {...props} className={cn('flex w-full flex-col items-center', className)}>
             <div className='flex items-center gap-2'>
-                <MailIcon />
-                <NextLink className='text-accent-sm' href={`mailto:${profile.mailAddress}`}>
+                <MailIcon size={mailIconSize} />
+                <NextLink className={cn('text-accent-sm', mailTextClassName)} href={`mailto:${profile.mailAddress}`}>
                     {profile.mailAddress}
                 </NextLink>
             </div>
             <div className='mt-4 grid w-full grid-flow-col justify-evenly'>
                 <NextLink href={profile.xUrl}>
-                    <FaXTwitter size={iconSize} />
+                    <FaXTwitter size={snsIconSize} />
                 </NextLink>
                 <NextLink href={profile.instagramUrl}>
-                    <FaInstagram size={iconSize} />
+                    <FaInstagram size={snsIconSize} />
                 </NextLink>
             </div>
         </div>
