@@ -69,7 +69,7 @@ const config = {
                 'accordion-up': 'accordion-up 0.2s ease-out',
             },
             fontFamily: {
-                title: ['BIZ UDPMincho', 'serif'], // TODO: 正式なフォントを設定する
+                title: ['syunka2p', 'BIZ UDPMincho', 'serif'], // TODO: 正式なフォントを設定する
             },
             fontSize: {
                 title: '1.7857142857rem',

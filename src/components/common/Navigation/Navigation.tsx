@@ -8,11 +8,11 @@ export interface NavigationProps {}
 
 export const Navigation: FC<NavigationProps> = ({ ...props }) => {
     return (
-        <nav className='flex w-full items-center justify-between gap-2 bg-slate-100 p-2'>
-            <Link href='/'>
-                <Logo />
+        <nav className='flex w-full items-center justify-between gap-4 bg-primary p-4 text-primary-foreground'>
+            <Link href='/' className='flex items-center gap-4'>
+                <Logo reverse />
+                <div className='font-title text-accent font-bold'>京大マーケティング研究所</div>
             </Link>
-            <div className='font-title text-lg font-bold'>京大マーケティング研究所</div>
             <HamburgerMenu />
         </nav>
     )

@@ -23,3 +23,10 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+/** 色反転 */
+export const Rev: Story = {
+    args: {
+        reverse: true,
+    },
+}
