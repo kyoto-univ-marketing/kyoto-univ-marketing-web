@@ -13,8 +13,9 @@ const mailAddress = 'kyoto.univ.marketing@gmail.com'
 
 export const Footer: FC<FooterProps> = ({ ...props }) => {
     return (
-        <footer className='w-full bg-blue-50 p-4'>
-            <div className='flex flex-col items-center border-2 border-white p-8'>
+        <footer className='flex w-full flex-col items-center overflow-x-hidden text-primary-foreground'>
+            <div className='h-24 w-[110%] rounded-t-[100%] bg-primary'></div>
+            <div className='flex w-full flex-col items-center bg-primary px-12 pb-12 pt-4'>
                 <ul className='w-full space-y-4'>
                     {pageLinks.map((link) => (
                         <li key={link.href}>

@@ -2,7 +2,7 @@
 export default [
     {
         href: '/',
-        text: 'ホーム',
+        text: 'TOP',
     },
     {
         href: '/about',
