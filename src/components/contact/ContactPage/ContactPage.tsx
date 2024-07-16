@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import { pageLinkObject } from '@/constants/pageLinks'
+
 import { BreadCrumb } from '../../common/BreadCrumb/BreadCrumb'
 import { ContactForm } from '../ContactForm/ContactForm'
 
@@ -9,9 +11,12 @@ export interface ContactPageProps {}
 export const ContactPage: FC<ContactPageProps> = ({ ...props }) => {
     return (
         <>
-            <div className='p-4'>
-                <BreadCrumb items={[{ label: 'ホーム', href: '/' }, { label: 'お問い合わせ' }]} />
-            </div>
+            <BreadCrumb
+                items={[
+                    { label: pageLinkObject.TOP.textEng, href: pageLinkObject.TOP.href },
+                    { label: pageLinkObject.CONTACT.text },
+                ]}
+            />
             <div>
                 <div className='space-y-2 p-4'>
                     <h1 className='text-xl font-bold'>お問い合わせ</h1>
