@@ -25,5 +25,6 @@
             "class:list",
             "tw"
         ],
+        "tailwindCSS.rootFontSize": 14, // 参考： https://design2tailwind.com/blog/change-tailwindcss-base-font-size/
     },
 }
