@@ -1,6 +1,7 @@
 import { ReactNode } from 'react'
 
 import { Navigation } from '@/components/common/Navigation/Navigation'
+import { TopButton } from '@/components/common/TopButton/TopButton'
 
 export default function Layout({
     children,
@@ -13,6 +14,7 @@ export default function Layout({
                 <Navigation />
             </header>
             {children}
+            <TopButton className='mb-12' />
         </>
     )
 }
