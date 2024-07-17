@@ -38,8 +38,8 @@ export const ActivityArticleListPresenter: FC<ActivityArticleListPresenterProps>
         return [...new Array(totalPage)].map((_, i) => `/articles?page=${i + 1}${tag ? `&tag=${tag}` : ''}`)
     }, [tag, totalPage])
     return (
-        <div className='space-y-8'>
-            <div className='flex items-center gap-4'>
+        <div>
+            <div className='mb-4 flex items-center gap-4 border-b p-4'>
                 <div className='flex items-center gap-1 text-sm'>
                     <FilterIcon className='size-3.5'></FilterIcon>
                     <span>絞り込む</span>
@@ -53,7 +53,9 @@ export const ActivityArticleListPresenter: FC<ActivityArticleListPresenterProps>
                     />
                 </div>
             </div>
-            <ArticleCardList cardList={activityArticleList} />
+            <div className='mb-12'>
+                <ArticleCardList cardList={activityArticleList} />
+            </div>
             <Pagination activePage={page} pageLinkList={pageLinkList} />
         </div>
     )
