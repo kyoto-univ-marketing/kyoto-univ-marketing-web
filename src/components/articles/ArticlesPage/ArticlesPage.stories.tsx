@@ -6,7 +6,10 @@ const meta = {
     component: ArticlesPage,
     tags: ['autodocs'],
     parameters: {},
-    args: {},
+    args: {
+        page: 1,
+        tag: undefined,
+    },
 } satisfies Meta<typeof ArticlesPage>
 
 export default meta
