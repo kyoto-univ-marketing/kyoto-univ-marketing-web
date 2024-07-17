@@ -1,3 +1,4 @@
+import pick from '@/lib/pick'
 import { mockActivities } from '@/mocks/activities'
 
 import { ArticleCard } from './ArticleCard'
@@ -9,11 +10,7 @@ const meta = {
     component: ArticleCard,
     tags: ['autodocs'],
     args: {
-        ...Object.entries(mockActivities[0]).reduce((acc, [key, value]) => {
-            if (['title', 'id', 'thumbnail', 'publishedAt', 'description'].includes(key))
-                return { ...acc, [key]: value }
-            else return acc
-        }, {}),
+        ...pick(mockActivities[0], 'title', 'id', 'thumbnail', 'publishedAt', 'description'),
         thumbnail: {
             url: Logo.src,
         },
