@@ -1,11 +1,11 @@
 import { mockActivities } from '@/mocks/activities'
 
-import { ActivityArticleList } from './ActivityArticleList'
+import { ActivityArticleListPresenter } from './ActivityArticleListPresenter'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    component: ActivityArticleList,
+    component: ActivityArticleListPresenter,
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',
@@ -15,7 +15,7 @@ const meta = {
         totalPage: 10,
         activityArticleList: mockActivities.slice(0, 10),
     },
-} satisfies Meta<typeof ActivityArticleList>
+} satisfies Meta<typeof ActivityArticleListPresenter>
 
 export default meta
 type Story = StoryObj<typeof meta>
