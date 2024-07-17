@@ -1,3 +1,5 @@
+import plugin from 'tailwindcss/plugin'
+
 import type { Config } from 'tailwindcss'
 
 const config = {
@@ -79,7 +81,12 @@ const config = {
             },
         },
     },
-    plugins: [require('tailwindcss-animate')],
+    plugins: [
+        require('tailwindcss-animate'),
+        plugin(({ addBase }) => {
+            addBase({ html: { 'font-size': '14px' } }) // 参考： https://design2tailwind.com/blog/change-tailwindcss-base-font-size/
+        }),
+    ],
 } satisfies Config
 
 export default config
