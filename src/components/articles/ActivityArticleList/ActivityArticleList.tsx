@@ -13,7 +13,7 @@ export interface ActivityArticleListProps {
 const LIMIT = 10
 
 /** 活動記録記事の取得を行うコンポーネント */
-export const ActivityArticleList: FC<ActivityArticleListProps> = async ({ page, tag, ...props }) => {
+const ActivityArticleList: FC<ActivityArticleListProps> = async ({ page, tag, ...props }) => {
     const activities = await getActivityList({ limit: LIMIT, offset: page * LIMIT, tag })
     return (
         <ActivityArticleListPresenter
@@ -24,3 +24,5 @@ export const ActivityArticleList: FC<ActivityArticleListProps> = async ({ page, 
         />
     )
 }
+
+export default ActivityArticleList
