@@ -56,6 +56,7 @@ export const getActivityList = async (option?: {
             offset: option?.offset ?? 0,
             limit: option?.limit ?? mockActivities.length,
         } satisfies MicroCMSGetListResponse<Endpoints, { endpoint: 'activities' }>
+        await new Promise((resolve) => setTimeout(resolve, 1000))
         return res
     }
 

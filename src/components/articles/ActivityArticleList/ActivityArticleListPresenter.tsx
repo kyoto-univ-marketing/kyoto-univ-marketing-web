@@ -1,10 +1,10 @@
 'use client'
 
 import { FilterIcon } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 import { FC, useMemo } from 'react'
 
 import { activityTagList } from '@/constants/activity'
+import { useTransitionRouterPush } from '@/hooks/viewTransition'
 
 import { Pagination } from '../../common/Pagination/Pagination'
 import { ArticleCardProps } from '../ArticleCard/ArticleCard'
@@ -26,16 +26,16 @@ export const ActivityArticleListPresenter: FC<ActivityArticleListPresenterProps>
     tag = '',
     ...props
 }) => {
-    const router = useRouter()
+    const { routerPushWithTransition } = useTransitionRouterPush()
     const onTagChange = (tag: string) => {
         if (tag === '') {
-            router.push('/articles', { scroll: false })
+            routerPushWithTransition('/articles', { scroll: false })
         } else {
-            router.push(`/articles?tag=${tag}`, { scroll: false })
+            routerPushWithTransition(`/articles?tag=${tag}`, { scroll: false })
         }
     }
     const pageLinkList = useMemo(() => {
-        return [...new Array(totalPage)].map((_, i) => `/articles?page=${i + 1}&tag=${tag}`)
+        return [...new Array(totalPage)].map((_, i) => `/articles?page=${i + 1}${tag ? `&tag=${tag}` : ''}`)
     }, [tag, totalPage])
     return (
         <div className='space-y-8'>

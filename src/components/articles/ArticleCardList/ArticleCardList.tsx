@@ -8,7 +8,7 @@ export interface ArticleCardListProps {
 
 export const ArticleCardList: FC<ArticleCardListProps> = ({ cardList, ...props }) => {
     return (
-        <div className='space-y-6'>
+        <div className='space-y-6' style={{ viewTransitionName: 'card-list' }}>
             {cardList.map((card) => {
                 return <ArticleCard key={card.id} {...card} />
             })}
