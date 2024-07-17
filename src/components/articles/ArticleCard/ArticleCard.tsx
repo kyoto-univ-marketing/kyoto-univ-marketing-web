@@ -21,7 +21,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({ title, id, publishedAt, thum
                     <p className='line-clamp-3 text-gray-600'>{description}</p>
                 </div>
                 <div className='relative aspect-[4/3] w-1/3'>
-                    <Image fill className='rounded-r-md object-cover' src={thumbnail.url} alt={title} />
+                    <Image fill className='object-cover' src={thumbnail.url} alt={title} />
                 </div>
             </div>
         </NextLink>
