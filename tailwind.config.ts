@@ -16,17 +16,19 @@ const config = {
             colors: {
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
-                ring: 'var(--ring)',
-                background: 'var(--background)',
-                backgroundSecondary: 'var(--background-secondary)',
-                foreground: 'var(--foreground)',
+                ring: 'color-mix(in srgb, var(--ring) calc(<alpha-value> * 100%), transparent)',
+                background: 'color-mix(in srgb, var(--background) calc(<alpha-value> * 100%), transparent)',
+                backgroundSecondary:
+                    'color-mix(in srgb, var(--background-secondary) calc(<alpha-value> * 100%), transparent)',
+                foreground: 'color-mix(in srgb, var(--foreground) calc(<alpha-value> * 100%), transparent)',
                 primary: {
-                    DEFAULT: 'var(--primary)',
-                    foreground: 'var(--primary-foreground)',
+                    DEFAULT: 'color-mix(in srgb, var(--primary) calc(<alpha-value> * 100%), transparent)',
+                    foreground: 'color-mix(in srgb, var(--primary-foreground) calc(<alpha-value> * 100%), transparent)',
                 },
                 secondary: {
-                    DEFAULT: 'var(--secondary)',
-                    foreground: 'var(--secondary-foreground)',
+                    DEFAULT: 'color-mix(in srgb, var(--secondary) calc(<alpha-value> * 100%), transparent)',
+                    foreground:
+                        'color-mix(in srgb, var(--secondary-foreground) calc(<alpha-value> * 100%), transparent)',
                 },
                 destructive: {
                     DEFAULT: 'hsl(var(--destructive))',
