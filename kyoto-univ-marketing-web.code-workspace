@@ -18,5 +18,12 @@
         "search.exclude": {
             "**/.git": true
         },
+        "tailwindCSS.classAttributes": [
+            ".*[cC]lass",
+            ".*[cC]lassName",
+            "ngClass",
+            "class:list",
+            "tw"
+        ],
     },
 }

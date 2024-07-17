@@ -8,22 +8,23 @@ import { Accordion } from '../../common/Accordion/Accordion'
 export interface AboutAccordionProps {}
 
 export const AboutAccordion: FC<AboutAccordionProps> = ({ ...props }) => {
+    const titleClassName = 'text-heading px-4'
     return (
         <div>
             <Accordion
                 items={[
                     {
-                        title: 'サークル概要',
+                        title: <h2 className={titleClassName}>サークル概要</h2>,
                         value: 'outline',
                         content: <CircleOutline />,
                     },
                     {
-                        title: '活動方針',
+                        title: <h2 className={titleClassName}>活動方針</h2>,
                         value: 'policy',
                         content: <Policy />,
                     },
                     {
-                        title: '創立の経緯',
+                        title: <h2 className={titleClassName}>創立の経緯</h2>,
                         value: 'origin',
                         content: <Origin />,
                     },
