@@ -1,0 +1,63 @@
+steps:
+    - name: gcr.io/cloud-builders/docker
+      env:
+          - DOCKER_BUILDKIT=1 # これを書かないとビルドが失敗する
+      args:
+          - build
+          - '--no-cache'
+          - '-t'
+          - >-
+              $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+          - .
+          - '-f'
+          - Dockerfile
+          - '--build-arg'
+          - MICROCMS_SERVICE_DOMAIN=$$MICROCMS_SERVICE_DOMAIN
+          - '--build-arg'
+          - MICROCMS_API_KEY=$$MICROCMS_API_KEY
+      secretEnv: ['MICROCMS_SERVICE_DOMAIN', 'MICROCMS_API_KEY'] # 使用するシークレットはここに書かないといけない
+      id: Build
+    - name: gcr.io/cloud-builders/docker
+      args:
+          - push
+          - >-
+              $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      id: Push
+    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
+      args:
+          - run
+          - services
+          - update
+          - $_SERVICE_NAME
+          - '--platform=managed'
+          - >-
+              --image=$_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+          - >-
+              --labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID
+          - '--region=$_DEPLOY_REGION'
+          - '--quiet'
+      id: Deploy
+      entrypoint: gcloud
+# あらかじめ設定したシークレットを取得する
+availableSecrets:
+    secretManager:
+        - versionName: projects/$PROJECT_ID/secrets/MICROCMS_SERVICE_DOMAIN/versions/latest
+          env: 'MICROCMS_SERVICE_DOMAIN'
+        - versionName: projects/$PROJECT_ID/secrets/MICROCMS_API_KEY/versions/latest
+          env: 'MICROCMS_API_KEY'
+images:
+    - >-
+        $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+options:
+    substitutionOption: ALLOW_LOOSE
+    logging: CLOUD_LOGGING_ONLY
+substitutions:
+    _SERVICE_NAME: kyoto-univ-marketing-web
+    _TRIGGER_ID: 17dd8aa3-cc3d-4a4a-bcb2-1def15c06d23
+    _DEPLOY_REGION: asia-northeast1
+    _AR_HOSTNAME: asia-northeast1-docker.pkg.dev
+    _PLATFORM: managed
+tags:
+    - gcp-cloud-build-deploy-cloud-run
+    - gcp-cloud-build-deploy-cloud-run-managed
+    - kyoto-univ-marketing-web
