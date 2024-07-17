@@ -6,24 +6,24 @@ import { Activity } from '@/lib/microcms'
 
 import { NextLink } from '../../common/NextLink/NextLink'
 
-export interface ArticleCardProps extends Activity {}
+export interface ArticleCardProps
+    extends Pick<Activity, 'title' | 'id' | 'publishedAt' | 'thumbnail' | 'description'> {}
 
-export const ArticleCard: FC<ArticleCardProps> = ({ title, id, publishedAt, thumbnail, ...props }) => {
+export const ArticleCard: FC<ArticleCardProps> = ({ title, id, publishedAt, thumbnail, description, ...props }) => {
     return (
-        <div className=''>
-            <NextLink href={`/articles/${id}`}>
-                <div className='flex items-stretch'>
-                    <div className='flex flex-1 flex-col gap-2 rounded-l-md border-y border-l p-6'>
-                        <p className='text-sm text-gray-700'>{dayjs(publishedAt).format('YYYY/MM/DD')}</p>
-                        <div className='flex flex-1 items-center'>
-                            <p className='line-clamp-2 text-xl'>{title}</p>
-                        </div>
-                    </div>
-                    <div className='relative aspect-[4/3] w-1/3'>
-                        <Image fill className='rounded-r-md object-cover' src={thumbnail.url} alt={title} />
-                    </div>
+        <NextLink href={`/articles/${id}`} className='block rounded-md border bg-backgroundSecondary p-2'>
+            <div className='flex items-end gap-4 p-4'>
+                <p className='text-gray-700'>{dayjs(publishedAt).format('YYYY/MM/DD')}</p>
+                <h2 className='text-lg'>{title}</h2>
+            </div>
+            <div className='flex items-stretch'>
+                <div className='flex-1 p-4'>
+                    <p className='line-clamp-3 text-gray-600'>{description}</p>
                 </div>
-            </NextLink>
-        </div>
+                <div className='relative aspect-[4/3] w-1/3'>
+                    <Image fill className='rounded-r-md object-cover' src={thumbnail.url} alt={title} />
+                </div>
+            </div>
+        </NextLink>
     )
 }
