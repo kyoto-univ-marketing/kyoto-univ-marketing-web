@@ -1,9 +1,9 @@
-import { FC, lazy, Suspense } from 'react'
+import { FC, Suspense } from 'react'
 
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { pageLinkObject } from '@/constants/pageLinks'
 
-const ActivityArticleList = lazy(() => import('../ActivityArticleList/ActivityArticleList'))
+import ActivityArticleList from '../ActivityArticleList/ActivityArticleList'
 
 export const dynamic = 'force-dynamic'
 
