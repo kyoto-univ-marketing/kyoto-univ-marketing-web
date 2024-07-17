@@ -16,16 +16,17 @@ const config = {
             colors: {
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
-                ring: 'hsl(var(--ring))',
-                background: 'hsl(var(--background))',
-                foreground: 'hsl(var(--foreground))',
+                ring: 'var(--ring)',
+                background: 'var(--background)',
+                backgroundSecondary: 'var(--background-secondary)',
+                foreground: 'var(--foreground)',
                 primary: {
-                    DEFAULT: 'hsl(var(--primary))',
-                    foreground: 'hsl(var(--primary-foreground))',
+                    DEFAULT: 'var(--primary)',
+                    foreground: 'var(--primary-foreground)',
                 },
                 secondary: {
-                    DEFAULT: 'hsl(var(--secondary))',
-                    foreground: 'hsl(var(--secondary-foreground))',
+                    DEFAULT: 'var(--secondary)',
+                    foreground: 'var(--secondary-foreground)',
                 },
                 destructive: {
                     DEFAULT: 'hsl(var(--destructive))',
@@ -68,7 +69,13 @@ const config = {
                 'accordion-up': 'accordion-up 0.2s ease-out',
             },
             fontFamily: {
-                title: ['BIZ UDPMincho', 'serif'], // TODO: 正式なフォントを設定する
+                title: ['syunka2p', 'BIZ UDPMincho', 'serif'], // TODO: 正式なフォントを設定する
+            },
+            fontSize: {
+                title: '1.7857142857rem',
+                heading: '1.4285714286rem',
+                accent: '1.0714285714rem',
+                'accent-sm': '0.8571428571rem',
             },
         },
     },

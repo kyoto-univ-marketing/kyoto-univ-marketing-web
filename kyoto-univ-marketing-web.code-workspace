@@ -15,5 +15,15 @@
         "[dotenv]": {
             "editor.defaultFormatter": "foxundermoon.shell-format"
         },
+        "search.exclude": {
+            "**/.git": true
+        },
+        "tailwindCSS.classAttributes": [
+            ".*[cC]lass",
+            ".*[cC]lassName",
+            "ngClass",
+            "class:list",
+            "tw"
+        ],
     },
 }
