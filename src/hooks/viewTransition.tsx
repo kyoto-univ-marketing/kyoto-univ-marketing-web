@@ -1,3 +1,5 @@
+/** 参考： https://zenn.dev/iz_pixel/articles/77dce550a7694e */
+
 import { NavigateOptions } from 'next/dist/shared/lib/app-router-context.shared-runtime'
 import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
