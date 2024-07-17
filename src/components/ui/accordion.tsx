@@ -30,8 +30,8 @@ const AccordionTrigger = forwardRef<
             {...props}
         >
             {children}
-            <PlusCircleIcon className='absolute right-4 h-4 w-4 shrink-0 opacity-100 transition-all duration-300 group-data-[state=open]:opacity-0' />
-            <MinusCircleIcon className='absolute right-4 h-4 w-4 shrink-0 opacity-0 transition-all duration-300 group-data-[state=open]:opacity-100' />
+            <PlusCircleIcon className='absolute right-4 size-5 shrink-0 text-primary opacity-100 transition-all duration-300 group-data-[state=open]:opacity-0' />
+            <MinusCircleIcon className='absolute right-4 size-5 shrink-0 text-primary opacity-0 transition-all duration-300 group-data-[state=open]:opacity-100' />
         </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
 ))

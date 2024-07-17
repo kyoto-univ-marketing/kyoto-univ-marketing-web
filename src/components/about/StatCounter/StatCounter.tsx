@@ -25,7 +25,7 @@ export const StatCounter: FC<StatCounterProps> = ({ value, label, duration = 100
     return (
         <div
             className={cn(
-                'flex size-24 flex-col items-center justify-center gap-2 bg-slate-50 p-4 sm:size-32',
+                'flex size-24 flex-col items-center justify-center gap-2 bg-primary p-4 text-primary-foreground sm:size-32',
                 className,
             )}
         >

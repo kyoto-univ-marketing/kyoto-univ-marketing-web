@@ -4,7 +4,7 @@ import { AccordionContent, AccordionItem, AccordionTrigger, Accordion as ShadcnA
 
 export interface AccordionItem {
     value: string
-    title: string
+    title: ReactNode
     content: ReactNode
 }
 
