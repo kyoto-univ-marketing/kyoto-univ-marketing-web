@@ -18,31 +18,31 @@ export const Policy: FC<PolicyProps> = ({ ...props }) => {
                 <p>
                     二.
                     <br />
-                    今やりたい、
-                    <br />
-                    今しかできない
-                    <br />
-                    ことを現す
-                </p>
-            </div>
-            <div>
-                <p>
-                    三.
-                    <br />
-                    京都発の
+                    &quot;京都発&quot;の
                     <br />
                     価値を創る
                 </p>
             </div>
             <div>
                 <p>
-                    四.
+                    三.
                     <br />
                     理論と実践、
                     <br />
                     学生と社会
                     <br />
                     を結ぶ
+                </p>
+            </div>
+            <div>
+                <p>
+                    四.
+                    <br />
+                    今やりたい、
+                    <br />
+                    今しかできない
+                    <br />
+                    ことを現す
                 </p>
             </div>
         </div>
