@@ -102,6 +102,7 @@ export const getActivityIds = async (): Promise<string[]> => {
     // 本番環境の場合はmicroCMSからデータを取得する
     const res = await client.getAllContentIds({
         endpoint: 'activities',
+        orders: '-publishedAt',
     })
     return res
 }
