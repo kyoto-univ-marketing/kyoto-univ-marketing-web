@@ -12,6 +12,7 @@ export const AboutAccordion: FC<AboutAccordionProps> = ({ ...props }) => {
     return (
         <div>
             <Accordion
+                contentClassName='pb-16'
                 items={[
                     {
                         title: <h2 className={titleClassName}>サークル概要</h2>,
