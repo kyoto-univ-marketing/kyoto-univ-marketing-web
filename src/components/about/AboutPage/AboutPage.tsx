@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
+import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { AboutAccordion } from '../AboutAccordion/AboutAccordion'
@@ -16,7 +17,7 @@ export const AboutPage: FC<AboutPageProps> = ({ ...props }) => {
                     { label: pageLinkObject.ABOUT.text },
                 ]}
             />
-            <h1 className='my-12 px-12 text-title'>京大マーケティング研究所について</h1>
+            <PageTitle>京大マーケティング研究所について</PageTitle>
             <div className='mb-12 px-6'>
                 <AboutAccordion />
             </div>

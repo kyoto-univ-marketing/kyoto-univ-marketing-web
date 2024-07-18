@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { BreadCrumb } from '../../common/BreadCrumb/BreadCrumb'
@@ -17,8 +18,8 @@ export const ContactSuccessPage: FC<ContactSuccessPageProps> = ({ ...props }) =>
                     { label: '送信完了' },
                 ]}
             />
-            <div className='p-8'>
-                <h1 className='mb-12 text-center text-xl font-bold'>送信が完了しました</h1>
+            <PageTitle>送信が完了しました</PageTitle>
+            <div className='mb-12 px-8'>
                 <div className='space-y-4'>
                     <p>お問い合わせありがとうございます。</p>
                     <p>内容を確認の上、近日中に担当者からご連絡いたします。</p>

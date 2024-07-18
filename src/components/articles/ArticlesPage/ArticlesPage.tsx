@@ -1,6 +1,7 @@
 import { FC, Suspense } from 'react'
 
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
+import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import ActivityArticleList from '../ActivityArticleList/ActivityArticleList'
@@ -21,8 +22,8 @@ export const ArticlesPage: FC<ArticlesPageProps> = ({ page, tag, ...props }) => 
                     { label: pageLinkObject.ARCHIVE.text },
                 ]}
             />
+            <PageTitle>{pageLinkObject.ARCHIVE.text}</PageTitle>
             <div className='px-4 pb-12'>
-                <h1 className='my-12 text-center text-xl font-bold'>活動記録</h1>
                 <div className='mb-12 space-y-4 px-4'>
                     <p>京大マーケティング研究所の部員の普段の活動を記録していきます。</p>
                     <p>
