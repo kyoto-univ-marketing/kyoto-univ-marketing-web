@@ -91,3 +91,17 @@ export const getActivityById = async (
     })
     return res
 }
+
+/** 活動記録のIDを全件取得する */
+export const getActivityIds = async (): Promise<string[]> => {
+    if (process.env.NODE_ENV === 'development') {
+        // 開発環境の場合はモックデータを返す
+        return mockActivities.map((activity) => activity.id)
+    }
+
+    // 本番環境の場合はmicroCMSからデータを取得する
+    const res = await client.getAllContentIds({
+        endpoint: 'activities',
+    })
+    return res
+}
