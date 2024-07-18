@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { BreadCrumb } from '../../common/BreadCrumb/BreadCrumb'
@@ -17,9 +18,9 @@ export const ContactPage: FC<ContactPageProps> = ({ ...props }) => {
                     { label: pageLinkObject.CONTACT.text },
                 ]}
             />
+            <PageTitle>{pageLinkObject.CONTACT.text}</PageTitle>
             <div>
                 <div className='space-y-2 p-4'>
-                    <h1 className='text-xl font-bold'>お問い合わせ</h1>
                     <p className='text-gray-700'>以下のフォームからご自由にお問い合わせください。</p>
                 </div>
                 <div className='px-4 py-8'>
