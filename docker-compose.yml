@@ -1,0 +1,12 @@
+services:
+    web:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            # 参考： https://zenn.dev/nbstsh/scraps/05176d4ab59e48
+            args:
+                - MICROCMS_SERVICE_DOMAIN=${MICROCMS_SERVICE_DOMAIN}
+                - MICROCMS_API_KEY=${MICROCMS_API_KEY}
+        image: 'asia-northeast1-docker.pkg.dev/homepage-429713/cloud-run-source-deploy/kyoto-univ-marketing-web/kyoto-univ-marketing-web'
+        ports:
+            - '3000:3000'
