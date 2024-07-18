@@ -21,7 +21,7 @@ export const PolicyItem: FC<PolicyItemProps> = ({ text, stamp, stampTop, stampLe
     })
     return (
         <div {...props} className={cn('flex', reverse && 'flex-row-reverse')}>
-            <p className='w-1/2 text-heading leading-[3rem]'>{textElem}</p>
+            <p className='w-1/2 px-4 text-heading leading-[3rem]'>{textElem}</p>
             <div className='relative w-1/2' style={{ minHeight: stamp.height, minWidth: stamp.width }}>
                 <Image
                     {...stamp}
