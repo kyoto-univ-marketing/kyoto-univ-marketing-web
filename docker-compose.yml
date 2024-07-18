@@ -7,6 +7,6 @@ services:
             args:
                 - MICROCMS_SERVICE_DOMAIN=${MICROCMS_SERVICE_DOMAIN}
                 - MICROCMS_API_KEY=${MICROCMS_API_KEY}
-        image: 'asia-northeast1-docker.pkg.dev/homepage-429713/cloud-run-source-deploy/kyoto-univ-marketing-web/kyoto-univ-marketing-web'
+        image: ${IMAGE_NAME}
         ports:
             - '3000:3000'
