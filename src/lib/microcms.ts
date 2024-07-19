@@ -60,14 +60,19 @@ export const getActivityList = async (option?: {
     }
 
     // 本番環境の場合はmicroCMSからデータを取得する
-    const res = await client.getList({
-        endpoint: 'activities',
-        queries: {
-            limit: option?.limit,
-            offset: option?.offset,
-            filters: option?.tag ? `tag[contains]${option.tag}` : undefined,
-        },
-    })
+    const res = await client
+        .getList({
+            endpoint: 'activities',
+            queries: {
+                limit: option?.limit,
+                offset: option?.offset,
+                filters: option?.tag ? `tag[contains]${option.tag}` : undefined,
+            },
+        })
+        .catch((e) => {
+            console.error(e)
+            throw e
+        })
     return res
 }
 
@@ -85,10 +90,15 @@ export const getActivityById = async (
     }
 
     // 本番環境の場合はmicroCMSからデータを取得する
-    const res = await client.getListDetail({
-        endpoint: 'activities',
-        contentId: id,
-    })
+    const res = await client
+        .getListDetail({
+            endpoint: 'activities',
+            contentId: id,
+        })
+        .catch((e) => {
+            console.error(e)
+            throw e
+        })
     return res
 }
 
@@ -100,9 +110,14 @@ export const getActivityIds = async (): Promise<string[]> => {
     }
 
     // 本番環境の場合はmicroCMSからデータを取得する
-    const res = await client.getAllContentIds({
-        endpoint: 'activities',
-        orders: '-publishedAt',
-    })
+    const res = await client
+        .getAllContentIds({
+            endpoint: 'activities',
+            orders: '-publishedAt',
+        })
+        .catch((e) => {
+            console.error(e)
+            throw e
+        })
     return res
 }
