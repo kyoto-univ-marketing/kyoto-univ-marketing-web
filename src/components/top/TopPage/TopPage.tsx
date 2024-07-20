@@ -5,6 +5,7 @@ import { HamburgerMenu } from '../../common/HamburgerMenu/HamburgerMenu'
 import { Logo } from '../../common/Logo/Logo'
 import { Button } from '../../ui/button'
 import { ImageSwitch } from '../ImageSwitch/ImageSwitch'
+import { LatestArticles } from '../LatestArticles/LatestArticles'
 
 export interface TopPageProps {}
 
@@ -44,19 +45,8 @@ export const TopPage: FC<TopPageProps> = ({ ...props }) => {
                     <Link href='/about'>サークルについて知る →</Link>
                 </Button>
             </div>
-            <div className='p-6'>
-                <div className='p-4'>
-                    {/* TODO: コンポーネントを分離する */}
-                    <h2 className='text-2xl'>新着記事</h2>
-                    <div className='p-6'>
-                        <p>準備中</p>
-                        <p>準備中</p>
-                        <p>準備中</p>
-                    </div>
-                    <div className='mx-auto w-fit'>
-                        <Button>活動記録を見る</Button>
-                    </div>
-                </div>
+            <div className='mb-16'>
+                <LatestArticles />
             </div>
         </div>
     )

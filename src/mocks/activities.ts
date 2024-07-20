@@ -18,8 +18,12 @@ const mock = (i: number) =>
         content:
             '<h1 id="h9fb33de257">テスト記事</h1><h2 id="h1c1c9233e6">見出し</h2><p>こんな感じで記事を書くことが出来ます。</p><p></p><p>画像</p><figure><img src="https://images.microcms-assets.io/assets/ef01d37c40984043970c37a1c6e7cccb/7fee5821b2f041de9ac3ade6781f6009/S__67510285-1.jpg" alt="" width="868" height="868"></figure><p><a href="/">トップページへのリンク</a></p><p></p><table><tbody><tr><th colspan="1" rowspan="1"><p>名前</p></th><th colspan="1" rowspan="1"><p>大学</p></th><th colspan="1" rowspan="1"><p>学部</p></th></tr><tr><td colspan="1" rowspan="1"><p>苗字 名前</p></td><td colspan="1" rowspan="1"><p>京都大学</p></td><td colspan="1" rowspan="1"><p>経済学部</p></td></tr><tr><td colspan="1" rowspan="1"><p>散布 留男</p></td><td colspan="1" rowspan="1"><p>京都大学</p></td><td colspan="1" rowspan="1"><p>工学部</p></td></tr></tbody></table><ul><li>リスト<ul><li>子要素</li></ul></li><li>リスト</li></ul>',
         tag: [activityTagList[Math.floor(Math.random() * activityTagList.length)]],
-        publishedAt: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
+        publishedAt: dayjs()
+            .subtract(Math.floor(Math.random() * 365), 'days')
+            .format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
         revisedAt: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
     }) as const satisfies Activity
 
-export const mockActivities = [...new Array(100)].map((_, i) => mock(i))
+export const mockActivities = [...new Array(100)]
+    .map((_, i) => mock(i))
+    .sort((a, b) => dayjs(b.publishedAt).diff(dayjs(a.publishedAt)))
