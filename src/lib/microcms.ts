@@ -11,6 +11,8 @@ import {
 import { activityTagList } from '@/constants/activity'
 import { mockActivities } from '@/mocks/activities'
 
+import pick from './pick'
+
 const { MICROCMS_SERVICE_DOMAIN, MICROCMS_API_KEY } = process.env
 
 if (!MICROCMS_SERVICE_DOMAIN) {
@@ -44,22 +46,29 @@ export const client = createClient<Endpoints>({
     retry: true,
 })
 
+interface GetActivityListResponse<T extends (keyof Activity)[]>
+    extends Omit<MicroCMSGetListResponse<Endpoints, { endpoint: 'activities' }>, 'contents'> {
+    contents: Pick<Activity, T[number]>[]
+}
+
 /** 活動記録のリストを取得する */
-export const getActivityList = async (option?: {
+export const getActivityList = async <Fields extends (keyof Activity)[]>(option?: {
     limit?: number
     offset?: number
     tag?: string
-}): Promise<MicroCMSGetListResponse<Endpoints, { endpoint: 'activities' }>> => {
+    fields?: Fields
+}): Promise<GetActivityListResponse<Fields>> => {
     if (process.env.NODE_ENV === 'development') {
         // 開発環境の場合はモックデータを返す
         const res = {
             contents: mockActivities
                 .filter((ac) => !option?.tag || ac.tag[0] === option.tag)
-                .slice(option?.offset ?? 0, (option?.offset ?? 0) + (option?.limit ?? mockActivities.length)),
+                .slice(option?.offset ?? 0, (option?.offset ?? 0) + (option?.limit ?? mockActivities.length))
+                .map((ac) => (option?.fields ? pick(ac, ...option.fields) : ac)),
             totalCount: mockActivities.filter((ac) => !option?.tag || ac.tag[0] === option.tag).length,
             offset: option?.offset ?? 0,
             limit: option?.limit ?? mockActivities.length,
-        } satisfies MicroCMSGetListResponse<Endpoints, { endpoint: 'activities' }>
+        } satisfies GetActivityListResponse<Fields>
         return res
     }
 
@@ -71,13 +80,15 @@ export const getActivityList = async (option?: {
                 limit: option?.limit,
                 offset: option?.offset,
                 filters: option?.tag ? `tag[contains]${option.tag}` : undefined,
+                orders: '-publishedAt',
+                fields: option?.fields,
             },
         })
         .catch((e) => {
             console.error('Error on getActivityList')
             throw e
         })
-    return res
+    return res as GetActivityListResponse<Fields>
 }
 
 /** 活動記録の詳細を取得する */
@@ -137,4 +148,9 @@ export const getActivityIds = async (): Promise<string[]> => {
             throw e
         })
     return res
+}
+
+/** 最新記事のリストを取得する */
+export const getLatestActivityList = async (limit: number) => {
+    return getActivityList({ limit, fields: ['title', 'publishedAt', 'id'] })
 }
