@@ -2,19 +2,33 @@ steps:
     - name: gcr.io/cloud-builders/docker
       env:
           - DOCKER_BUILDKIT=1 # これを書かないとビルドが失敗する
+      # args:
+      #     - build
+      #     - '--no-cache'
+      #     - '-t'
+      #     - >-
+      #         $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
+      #     - .
+      #     - '-f'
+      #     - Dockerfile
+      #     - '--build-arg'
+      #     - MICROCMS_SERVICE_DOMAIN=$$MICROCMS_SERVICE_DOMAIN
+      #     - '--build-arg'
+      #     - MICROCMS_API_KEY=$$MICROCMS_API_KEY
       args:
-          - build
-          - '--no-cache'
-          - '-t'
-          - >-
-              $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA
-          - .
-          - '-f'
-          - Dockerfile
-          - '--build-arg'
-          - MICROCMS_SERVICE_DOMAIN=$$MICROCMS_SERVICE_DOMAIN
-          - '--build-arg'
-          - MICROCMS_API_KEY=$$MICROCMS_API_KEY
+          [
+              'build',
+              '--no-cache',
+              '-t',
+              '$_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA',
+              '.',
+              '-f',
+              'Dockerfile',
+              '--build-arg',
+              'MICROCMS_SERVICE_DOMAIN=$$MICROCMS_SERVICE_DOMAIN',
+              '--build-arg',
+              'MICROCMS_API_KEY=$$MICROCMS_API_KEY',
+          ]
       secretEnv: ['MICROCMS_SERVICE_DOMAIN', 'MICROCMS_API_KEY'] # 使用するシークレットはここに書かないといけない
       id: Build
     - name: gcr.io/cloud-builders/docker
