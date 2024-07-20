@@ -123,7 +123,7 @@ export const getActivityIds = async (): Promise<string[]> => {
             const url = new URL(`https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/activities`)
             url.searchParams.set('fields', 'id')
             const res = await fetch(url, {
-                headers: { 'X-API-KEY': MICROCMS_API_KEY },
+                headers: { 'X-MICROCMS-API-KEY': MICROCMS_API_KEY },
             })
             console.error('Error on getActivityIds')
             if (!res.ok) {
