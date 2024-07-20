@@ -3,11 +3,10 @@ steps:
       env:
           - DOCKER_BUILDKIT=1 # これを書かないとビルドが失敗する
       entrypoint: 'bash'
-      args:
-          [
+      args: [
               '-c',
               'docker build --no-cache -t $_AR_HOSTNAME/$PROJECT_ID/cloud-run-source-deploy/$REPO_NAME/$_SERVICE_NAME:$COMMIT_SHA . -f Dockerfile --build-arg MICROCMS_SERVICE_DOMAIN=$$MICROCMS_SERVICE_DOMAIN --build-arg MICROCMS_API_KEY=$$MICROCMS_API_KEY',
-          ]
+          ] # 参考： https://qiita.com/ebatan-developer/items/d3ca8c0f72dbfba7821f
       secretEnv: ['MICROCMS_SERVICE_DOMAIN', 'MICROCMS_API_KEY'] # 使用するシークレットはここに書かないといけない
       id: Build
     - name: gcr.io/cloud-builders/docker
