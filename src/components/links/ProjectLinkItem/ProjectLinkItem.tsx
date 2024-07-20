@@ -23,7 +23,10 @@ export const ProjectLinkItem: FC<ProjectLinkItemProps> = ({ projectName, links, 
                         key={link.href}
                         className='flex before:mr-2 before:inline-block before:content-["\2022"]' // unicodeの参考： https://www.compart.com/en/unicode/U+2022
                     >
-                        <NextLink className='min-w-0 break-words' href={link.href}>
+                        <NextLink
+                            className='min-w-0 break-words underline underline-offset-2 sm:no-underline sm:hover:underline'
+                            href={link.href}
+                        >
                             {link.label || link.href}
                         </NextLink>
                     </li>
