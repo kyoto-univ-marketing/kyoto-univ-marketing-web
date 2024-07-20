@@ -1,8 +1,6 @@
-'use client'
-
+import { unstable_noStore as noStore } from 'next/cache'
 import { ComponentProps, FC, ReactNode } from 'react'
 import { FaInstagram, FaTwitter, FaXTwitter } from 'react-icons/fa6'
-import useSWR from 'swr'
 
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import profile from '@/constants/profile'
@@ -12,11 +10,8 @@ export interface OfficialAccountLinksProps extends Omit<ComponentProps<'div'>, '
 
 /* 公式アカウントのリンク集 */
 export const OfficialAccountLinks: FC<OfficialAccountLinksProps> = ({ className, ...props }) => {
-    const { data: isTwitter } = useSWR('isTwitter', () => Math.random() < 0.5, {
-        suspense: true,
-        revalidateOnFocus: false,
-        revalidateOnReconnect: false,
-    })
+    noStore()
+    const isTwitter = Math.random() < 0.5
     console.log(isTwitter)
     return (
         <div {...props} className={cn('space-y-12', className)}>
