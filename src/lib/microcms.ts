@@ -11,11 +11,13 @@ import {
 import { activityTagList } from '@/constants/activity'
 import { mockActivities } from '@/mocks/activities'
 
-if (!process.env.MICROCMS_SERVICE_DOMAIN) {
+const { MICROCMS_SERVICE_DOMAIN, MICROCMS_API_KEY } = process.env
+
+if (!MICROCMS_SERVICE_DOMAIN) {
     throw new Error('MICROCMS_SERVICE_DOMAIN is required')
 }
 
-if (!process.env.MICROCMS_API_KEY) {
+if (!MICROCMS_API_KEY) {
     throw new Error('MICROCMS_API_KEY is required')
 }
 
@@ -37,8 +39,8 @@ interface Endpoints extends ClientEndPoints {
 // TODO: これ以上エラーが続くようなら自前でfetch関数を作る
 /** microCMSのクライアント */
 export const client = createClient<Endpoints>({
-    serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-    apiKey: process.env.MICROCMS_API_KEY,
+    serviceDomain: MICROCMS_SERVICE_DOMAIN,
+    apiKey: MICROCMS_API_KEY,
     retry: true,
 })
 
@@ -117,9 +119,19 @@ export const getActivityIds = async (): Promise<string[]> => {
             endpoint: 'activities',
             orders: '-publishedAt',
         })
-        .catch((e) => {
-            console.error('Error on getActivityIds')
-            throw e
+        .catch(async (e) => {
+            const url = new URL(`https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/activities`)
+            url.searchParams.set('fields', 'id')
+            const res = await fetch(url, {
+                headers: { 'X-API-KEY': MICROCMS_API_KEY },
+            }).then((res) => res.json())
+            if (!res.ok) {
+                console.error('Error on getActivityIds')
+                console.error(res)
+                throw e
+            } else {
+                return res.contents.map((content: { id: string }) => content.id)
+            }
         })
     return res
 }
