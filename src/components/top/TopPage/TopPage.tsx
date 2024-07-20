@@ -45,7 +45,9 @@ export const TopPage: FC<TopPageProps> = ({ ...props }) => {
                     <Link href='/about'>サークルについて知る →</Link>
                 </Button>
             </div>
-            <LatestArticles />
+            <div className='mb-16'>
+                <LatestArticles />
+            </div>
         </div>
     )
 }
