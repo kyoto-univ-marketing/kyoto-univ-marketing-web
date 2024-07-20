@@ -1,4 +1,4 @@
-FROM --platform=linux/amd64 node:22.4.0-slim as base
+FROM --platform=linux/amd64 node:22.4.0-alpine as base
 
 ENV PNPM_HOME=/pnpm
 
