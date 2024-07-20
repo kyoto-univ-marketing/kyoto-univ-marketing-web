@@ -25,9 +25,9 @@ steps:
               '-f',
               'Dockerfile',
               '--build-arg',
-              'MICROCMS_SERVICE_DOMAIN=$$MICROCMS_SERVICE_DOMAIN',
+              'MICROCMS_SERVICE_DOMAIN=$MICROCMS_SERVICE_DOMAIN',
               '--build-arg',
-              'MICROCMS_API_KEY=$$MICROCMS_API_KEY',
+              'MICROCMS_API_KEY=$MICROCMS_API_KEY',
           ]
       secretEnv: ['MICROCMS_SERVICE_DOMAIN', 'MICROCMS_API_KEY'] # 使用するシークレットはここに書かないといけない
       id: Build
