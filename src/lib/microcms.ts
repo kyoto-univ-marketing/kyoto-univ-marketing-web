@@ -124,14 +124,17 @@ export const getActivityIds = async (): Promise<string[]> => {
             url.searchParams.set('fields', 'id')
             const res = await fetch(url, {
                 headers: { 'X-API-KEY': MICROCMS_API_KEY },
-            }).then((res) => res.json())
+            })
+            console.error('Error on getActivityIds')
             if (!res.ok) {
-                console.error('Error on getActivityIds')
-                console.error(res)
-                throw e
+                console.error(await res.text())
             } else {
-                return res.contents.map((content: { id: string }) => content.id)
+                console.log(await res.json())
+                console.log(
+                    'Error occurred on fetching data by microcms-ts-sdk. However Error did not occur on fetch function.',
+                )
             }
+            throw e
         })
     return res
 }
