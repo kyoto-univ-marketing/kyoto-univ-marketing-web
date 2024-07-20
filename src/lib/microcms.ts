@@ -34,10 +34,12 @@ interface Endpoints extends ClientEndPoints {
     }
 }
 
+// TODO: これ以上エラーが続くようなら自前でfetch関数を作る
 /** microCMSのクライアント */
 export const client = createClient<Endpoints>({
     serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
     apiKey: process.env.MICROCMS_API_KEY,
+    retry: true,
 })
 
 /** 活動記録のリストを取得する */
@@ -70,7 +72,7 @@ export const getActivityList = async (option?: {
             },
         })
         .catch((e) => {
-            console.error(e)
+            console.error('Error on getActivityList')
             throw e
         })
     return res
@@ -96,7 +98,7 @@ export const getActivityById = async (
             contentId: id,
         })
         .catch((e) => {
-            console.error(e)
+            console.error('Error on getActivityById')
             throw e
         })
     return res
@@ -116,7 +118,7 @@ export const getActivityIds = async (): Promise<string[]> => {
             orders: '-publishedAt',
         })
         .catch((e) => {
-            console.error(e)
+            console.error('Error on getActivityIds')
             throw e
         })
     return res
