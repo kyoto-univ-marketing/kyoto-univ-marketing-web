@@ -1,17 +1,19 @@
-import { FC } from 'react'
+import { ComponentProps, FC } from 'react'
+
+import { cn } from '@/lib/utils'
 
 import { ProjectLinkItem, ProjectLinkItemProps } from '../ProjectLinkItem/ProjectLinkItem'
 
-export interface ProjectLinkListProps {
+export interface ProjectLinkListProps extends Omit<ComponentProps<'ul'>, 'children'> {
     projects: ProjectLinkItemProps[]
 }
 
 /* プロジェクトリンクのリスト */
-export const ProjectLinkList: FC<ProjectLinkListProps> = ({ projects, ...props }) => {
+export const ProjectLinkList: FC<ProjectLinkListProps> = ({ className, projects, ...props }) => {
     return (
-        <ul className='divide-y-2'>
+        <ul {...props} className={cn('divide-y-2', className)}>
             {projects.map((project) => (
-                <li className='py-4' key={project.projectName}>
+                <li className='py-8 first:pt-0 last:pb-0' key={project.projectName}>
                     <ProjectLinkItem {...project} />
                 </li>
             ))}

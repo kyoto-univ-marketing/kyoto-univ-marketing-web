@@ -16,11 +16,14 @@ export interface ProjectLinkItemProps {
 export const ProjectLinkItem: FC<ProjectLinkItemProps> = ({ projectName, links, ...props }) => {
     return (
         <div>
-            <h3 className='mb-2 text-lg'>{projectName}</h3>
-            <ul className='space-y-1 px-1'>
+            <h3 className='mb-3 text-lg'>{projectName}</h3>
+            <ul className='space-y-2 px-1'>
                 {links.map((link) => (
-                    <li key={link.href}>
-                        <NextLink href={link.href} className='hover:underline'>
+                    <li
+                        key={link.href}
+                        className='flex before:mr-2 before:inline-block before:content-["\2022"]' // unicodeの参考： https://www.compart.com/en/unicode/U+2022
+                    >
+                        <NextLink className='min-w-0 break-words' href={link.href}>
                             {link.label || link.href}
                         </NextLink>
                     </li>

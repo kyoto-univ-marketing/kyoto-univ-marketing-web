@@ -1,15 +1,16 @@
-import { FC, ReactNode } from 'react'
+import { ComponentProps, FC, ReactNode } from 'react'
 import { FaInstagram, FaXTwitter } from 'react-icons/fa6'
 
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import profile from '@/constants/profile'
+import { cn } from '@/lib/utils'
 
-export interface OfficialAccountLinksProps {}
+export interface OfficialAccountLinksProps extends Omit<ComponentProps<'div'>, 'children'> {}
 
 /* 公式アカウントのリンク集 */
-export const OfficialAccountLinks: FC<OfficialAccountLinksProps> = ({ ...props }) => {
+export const OfficialAccountLinks: FC<OfficialAccountLinksProps> = ({ className, ...props }) => {
     return (
-        <div className='space-y-12'>
+        <div {...props} className={cn('space-y-12', className)}>
             <LinkItem href={profile.instagramUrl} text='Instagram' icon={<FaInstagram size={24} />} />
             <LinkItem href={profile.xUrl} text='X' icon={<FaXTwitter size={24} />} />
         </div>
@@ -26,9 +27,13 @@ const LinkItem: FC<LinkItemProps> = ({ href, text, icon }) => {
     return (
         <div className='flex gap-2'>
             <div>{icon}</div>
-            <div>
+            <div
+                className='min-w-0' // 参考： https://qiita.com/mpyw/items/dfc63c1fed5dfc5eda26
+            >
                 <h3 className='mb-2 text-lg'>{text}</h3>
-                <NextLink href={href}>{href}</NextLink>
+                <NextLink className='break-words' href={href}>
+                    {href}
+                </NextLink>
             </div>
         </div>
     )
