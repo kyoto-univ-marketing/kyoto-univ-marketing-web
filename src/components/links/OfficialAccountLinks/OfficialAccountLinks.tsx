@@ -15,18 +15,11 @@ export const OfficialAccountLinks: FC<OfficialAccountLinksProps> = ({ className,
     return (
         <div {...props} className={cn('space-y-12', className)}>
             <LinkItem href={profile.instagramUrl} text='Instagram' icon={<FaInstagram size={24} />} />
-            <LinkItem
-                className={cn(!isTwitter && 'hidden')}
-                href={profile.twitterUrl}
-                text='Twitter'
-                icon={<FaTwitter size={24} />}
-            />
-            <LinkItem
-                className={cn(isTwitter && 'hidden')}
-                href={profile.xUrl}
-                text='X'
-                icon={<FaXTwitter size={24} />}
-            />
+            {isTwitter ? (
+                <LinkItem href={profile.twitterUrl} text='Twitter' icon={<FaTwitter size={24} />} />
+            ) : (
+                <LinkItem href={profile.xUrl} text='X' icon={<FaXTwitter size={24} />} />
+            )}
         </div>
     )
 }
@@ -35,12 +28,11 @@ interface LinkItemProps {
     href: string
     text: string
     icon: ReactNode
-    className?: string
 }
 
-const LinkItem: FC<LinkItemProps> = ({ href, text, icon, className }) => {
+const LinkItem: FC<LinkItemProps> = ({ href, text, icon }) => {
     return (
-        <div className={cn('flex gap-2', className)}>
+        <div className='flex gap-2'>
             <div>{icon}</div>
             <div
                 className='min-w-0' // 参考： https://qiita.com/mpyw/items/dfc63c1fed5dfc5eda26
