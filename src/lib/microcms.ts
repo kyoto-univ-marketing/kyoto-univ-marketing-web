@@ -117,7 +117,7 @@ export const getActivityIds = async (): Promise<string[]> => {
     const res = await client
         .getAllContentIds({
             endpoint: 'activities',
-            orders: '-publishedAt',
+            // orders: '-publishedAt',
         })
         .catch(async (e) => {
             const url = new URL(`https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/activities`)
