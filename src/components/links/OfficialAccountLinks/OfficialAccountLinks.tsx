@@ -11,8 +11,7 @@ export interface OfficialAccountLinksProps extends Omit<ComponentProps<'div'>, '
 /* 公式アカウントのリンク集 */
 export const OfficialAccountLinks: FC<OfficialAccountLinksProps> = ({ className, ...props }) => {
     noStore()
-    const isTwitter = Math.random() < 0.5
-    console.log(isTwitter)
+    const isTwitter = Math.random() < 0.1
     return (
         <div {...props} className={cn('space-y-12', className)}>
             <LinkItem href={profile.instagramUrl} text='Instagram' icon={<FaInstagram size={24} />} />
