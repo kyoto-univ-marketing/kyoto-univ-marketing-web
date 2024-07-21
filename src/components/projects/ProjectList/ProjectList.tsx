@@ -14,7 +14,9 @@ export interface ProjectListProps {
 export const ProjectList: FC<ProjectListProps> = ({ tag, projects, ...props }) => {
     return (
         <div>
-            <h2 className='p-8 text-heading font-bold'>{tag}</h2>
+            <h2 id={tag} className='p-8 text-heading font-bold'>
+                {tag}
+            </h2>
             <div className='space-y-16'>
                 {projects.length > 0 ? (
                     projects.map((project, index) => (
