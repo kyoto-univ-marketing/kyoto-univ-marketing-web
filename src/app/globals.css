@@ -71,6 +71,9 @@
     * {
         @apply border-border;
     }
+    html:has(#header) {
+        @apply scroll-pt-[4.5rem];
+    }
     body {
         @apply bg-background text-foreground;
     }
