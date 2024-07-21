@@ -73,7 +73,7 @@ const config = {
                 'accordion-up': 'accordion-up 0.2s ease-out',
             },
             fontFamily: {
-                title: ['syunka2p', 'BIZ UDPMincho', 'serif'], // TODO: 正式なフォントを設定する
+                title: ['var(--font-hina-mincho)', 'BIZ UDPMincho', 'serif'], // TODO: 正式なフォントを設定する
             },
             fontSize: {
                 title: '1.7857142857rem',
@@ -86,7 +86,10 @@ const config = {
     plugins: [
         require('tailwindcss-animate'),
         plugin(({ addBase }) => {
-            addBase({ html: { 'font-size': '14px' } }) // 参考： https://design2tailwind.com/blog/change-tailwindcss-base-font-size/
+            addBase({
+                html: { 'font-size': '14px' }, // 参考： https://design2tailwind.com/blog/change-tailwindcss-base-font-size/
+                body: { 'font-family': 'var(--font-biz-udp-mincho)' },
+            })
         }),
     ],
 } satisfies Config

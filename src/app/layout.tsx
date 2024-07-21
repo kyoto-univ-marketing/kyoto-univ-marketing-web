@@ -1,4 +1,4 @@
-import { BIZ_UDPMincho } from 'next/font/google'
+import { BIZ_UDPMincho, Hina_Mincho } from 'next/font/google'
 import { ReactNode } from 'react'
 
 import { Footer } from '@/components/common/Footer/Footer'
@@ -8,7 +8,10 @@ import type { Metadata, Viewport } from 'next'
 
 import './globals.css'
 
-const bizUdpMincho = BIZ_UDPMincho({ subsets: ['latin'], weight: ['400', '700'] })
+/** 本文のフォント */
+const bizUdpMincho = BIZ_UDPMincho({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-biz-udp-mincho' })
+/** タイトルのフォント */
+const hinaMincho = Hina_Mincho({ subsets: ['latin'], weight: ['400'], variable: '--font-hina-mincho' })
 
 export const metadata: Metadata = {
     title: {
@@ -31,7 +34,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang='ja'>
-            <body className={bizUdpMincho.className}>
+            <body className={`${bizUdpMincho.variable} ${hinaMincho.variable}`}>
                 <>
                     <div className='mx-auto max-w-screen-sm'>
                         {children}
