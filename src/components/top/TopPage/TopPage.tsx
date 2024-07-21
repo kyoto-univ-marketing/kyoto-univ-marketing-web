@@ -6,6 +6,7 @@ import { Logo } from '../../common/Logo/Logo'
 import { Button } from '../../ui/button'
 import { ImageSwitch } from '../ImageSwitch/ImageSwitch'
 import { LatestArticles } from '../LatestArticles/LatestArticles'
+import { TopPageProject } from '../TopPageProject/TopPageProject'
 
 export interface TopPageProps {}
 
@@ -47,6 +48,9 @@ export const TopPage: FC<TopPageProps> = ({ ...props }) => {
             </div>
             <div className='mb-16'>
                 <LatestArticles />
+            </div>
+            <div className='mb-16'>
+                <TopPageProject />
             </div>
         </div>
     )

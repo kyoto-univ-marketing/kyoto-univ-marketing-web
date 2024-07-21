@@ -14,7 +14,9 @@ export interface LatestArticlesPresenterProps {
 export const LatestArticlesPresenter: FC<LatestArticlesPresenterProps> = ({ articleList, ...props }) => {
     return (
         <div>
-            <PageTitle>新着記事</PageTitle>
+            <PageTitle asChild>
+                <h2>新着記事</h2>
+            </PageTitle>
             <table className='mb-12 table-auto border-separate border-spacing-y-3 px-16'>
                 <tbody>
                     {articleList.map((article) => (
