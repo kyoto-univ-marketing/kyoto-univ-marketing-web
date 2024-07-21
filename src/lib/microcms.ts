@@ -38,7 +38,6 @@ interface Endpoints extends ClientEndPoints {
     }
 }
 
-// TODO: これ以上エラーが続くようなら自前でfetch関数を作る
 /** microCMSのクライアント */
 export const client = createClient<Endpoints>({
     serviceDomain: MICROCMS_SERVICE_DOMAIN,
