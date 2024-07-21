@@ -11,7 +11,7 @@ export interface ProjectListItemProps extends Pick<Project, 'name' | 'thumbnail'
 export const ProjectListItem: FC<ProjectListItemProps> = ({ name, thumbnail, description, reverse, ...props }) => {
     return (
         <div>
-            <h3 className={cn('mb-6 text-heading', reverse && 'text-right')}>{name}</h3>
+            <h3 className={cn('mb-6 px-12 text-heading', reverse && 'text-right')}>{name}</h3>
             <div className={cn('flex', reverse && 'flex-row-reverse')}>
                 <Image
                     className='aspect-video w-1/2 object-cover'
