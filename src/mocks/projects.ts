@@ -16,7 +16,12 @@ const mock = (i: number) =>
             ...logo,
             url: logo.src,
         },
-        description: '説明文です\n説明文です\n説明文です\n説明文です',
+        description: [
+            '説明文です説明文です説明文です説明文です',
+            '説明文です説明文です説明文です説明文です説明文です説明文です説明文です説明文です',
+            '説明文です説明文です説明文です説明文です',
+            '説明文です説明文です説明文です説明文です説明文です説明文です説明文です説明文です説明文です説明文です説明文です説明文です',
+        ].join('\n'),
         publishedAt: dayjs()
             .subtract(Math.floor(Math.random() * 30), 'days')
             .format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
