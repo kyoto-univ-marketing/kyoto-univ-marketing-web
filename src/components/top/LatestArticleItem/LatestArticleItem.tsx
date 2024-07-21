@@ -17,7 +17,6 @@ export interface LatestArticleItemProps extends LatestArticle {}
 export const LatestArticleItem: FC<LatestArticleItemProps> = ({ title, publishedAt, id, ...props }) => {
     const publishedDate = dayjs(publishedAt)
     const isNew = publishedDate.isAfter(dayjs().subtract(1, 'week'))
-    console.log(isNew, publishedDate.format('YYYY/MM/DD'))
     return (
         <tr>
             <td className='pr-8 align-top'>{publishedDate.format('YYYY/MM/DD')}</td>
