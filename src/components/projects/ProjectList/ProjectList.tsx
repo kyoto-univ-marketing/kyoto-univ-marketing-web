@@ -21,7 +21,7 @@ export const ProjectList: FC<ProjectListProps> = ({ tag, projects, ...props }) =
                         <ProjectListItem reverse={Boolean(index % 2)} key={project.name} {...project} />
                     ))
                 ) : (
-                    <div>Comming Soon...</div>
+                    <div className='px-12'>Comming Soon...</div>
                 )}
             </div>
         </div>
