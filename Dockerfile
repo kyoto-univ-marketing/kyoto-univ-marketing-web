@@ -15,6 +15,7 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 
 ARG MICROCMS_SERVICE_DOMAIN
 ARG MICROCMS_API_KEY
+ARG NEXT_PUBLIC_MEASUREMENT_ID
 
 COPY . .
 RUN pnpm run build

@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { BIZ_UDPMincho, Hina_Mincho } from 'next/font/google'
 import { ReactNode } from 'react'
 
@@ -32,16 +33,20 @@ export default function RootLayout({
 }: Readonly<{
     children: ReactNode
 }>) {
+    const { NEXT_PUBLIC_MEASUREMENT_ID } = process.env
+    if (!NEXT_PUBLIC_MEASUREMENT_ID) {
+        throw new Error('Google AnalyticsのIDが設定されていません')
+    }
+
     return (
         <html lang='ja'>
             <body className={`${bizUdpMincho.variable} ${hinaMincho.variable}`}>
-                <>
-                    <div className='mx-auto max-w-screen-sm'>
-                        {children}
-                        <Footer />
-                    </div>
-                    <Toaster />
-                </>
+                <div className='mx-auto max-w-screen-sm'>
+                    {children}
+                    <Footer />
+                </div>
+                <Toaster />
+                {process.env.NODE_ENV === 'production' && <GoogleAnalytics gaId={NEXT_PUBLIC_MEASUREMENT_ID} />}
             </body>
         </html>
     )
