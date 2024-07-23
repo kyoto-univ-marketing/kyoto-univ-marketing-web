@@ -20,6 +20,19 @@ export const metadata: Metadata = {
         template: `%s | 京大マーケティング研究所`,
     },
     description: '', // TODO
+    metadataBase: new URL('https://kyodaimarketing.com'),
+    openGraph: {
+        type: 'website',
+        locale: 'ja_JP',
+        url: 'https://kyodaimarketing.com',
+        siteName: '京大マーケティング研究所',
+        images: ['/logo.png'],
+    },
+    twitter: {
+        creatorId: '@ku__marketing',
+        site: '@ku__marketing',
+        card: 'summary_large_image',
+    },
 }
 
 export const viewport: Viewport = {
