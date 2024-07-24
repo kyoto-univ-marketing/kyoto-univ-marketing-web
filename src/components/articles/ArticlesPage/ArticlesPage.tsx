@@ -19,7 +19,7 @@ export const ArticlesPage: FC<ArticlesPageProps> = ({ page, tag, ...props }) => 
             <BreadCrumb
                 items={[
                     { label: pageLinkObject.TOP.textEng, href: pageLinkObject.TOP.href },
-                    { label: pageLinkObject.ARCHIVE.text },
+                    { label: pageLinkObject.ARCHIVE.text, href: pageLinkObject.ARCHIVE.href },
                 ]}
             />
             <PageTitle>{pageLinkObject.ARCHIVE.text}</PageTitle>

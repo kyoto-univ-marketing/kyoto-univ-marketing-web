@@ -10,14 +10,14 @@ import { Activity } from '@/lib/microcms'
 
 export interface ArticleDetailsPageProps extends Activity {}
 
-export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title, publishedAt, ...props }) => {
+export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title, publishedAt, id, ...props }) => {
     return (
         <>
             <BreadCrumb
                 items={[
                     { label: pageLinkObject.TOP.textEng, href: pageLinkObject.TOP.href },
                     { label: pageLinkObject.ARCHIVE.text, href: pageLinkObject.ARCHIVE.href },
-                    { label: title },
+                    { label: title, href: `${pageLinkObject.ARCHIVE.href}/${id}` },
                 ]}
             />
             <div className='my-2 px-2'>

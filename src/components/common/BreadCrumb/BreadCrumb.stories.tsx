@@ -17,7 +17,7 @@ export const Default: Story = {
         items: [
             { label: pageLinkObject.TOP.textEng, href: pageLinkObject.TOP.href },
             { label: pageLinkObject.ARCHIVE.text, href: pageLinkObject.ARCHIVE.href },
-            { label: '第◯回勉強会' },
+            { label: '第◯回勉強会', href: `${pageLinkObject.ARCHIVE.href}/1` },
         ],
     },
 }

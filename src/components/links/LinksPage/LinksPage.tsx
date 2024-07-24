@@ -16,7 +16,7 @@ export const LinksPage: FC<LinksPageProps> = ({ ...props }) => {
             <BreadCrumb
                 items={[
                     { label: pageLinkObject.TOP.textEng, href: pageLinkObject.TOP.href },
-                    { label: pageLinkObject.LINKS.text },
+                    { label: pageLinkObject.LINKS.text, href: pageLinkObject.LINKS.href },
                 ]}
             />
             <PageTitle>{pageLinkObject.LINKS.text}</PageTitle>
