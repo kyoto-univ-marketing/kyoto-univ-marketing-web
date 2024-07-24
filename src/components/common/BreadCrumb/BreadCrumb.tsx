@@ -3,7 +3,7 @@ import { FC, Fragment } from 'react'
 
 import {
     Breadcrumb,
-    BreadcrumbItem as BreadCrumbItem,
+    BreadcrumbItem,
     BreadcrumbLink,
     BreadcrumbList,
     BreadcrumbPage,
@@ -45,7 +45,7 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
                 <BreadcrumbList>
                     {items.map((item, index) => (
                         <Fragment key={index}>
-                            <BreadCrumbItem>
+                            <BreadcrumbItem>
                                 {index < items.length - 1 ? (
                                     <BreadcrumbLink asChild>
                                         <NextLink href={item.href}>{item.label}</NextLink>
@@ -53,7 +53,7 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
                                 ) : (
                                     <BreadcrumbPage>{item.label}</BreadcrumbPage>
                                 )}
-                            </BreadCrumbItem>
+                            </BreadcrumbItem>
                             {index < items.length - 1 && (
                                 <BreadcrumbSeparator>
                                     <Slash />
