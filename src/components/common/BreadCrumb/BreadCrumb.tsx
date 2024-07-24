@@ -1,9 +1,12 @@
 import { Slash } from 'lucide-react'
 import { FC, Fragment } from 'react'
+import { BreadcrumbList as BreadcrumbListSchemaType, WithContext } from 'schema-dts'
+
+import profile from '@/constants/profile'
 
 import {
     Breadcrumb,
-    BreadcrumbItem as BreadCrumbItem,
+    BreadcrumbItem,
     BreadcrumbLink,
     BreadcrumbList,
     BreadcrumbPage,
@@ -31,9 +34,9 @@ const toJsonLD = (items: BreadCrumbItem[]) => {
             '@type': 'ListItem',
             position: items.indexOf(item) + 1,
             name: item.label,
-            item: `https://kyodaimarketing.com${item.href}` as const,
+            item: `${profile.homepageUrl}${item.href}` as const,
         })) satisfies { '@type': 'ListItem'; position: number; name: string; item: string }[],
-    } as const
+    } as const satisfies WithContext<BreadcrumbListSchemaType>
 }
 
 /** パンくずリスト */
@@ -45,7 +48,7 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
                 <BreadcrumbList>
                     {items.map((item, index) => (
                         <Fragment key={index}>
-                            <BreadCrumbItem>
+                            <BreadcrumbItem>
                                 {index < items.length - 1 ? (
                                     <BreadcrumbLink asChild>
                                         <NextLink href={item.href}>{item.label}</NextLink>
@@ -53,7 +56,7 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
                                 ) : (
                                     <BreadcrumbPage>{item.label}</BreadcrumbPage>
                                 )}
-                            </BreadCrumbItem>
+                            </BreadcrumbItem>
                             {index < items.length - 1 && (
                                 <BreadcrumbSeparator>
                                     <Slash />

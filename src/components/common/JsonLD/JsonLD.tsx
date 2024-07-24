@@ -1,11 +1,12 @@
 import Script from 'next/script'
-import { FC } from 'react'
 
-export interface JsonLDProps {
+import type { Thing, WithContext } from 'schema-dts'
+
+export interface JsonLDProps<T extends Thing> {
     id: string
-    json: Record<string, unknown>
+    json: WithContext<T>
 }
 
-export const JsonLD: FC<JsonLDProps> = ({ id, json, ...props }) => {
+export const JsonLD = <T extends Thing>({ id, json, ...props }: JsonLDProps<T>) => {
     return <Script id={id} type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }} />
 }
