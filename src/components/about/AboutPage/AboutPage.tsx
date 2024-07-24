@@ -14,7 +14,7 @@ export const AboutPage: FC<AboutPageProps> = ({ ...props }) => {
             <BreadCrumb
                 items={[
                     { href: pageLinkObject.TOP.href, label: pageLinkObject.TOP.textEng },
-                    { label: pageLinkObject.ABOUT.text },
+                    { href: pageLinkObject.ABOUT.href, label: pageLinkObject.ABOUT.text },
                 ]}
             />
             <PageTitle>京大マーケティング研究所について</PageTitle>

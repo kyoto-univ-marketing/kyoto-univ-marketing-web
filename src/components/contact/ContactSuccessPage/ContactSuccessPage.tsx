@@ -15,7 +15,7 @@ export const ContactSuccessPage: FC<ContactSuccessPageProps> = ({ ...props }) =>
                 items={[
                     { label: pageLinkObject.TOP.textEng, href: pageLinkObject.TOP.href },
                     { label: pageLinkObject.CONTACT.text, href: pageLinkObject.CONTACT.href },
-                    { label: '送信完了' },
+                    { label: '送信完了', href: `${pageLinkObject.CONTACT.href}/success` },
                 ]}
             />
             <PageTitle>送信が完了しました</PageTitle>

@@ -15,7 +15,7 @@ export const ContactPage: FC<ContactPageProps> = ({ ...props }) => {
             <BreadCrumb
                 items={[
                     { label: pageLinkObject.TOP.textEng, href: pageLinkObject.TOP.href },
-                    { label: pageLinkObject.CONTACT.text },
+                    { label: pageLinkObject.CONTACT.text, href: pageLinkObject.CONTACT.href },
                 ]}
             />
             <PageTitle>{pageLinkObject.CONTACT.text}</PageTitle>
