@@ -3,8 +3,8 @@ import { FC } from 'react'
 
 import { PageImage } from '@/components/common/PageImage/PageImage'
 
-import img3884 from '../../../../public/page-images/top/IMG_3884.JPG'
-import img3893 from '../../../../public/page-images/top/IMG_3893.JPG'
+import img3884 from '../../../../public/page-images/top/IMG_3884.webp'
+import img3893 from '../../../../public/page-images/top/IMG_3893.webp'
 import img3767 from '../../../../public/top-header/IMG_3767.webp'
 import img3816 from '../../../../public/top-header/IMG_3816.webp'
 import img3878 from '../../../../public/top-header/IMG_3878.webp'
