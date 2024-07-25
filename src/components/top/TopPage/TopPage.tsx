@@ -3,15 +3,14 @@ import { FC } from 'react'
 
 import { PageImage } from '@/components/common/PageImage/PageImage'
 
-import img3884 from '../../../../public/page-images/IMG_3884.JPG'
-import img3893 from '../../../../public/page-images/IMG_3893.JPG'
+import img3884 from '../../../../public/page-images/top/IMG_3884.JPG'
+import img3893 from '../../../../public/page-images/top/IMG_3893.JPG'
 import { HamburgerMenu } from '../../common/HamburgerMenu/HamburgerMenu'
 import { Logo } from '../../common/Logo/Logo'
 import { Button } from '../../ui/button'
 import { ImageSwitch } from '../ImageSwitch/ImageSwitch'
 import { LatestArticles } from '../LatestArticles/LatestArticles'
 import { TopPageProject } from '../TopPageProject/TopPageProject'
-
 
 export interface TopPageProps {}
 
