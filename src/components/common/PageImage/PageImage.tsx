@@ -12,8 +12,8 @@ export interface PageImageProps {
 /** ページ内に配置される画像のコンポーネント */
 export const PageImage: FC<PageImageProps> = ({ src, alt, containerClassName, ...props }) => {
     return (
-        <div className={cn('relative aspect-video w-full', containerClassName)}>
-            <div className='absolute z-10 size-full bg-white/25'></div>
+        <div className={cn('relative aspect-video w-full drop-shadow-md', containerClassName)}>
+            <div className='absolute z-10 size-full'></div>
             <Image src={src} className='object-cover' fill alt={alt} />
         </div>
     )
