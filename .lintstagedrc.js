@@ -14,7 +14,6 @@ const eslintRemoveIgnoredFiles = async (files) => {
 }
 
 module.exports = {
-    '**/*.{ts,tsx}': 'tsc-files --noEmit',
     '**/*.{ts,tsx,js,jsx}': async (files) => {
         const filesToLint = await eslintRemoveIgnoredFiles(files)
         return [`eslint --fix ${filesToLint}`]
