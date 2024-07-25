@@ -99,7 +99,10 @@ export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
     return (
         <>
             <Form {...form}>
-                <form className='space-y-8' onSubmit={form.handleSubmit(() => setDialogOpen(true))}>
+                <form
+                    className='space-y-8 bg-backgroundSecondary px-4 py-8'
+                    onSubmit={form.handleSubmit(() => setDialogOpen(true))}
+                >
                     <p className='text-sm text-destructive'>*は必須項目です</p>
                     <FormInput
                         rules={{ required: true }}
@@ -128,7 +131,7 @@ export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
                         name='message'
                         label={keyToLabel.message}
                     />
-                    <Button disabled={disabled} type='submit'>
+                    <Button disabled={disabled} className='mx-auto block h-fit min-w-[75%] py-4' type='submit'>
                         入力内容の確認へ
                     </Button>
                 </form>
