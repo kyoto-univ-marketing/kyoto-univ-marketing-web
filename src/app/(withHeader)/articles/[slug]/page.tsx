@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 import { ArticleDetailsPage } from '@/components/article-details/ArticleDetailsPage/ArticleDetailsPage'
 import { getActivityById, getActivityIds } from '@/lib/microcms'
@@ -13,7 +14,7 @@ export const generateStaticParams = async () => {
 }
 export const generateMetadata = async ({ params }: { params: Params }): Promise<Metadata> => {
     const { slug } = params
-    const { title, description } = await getActivityById(slug) // TODO: キャッシュが効かないので対策する
+    const { title, description } = await getActivityById(slug).catch(notFound) // TODO: キャッシュが効かないので対策する
     return {
         title,
         description,
@@ -22,7 +23,7 @@ export const generateMetadata = async ({ params }: { params: Params }): Promise<
 
 export default async function Page({ params }: { params: Params }) {
     const { slug } = params
-    const content = await getActivityById(slug)
+    const content = await getActivityById(slug).catch(notFound)
     return (
         <>
             <ArticleDetailsPage {...content} />
