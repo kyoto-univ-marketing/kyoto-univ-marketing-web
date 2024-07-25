@@ -1,6 +1,15 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
+import { PageImage } from '@/components/common/PageImage/PageImage'
+
+import img3884 from '../../../../public/page-images/top/IMG_3884.webp'
+import img3893 from '../../../../public/page-images/top/IMG_3893.webp'
+import img3767 from '../../../../public/top-header/IMG_3767.webp'
+import img3816 from '../../../../public/top-header/IMG_3816.webp'
+import img3878 from '../../../../public/top-header/IMG_3878.webp'
+import img6855 from '../../../../public/top-header/IMG_6855.webp'
+import img9802 from '../../../../public/top-header/IMG_9802.webp'
 import { HamburgerMenu } from '../../common/HamburgerMenu/HamburgerMenu'
 import { Logo } from '../../common/Logo/Logo'
 import { Button } from '../../ui/button'
@@ -10,11 +19,7 @@ import { TopPageProject } from '../TopPageProject/TopPageProject'
 
 export interface TopPageProps {}
 
-const imageList = [
-    'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Kyoto_University_Clock_Tower.jpg/1200px-Kyoto_University_Clock_Tower.jpg',
-    'https://www.keihanhotels-resorts.co.jp/the-thousand-kyoto/sight/asset/b5bcabab0fcde4e3b4969d388a4923f30fc7e549.png',
-    'https://www.shokoku-ji.jp/wp-content/themes/shokokuji/assets/img/kinkakuji/about/imgSlide01@2x.jpg',
-].map((src) => ({ src })) // TODO 本番の画像を設定
+const imageList = ([img3878, img3767, img3816, img6855, img9802] as const).map((img) => img) // TODO 本番の画像を設定
 
 export const TopPage: FC<TopPageProps> = ({ ...props }) => {
     return (
@@ -48,6 +53,10 @@ export const TopPage: FC<TopPageProps> = ({ ...props }) => {
             </div>
             <div className='mb-16'>
                 <LatestArticles />
+            </div>
+            <div className='mb-16 grid gap-4'>
+                <PageImage src={img3884} alt='勉強会の様子' containerClassName='w-3/4 aspect-[64/27]' />
+                <PageImage src={img3893} alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' />
             </div>
             <div className='mb-16'>
                 <TopPageProject />
