@@ -1,12 +1,17 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
+import { PageImage } from '@/components/common/PageImage/PageImage'
+
+import img3884 from '../../../../public/page-images/IMG_3884.JPG'
+import img3893 from '../../../../public/page-images/IMG_3893.JPG'
 import { HamburgerMenu } from '../../common/HamburgerMenu/HamburgerMenu'
 import { Logo } from '../../common/Logo/Logo'
 import { Button } from '../../ui/button'
 import { ImageSwitch } from '../ImageSwitch/ImageSwitch'
 import { LatestArticles } from '../LatestArticles/LatestArticles'
 import { TopPageProject } from '../TopPageProject/TopPageProject'
+
 
 export interface TopPageProps {}
 
@@ -48,6 +53,10 @@ export const TopPage: FC<TopPageProps> = ({ ...props }) => {
             </div>
             <div className='mb-16'>
                 <LatestArticles />
+            </div>
+            <div className='mb-16 grid gap-4'>
+                <PageImage src={img3884} alt='勉強会の様子' containerClassName='w-3/4 aspect-[64/27]' />
+                <PageImage src={img3893} alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' />
             </div>
             <div className='mb-16'>
                 <TopPageProject />
