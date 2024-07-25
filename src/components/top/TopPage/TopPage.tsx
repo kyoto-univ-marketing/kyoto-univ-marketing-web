@@ -19,7 +19,7 @@ import { TopPageProject } from '../TopPageProject/TopPageProject'
 
 export interface TopPageProps {}
 
-const imageList = ([img3878, img3767, img3816, img6855, img9802] as const).map((img) => img) // TODO 本番の画像を設定
+const imageList = [img3878, img3767, img3816, img6855, img9802]
 
 export const TopPage: FC<TopPageProps> = ({ ...props }) => {
     return (
