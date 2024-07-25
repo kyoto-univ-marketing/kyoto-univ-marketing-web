@@ -4,6 +4,7 @@ import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { BreadCrumb } from '../../common/BreadCrumb/BreadCrumb'
+import { RedirectCountDown } from '../RedirectCountDown/RedirectCountDown'
 
 export interface ContactSuccessPageProps {}
 
@@ -24,6 +25,9 @@ export const ContactSuccessPage: FC<ContactSuccessPageProps> = ({ ...props }) =>
                     <p>お問い合わせありがとうございます。</p>
                     <p>内容を確認の上、近日中に担当者からご連絡いたします。</p>
                 </div>
+            </div>
+            <div className='mb-12'>
+                <RedirectCountDown duration={10} />
             </div>
         </>
     )
