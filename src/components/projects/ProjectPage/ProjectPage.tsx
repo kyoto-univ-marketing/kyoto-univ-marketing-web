@@ -7,7 +7,6 @@ import { getAllProjects } from '@/lib/microcms'
 
 import { ProjectList } from '../ProjectList/ProjectList'
 
-
 export interface ProjectPageProps {}
 
 export const ProjectPage: FC<ProjectPageProps> = async ({ ...props }) => {
