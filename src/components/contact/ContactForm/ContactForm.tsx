@@ -100,6 +100,7 @@ export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
         <>
             <Form {...form}>
                 <form className='space-y-8' onSubmit={form.handleSubmit(() => setDialogOpen(true))}>
+                    <p className='text-sm text-destructive'>*は必須項目です</p>
                     <FormInput
                         rules={{ required: true }}
                         disabled={disabled}
