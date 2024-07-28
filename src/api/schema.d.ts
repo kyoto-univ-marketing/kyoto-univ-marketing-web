@@ -137,6 +137,7 @@ export interface components {
         }
         Project: {
             readonly id: number
+            readonly links: components['schemas']['ProjectLinks'][]
             /** プロジェクト名 */
             name: string
             /** 説明 */

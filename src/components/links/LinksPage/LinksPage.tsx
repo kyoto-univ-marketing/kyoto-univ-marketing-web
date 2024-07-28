@@ -1,16 +1,28 @@
 import { FC } from 'react'
 
+import { client } from '@/api/client'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
-import projectLinks from '@/constants/projectLinks'
 
 import { OfficialAccountLinks } from '../OfficialAccountLinks/OfficialAccountLinks'
+import { ProjectLinkItemProps } from '../ProjectLinkItem/ProjectLinkItem'
 import { ProjectLinkList } from '../ProjectLinkList/ProjectLinkList'
 
 export interface LinksPageProps {}
 
-export const LinksPage: FC<LinksPageProps> = ({ ...props }) => {
+export const LinksPage: FC<LinksPageProps> = async ({ ...props }) => {
+    const { data } = await client.GET('/api/project/')
+    const projectLinks = (data ?? []).reduce((acc, project) => {
+        acc.push({
+            projectName: project.name,
+            links: project.links.map((link) => ({
+                label: link.title ?? undefined,
+                href: link.url,
+            })),
+        })
+        return acc
+    }, [] as ProjectLinkItemProps[])
     return (
         <>
             <BreadCrumb
