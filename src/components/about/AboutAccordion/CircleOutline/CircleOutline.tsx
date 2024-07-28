@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { FC } from 'react'
 
 import { client } from '@/api/client'
@@ -10,6 +11,12 @@ export interface CircleOutlineProps {}
 
 export const CircleOutline: FC<CircleOutlineProps> = async ({ ...props }) => {
     const { data } = await client.GET('/api/about_stats/')
+
+    /* 最新の更新日時 */
+    const latestDate = (data ?? []).reduce((acc, cur) => {
+        const date = dayjs(cur.updated_at)
+        return date.isAfter(acc) ? date : acc
+    }, dayjs(0))
     return (
         <div className='space-y-12'>
             <p className='px-6 text-gray-700'>
@@ -24,7 +31,7 @@ export const CircleOutline: FC<CircleOutlineProps> = async ({ ...props }) => {
                             <StatCounter key={stat.id} value={stat.number} label={stat.title} />
                         ))}
                 </div>
-                <p className='text-right text-xs text-gray-700'>※2024年6月現在</p>
+                <p className='text-right text-xs text-gray-700'>{latestDate.format('※YYYY年MM月現在')}</p>
             </div>
             <PageImage src={shuugouShashin} alt='集合写真' />
         </div>
