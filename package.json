@@ -16,7 +16,7 @@
         "lint-staged": "lint-staged --config .lintstagedrc.js",
         "typecheck": "tsc --noEmit",
         "cp:env": "cp .env.sample .env",
-        "codegen": "./codegen.sh"
+        "codegen": "openapi-typescript https://web-backend-nnxvtvdboa-an.a.run.app/api/schema/ -o ./src/api/schema.d.ts"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.6.0",
