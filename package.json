@@ -15,7 +15,8 @@
         "prepare": "node --eval 'process.exit(process.env.NODE_ENV === `production` ? 0 : 1)' || husky",
         "lint-staged": "lint-staged --config .lintstagedrc.js",
         "typecheck": "tsc --noEmit",
-        "cp:env": "cp .env.sample .env"
+        "cp:env": "cp .env.sample .env",
+        "codegen": "openapi-typescript https://web-backend-nnxvtvdboa-an.a.run.app/api/schema/ -o ./src/api/schema.d.ts"
     },
     "dependencies": {
         "@hookform/resolvers": "^3.6.0",
@@ -35,6 +36,7 @@
         "lucide-react": "^0.399.0",
         "microcms-ts-sdk": "^1.2.0",
         "next": "14.2.4",
+        "openapi-fetch": "^0.10.2",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",
         "react-hook-form": "^7.52.0",
@@ -68,6 +70,7 @@
         "eslint-plugin-unused-imports": "^4.0.0",
         "husky": "^9.0.11",
         "lint-staged": "^15.2.7",
+        "openapi-typescript": "^7.1.0",
         "postcss": "^8.4.39",
         "prettier": "^3.3.2",
         "prettier-plugin-tailwindcss": "^0.6.5",

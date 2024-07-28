@@ -1,4 +1,4 @@
-import { ProjectLinkList } from './ProjectLinkList'
+import { ProjectLinkListPresenter } from './ProjectLinkListPresenter'
 import { ProjectLinkItemProps } from '../ProjectLinkItem/ProjectLinkItem'
 
 import type { Meta, StoryObj } from '@storybook/react'
@@ -14,13 +14,13 @@ const project = {
 } satisfies ProjectLinkItemProps
 
 const meta = {
-    component: ProjectLinkList,
+    component: ProjectLinkListPresenter,
     tags: ['autodocs'],
     parameters: {},
     args: {
         projects: [project, project, project],
     },
-} satisfies Meta<typeof ProjectLinkList>
+} satisfies Meta<typeof ProjectLinkListPresenter>
 
 export default meta
 type Story = StoryObj<typeof meta>

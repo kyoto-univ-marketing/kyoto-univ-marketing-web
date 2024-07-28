@@ -3,7 +3,6 @@ import { FC } from 'react'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
-import projectLinks from '@/constants/projectLinks'
 
 import { OfficialAccountLinks } from '../OfficialAccountLinks/OfficialAccountLinks'
 import { ProjectLinkList } from '../ProjectLinkList/ProjectLinkList'
@@ -26,7 +25,7 @@ export const LinksPage: FC<LinksPageProps> = ({ ...props }) => {
             </div>
             <div className='mb-12 px-6'>
                 <h2 className='mb-6 text-heading'>プロジェクト関連</h2>
-                <ProjectLinkList className='px-4' projects={projectLinks} />
+                <ProjectLinkList className='px-4' />
             </div>
         </>
     )
