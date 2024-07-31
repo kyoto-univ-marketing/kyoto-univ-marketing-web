@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { FC } from 'react'
 
+import { client } from '@/api/client'
 import { PageImage } from '@/components/common/PageImage/PageImage'
 
 import img3884 from '../../../../public/page-images/top/IMG_3884.webp'
@@ -21,7 +22,12 @@ export interface TopPageProps {}
 
 const imageList = [img3878, img3767, img3816, img6855, img9802]
 
-export const TopPage: FC<TopPageProps> = ({ ...props }) => {
+export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
+    const { data } = await client.GET('/api/text/{id}/', { params: { path: { id: 'top_message' } } })
+    if (!data?.text) {
+        console.error("Couldn't get top message")
+    }
+    const message = data?.text ?? ''
     return (
         <div className='relative w-full'>
             <ImageSwitch
@@ -43,9 +49,9 @@ export const TopPage: FC<TopPageProps> = ({ ...props }) => {
                     <span className='inline-block'>研究所</span>
                 </h1>
                 <div className='w-full'>
-                    <p>メッセージメッセージメッセージメッセージ</p>
-                    <p>メッセージメッセージメッセージ</p>
-                    <p>メッセージメッセージメッセージメッセージメッセージ</p>
+                    {message.split('\n').map((line, i) => (
+                        <p key={i}>{line}</p>
+                    ))}
                 </div>
                 <Button variant='outline' className='bg-transparent' asChild>
                     <Link href='/about'>サークルについて知る →</Link>
