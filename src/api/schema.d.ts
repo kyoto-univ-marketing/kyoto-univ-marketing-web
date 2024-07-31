@@ -100,6 +100,38 @@ export interface paths {
         patch?: never
         trace?: never
     }
+    '/api/text/': {
+        parameters: {
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get: operations['api_text_list']
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
+    '/api/text/{id}/': {
+        parameters: {
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        get: operations['api_text_retrieve']
+        put?: never
+        post?: never
+        delete?: never
+        options?: never
+        head?: never
+        patch?: never
+        trace?: never
+    }
     '/media/./': {
         parameters: {
             query?: never
@@ -135,6 +167,28 @@ export interface components {
              */
             readonly updated_at: string
         }
+        /**
+         * @description * `top_message` - トップページのメッセージ
+         *     * `circle_outline` - サークル概要
+         *     * `origin` - 設立の経緯
+         *     * `activity_description` - 活動記録ページの説明
+         *     * `project_description` - プロジェクトページの説明
+         *     * `contact_privacy` - お問い合わせ・個人情報について
+         *     * `contact_description_for_others` - お問い合わせページの説明（企業・団体など向け）
+         *     * `contact_description_for_kyodai` - お問い合わせページの説明（京大生向け）
+         *     * `contact_success_message` - お問い合わせ完了メッセージ
+         * @enum {string}
+         */
+        IdEnum:
+            | 'top_message'
+            | 'circle_outline'
+            | 'origin'
+            | 'activity_description'
+            | 'project_description'
+            | 'contact_privacy'
+            | 'contact_description_for_others'
+            | 'contact_description_for_kyodai'
+            | 'contact_success_message'
         Project: {
             readonly id: number
             readonly links: components['schemas']['ProjectLinks'][]
@@ -147,6 +201,8 @@ export interface components {
              * Format: uri
              */
             thumbnail: string
+            /** タグ */
+            tag: components['schemas']['TagEnum']
             /**
              * 更新日時
              * Format: date-time
@@ -161,6 +217,23 @@ export interface components {
             url: string
             /** プロジェクト */
             project: number
+        }
+        /**
+         * @description * `マーケティング支援` - マーケティング支援
+         *     * `共同プロジェクト` - 共同プロジェクト
+         *     * `オリジナルプロジェクト` - オリジナルプロジェクト
+         * @enum {string}
+         */
+        TagEnum: 'マーケティング支援' | '共同プロジェクト' | 'オリジナルプロジェクト'
+        Text: {
+            id: components['schemas']['IdEnum']
+            /** テキスト */
+            text: string
+            /**
+             * 更新日時
+             * Format: date-time
+             */
+            readonly updated_at: string
         }
     }
     responses: never
@@ -290,6 +363,55 @@ export interface operations {
                 }
                 content: {
                     'application/json': components['schemas']['ProjectLinks']
+                }
+            }
+        }
+    }
+    api_text_list: {
+        parameters: {
+            query?: never
+            header?: never
+            path?: never
+            cookie?: never
+        }
+        requestBody?: never
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown
+                }
+                content: {
+                    'application/json': components['schemas']['Text'][]
+                }
+            }
+        }
+    }
+    api_text_retrieve: {
+        parameters: {
+            query?: never
+            header?: never
+            path: {
+                id:
+                    | 'top_message'
+                    | 'circle_outline'
+                    | 'origin'
+                    | 'activity_description'
+                    | 'project_description'
+                    | 'contact_privacy'
+                    | 'contact_description_for_others'
+                    | 'contact_description_for_kyodai'
+                    | 'contact_success_message'
+            }
+            cookie?: never
+        }
+        requestBody?: never
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown
+                }
+                content: {
+                    'application/json': components['schemas']['Text']
                 }
             }
         }

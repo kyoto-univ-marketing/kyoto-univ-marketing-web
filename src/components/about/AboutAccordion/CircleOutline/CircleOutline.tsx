@@ -10,22 +10,25 @@ import { StatCounter } from '../../StatCounter/StatCounter'
 export interface CircleOutlineProps {}
 
 export const CircleOutline: FC<CircleOutlineProps> = async ({ ...props }) => {
-    const { data } = await client.GET('/api/about_stats/')
+    const aboutStatsRes = await client.GET('/api/about_stats/')
+    const outlineTextRes = await client.GET('/api/text/{id}/', { params: { path: { id: 'circle_outline' } } })
+    if (!outlineTextRes.data?.text) {
+        console.error("Couldn't get circle outline")
+    }
+    const outlineText = outlineTextRes.data?.text ?? ''
 
     /* 最新の更新日時 */
-    const latestDate = (data ?? []).reduce((acc, cur) => {
+    const latestDate = (aboutStatsRes.data ?? []).reduce((acc, cur) => {
         const date = dayjs(cur.updated_at)
         return date.isAfter(acc) ? date : acc
     }, dayjs(0))
     return (
         <div className='space-y-12'>
-            <p className='px-6 text-gray-700'>
-                「京大マーケティング研究所」は2024年3月に創立されました。初年度の立ち上げメンバーを1期生とし、活動を本格的に開始しました。
-            </p>
+            <p className='px-6 text-gray-700'>{outlineText}</p>
             <div className='mx-auto w-fit space-y-2'>
                 <div className='flex gap-4'>
                     {/* TODO: 順番はどこかでちゃんと実装したい */}
-                    {(data ?? [])
+                    {(aboutStatsRes.data ?? [])
                         .sort((a, b) => b.number - a.number)
                         .map((stat) => (
                             <StatCounter key={stat.id} value={stat.number} label={stat.title} />
