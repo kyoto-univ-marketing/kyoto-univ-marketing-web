@@ -1,5 +1,6 @@
+import { unstable_noStore as noStore } from 'next/cache'
 import { ComponentProps, FC, ReactNode } from 'react'
-import { FaInstagram, FaXTwitter } from 'react-icons/fa6'
+import { FaInstagram, FaTwitter, FaXTwitter } from 'react-icons/fa6'
 
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import profile from '@/constants/profile'
@@ -9,10 +10,16 @@ export interface OfficialAccountLinksProps extends Omit<ComponentProps<'div'>, '
 
 /* 公式アカウントのリンク集 */
 export const OfficialAccountLinks: FC<OfficialAccountLinksProps> = ({ className, ...props }) => {
+    noStore()
+    const isTwitter = Math.random() < 0.1
     return (
         <div {...props} className={cn('space-y-12', className)}>
             <LinkItem href={profile.instagramUrl} text='Instagram' icon={<FaInstagram size={24} />} />
-            <LinkItem href={profile.xUrl} text='X' icon={<FaXTwitter size={24} />} />
+            {isTwitter ? (
+                <LinkItem href={profile.twitterUrl} text='Twitter' icon={<FaTwitter size={24} />} />
+            ) : (
+                <LinkItem href={profile.xUrl} text='X' icon={<FaXTwitter size={24} />} />
+            )}
         </div>
     )
 }

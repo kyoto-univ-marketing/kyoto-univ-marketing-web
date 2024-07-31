@@ -1,10 +1,11 @@
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { OfficialAccountLinks } from '../OfficialAccountLinks/OfficialAccountLinks'
+import { OfficialAccountLinksSkeleton } from '../OfficialAccountLinksSkeleton/OfficialAccountLinksSkeleton'
 import { ProjectLinkList } from '../ProjectLinkList/ProjectLinkList'
 
 export interface LinksPageProps {}
@@ -21,7 +22,9 @@ export const LinksPage: FC<LinksPageProps> = ({ ...props }) => {
             <PageTitle>{pageLinkObject.LINKS.text}</PageTitle>
             <div className='mb-12 px-6'>
                 <h2 className='mb-6 text-heading'>公式アカウント</h2>
-                <OfficialAccountLinks className='px-4' />
+                <Suspense fallback={<OfficialAccountLinksSkeleton />}>
+                    <OfficialAccountLinks className='px-4' />
+                </Suspense>
             </div>
             <div className='mb-12 px-6'>
                 <h2 className='mb-6 text-heading'>プロジェクト関連</h2>
