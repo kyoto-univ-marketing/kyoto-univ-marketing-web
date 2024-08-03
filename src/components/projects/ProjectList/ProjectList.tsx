@@ -1,13 +1,13 @@
 import { FC } from 'react'
 
+import { components } from '@/api/schema'
 import { projectTagList } from '@/constants/project'
-import { Project } from '@/lib/microcms'
 
 import { ProjectListItem } from '../ProjectListItem/ProjectListItem'
 
 export interface ProjectListProps {
     tag: (typeof projectTagList)[number]
-    projects: Pick<Project, 'name' | 'description' | 'thumbnail'>[]
+    projects: Pick<components['schemas']['Project'], 'name' | 'description' | 'thumbnail'>[]
 }
 
 /** タグごとのプロジェクト一覧 */
