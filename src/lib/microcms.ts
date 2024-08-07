@@ -9,9 +9,7 @@ import {
 } from 'microcms-ts-sdk'
 
 import { activityTagList } from '@/constants/activity'
-import { projectTagList } from '@/constants/project'
 import { mockActivities } from '@/mocks/activities'
-import { mockProjects } from '@/mocks/projects'
 
 import pick from './pick'
 
@@ -34,18 +32,9 @@ export type Activity = Required<MicroCMSDate> &
         tag: [(typeof activityTagList)[number]]
     }
 
-export type Project = Required<MicroCMSDate> &
-    MicroCMSContentId & {
-        name: string
-        tag: [(typeof projectTagList)[number]]
-        thumbnail: MicroCMSImage
-        description: string
-    }
-
 interface Endpoints extends ClientEndPoints {
     list: {
         activities: Activity
-        projects: Project
     }
 }
 
@@ -163,32 +152,4 @@ export const getActivityIds = async (): Promise<string[]> => {
 /** 最新記事のリストを取得する */
 export const getLatestActivityList = async (limit: number) => {
     return getActivityList({ limit, fields: ['title', 'publishedAt', 'id'] })
-}
-
-/** 全プロジェクトを取得する */
-export const getAllProjects = async (): Promise<MicroCMSGetListResponse<Endpoints, { endpoint: 'projects' }>> => {
-    if (process.env.NODE_ENV === 'development') {
-        // 開発環境の場合はモックデータを返す
-        return {
-            contents: mockProjects,
-            totalCount: mockProjects.length,
-            offset: 0,
-            limit: mockProjects.length,
-        }
-    }
-
-    // 本番環境の場合はmicroCMSからデータを取得する
-    const res = await client
-        .getList({
-            endpoint: 'projects',
-            queries: {
-                orders: '-publishedAt',
-                limit: 100,
-            },
-        })
-        .catch((e) => {
-            console.error('Error on getAllProjects')
-            throw e
-        })
-    return res
 }

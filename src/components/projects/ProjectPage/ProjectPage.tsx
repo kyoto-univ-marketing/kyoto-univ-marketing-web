@@ -4,7 +4,6 @@ import { client } from '@/api/client'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Button } from '@/components/ui/button'
-import { getAllProjects } from '@/lib/microcms'
 
 import { ProjectList } from '../ProjectList/ProjectList'
 
@@ -16,7 +15,7 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ ...props }) => {
     if (!projectDescription) {
         console.error("Couldn't get project description text")
     }
-    const projects = await getAllProjects()
+    const projects = (await client.GET('/api/project/')).data ?? []
     return (
         <>
             <PageTitle>プロジェクト</PageTitle>
@@ -25,13 +24,13 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ ...props }) => {
                 <div className='bg-backgroundSecondary pb-12'>
                     <ProjectList
                         tag='マーケティング支援'
-                        projects={projects.contents.filter((pr) => pr.tag[0] === 'マーケティング支援')}
+                        projects={projects.filter((pr) => pr.tag === 'マーケティング支援')}
                     />
                 </div>
                 <div className='pb-12'>
                     <ProjectList
                         tag='共同プロジェクト'
-                        projects={projects.contents.filter((pr) => pr.tag[0] === '共同プロジェクト')}
+                        projects={projects.filter((pr) => pr.tag === '共同プロジェクト')}
                     />
                     <Button
                         asChild
@@ -46,7 +45,7 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ ...props }) => {
                 <div className='bg-backgroundSecondary pb-12'>
                     <ProjectList
                         tag='オリジナルプロジェクト'
-                        projects={projects.contents.filter((pr) => pr.tag[0] === 'オリジナルプロジェクト')}
+                        projects={projects.filter((pr) => pr.tag === 'オリジナルプロジェクト')}
                     />
                 </div>
             </div>
