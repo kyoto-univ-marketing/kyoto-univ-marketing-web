@@ -36,26 +36,31 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                 interval={7000}
                 transitionDuration={2000}
             />
-            <div className='flex h-svh w-full flex-col items-center justify-between p-6 text-white'>
-                <div className='h-6 self-end'>
+            <div className='flex h-svh flex-col'>
+                <div className='ml-auto w-fit p-6 text-white'>
                     <HamburgerMenu />
                 </div>
-                <div>
-                    <Logo className='size-32 outline outline-4 outline-white' />
+                <div className='flex w-full flex-1 select-none flex-col items-center justify-between p-6 text-white'>
+                    <div className='flex flex-col items-center space-y-6'>
+                        <div>
+                            <Logo reverse size='3xl' />
+                        </div>
+                        <h1 className='w-fit px-6 font-title text-3xl font-bold'>
+                            <span className='inline-block'>京大</span>
+                            <span className='inline-block'>マーケティング研究所</span>
+                        </h1>
+                    </div>
+                    <div className='space-y-8'>
+                        <Button variant='outline' className='min-w-[75%] rounded-none p-6 text-primary' asChild>
+                            <Link href='/about'>サークルについて知る →</Link>
+                        </Button>
+                        <div className='w-full'>
+                            {message.split('\n').map((line, i) => (
+                                <p key={i}>{line}</p>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-                <h1 className='font-title text-5xl font-bold leading-[1.2]'>
-                    <span className='inline-block'>京大</span>
-                    <span className='inline-block'>マーケティング</span>
-                    <span className='inline-block'>研究所</span>
-                </h1>
-                <div className='w-full'>
-                    {message.split('\n').map((line, i) => (
-                        <p key={i}>{line}</p>
-                    ))}
-                </div>
-                <Button variant='outline' className='bg-transparent' asChild>
-                    <Link href='/about'>サークルについて知る →</Link>
-                </Button>
             </div>
             <div className='mb-16'>
                 <LatestArticles />
