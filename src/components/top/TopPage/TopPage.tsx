@@ -37,11 +37,11 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                 transitionDuration={2000}
             />
             <div className='flex h-svh flex-col'>
-                <div className='ml-auto w-fit p-6 text-white'>
+                <div className='absolute right-0 p-6 text-white'>
                     <HamburgerMenu />
                 </div>
-                <div className='flex w-full flex-1 select-none flex-col items-center justify-between p-6 text-white'>
-                    <div className='flex flex-col items-center space-y-6'>
+                <div className='flex w-full flex-1 select-none flex-col items-center justify-between text-white'>
+                    <div className='flex flex-col items-center space-y-6 p-6 pt-16'>
                         <div>
                             <Logo reverse size='3xl' />
                         </div>
@@ -50,14 +50,17 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                             <span className='inline-block'>マーケティング研究所</span>
                         </h1>
                     </div>
-                    <div className='space-y-8'>
-                        <Button variant='outline' className='min-w-[75%] rounded-none p-6 text-primary' asChild>
-                            <Link href='/about'>サークルについて知る →</Link>
+                    <div className='flex w-full flex-col space-y-8'>
+                        <Button
+                            variant='outline'
+                            className='w-fit min-w-[66.7%] self-center rounded-none p-6 text-primary'
+                            asChild
+                        >
+                            <Link href='/about'>サークルについて</Link>
                         </Button>
-                        <div className='w-full'>
-                            {message.split('\n').map((line, i) => (
-                                <p key={i}>{line}</p>
-                            ))}
+                        <div className='max-h-[50svh] w-fit max-w-full bg-background px-12 py-8 tracking-[0.75rem] text-foreground [writing-mode:vertical-rl]'>
+                            <h2 className='ml-4 text-heading'>メッセージ</h2>
+                            <p className='whitespace-pre-wrap pt-4 text-sm leading-8'>{message}</p>
                         </div>
                     </div>
                 </div>
