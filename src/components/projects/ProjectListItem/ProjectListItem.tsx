@@ -15,7 +15,7 @@ export const ProjectListItem: FC<ProjectListItemProps> = ({ name, thumbnail, des
             <h3 className={cn('mb-6 px-12 text-heading', reverse && 'text-right')}>{name}</h3>
             <div className={cn('flex', reverse && 'flex-row-reverse')}>
                 <div className='relative aspect-video w-1/2'>
-                    <Image className='object-contain' src={thumbnail} fill alt={name} />
+                    <Image className='object-contain' src={thumbnail} fill alt={`${name}の画像`} />
                 </div>
                 <p className='flex-1 px-6 py-2'>
                     {description.split(/(\n)/).map((line, i) => (line === '\n' ? <br key={i} /> : line))}
