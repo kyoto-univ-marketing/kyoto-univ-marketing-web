@@ -25,13 +25,11 @@ export const metadata: Metadata = {
         locale: 'ja_JP',
         url: 'https://kyodaimarketing.com',
         siteName: '京大マーケティング研究所',
-        images: ['/logo.png'],
     },
     twitter: {
         creatorId: '@ku__marketing',
         site: '@ku__marketing',
         card: 'summary_large_image',
-        images: ['/logo.png'],
     },
 }
 
