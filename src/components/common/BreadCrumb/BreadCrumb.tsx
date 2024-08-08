@@ -66,7 +66,7 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
                     ))}
                 </BreadcrumbList>
             </Breadcrumb>
-            <JsonLD json={json} id='breadcrumb-json-ld' />
+            <JsonLD id='breadcrumb-json-ld' json={json} />
         </>
     )
 }

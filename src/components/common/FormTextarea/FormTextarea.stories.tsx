@@ -31,10 +31,10 @@ export const Default: Story = {
                 <form className='space-y-4' onSubmit={form.handleSubmit(() => false)}>
                     <FormTextarea
                         control={form.control}
-                        name='message'
-                        label={label}
-                        placeholder={placeholder}
                         description={description}
+                        label={label}
+                        name='message'
+                        placeholder={placeholder}
                     />
                     <Button type='submit'>送信</Button>
                 </form>

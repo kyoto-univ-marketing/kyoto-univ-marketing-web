@@ -46,10 +46,10 @@ export const ActivityArticleListPresenter: FC<ActivityArticleListPresenterProps>
                 </div>
                 <div className='flex-1'>
                     <TagRadio
+                        erasable
+                        onChange={onTagChange}
                         options={activityTagList.map((tag) => ({ label: tag, value: tag }))}
                         value={tag}
-                        onChange={onTagChange}
-                        erasable
                     />
                 </div>
             </div>

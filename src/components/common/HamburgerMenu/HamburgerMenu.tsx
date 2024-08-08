@@ -18,7 +18,7 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
             </SheetTrigger>
             <SheetContent className='flex flex-col gap-0 border-primary bg-primary text-primary-foreground'>
                 <SheetHeader className='mt-8'>
-                    <Logo reverse className='mx-auto' size='xl' />
+                    <Logo className='mx-auto' reverse size='xl' />
                     <SheetTitle className='mx-auto font-title text-heading text-primary-foreground'>
                         京大マーケティング研究所
                     </SheetTitle>
@@ -34,10 +34,10 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
                     ))}
                 </ul>
                 <MailAndSNS
+                    className='mt-auto justify-self-end'
                     mailIconSize={16}
                     mailTextClassName='text-xs'
                     snsIconSize={24}
-                    className='mt-auto justify-self-end'
                 />
             </SheetContent>
         </Sheet>

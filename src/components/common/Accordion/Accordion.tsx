@@ -17,7 +17,7 @@ export interface AccordionProps {
 
 export const Accordion: FC<AccordionProps> = ({ items, contentClassName, ...props }) => {
     return (
-        <ShadcnAccordion type='multiple' className='w-full'>
+        <ShadcnAccordion className='w-full' type='multiple'>
             {items.map(({ value, title, content }) => (
                 <AccordionItem className='border-b-0' key={value} value={value}>
                     <AccordionTrigger className='border-b'>{title}</AccordionTrigger>

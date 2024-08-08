@@ -10,7 +10,7 @@ export default function Layout({
 }>) {
     return (
         <>
-            <header id='header' className='sticky top-0 z-50'>
+            <header className='sticky top-0 z-50' id='header'>
                 <Navigation />
             </header>
             {children}

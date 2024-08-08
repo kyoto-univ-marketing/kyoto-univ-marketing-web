@@ -20,8 +20,8 @@ export const ProjectLinkItem: FC<ProjectLinkItemProps> = ({ projectName, links, 
             <ul className='space-y-2 px-1'>
                 {links.map((link) => (
                     <li
-                        key={link.href}
                         className='flex before:mr-2 before:inline-block before:content-["\2022"]' // unicodeの参考： https://www.compart.com/en/unicode/U+2022
+                        key={link.href}
                     >
                         <NextLink
                             className='min-w-0 break-words underline underline-offset-2 sm:no-underline sm:hover:underline'

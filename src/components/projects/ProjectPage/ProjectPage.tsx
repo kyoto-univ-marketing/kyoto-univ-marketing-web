@@ -23,14 +23,14 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ ...props }) => {
             <div className='mb-16 space-y-16'>
                 <div className='bg-backgroundSecondary pb-12'>
                     <ProjectList
-                        tag='マーケティング支援'
                         projects={projects.filter((pr) => pr.tag === 'マーケティング支援')}
+                        tag='マーケティング支援'
                     />
                 </div>
                 <div className='pb-12'>
                     <ProjectList
-                        tag='共同プロジェクト'
                         projects={projects.filter((pr) => pr.tag === '共同プロジェクト')}
+                        tag='共同プロジェクト'
                     />
                     <Button
                         asChild
@@ -44,8 +44,8 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ ...props }) => {
                 </div>
                 <div className='bg-backgroundSecondary pb-12'>
                     <ProjectList
-                        tag='オリジナルプロジェクト'
                         projects={projects.filter((pr) => pr.tag === 'オリジナルプロジェクト')}
+                        tag='オリジナルプロジェクト'
                     />
                 </div>
             </div>

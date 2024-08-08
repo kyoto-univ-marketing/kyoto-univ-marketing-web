@@ -47,7 +47,7 @@ export const Pagination: FC<PaginationProps> = ({ pageLinkList, showPrevNextPage
                     />
                 </PaginationItem>
                 <PaginationItem>
-                    <PaginationLink aria-disabled={0 === activePage} isActive={0 === activePage} href={pageLinkList[0]}>
+                    <PaginationLink aria-disabled={0 === activePage} href={pageLinkList[0]} isActive={0 === activePage}>
                         1
                     </PaginationLink>
                 </PaginationItem>
@@ -59,9 +59,9 @@ export const Pagination: FC<PaginationProps> = ({ pageLinkList, showPrevNextPage
                 {showIndex.map((i) => (
                     <PaginationItem key={i}>
                         <PaginationLink
-                            isActive={i === activePage}
                             aria-disabled={i === activePage}
                             href={pageLinkList[i]}
+                            isActive={i === activePage}
                         >
                             {i + 1}
                         </PaginationLink>
@@ -75,9 +75,9 @@ export const Pagination: FC<PaginationProps> = ({ pageLinkList, showPrevNextPage
                 {pageLen >= 2 && (
                     <PaginationItem>
                         <PaginationLink
-                            isActive={pageLen - 1 === activePage}
                             aria-disabled={pageLen - 1 === activePage}
                             href={pageLinkList[pageLen - 1]}
+                            isActive={pageLen - 1 === activePage}
                         >
                             {pageLen}
                         </PaginationLink>

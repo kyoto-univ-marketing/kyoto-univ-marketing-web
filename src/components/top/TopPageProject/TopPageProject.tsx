@@ -22,7 +22,7 @@ export const TopPageProject: FC<TopPageProjectProps> = ({ ...props }) => {
                     </li>
                 ))}
             </ol>
-            <Button className='mx-auto flex w-fit items-center justify-center px-12 py-6' asChild>
+            <Button asChild className='mx-auto flex w-fit items-center justify-center px-12 py-6'>
                 <NextLink href='/projects'>プロジェクトの詳細</NextLink>
             </Button>
         </div>

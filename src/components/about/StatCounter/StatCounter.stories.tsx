@@ -19,9 +19,9 @@ export const Default: Story = {}
 export const Multiple: Story = {
     render: () => (
         <div className='flex gap-4'>
-            <StatCounter value={43} label='部員数' />
-            <StatCounter value={11} label='学部学科' />
-            <StatCounter value={8} label='プロジェクト' />
+            <StatCounter label='部員数' value={43} />
+            <StatCounter label='学部学科' value={11} />
+            <StatCounter label='プロジェクト' value={8} />
         </div>
     ),
 }
