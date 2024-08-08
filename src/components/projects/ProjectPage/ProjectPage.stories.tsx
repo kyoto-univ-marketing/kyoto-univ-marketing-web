@@ -6,7 +6,9 @@ const meta = {
     component: ProjectPage,
     tags: ['autodocs'],
     parameters: {},
-    args: {},
+    args: {
+        projectDescription: 'プロジェクトの説明が入ります。\nプロジェクトの説明が入ります。',
+    },
 } satisfies Meta<typeof ProjectPage>
 
 export default meta
