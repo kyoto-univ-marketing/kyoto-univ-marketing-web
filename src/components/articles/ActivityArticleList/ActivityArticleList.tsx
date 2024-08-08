@@ -20,7 +20,7 @@ const ActivityArticleList: FC<ActivityArticleListProps> = async ({ page, tag, ..
             activityArticleList={activities.contents}
             page={page}
             tag={tag}
-            totalPage={Math.ceil(activities.totalCount / LIMIT)}
+            totalPage={Math.max(Math.ceil(activities.totalCount / LIMIT), 1)} // ページの最小値を設定
         />
     )
 }

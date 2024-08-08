@@ -9,9 +9,15 @@ export interface ArticleCardListProps {
 export const ArticleCardList: FC<ArticleCardListProps> = ({ cardList, ...props }) => {
     return (
         <div className='space-y-6' style={{ viewTransitionName: 'card-list' }}>
-            {cardList.map((card) => {
-                return <ArticleCard key={card.id} {...card} />
-            })}
+            {cardList.length ? (
+                cardList.map((card) => {
+                    return <ArticleCard key={card.id} {...card} />
+                })
+            ) : (
+                <div className='flex h-20 w-full items-center justify-center'>
+                    <p>記事がまだ存在しません</p>
+                </div>
+            )}
         </div>
     )
 }
