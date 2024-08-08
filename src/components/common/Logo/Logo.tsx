@@ -13,10 +13,11 @@ export interface LogoProps extends AvatarProps {
 }
 
 export const Logo: FC<LogoProps> = ({ reverse, ...props }) => {
+    const lg = reverse ? logoRev : logo
     return (
         <Avatar {...props}>
-            <AvatarImage asChild src={logo.src}>
-                {reverse ? <Image src={logoRev} alt='logo' fill /> : <Image src={logo} alt='logo' fill />}
+            <AvatarImage asChild src={lg.src}>
+                <Image src={lg} alt='logo' fill />
             </AvatarImage>
             <AvatarFallback>logo</AvatarFallback>
         </Avatar>
