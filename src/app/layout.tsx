@@ -19,7 +19,6 @@ export const metadata: Metadata = {
         default: '京大マーケティング研究所',
         template: `%s | 京大マーケティング研究所`,
     },
-    description: '', // TODO
     metadataBase: new URL('https://kyodaimarketing.com'),
     openGraph: {
         type: 'website',
@@ -32,6 +31,7 @@ export const metadata: Metadata = {
         creatorId: '@ku__marketing',
         site: '@ku__marketing',
         card: 'summary_large_image',
+        images: ['/logo.png'],
     },
 }
 

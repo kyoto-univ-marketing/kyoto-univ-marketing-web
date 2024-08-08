@@ -7,14 +7,11 @@ import { Button } from '@/components/ui/button'
 
 import { ProjectList } from '../ProjectList/ProjectList'
 
-export interface ProjectPageProps {}
+export interface ProjectPageProps {
+    projectDescription: string
+}
 
-export const ProjectPage: FC<ProjectPageProps> = async ({ ...props }) => {
-    const { data } = await client.GET('/api/text/{id}/', { params: { path: { id: 'project_description' } } })
-    const projectDescription = data?.text ?? ''
-    if (!projectDescription) {
-        console.error("Couldn't get project description text")
-    }
+export const ProjectPage: FC<ProjectPageProps> = async ({ projectDescription, ...props }) => {
     const projects = (await client.GET('/api/project/')).data ?? []
     return (
         <>

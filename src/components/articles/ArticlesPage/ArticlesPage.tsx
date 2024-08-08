@@ -1,6 +1,5 @@
 import { FC, Suspense } from 'react'
 
-import { client } from '@/api/client'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
@@ -12,14 +11,10 @@ export const dynamic = 'force-dynamic'
 export interface ArticlesPageProps {
     page: number
     tag: string | undefined
+    activityDescription: string
 }
 
-export const ArticlesPage: FC<ArticlesPageProps> = async ({ page, tag, ...props }) => {
-    const { data } = await client.GET('/api/text/{id}/', { params: { path: { id: 'activity_description' } } })
-    const activityDescription = data?.text ?? ''
-    if (!activityDescription) {
-        console.error("Couldn't get activity description text")
-    }
+export const ArticlesPage: FC<ArticlesPageProps> = async ({ page, tag, activityDescription, ...props }) => {
     return (
         <>
             <BreadCrumb

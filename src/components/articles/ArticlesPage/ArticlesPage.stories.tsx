@@ -9,6 +9,7 @@ const meta = {
     args: {
         page: 1,
         tag: undefined,
+        activityDescription: '活動内容の説明が入る場所\n活動内容の説明が入る場所',
     },
 } satisfies Meta<typeof ArticlesPage>
 
