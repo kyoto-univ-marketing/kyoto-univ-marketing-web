@@ -6,8 +6,16 @@ import { Activity } from '@/lib/microcms'
 
 import { NextLink } from '../../common/NextLink/NextLink'
 
-export interface ArticleCardProps
-    extends Pick<Activity, 'title' | 'id' | 'publishedAt' | 'thumbnail' | 'description'> {}
+/* 記事一覧で必要なfield */
+export const activityListFields = [
+    'title',
+    'id',
+    'publishedAt',
+    'thumbnail',
+    'description',
+] as const satisfies (keyof Activity)[]
+
+export interface ArticleCardProps extends Pick<Activity, (typeof activityListFields)[number]> {}
 
 export const ArticleCard: FC<ArticleCardProps> = ({ title, id, publishedAt, thumbnail, description, ...props }) => {
     return (

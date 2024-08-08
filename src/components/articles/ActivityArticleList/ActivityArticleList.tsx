@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { getActivityList } from '@/lib/microcms'
 
 import { ActivityArticleListPresenter } from './ActivityArticleListPresenter'
+import { activityListFields } from '../ArticleCard/ArticleCard'
 
 export interface ActivityArticleListProps {
     /** ページ数 0-indexedで入力されることを想定 */
@@ -14,7 +15,7 @@ const LIMIT = 10
 
 /** 活動記録記事の取得を行うコンポーネント */
 const ActivityArticleList: FC<ActivityArticleListProps> = async ({ page, tag, ...props }) => {
-    const activities = await getActivityList({ limit: LIMIT, offset: page * LIMIT, tag })
+    const activities = await getActivityList({ limit: LIMIT, offset: page * LIMIT, tag, fields: activityListFields })
     return (
         <ActivityArticleListPresenter
             activityArticleList={activities.contents}
