@@ -4,12 +4,9 @@ import { cache } from 'react'
 import { client } from '@/api/client'
 import { ArticlesPage } from '@/components/articles/ArticlesPage/ArticlesPage'
 
-let description: string = ''
-
 const getDescription = cache(async () => {
-    if (description) return description
     const { data } = await client.GET('/api/text/{id}/', { params: { path: { id: 'activity_description' } } })
-    description = data?.text ?? ''
+    const description = data?.text ?? ''
     if (!description) {
         console.error("Couldn't get activity description text")
     }
