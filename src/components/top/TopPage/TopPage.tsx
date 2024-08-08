@@ -52,9 +52,9 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                     </div>
                     <div className='flex w-full flex-col space-y-8'>
                         <Button
-                            variant='outline'
-                            className='w-fit min-w-[66.7%] self-center rounded-none p-6 text-primary'
                             asChild
+                            className='w-fit min-w-[66.7%] self-center rounded-none p-6 text-primary'
+                            variant='outline'
                         >
                             <Link href='/about'>サークルについて</Link>
                         </Button>
@@ -69,8 +69,8 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                 <LatestArticles />
             </div>
             <div className='mb-16 grid gap-4'>
-                <PageImage src={img3884} alt='勉強会の様子' containerClassName='w-3/4 aspect-[64/27]' />
-                <PageImage src={img3893} alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' />
+                <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-[64/27]' src={img3884} />
+                <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
             </div>
             <div className='mb-16'>
                 <TopPageProject />

@@ -24,10 +24,10 @@ export const Default: Story = {
             <Form {...form}>
                 <FormInput
                     control={form.control}
-                    name='name'
-                    label={label}
-                    placeholder={placeholder}
                     description={description}
+                    label={label}
+                    name='name'
+                    placeholder={placeholder}
                 />
             </Form>
         )
@@ -54,10 +54,10 @@ export const Email: Story = {
                 <form className='space-y-4' onSubmit={form.handleSubmit((data) => console.log(data))}>
                     <FormInput
                         control={form.control}
-                        name='email'
-                        label={label}
-                        placeholder={placeholder}
                         description={description}
+                        label={label}
+                        name='email'
+                        placeholder={placeholder}
                     />
                     <Button type='submit'>送信</Button>
                 </form>

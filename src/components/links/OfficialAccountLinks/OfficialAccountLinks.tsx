@@ -11,8 +11,8 @@ export interface OfficialAccountLinksProps extends Omit<ComponentProps<'div'>, '
 export const OfficialAccountLinks: FC<OfficialAccountLinksProps> = ({ className, ...props }) => {
     return (
         <div {...props} className={cn('space-y-12', className)}>
-            <LinkItem href={profile.instagramUrl} text='Instagram' icon={<FaInstagram size={24} />} />
-            <LinkItem href={profile.xUrl} text='X' icon={<FaXTwitter size={24} />} />
+            <LinkItem href={profile.instagramUrl} icon={<FaInstagram size={24} />} text='Instagram' />
+            <LinkItem href={profile.xUrl} icon={<FaXTwitter size={24} />} text='X' />
         </div>
     )
 }

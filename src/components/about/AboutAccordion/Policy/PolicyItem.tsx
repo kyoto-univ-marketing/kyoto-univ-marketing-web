@@ -25,9 +25,9 @@ export const PolicyItem: FC<PolicyItemProps> = ({ text, stamp, stampTop, stampLe
             <div className='relative w-1/2' style={{ minHeight: stamp.height, minWidth: stamp.width }}>
                 <Image
                     {...stamp}
+                    alt={`stamp for ${text}`}
                     className='pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 select-none drop-shadow-md'
                     style={{ top: stampTop, left: stampLeft }}
-                    alt={`stamp for ${text}`}
                 />
             </div>
         </div>

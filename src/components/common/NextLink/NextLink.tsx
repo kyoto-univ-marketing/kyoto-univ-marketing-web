@@ -17,8 +17,8 @@ export const NextLink: FC<NextLinkProps> = ({ ...props }) => {
     })()
     return (
         <Link
-            target={isExternal ? '_blank' : undefined}
             rel={isExternal ? 'noopener noreferrer' : undefined}
+            target={isExternal ? '_blank' : undefined}
             {...props}
         />
     )

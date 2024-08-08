@@ -19,8 +19,8 @@ const ActivityArticleList: FC<ActivityArticleListProps> = async ({ page, tag, ..
         <ActivityArticleListPresenter
             activityArticleList={activities.contents}
             page={page}
-            totalPage={Math.ceil(activities.totalCount / LIMIT)}
             tag={tag}
+            totalPage={Math.ceil(activities.totalCount / LIMIT)}
         />
     )
 }

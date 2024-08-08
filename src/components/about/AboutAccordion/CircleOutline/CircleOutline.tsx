@@ -31,12 +31,12 @@ export const CircleOutline: FC<CircleOutlineProps> = async ({ ...props }) => {
                     {(aboutStatsRes.data ?? [])
                         .sort((a, b) => b.number - a.number)
                         .map((stat) => (
-                            <StatCounter key={stat.id} value={stat.number} label={stat.title} />
+                            <StatCounter key={stat.id} label={stat.title} value={stat.number} />
                         ))}
                 </div>
                 <p className='text-right text-xs text-gray-700'>{latestDate.format('※YYYY年MM月現在')}</p>
             </div>
-            <PageImage src={shuugouShashin} alt='集合写真' />
+            <PageImage alt='集合写真' src={shuugouShashin} />
         </div>
     )
 }

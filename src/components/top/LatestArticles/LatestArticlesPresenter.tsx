@@ -25,7 +25,7 @@ export const LatestArticlesPresenter: FC<LatestArticlesPresenterProps> = ({ arti
                 </tbody>
             </table>
             <div className='mx-auto w-fit'>
-                <Button className='max-w-full px-12 py-6' asChild>
+                <Button asChild className='max-w-full px-12 py-6'>
                     <NextLink href='/articles'>活動記録を見る</NextLink>
                 </Button>
             </div>

@@ -22,12 +22,12 @@ export const TagRadioItem: FC<TagRadioItemProps> = ({ label, value, selected, ..
         <div className='flex items-center'>
             <RadioGroupItem hidden id={value} value={value}></RadioGroupItem>
             <Label
-                htmlFor={value}
                 className={cn(
                     !selected && 'hover:bg-slate-100',
                     selected && '',
                     badgeVariants({ variant: selected ? 'default' : 'outline' }),
                 )}
+                htmlFor={value}
             >
                 {label || value}
             </Label>
@@ -45,17 +45,17 @@ export interface TagRadioProps {
 /** タグの単一選択 */
 export const TagRadio: FC<TagRadioProps> = ({ value, onChange, options, erasable = false, ...props }) => {
     return (
-        <RadioGroup className='flex flex-wrap items-center' value={value} onValueChange={onChange}>
+        <RadioGroup className='flex flex-wrap items-center' onValueChange={onChange} value={value}>
             {options.map((option) => (
                 <TagRadioItem
                     key={option.value}
                     label={option.label}
-                    value={option.value}
                     selected={option.value === value}
+                    value={option.value}
                 />
             ))}
             {erasable && (
-                <Button className='size-fit p-1' variant='ghost' onClick={() => onChange('')}>
+                <Button className='size-fit p-1' onClick={() => onChange('')} variant='ghost'>
                     <XIcon className='size-3.5 text-red-500'></XIcon>
                 </Button>
             )}

@@ -14,13 +14,13 @@ export interface ProjectListProps {
 export const ProjectList: FC<ProjectListProps> = ({ tag, projects, ...props }) => {
     return (
         <div>
-            <h2 id={tag} className='p-8 text-heading font-bold'>
+            <h2 className='p-8 text-heading font-bold' id={tag}>
                 {tag}
             </h2>
             <div className='space-y-16'>
                 {projects.length > 0 ? (
                     projects.map((project, index) => (
-                        <ProjectListItem reverse={Boolean(index % 2)} key={project.name} {...project} />
+                        <ProjectListItem key={project.name} reverse={Boolean(index % 2)} {...project} />
                     ))
                 ) : (
                     <div className='px-12'>Comming Soon...</div>

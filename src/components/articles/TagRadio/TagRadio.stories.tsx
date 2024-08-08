@@ -21,11 +21,11 @@ const meta = {
         return (
             <TagRadio
                 {...args}
-                value={value}
                 onChange={(value) => {
                     setValue(value)
                     args.onChange(value)
                 }}
+                value={value}
             />
         )
     },

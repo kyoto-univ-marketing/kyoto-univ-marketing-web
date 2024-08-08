@@ -8,21 +8,21 @@ import { NextLink } from '../common/NextLink/NextLink'
 
 const Pagination = ({ className, ...props }: ComponentProps<'nav'>) => (
     <nav
-        role='navigation'
         aria-label='pagination'
         className={cn('mx-auto flex w-full justify-center', className)}
+        role='navigation'
         {...props}
     />
 )
 Pagination.displayName = 'Pagination'
 
 const PaginationContent = forwardRef<HTMLUListElement, ComponentProps<'ul'>>(({ className, ...props }, ref) => (
-    <ul ref={ref} className={cn('flex flex-row items-center gap-1', className)} {...props} />
+    <ul className={cn('flex flex-row items-center gap-1', className)} ref={ref} {...props} />
 ))
 PaginationContent.displayName = 'PaginationContent'
 
 const PaginationItem = forwardRef<HTMLLIElement, ComponentProps<'li'>>(({ className, ...props }, ref) => (
-    <li ref={ref} className={cn('', className)} {...props} />
+    <li className={cn('', className)} ref={ref} {...props} />
 ))
 PaginationItem.displayName = 'PaginationItem'
 
@@ -50,8 +50,8 @@ PaginationLink.displayName = 'PaginationLink'
 const PaginationPrevious = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => (
     <PaginationLink
         aria-label='Go to previous page'
-        size='default'
         className={cn('gap-1 pl-2.5', className)}
+        size='default'
         {...props}
     >
         <ChevronLeft className='h-4 w-4' />
@@ -61,7 +61,7 @@ const PaginationPrevious = ({ className, ...props }: ComponentProps<typeof Pagin
 PaginationPrevious.displayName = 'PaginationPrevious'
 
 const PaginationNext = ({ className, ...props }: ComponentProps<typeof PaginationLink>) => (
-    <PaginationLink aria-label='Go to next page' size='default' className={cn('gap-1 pr-2.5', className)} {...props}>
+    <PaginationLink aria-label='Go to next page' className={cn('gap-1 pr-2.5', className)} size='default' {...props}>
         {/* <span>Next</span> */}
         <ChevronRight className='h-4 w-4' />
     </PaginationLink>

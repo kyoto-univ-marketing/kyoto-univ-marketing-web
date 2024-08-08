@@ -105,41 +105,41 @@ export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
                 >
                     <p className='text-sm text-destructive'>*は必須項目です</p>
                     <FormInput
-                        rules={{ required: true }}
-                        disabled={disabled}
                         control={form.control}
-                        name='name'
+                        disabled={disabled}
                         label={keyToLabel.name}
-                    />
-                    <FormInput
-                        disabled={disabled}
-                        control={form.control}
-                        name='affiliation'
-                        label={keyToLabel.affiliation}
-                    />
-                    <FormInput
-                        disabled={disabled}
-                        control={form.control}
+                        name='name'
                         rules={{ required: true }}
-                        name='email'
+                    />
+                    <FormInput
+                        control={form.control}
+                        disabled={disabled}
+                        label={keyToLabel.affiliation}
+                        name='affiliation'
+                    />
+                    <FormInput
+                        control={form.control}
+                        disabled={disabled}
                         label={keyToLabel.email}
+                        name='email'
+                        rules={{ required: true }}
                     />
                     <FormTextarea
-                        rules={{ required: true }}
-                        disabled={disabled}
                         control={form.control}
-                        name='message'
+                        disabled={disabled}
                         label={keyToLabel.message}
+                        name='message'
+                        rules={{ required: true }}
                     />
-                    <Button disabled={disabled} className='mx-auto block h-fit min-w-[75%] py-4' type='submit'>
+                    <Button className='mx-auto block h-fit min-w-[75%] py-4' disabled={disabled} type='submit'>
                         入力内容の確認へ
                     </Button>
                 </form>
             </Form>
             <ConfirmDialog
-                open={dialogOpen}
-                onOpenChange={setDialogOpen}
                 onConfirm={handleConfirm}
+                onOpenChange={setDialogOpen}
+                open={dialogOpen}
                 values={form.getValues()}
             />
         </>
@@ -158,14 +158,14 @@ const ConfirmDialog = ({
     values: ContactFormSchema
 }) => {
     return (
-        <AlertDialog open={open} onOpenChange={onOpenChange}>
+        <AlertDialog onOpenChange={onOpenChange} open={open}>
             <AlertDialogContent>
                 <AlertDialogHeader>
                     <AlertDialogTitle>入力内容のご確認</AlertDialogTitle>
                 </AlertDialogHeader>
                 <div className='space-y-4'>
                     {getKeys(values).map((key) => (
-                        <div key={key} className='space-y-1'>
+                        <div className='space-y-1' key={key}>
                             <p className='text-sm text-gray-500 underline underline-offset-2'>{keyToLabel[key]}</p>
                             {values[key] ? (
                                 <p className='whitespace-pre-wrap break-all'>{values[key]}</p>

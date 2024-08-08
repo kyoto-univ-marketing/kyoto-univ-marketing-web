@@ -15,14 +15,14 @@ const options: HTMLReactParserOptions = {
         if (domNode.name === 'img') {
             const { src, alt, width, height, ...rest } = props as ComponentProps<'img'>
             if (typeof src !== 'string') throw new Error('src attribute is required for img tag')
-            return <Image {...rest} src={src} alt={alt ?? ''} width={Number(width)} height={Number(height)} />
+            return <Image {...rest} alt={alt ?? ''} height={Number(height)} src={src} width={Number(width)} />
         }
 
         if (domNode.name === 'a') {
             const { href, className, ...rest } = props as ComponentProps<'a'>
             if (typeof href !== 'string') throw new Error('href attribute is required for a tag')
             return (
-                <NextLink {...rest} href={href} className={cn('text-blue-700 underline', className)}>
+                <NextLink {...rest} className={cn('text-blue-700 underline', className)} href={href}>
                     {domToReact(children, options)}
                 </NextLink>
             )

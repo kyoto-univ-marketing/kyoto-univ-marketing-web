@@ -30,12 +30,12 @@ export const ImageSwitch: FC<ImageSwitchProps> = ({ imageList, interval, transit
         <div className={cn('h-svh w-full', className)}>
             {imageList.map(({ src, alt }, index) => (
                 <Img
-                    priority={index === 0}
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    key={index}
-                    src={src}
                     alt={alt ?? ''}
                     isShow={current === index}
+                    key={index}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    priority={index === 0}
+                    src={src}
                     transitionDuration={transitionDuration}
                 />
             ))}
@@ -52,14 +52,14 @@ const Img: FC<ImgProps> = ({ src, alt, isShow, transitionDuration, style, ...pro
     return (
         <Image
             {...props}
+            alt={alt}
             className={cn(
                 'h-full w-full object-cover transition-opacity ease-in-out',
                 isShow ? 'opacity-100' : 'opacity-0',
             )}
-            style={{ transitionDuration: `${transitionDuration}ms`, ...style }}
             fill
             src={src}
-            alt={alt}
+            style={{ transitionDuration: `${transitionDuration}ms`, ...style }}
         ></Image>
     )
 }
