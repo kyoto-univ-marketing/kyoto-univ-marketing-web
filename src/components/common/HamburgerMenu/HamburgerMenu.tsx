@@ -1,5 +1,7 @@
+'use client'
+
 import { Menu } from 'lucide-react'
-import { FC } from 'react'
+import { FC, useState } from 'react'
 
 import pageLinks from '@/constants/pageLinks'
 
@@ -11,8 +13,9 @@ import { NextLink } from '../NextLink/NextLink'
 export interface HamburgerMenuProps {}
 
 export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
+    const [open, setOpen] = useState(false)
     return (
-        <Sheet>
+        <Sheet onOpenChange={setOpen} open={open}>
             <SheetTrigger>
                 <Menu />
             </SheetTrigger>
@@ -26,7 +29,11 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
                 <ul className='mt-12 space-y-4 px-6'>
                     {pageLinks.map((link) => (
                         <li key={link.href}>
-                            <NextLink href={link.href}>
+                            <NextLink
+                                className='underline-offset-2 hover:underline'
+                                href={link.href}
+                                onClick={() => setOpen(false)} // クリック時にサイドメニューを閉じる
+                            >
                                 <p className='text-lg'>{link.textEng}</p>
                                 <p className='text-xs'>{link.text}</p>
                             </NextLink>
