@@ -9,15 +9,26 @@ interface Params {
     slug: string
 }
 
-const getActivity = cache(async (slug: string) => getActivityById(slug))
+interface SearchParams {
+    draftKey?: string
+}
+
+const getActivity = cache(async (slug: string, draftKey?: string) => getActivityById(slug, draftKey))
 
 export const generateStaticParams = async () => {
     const allContentIds = await getActivityIds()
     return allContentIds.map((slug) => ({ slug }))
 }
-export const generateMetadata = async ({ params }: { params: Params }): Promise<Metadata> => {
+export const generateMetadata = async ({
+    params,
+    searchParams,
+}: {
+    params: Params
+    searchParams: SearchParams
+}): Promise<Metadata> => {
     const { slug } = params
-    const { title, description, thumbnail } = await getActivity(slug).catch(notFound)
+    const { draftKey } = searchParams
+    const { title, description, thumbnail } = await getActivity(slug, draftKey).catch(notFound)
     return {
         title,
         description,
@@ -30,9 +41,10 @@ export const generateMetadata = async ({ params }: { params: Params }): Promise<
     }
 }
 
-export default async function Page({ params }: { params: Params }) {
+export default async function Page({ params, searchParams }: { params: Params; searchParams: SearchParams }) {
     const { slug } = params
-    const content = await getActivity(slug).catch(notFound)
+    const { draftKey } = searchParams
+    const content = await getActivity(slug, draftKey).catch(notFound)
     return (
         <>
             <ArticleDetailsPage {...content} />

@@ -93,6 +93,7 @@ export const getActivityList = async <Fields extends (keyof Activity)[]>(option?
 /** 活動記録の詳細を取得する */
 export const getActivityById = async (
     id: string,
+    draftKey?: string,
 ): Promise<MicroCMSGetListDetailResponse<Endpoints, { endpoint: 'activities'; contentId: string }>> => {
     if (process.env.NODE_ENV === 'development') {
         // 開発環境の場合はモックデータを返す
@@ -108,6 +109,7 @@ export const getActivityById = async (
         .getListDetail({
             endpoint: 'activities',
             contentId: id,
+            queries: { draftKey },
         })
         .catch((e) => {
             console.error('Error on getActivityById')
