@@ -44,12 +44,8 @@ export default async function Page({ params }: { params: Params }) {
         datePublished: content.publishedAt,
         dateModified: content.updatedAt,
         description: content.description,
-        author: [
-            {
-                ...organizationJson,
-                '@type': 'Organization',
-            },
-        ],
+        author: [organizationJson],
+        publisher: organizationJson,
     } as WithContext<Article>
     return (
         <>
