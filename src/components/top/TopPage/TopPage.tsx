@@ -23,11 +23,18 @@ export interface TopPageProps {}
 const imageList = [img3878, img3767, img3816, img6855, img9802]
 
 export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
-    const { data } = await client.GET('/api/text/{id}/', { params: { path: { id: 'top_message' } } })
-    if (!data?.text) {
+    const { data: messageData } = await client.GET('/api/text/{id}/', { params: { path: { id: 'top_message' } } })
+    if (!messageData?.text) {
         console.error("Couldn't get top message")
     }
-    const message = data?.text ?? ''
+    const { data: subMessageData } = await client.GET('/api/text/{id}/', {
+        params: { path: { id: 'top_sub_message' } },
+    })
+    if (!subMessageData?.text) {
+        console.error("Couldn't get top sub message")
+    }
+    const message = messageData?.text ?? ''
+    const subMessage = subMessageData?.text ?? ''
     return (
         <div className='relative w-full'>
             <ImageSwitch
@@ -58,9 +65,9 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                         >
                             <Link href='/about'>サークルについて</Link>
                         </Button>
-                        <div className='w-fit max-w-[75%] bg-background px-12 py-8 tracking-[0.75rem] text-foreground'>
-                            <h2 className='ml-4 text-heading'>メッセージ</h2>
-                            <p className='whitespace-pre-wrap pt-4 text-sm leading-8'>{message}</p>
+                        <div className='w-fit max-w-[75%] bg-background px-12 py-8 text-foreground'>
+                            <h2 className='ml-4 text-xl'>{message}</h2>
+                            <p className='whitespace-pre-wrap pt-4 text-sm'>{subMessage}</p>
                         </div>
                     </div>
                 </div>

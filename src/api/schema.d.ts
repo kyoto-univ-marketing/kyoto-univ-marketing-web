@@ -169,6 +169,7 @@ export interface components {
         }
         /**
          * @description * `top_message` - トップページのメッセージ
+         *     * `top_sub_message` - トップページのサブメッセージ
          *     * `circle_outline` - サークル概要
          *     * `origin` - 設立の経緯
          *     * `activity_description` - 活動記録ページの説明
@@ -181,6 +182,7 @@ export interface components {
          */
         IdEnum:
             | 'top_message'
+            | 'top_sub_message'
             | 'circle_outline'
             | 'origin'
             | 'activity_description'
@@ -393,6 +395,7 @@ export interface operations {
             path: {
                 id:
                     | 'top_message'
+                    | 'top_sub_message'
                     | 'circle_outline'
                     | 'origin'
                     | 'activity_description'
