@@ -65,12 +65,14 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                         >
                             <Link href='/about'>サークルについて</Link>
                         </Button>
-                        <div className='w-fit max-w-[75%] bg-background px-12 py-8 text-foreground'>
+                        <div className='!mb-8 w-fit max-w-[75%] bg-background px-12 py-8 text-foreground'>
                             <h2 className='ml-4 text-xl'>{message}</h2>
-                            <p className='whitespace-pre-wrap pt-4 text-sm'>{subMessage}</p>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className='p-12'>
+                <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
             </div>
             <div className='mb-16'>
                 <LatestArticles />
