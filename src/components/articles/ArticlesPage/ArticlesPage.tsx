@@ -31,9 +31,7 @@ export const ArticlesPage: FC<ArticlesPageProps> = async ({ page, tag, activityD
                         <p key={i}>{line}</p>
                     ))}
                 </div>
-                <Suspense
-                    fallback={<ArticleCardSkeleton />} // TODO
-                >
+                <Suspense fallback={<ArticleCardSkeleton />}>
                     <ActivityArticleList page={page} tag={tag} />
                 </Suspense>
             </div>
