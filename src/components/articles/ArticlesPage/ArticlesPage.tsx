@@ -1,5 +1,6 @@
 import { FC, Suspense } from 'react'
 
+import { ArticleCardSkeleton } from '@/components/ArticleCardSkeleton/ArticleCardSkeleton'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
@@ -30,9 +31,7 @@ export const ArticlesPage: FC<ArticlesPageProps> = async ({ page, tag, activityD
                         <p key={i}>{line}</p>
                     ))}
                 </div>
-                <Suspense
-                    fallback={<>loading</>} // TODO
-                >
+                <Suspense fallback={<ArticleCardSkeleton />}>
                     <ActivityArticleList page={page} tag={tag} />
                 </Suspense>
             </div>

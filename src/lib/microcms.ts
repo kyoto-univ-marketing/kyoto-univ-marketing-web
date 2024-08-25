@@ -59,6 +59,10 @@ export const getActivityList = async <Fields extends (keyof Activity)[]>(option?
 }): Promise<GetActivityListResponse<Fields>> => {
     if (process.env.NODE_ENV === 'development') {
         // 開発環境の場合はモックデータを返す
+
+        // 1秒待ってから返す
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+
         const res = {
             contents: mockActivities
                 .filter((ac) => !option?.tag || ac.tag[0] === option.tag)
