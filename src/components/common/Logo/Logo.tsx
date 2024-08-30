@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import { FC } from 'react'
 
-import logo from '@/../../public/logo.png'
-import logoRev from '@/../../public/logo_rev.png'
+import logo from '@/../public/logo.png'
+import logoRev from '@/../public/logo_rev.png'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 import { AvatarProps } from '../../ui/avatar'
