@@ -8,6 +8,9 @@ export interface ProjectLinkListProps extends Omit<ProjectLinkListPresenterProps
 export const ProjectLinkList = async (props: ProjectLinkListProps) => {
     const { data } = await client.GET('/api/project/')
     const projectLinks = (data ?? []).reduce((acc, project) => {
+        if (project.links.length === 0) {
+            return acc
+        }
         acc.push({
             projectName: project.name,
             links: project.links.map((link) => ({
