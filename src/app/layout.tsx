@@ -9,7 +9,7 @@ import type { Metadata, Viewport } from 'next'
 
 import './globals.css'
 
-export const dynamic = 'force-dynamic'
+export const revalidate = 3600
 
 /** 本文のフォント */
 const bizUdpMincho = BIZ_UDPMincho({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-biz-udp-mincho' })
