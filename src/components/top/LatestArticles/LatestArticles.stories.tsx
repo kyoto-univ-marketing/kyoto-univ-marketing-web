@@ -1,9 +1,9 @@
-import { LatestArticlesPresenter } from './LatestArticlesPresenter'
+import { LatestArticles } from './LatestArticles'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
-    component: LatestArticlesPresenter,
+    component: LatestArticles,
     tags: ['autodocs'],
     args: {
         articleList: [
@@ -24,7 +24,7 @@ const meta = {
             },
         ],
     },
-} satisfies Meta<typeof LatestArticlesPresenter>
+} satisfies Meta<typeof LatestArticles>
 
 export default meta
 type Story = StoryObj<typeof meta>
