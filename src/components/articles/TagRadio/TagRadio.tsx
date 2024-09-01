@@ -1,5 +1,5 @@
 import { XIcon } from 'lucide-react'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -43,9 +43,17 @@ export interface TagRadioProps {
 }
 
 /** タグの単一選択 */
-export const TagRadio: FC<TagRadioProps> = ({ value, onChange, options, erasable = false, ...props }) => {
+export const TagRadio: FC<TagRadioProps> = ({ value: defaultValue, onChange, options, erasable = false, ...props }) => {
+    const [value, setValue] = useState(defaultValue)
+    useEffect(() => {
+        setValue(defaultValue)
+    }, [defaultValue])
+    const handleChange = (value: string) => {
+        setValue(value)
+        onChange(value)
+    }
     return (
-        <RadioGroup className='flex flex-wrap items-center' onValueChange={onChange} value={value}>
+        <RadioGroup className='flex flex-wrap items-center' onValueChange={handleChange} value={value}>
             {options.map((option) => (
                 <TagRadioItem
                     key={option.value}
@@ -55,7 +63,7 @@ export const TagRadio: FC<TagRadioProps> = ({ value, onChange, options, erasable
                 />
             ))}
             {erasable && (
-                <Button className='size-fit p-1' onClick={() => onChange('')} variant='ghost'>
+                <Button className='size-fit p-1' onClick={() => handleChange('')} variant='ghost'>
                     <XIcon className='size-3.5 text-red-500'></XIcon>
                 </Button>
             )}
