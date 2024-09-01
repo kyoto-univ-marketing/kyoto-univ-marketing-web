@@ -16,6 +16,9 @@ const LIMIT = 10
 export const ArticleCardList: FC<ArticleCardListProps> = async ({ page, tag, ...props }) => {
     const activities = await getActivityList({ limit: LIMIT, offset: page * LIMIT, tag, fields: activityListFields })
     return (
-        <ArticleCardListPresenter cardList={activities.contents} totalPage={Math.ceil(activities.totalCount / LIMIT)} />
+        <ArticleCardListPresenter
+            cardList={activities.contents}
+            totalPage={Math.max(Math.ceil(activities.totalCount / LIMIT), 1)}
+        />
     )
 }
