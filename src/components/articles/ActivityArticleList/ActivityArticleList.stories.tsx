@@ -1,4 +1,3 @@
-import { mockActivities } from '@/mocks/activities'
 
 import { ActivityArticleListPresenter } from './ActivityArticleListPresenter'
 
@@ -12,8 +11,7 @@ const meta = {
     },
     args: {
         page: 0,
-        totalPage: 10,
-        activityArticleList: mockActivities.slice(0, 10),
+        articleCardList: <></>,
     },
 } satisfies Meta<typeof ActivityArticleListPresenter>
 

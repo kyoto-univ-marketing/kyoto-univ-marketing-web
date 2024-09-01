@@ -1,23 +1,24 @@
 import { FC } from 'react'
 
-import { ArticleCard, ArticleCardProps } from '../ArticleCard/ArticleCard'
+import { getActivityList } from '@/lib/microcms'
+
+import { ArticleCardListPresenter } from './ArticleCardListPresenter'
+import { activityListFields } from '../ArticleCard/ArticleCard'
 
 export interface ArticleCardListProps {
-    cardList: ArticleCardProps[]
+    /** ページ数 0-indexedで入力されることを想定 */
+    page: number
+    tag?: string
 }
 
-export const ArticleCardList: FC<ArticleCardListProps> = ({ cardList, ...props }) => {
+const LIMIT = 10
+
+export const ArticleCardList: FC<ArticleCardListProps> = async ({ page, tag, ...props }) => {
+    const activities = await getActivityList({ limit: LIMIT, offset: page * LIMIT, tag, fields: activityListFields })
     return (
-        <div className='space-y-6' style={{ viewTransitionName: 'card-list' }}>
-            {cardList.length ? (
-                cardList.map((card) => {
-                    return <ArticleCard key={card.id} {...card} />
-                })
-            ) : (
-                <div className='flex h-20 w-full items-center justify-center'>
-                    <p>記事がまだ存在しません</p>
-                </div>
-            )}
-        </div>
+        <ArticleCardListPresenter
+            cardList={activities.contents}
+            totalPage={Math.max(Math.ceil(activities.totalCount / LIMIT), 1)}
+        />
     )
 }

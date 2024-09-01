@@ -37,7 +37,7 @@ const config = {
                     foreground: 'hsl(var(--destructive-foreground))',
                 },
                 muted: {
-                    DEFAULT: 'hsl(var(--muted))',
+                    DEFAULT: 'color-mix(in srgb, var(--muted) calc(<alpha-value> * 100%), transparent)',
                     foreground: 'hsl(var(--muted-foreground))',
                 },
                 accent: {

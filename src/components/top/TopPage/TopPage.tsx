@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 
 import { client } from '@/api/client'
 import { PageImage } from '@/components/common/PageImage/PageImage'
@@ -16,6 +16,7 @@ import { Logo } from '../../common/Logo/Logo'
 import { Button } from '../../ui/button'
 import { ImageSwitch } from '../ImageSwitch/ImageSwitch'
 import { LatestArticles } from '../LatestArticles/LatestArticles'
+import { LatestArticlesSkeleton } from '../LatestArticlesSkeleton/LatestArticlesSkeleton'
 import { TopPageProject } from '../TopPageProject/TopPageProject'
 
 export interface TopPageProps {}
@@ -75,7 +76,9 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                 <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
             </div>
             <div className='mb-16'>
-                <LatestArticles />
+                <Suspense fallback={<LatestArticlesSkeleton />}>
+                    <LatestArticles />
+                </Suspense>
             </div>
             <div className='mb-16 grid gap-4'>
                 <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-[64/27]' src={img3884} />
