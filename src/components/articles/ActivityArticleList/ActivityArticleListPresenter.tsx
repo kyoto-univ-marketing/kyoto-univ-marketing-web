@@ -1,31 +1,37 @@
 'use client'
 
 import { FilterIcon } from 'lucide-react'
-import { FC, useMemo } from 'react'
+import { createContext, FC, ReactNode, useContext, useMemo, useState } from 'react'
 
 import { activityTagList } from '@/constants/activity'
 import { useTransitionRouterPush } from '@/hooks/viewTransition'
 
 import { Pagination } from '../../common/Pagination/Pagination'
-import { ArticleCardProps } from '../ArticleCard/ArticleCard'
-import { ArticleCardList } from '../ArticleCardList/ArticleCardList'
 import { TagRadio } from '../TagRadio/TagRadio'
 
 export interface ActivityArticleListPresenterProps {
-    activityArticleList: ArticleCardProps[]
     page: number
-    totalPage: number
     tag?: string
+    articleCardList: ReactNode
 }
+
+interface ActivityArticleContext {
+    totalPage: number
+    setTotalPage: (totalPage: number) => void
+}
+
+export const ActivityCardContext = createContext<ActivityArticleContext>({ totalPage: 1, setTotalPage: () => null })
+export const useActivityCardContext = () => useContext(ActivityCardContext)
 
 /** 活動記録記事の表示を行うコンポーネント */
 export const ActivityArticleListPresenter: FC<ActivityArticleListPresenterProps> = ({
-    activityArticleList,
     page,
-    totalPage,
     tag = '',
+    articleCardList,
     ...props
 }) => {
+    const [totalPage, setTotalPage] = useState(1)
+
     const { routerPushWithTransition } = useTransitionRouterPush()
     const onTagChange = (tag: string) => {
         if (tag === '') {
@@ -54,7 +60,9 @@ export const ActivityArticleListPresenter: FC<ActivityArticleListPresenterProps>
                 </div>
             </div>
             <div className='mb-12'>
-                <ArticleCardList cardList={activityArticleList} />
+                <ActivityCardContext.Provider value={{ totalPage, setTotalPage }}>
+                    {articleCardList}
+                </ActivityCardContext.Provider>
             </div>
             <Pagination activePage={page} pageLinkList={pageLinkList} />
         </div>

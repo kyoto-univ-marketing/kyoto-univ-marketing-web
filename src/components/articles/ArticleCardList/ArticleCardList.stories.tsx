@@ -1,4 +1,3 @@
-import { mockActivities } from '@/mocks/activities'
 
 import { ArticleCardList } from './ArticleCardList'
 
@@ -8,7 +7,7 @@ const meta = {
     component: ArticleCardList,
     tags: ['autodocs'],
     args: {
-        cardList: mockActivities.slice(0, 10),
+        page: 0,
     },
 } satisfies Meta<typeof ArticleCardList>
 

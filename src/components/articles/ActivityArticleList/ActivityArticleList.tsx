@@ -1,9 +1,10 @@
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 
-import { getActivityList } from '@/lib/microcms'
+
+import { ArticleCardSkeleton } from '@/components/ArticleCardSkeleton/ArticleCardSkeleton'
 
 import { ActivityArticleListPresenter } from './ActivityArticleListPresenter'
-import { activityListFields } from '../ArticleCard/ArticleCard'
+import { ArticleCardList } from '../ArticleCardList/ArticleCardList'
 
 export interface ActivityArticleListProps {
     /** ページ数 0-indexedで入力されることを想定 */
@@ -11,17 +12,17 @@ export interface ActivityArticleListProps {
     tag?: string
 }
 
-const LIMIT = 10
-
 /** 活動記録記事の取得を行うコンポーネント */
 const ActivityArticleList: FC<ActivityArticleListProps> = async ({ page, tag, ...props }) => {
-    const activities = await getActivityList({ limit: LIMIT, offset: page * LIMIT, tag, fields: activityListFields })
     return (
         <ActivityArticleListPresenter
-            activityArticleList={activities.contents}
+            articleCardList={
+                <Suspense fallback={<ArticleCardSkeleton />}>
+                    <ArticleCardList page={page} tag={tag} />
+                </Suspense>
+            }
             page={page}
             tag={tag}
-            totalPage={Math.max(Math.ceil(activities.totalCount / LIMIT), 1)} // ページの最小値を設定
         />
     )
 }
