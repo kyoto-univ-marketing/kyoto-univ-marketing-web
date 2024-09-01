@@ -6,11 +6,11 @@ export interface ArticleCardSkeletonProps {}
 
 export const ArticleCardSkeleton: FC<ArticleCardSkeletonProps> = ({ ...props }) => {
     return (
-        <>
+        <div className='space-y-6'>
             {Array.from({ length: 3 }).map((_, index) => (
                 <ArticleCardSkeletonItem key={index} />
             ))}
-        </>
+        </div>
     )
 }
 
