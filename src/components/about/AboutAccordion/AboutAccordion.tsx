@@ -1,4 +1,5 @@
-import { FC } from 'react'
+import { FC, ReactNode, Suspense } from 'react'
+import { FaSpinner } from 'react-icons/fa6'
 
 import { CircleOutline } from './CircleOutline/CircleOutline'
 import { Origin } from './Origin/Origin'
@@ -17,7 +18,11 @@ export const AboutAccordion: FC<AboutAccordionProps> = ({ ...props }) => {
                     {
                         title: <h2 className={titleClassName}>サークル概要</h2>,
                         value: 'outline',
-                        content: <CircleOutline />,
+                        content: (
+                            <AboutSuspense>
+                                <CircleOutline />
+                            </AboutSuspense>
+                        ),
                     },
                     {
                         title: <h2 className={titleClassName}>活動方針</h2>,
@@ -27,10 +32,28 @@ export const AboutAccordion: FC<AboutAccordionProps> = ({ ...props }) => {
                     {
                         title: <h2 className={titleClassName}>創立の経緯</h2>,
                         value: 'origin',
-                        content: <Origin />,
+                        content: (
+                            <AboutSuspense>
+                                <Origin />
+                            </AboutSuspense>
+                        ),
                     },
                 ]}
             />
         </div>
+    )
+}
+
+const AboutSuspense = ({ children }: { children: ReactNode }) => {
+    return (
+        <Suspense
+            fallback={
+                <div className='flex h-24 w-full items-center justify-center'>
+                    <FaSpinner className='h-8 w-8 animate-spin' />
+                </div>
+            }
+        >
+            {children}
+        </Suspense>
     )
 }
