@@ -18,7 +18,7 @@ export interface LatestArticleItemListPresenterProps {
 
 export const LatestArticleItemListPresenter: FC<LatestArticleItemListPresenterProps> = ({ articleList }) => {
     return (
-        <table className='mb-12 table-auto border-separate border-spacing-y-3 px-16'>
+        <table className='mb-12 table-auto border-separate border-spacing-y-3 px-12'>
             <tbody>
                 {articleList.map((article) => (
                     <LatestArticleItem key={article.id} {...article} />
