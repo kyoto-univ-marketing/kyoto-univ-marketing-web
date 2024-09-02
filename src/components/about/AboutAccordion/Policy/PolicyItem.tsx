@@ -17,7 +17,14 @@ export interface PolicyItemProps extends PolicyItem {
 export const PolicyItem: FC<PolicyItemProps> = ({ text, stamp, stampTop, stampLeft, reverse = false, ...props }) => {
     return (
         <div {...props} className={cn('grid grid-cols-2', reverse && '')}>
-            <p className={cn('whitespace-pre-wrap text-heading leading-[3rem]', reverse ? 'pl-4' : 'pr-4')}>{text}</p>
+            <p
+                className={cn(
+                    'whitespace-pre-wrap text-heading leading-[3rem] [word-break:auto-phrase]',
+                    reverse ? 'pl-4' : 'pr-4',
+                )}
+            >
+                {text}
+            </p>
             <div className={cn('relative', reverse && '-order-1')}>
                 <Image
                     {...stamp}
