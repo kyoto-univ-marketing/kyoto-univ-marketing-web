@@ -45,8 +45,10 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                 transitionDuration={2000}
             />
             <div className='flex h-svh flex-col'>
-                <div className='absolute right-0 p-6 text-white'>
-                    <HamburgerMenu />
+                <div className='sticky top-0 flex w-full max-w-screen-sm justify-end'>
+                    <div className='p-6 text-white'>
+                        <HamburgerMenu />
+                    </div>
                 </div>
                 <div className='flex w-full flex-1 select-none flex-col items-center justify-between text-white'>
                     <div className='flex flex-col items-center space-y-6 p-6 pt-16'>
