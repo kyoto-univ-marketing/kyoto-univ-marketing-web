@@ -29,7 +29,10 @@ export const ProjectListItem: FC<ProjectListItemProps> = ({ name, thumbnail, des
         <div>
             <h3 className={cn('mb-6 px-12 text-heading', reverse && 'text-right')}>{name}</h3>
             <div className='relative' style={{ minHeight: height }}>
-                <div className={cn('relative aspect-video w-1/2', reverse ? 'float-right' : 'float-left')} ref={ref}>
+                <div
+                    className={cn('relative mb-2 aspect-video w-1/2', reverse ? 'float-right' : 'float-left')}
+                    ref={ref}
+                >
                     <Image
                         alt={`${name}の画像`}
                         className='object-contain'
