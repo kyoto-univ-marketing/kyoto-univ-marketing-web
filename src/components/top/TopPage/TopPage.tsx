@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { FC, Suspense } from 'react'
 
 import { client } from '@/api/client'
+import { Navigation } from '@/components/common/Navigation/Navigation'
 import { PageImage } from '@/components/common/PageImage/PageImage'
 
 import img3884 from '../../../../public/page-images/top/IMG_3884.webp'
@@ -37,58 +38,61 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
     const message = messageData?.text ?? ''
     const subMessage = subMessageData?.text ?? ''
     return (
-        <div className='relative w-full'>
-            <ImageSwitch
-                className='absolute -z-50 brightness-50'
-                imageList={imageList}
-                interval={7000}
-                transitionDuration={2000}
-            />
-            <div className='flex h-svh flex-col'>
-                <div className='sticky top-0 flex w-full max-w-screen-sm justify-end'>
-                    <div className='p-6 text-white'>
-                        <HamburgerMenu />
+        <>
+            <div className='fixed top-0 z-20 flex h-[4.5rem] w-full max-w-screen-sm items-center justify-end p-4 text-white'>
+                <HamburgerMenu />
+            </div>
+            <div className='relative w-full'>
+                <ImageSwitch
+                    className='absolute -z-50 brightness-50'
+                    imageList={imageList}
+                    interval={7000}
+                    transitionDuration={2000}
+                />
+                <div className='flex h-svh flex-col'>
+                    <div className='flex w-full flex-1 select-none flex-col items-center justify-between text-white'>
+                        <div className='flex flex-col items-center space-y-6 p-6 pt-16'>
+                            <div>
+                                <Logo reverse size='3xl' />
+                            </div>
+                            <h1 className='w-fit px-6 font-title text-3xl font-bold'>
+                                <span className='inline-block'>京大</span>
+                                <span className='inline-block'>マーケティング研究所</span>
+                            </h1>
+                        </div>
+                        <div className='flex w-full flex-col space-y-8'>
+                            <Button
+                                asChild
+                                className='w-fit min-w-[66.7%] self-center rounded-none p-6 text-primary'
+                                variant='outline'
+                            >
+                                <Link href='/about'>サークルについて</Link>
+                            </Button>
+                            <div className='!mb-8 w-fit max-w-[75%] bg-background px-12 py-8 text-foreground'>
+                                <h2 className='ml-4 text-xl'>{message}</h2>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className='flex w-full flex-1 select-none flex-col items-center justify-between text-white'>
-                    <div className='flex flex-col items-center space-y-6 p-6 pt-16'>
-                        <div>
-                            <Logo reverse size='3xl' />
-                        </div>
-                        <h1 className='w-fit px-6 font-title text-3xl font-bold'>
-                            <span className='inline-block'>京大</span>
-                            <span className='inline-block'>マーケティング研究所</span>
-                        </h1>
-                    </div>
-                    <div className='flex w-full flex-col space-y-8'>
-                        <Button
-                            asChild
-                            className='w-fit min-w-[66.7%] self-center rounded-none p-6 text-primary'
-                            variant='outline'
-                        >
-                            <Link href='/about'>サークルについて</Link>
-                        </Button>
-                        <div className='!mb-8 w-fit max-w-[75%] bg-background px-12 py-8 text-foreground'>
-                            <h2 className='ml-4 text-xl'>{message}</h2>
-                        </div>
-                    </div>
+                <header className='sticky top-0 z-10' id='header'>
+                    <Navigation showHamburger={false} />
+                </header>
+                <div className='p-12'>
+                    <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
+                </div>
+                <div className='mb-16'>
+                    <Suspense fallback={<LatestArticlesSkeleton />}>
+                        <LatestArticles />
+                    </Suspense>
+                </div>
+                <div className='mb-16 grid gap-4'>
+                    <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-[64/27]' src={img3884} />
+                    <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
+                </div>
+                <div className='mb-16'>
+                    <TopPageProject />
                 </div>
             </div>
-            <div className='p-12'>
-                <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
-            </div>
-            <div className='mb-16'>
-                <Suspense fallback={<LatestArticlesSkeleton />}>
-                    <LatestArticles />
-                </Suspense>
-            </div>
-            <div className='mb-16 grid gap-4'>
-                <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-[64/27]' src={img3884} />
-                <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
-            </div>
-            <div className='mb-16'>
-                <TopPageProject />
-            </div>
-        </div>
+        </>
     )
 }
