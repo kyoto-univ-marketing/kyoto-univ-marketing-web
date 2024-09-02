@@ -68,7 +68,7 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                             >
                                 <Link href='/about'>サークルについて</Link>
                             </Button>
-                            <div className='!mb-8 w-fit max-w-[75%] bg-background px-12 py-8 text-foreground'>
+                            <div className='!mb-8 w-fit max-w-[75%] bg-primary px-12 py-8 text-primary-foreground'>
                                 <h2 className='ml-4 text-xl'>{message}</h2>
                             </div>
                         </div>
