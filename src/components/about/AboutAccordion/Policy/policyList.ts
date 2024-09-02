@@ -15,7 +15,7 @@ export default [
         text: '二.\n"京都発"の\n価値を創る',
         stamp: Kyo02,
         stampTop: '50%',
-        stampLeft: '50%',
+        stampLeft: '45%',
     },
     {
         text: '三.\n理論と実践、\n学生と社会\nを結ぶ',
@@ -27,6 +27,6 @@ export default [
         text: '四.\n今やりたい、\n今しかできない\nことを現す',
         stamp: Kyo04,
         stampTop: '40%',
-        stampLeft: '50%',
+        stampLeft: '45%',
     },
 ] as const satisfies PolicyItem[]
