@@ -1,5 +1,7 @@
+'use client'
+
 import Image from 'next/image'
-import { FC } from 'react'
+import { FC, useEffect, useRef, useState } from 'react'
 
 import { components } from '@/api/schema'
 import { cn } from '@/lib/utils'
@@ -10,11 +12,27 @@ export interface ProjectListItemProps
 }
 
 export const ProjectListItem: FC<ProjectListItemProps> = ({ name, thumbnail, description, reverse, ...props }) => {
+    const ref = useRef<HTMLDivElement>(null)
+    const [height, setHeight] = useState(0)
+    useEffect(() => {
+        if (ref.current) {
+            const observer = new ResizeObserver((entries) => {
+                for (const entry of entries) {
+                    setHeight(entry.contentRect.height)
+                }
+            })
+            observer.observe(ref.current)
+            return () => observer.disconnect()
+        }
+    }, [])
     return (
         <div>
             <h3 className={cn('mb-6 px-12 text-heading', reverse && 'text-right')}>{name}</h3>
-            <div className={cn('flex', reverse && 'flex-row-reverse')}>
-                <div className='relative aspect-video w-1/2'>
+            <div className='relative' style={{ minHeight: height }}>
+                <div
+                    className={cn('relative mb-2 aspect-video w-1/2', reverse ? 'float-right' : 'float-left')}
+                    ref={ref}
+                >
                     <Image
                         alt={`${name}の画像`}
                         className='object-contain'
@@ -23,9 +41,7 @@ export const ProjectListItem: FC<ProjectListItemProps> = ({ name, thumbnail, des
                         src={thumbnail}
                     />
                 </div>
-                <p className='flex-1 px-6 py-2'>
-                    {description.split(/(\n)/).map((line, i) => (line === '\n' ? <br key={i} /> : line))}
-                </p>
+                <p className='flex-1 whitespace-pre-wrap px-6'>{description}</p>
             </div>
         </div>
     )
