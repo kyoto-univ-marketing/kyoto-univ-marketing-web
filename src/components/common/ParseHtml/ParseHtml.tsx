@@ -2,6 +2,8 @@ import parse, { attributesToProps, DOMNode, domToReact, Element, HTMLReactParser
 import Image from 'next/image'
 import { ComponentProps, FC } from 'react'
 
+import './style.css'
+
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { cn } from '@/lib/utils'
 
