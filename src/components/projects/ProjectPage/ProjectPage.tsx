@@ -2,9 +2,11 @@ import { FC, Suspense } from 'react'
 import { FaSpinner } from 'react-icons/fa6'
 
 import { client } from '@/api/client'
+import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Button } from '@/components/ui/button'
+import { pageLinkObject } from '@/constants/pageLinks'
 
 import { ProjectList } from '../ProjectList/ProjectList'
 
@@ -15,6 +17,12 @@ export interface ProjectPageProps {
 export const ProjectPage: FC<ProjectPageProps> = async ({ projectDescription, ...props }) => {
     return (
         <>
+            <BreadCrumb
+                items={[
+                    { label: pageLinkObject.TOP.textEng, href: pageLinkObject.TOP.href },
+                    { label: pageLinkObject.PROJECT.text, href: pageLinkObject.PROJECT.href },
+                ]}
+            />
             <PageTitle>プロジェクト</PageTitle>
             <p className='mb-16 px-12'>{projectDescription}</p>
             <div className='mb-16 space-y-16'>
