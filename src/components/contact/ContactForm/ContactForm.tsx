@@ -8,6 +8,7 @@ import { z } from 'zod'
 
 import getKeys from '@/lib/getKeys'
 
+import { contactFormSchema } from './schema'
 import { FormInput } from '../../common/FormInput/FormInput'
 import { FormTextarea } from '../../common/FormTextarea/FormTextarea'
 import {
@@ -23,28 +24,6 @@ import { Button } from '../../ui/button'
 import { Form } from '../../ui/form'
 import { useToast } from '../../ui/use-toast'
 
-export interface ContactFormProps {}
-
-export const contactFormSchema = z.object({
-    /** お名前 */
-    name: z.string().refine((value) => value.trim() !== '', {
-        message: 'お名前は必須です。',
-    }),
-    /** メールアドレス */
-    email: z.string().email({
-        message: 'メールアドレスの形式が正しくありません。',
-    }),
-    /** お問い合わせ内容 */
-    message: z.string().refine((value) => value.trim() !== '', {
-        message: 'お問い合わせ内容は必須です。',
-    }),
-    /** ご所属 */
-    affiliation: z
-        .string()
-        .optional()
-        .transform((value) => value || null),
-})
-
 export type ContactFormSchema = z.infer<typeof contactFormSchema>
 
 const keyToLabel: Record<keyof ContactFormSchema, string> = {
@@ -54,7 +33,7 @@ const keyToLabel: Record<keyof ContactFormSchema, string> = {
     affiliation: 'ご所属(大学名、企業名、団体名)',
 } as const
 
-export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
+export const ContactForm: FC = ({ ...props }) => {
     const form = useForm<ContactFormSchema>({
         resolver: zodResolver(contactFormSchema),
         defaultValues: {
@@ -80,7 +59,13 @@ export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
         })
             .then((res) => {
                 if (!res.ok) {
-                    throw new Error('送信に失敗しました')
+                    toast({
+                        title: '送信に失敗しました',
+                        description: '時間を置いて、もう一度お試しください。',
+                        variant: 'destructive',
+                    })
+                    setDisabled(false)
+                    return
                 }
                 // 成功時は、成功ページに移動
                 router.push('/contact/success')

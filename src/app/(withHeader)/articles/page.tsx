@@ -23,19 +23,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
 export default async function Page({
     searchParams,
 }: {
-    searchParams: { [key: string]: string | string[] | undefined }
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-    const page = Number(searchParams.page) || 1
-    const tag = (searchParams.tag as string) || undefined
     const description = await getDescription()
 
     return (
         <main>
-            <ArticlesPage
-                activityDescription={description}
-                page={page - 1} // 0-indexed
-                tag={tag}
-            />
+            <ArticlesPage activityDescription={description} searchParams={searchParams} />
         </main>
     )
 }

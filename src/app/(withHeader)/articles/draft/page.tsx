@@ -16,8 +16,12 @@ export const generateStaticParams = async () => {
     const allContentIds = await getActivityIds()
     return allContentIds.map((slug) => ({ slug }))
 }
-export const generateMetadata = async ({ searchParams }: { searchParams: SearchParams }): Promise<Metadata> => {
-    const { slug, draftKey } = searchParams
+export const generateMetadata = async ({
+    searchParams,
+}: {
+    searchParams: Promise<SearchParams>
+}): Promise<Metadata> => {
+    const { slug, draftKey } = await searchParams
     const { title, description, thumbnail } = await getActivityById(slug, draftKey).catch(notFound)
     return {
         title,
@@ -31,8 +35,8 @@ export const generateMetadata = async ({ searchParams }: { searchParams: SearchP
     }
 }
 
-export default async function Page({ searchParams }: { searchParams: SearchParams }) {
-    const { slug, draftKey } = searchParams
+export default async function Page({ searchParams }: { searchParams: Promise<SearchParams> }) {
+    const { slug, draftKey } = await searchParams
     const content = await getActivityById(slug, draftKey).catch(notFound)
     return (
         <>

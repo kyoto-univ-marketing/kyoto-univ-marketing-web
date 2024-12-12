@@ -19,6 +19,7 @@ module.exports = {
         'prettier',
     ],
     plugins: ['import', 'unused-imports', '@typescript-eslint', 'react'],
+    ignorePatterns: ['**/node_modules/*', '**/.next/*'],
     rules: {
         // 参考： https://qiita.com/yukiji/items/5ba9e065ac6ed57d05a4
         'import/order': [
@@ -55,9 +56,12 @@ module.exports = {
             },
         ],
         'unused-imports/no-unused-imports': 'warn',
+
         'react/react-in-jsx-scope': 'off',
-        '@typescript-eslint/no-unused-vars': 'warn',
         'react/jsx-sort-props': 'warn',
         'react/no-unknown-property': ['error', { ignore: ['tw'] }],
+
+        '@typescript-eslint/no-unused-vars': 'warn',
+        '@typescript-eslint/no-empty-object-type': 'warn',
     },
 }

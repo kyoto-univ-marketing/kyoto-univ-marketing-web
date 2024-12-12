@@ -3,6 +3,7 @@ const { ESLint } = require('eslint')
 const eslintRemoveIgnoredFiles = async (files) => {
     const eslint = new ESLint({
         ignorePath: '.gitignore',
+        overrideConfigFile: '.eslintrc.js',
     })
     const isIgnored = await Promise.all(
         files.map((file) => {

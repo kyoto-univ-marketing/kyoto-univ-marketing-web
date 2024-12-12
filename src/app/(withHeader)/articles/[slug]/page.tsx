@@ -18,8 +18,8 @@ export const generateStaticParams = async () => {
     const allContentIds = await getActivityIds()
     return allContentIds.map((slug) => ({ slug }))
 }
-export const generateMetadata = async ({ params }: { params: Params }): Promise<Metadata> => {
-    const { slug } = params
+export const generateMetadata = async ({ params }: { params: Promise<Params> }): Promise<Metadata> => {
+    const { slug } = await params
     const { title, description, thumbnail } = await getActivity(slug).catch(notFound)
     return {
         title,
@@ -33,8 +33,8 @@ export const generateMetadata = async ({ params }: { params: Params }): Promise<
     }
 }
 
-export default async function Page({ params }: { params: Params }) {
-    const { slug } = params
+export default async function Page({ params }: { params: Promise<Params> }) {
+    const { slug } = await params
     const content = await getActivity(slug).catch(notFound)
     const json = {
         '@context': 'https://schema.org',
