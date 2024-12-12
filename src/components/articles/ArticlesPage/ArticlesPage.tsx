@@ -10,12 +10,11 @@ import ActivityArticleList from '../ActivityArticleList/ActivityArticleList'
 export const dynamic = 'force-dynamic'
 
 export interface ArticlesPageProps {
-    page: number
-    tag: string | undefined
+    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
     activityDescription: string
 }
 
-export const ArticlesPage: FC<ArticlesPageProps> = async ({ page, tag, activityDescription, ...props }) => {
+export const ArticlesPage: FC<ArticlesPageProps> = async ({ searchParams, activityDescription, ...props }) => {
     return (
         <>
             <BreadCrumb
@@ -32,7 +31,7 @@ export const ArticlesPage: FC<ArticlesPageProps> = async ({ page, tag, activityD
                     ))}
                 </div>
                 <Suspense fallback={<ArticleCardSkeleton />}>
-                    <ActivityArticleList page={page} tag={tag} />
+                    <ActivityArticleList searchParams={searchParams} />
                 </Suspense>
             </div>
         </>
