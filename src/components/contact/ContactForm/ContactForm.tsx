@@ -23,8 +23,6 @@ import { Button } from '../../ui/button'
 import { Form } from '../../ui/form'
 import { useToast } from '../../ui/use-toast'
 
-export interface ContactFormProps {}
-
 export const contactFormSchema = z.object({
     /** お名前 */
     name: z.string().refine((value) => value.trim() !== '', {
@@ -54,7 +52,7 @@ const keyToLabel: Record<keyof ContactFormSchema, string> = {
     affiliation: 'ご所属(大学名、企業名、団体名)',
 } as const
 
-export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
+export const ContactForm: FC = ({ ...props }) => {
     const form = useForm<ContactFormSchema>({
         resolver: zodResolver(contactFormSchema),
         defaultValues: {
@@ -80,7 +78,13 @@ export const ContactForm: FC<ContactFormProps> = ({ ...props }) => {
         })
             .then((res) => {
                 if (!res.ok) {
-                    throw new Error('送信に失敗しました')
+                    toast({
+                        title: '送信に失敗しました',
+                        description: '時間を置いて、もう一度お試しください。',
+                        variant: 'destructive',
+                    })
+                    setDisabled(false)
+                    return
                 }
                 // 成功時は、成功ページに移動
                 router.push('/contact/success')
