@@ -19,6 +19,7 @@ module.exports = {
         'prettier',
     ],
     plugins: ['import', 'unused-imports', '@typescript-eslint', 'react'],
+    ignorePatterns: ['**/node_modules/*', '**/.next/*'],
     rules: {
         // 参考： https://qiita.com/yukiji/items/5ba9e065ac6ed57d05a4
         'import/order': [
