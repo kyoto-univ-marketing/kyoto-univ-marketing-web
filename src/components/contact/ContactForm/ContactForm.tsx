@@ -8,6 +8,7 @@ import { z } from 'zod'
 
 import getKeys from '@/lib/getKeys'
 
+import { contactFormSchema } from './schema'
 import { FormInput } from '../../common/FormInput/FormInput'
 import { FormTextarea } from '../../common/FormTextarea/FormTextarea'
 import {
@@ -22,26 +23,6 @@ import {
 import { Button } from '../../ui/button'
 import { Form } from '../../ui/form'
 import { useToast } from '../../ui/use-toast'
-
-export const contactFormSchema = z.object({
-    /** お名前 */
-    name: z.string().refine((value) => value.trim() !== '', {
-        message: 'お名前は必須です。',
-    }),
-    /** メールアドレス */
-    email: z.string().email({
-        message: 'メールアドレスの形式が正しくありません。',
-    }),
-    /** お問い合わせ内容 */
-    message: z.string().refine((value) => value.trim() !== '', {
-        message: 'お問い合わせ内容は必須です。',
-    }),
-    /** ご所属 */
-    affiliation: z
-        .string()
-        .optional()
-        .transform((value) => value || null),
-})
 
 export type ContactFormSchema = z.infer<typeof contactFormSchema>
 
