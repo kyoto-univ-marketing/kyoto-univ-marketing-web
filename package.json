@@ -68,5 +68,5 @@
         "tailwindcss": "^3.4.16",
         "typescript": "^5.7.2"
     },
-    "trustedDependencies": ["@biomejs/biome", "core-js-pure", "esbuild", "sharp"]
+    "trustedDependencies": ["@biomejs/biome", "core-js-pure", "sharp"]
 }
