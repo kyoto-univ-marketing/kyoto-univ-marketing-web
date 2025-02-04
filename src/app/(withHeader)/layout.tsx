@@ -1,7 +1,6 @@
-import { ReactNode } from 'react'
-
-import { Navigation } from '@/components/common/Navigation/Navigation'
+import { Header } from '@/components/common/Header/Header'
 import { TopButton } from '@/components/common/TopButton/TopButton'
+import { ReactNode } from 'react'
 
 export default function Layout({
     children,
@@ -10,9 +9,7 @@ export default function Layout({
 }>) {
     return (
         <>
-            <header className='sticky top-0 z-50' id='header'>
-                <Navigation />
-            </header>
+            <Header />
             {children}
             <TopButton className='mb-12' />
         </>
