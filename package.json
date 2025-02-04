@@ -9,7 +9,7 @@
         "lint": "eslint --fix **/*.{js,ts,tsx} --ignore-path .gitignore",
         "storybook": "storybook dev -p 6006 --no-open",
         "build-storybook": "storybook build",
-        "gen": "pnpm dlx hygen generator component",
+        "gen": "bunx hygen generator component",
         "predev": "rm -fr .next",
         "format": "bash -c 'prettier --write . --ignore-file <(cat .gitignore .prettierignore)'",
         "prepare": "node --eval 'process.exit(process.env.NODE_ENV === `production` ? 0 : 1)' || husky",
@@ -81,6 +81,5 @@
     },
     "trustedDependencies": [
         "core-js-pure"
-    ],
-    "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
+    ]
 }
