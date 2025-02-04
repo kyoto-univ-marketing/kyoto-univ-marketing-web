@@ -56,7 +56,7 @@
         "@storybook/nextjs": "^8.4.7",
         "@storybook/react": "^8.4.7",
         "@storybook/test": "^8.4.7",
-        "@types/node": "^22.10.2",
+        "@types/node": "^22.13.1",
         "@types/react": "^19.0.1",
         "@types/react-dom": "^19.0.2",
         "@typescript-eslint/eslint-plugin": "^8.18.0",
@@ -79,5 +79,8 @@
         "tailwindcss": "^3.4.16",
         "typescript": "^5.7.2"
     },
+    "trustedDependencies": [
+        "core-js-pure"
+    ],
     "packageManager": "pnpm@9.15.0+sha512.76e2379760a4328ec4415815bcd6628dee727af3779aaa4c914e3944156c4299921a89f976381ee107d41f12cfa4b66681ca9c718f0668fa0831ed4c6d8ba56c"
 }
