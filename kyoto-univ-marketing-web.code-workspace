@@ -10,7 +10,7 @@
             "pre-commit": "shellscript",
         },
         "files.autoSave": "afterDelay",
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "biomejs.biome",
         "editor.formatOnSave": true,
         "[dotenv]": {
             "editor.defaultFormatter": "foxundermoon.shell-format"

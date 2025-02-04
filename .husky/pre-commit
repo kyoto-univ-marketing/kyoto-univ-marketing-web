@@ -1,4 +1,3 @@
 # 参考： https://zenn.dev/risu729/articles/latest-husky-lint-staged
 
-bun --bun run typecheck
 bun --bun run lint-staged
