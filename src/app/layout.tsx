@@ -1,6 +1,6 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { BIZ_UDPMincho, Hina_Mincho } from 'next/font/google'
-import { ReactNode } from 'react'
+import { ReactNode, Suspense } from 'react'
 
 import { Footer } from '@/components/common/Footer/Footer'
 import { Toaster } from '@/components/ui/toaster'
@@ -55,7 +55,7 @@ export default function RootLayout({
         <html lang='ja'>
             <body className={`${bizUdpMincho.variable} ${hinaMincho.variable}`}>
                 <div className='mx-auto max-w-(--breakpoint-sm)'>
-                    {children}
+                    <Suspense>{children}</Suspense>
                     <Footer />
                 </div>
                 <Toaster />
