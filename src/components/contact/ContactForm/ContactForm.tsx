@@ -85,7 +85,7 @@ export const ContactForm: FC = ({ ...props }) => {
         <>
             <Form {...form}>
                 <form
-                    className='space-y-8 bg-backgroundSecondary px-4 py-8'
+                    className='space-y-8 bg-background-secondary px-4 py-8'
                     onSubmit={form.handleSubmit(() => setDialogOpen(true))}
                 >
                     <p className='text-sm text-destructive'>*は必須項目です</p>

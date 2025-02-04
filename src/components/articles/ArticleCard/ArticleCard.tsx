@@ -31,7 +31,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({
 }) => {
     const tag = _tag[0]
     return (
-        <NextLink className='block rounded-md border bg-backgroundSecondary p-2' href={`/articles/${id}`}>
+        <NextLink className='block rounded-md border bg-background-secondary p-2' href={`/articles/${id}`}>
             <div className='p-4'>
                 <div className='mb-1 flex items-end gap-4'>
                     <p className='text-gray-700'>{dayjs(publishedAt).format('YYYY/MM/DD')}</p>
