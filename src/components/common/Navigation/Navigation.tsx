@@ -13,7 +13,7 @@ export interface NavigationProps {
 export const Navigation: FC<NavigationProps> = ({ showHamburger = true, ...props }) => {
     return (
         <>
-            <nav className='flex w-full items-center justify-between gap-4 bg-primary p-4 text-primary-foreground'>
+            <nav className='flex w-full items-center justify-between gap-4 bg-primary p-4 text-primary-foreground h-18'>
                 <Link className='flex items-center gap-4' href='/'>
                     <Logo reverse />
                     <div className='font-title text-accent font-bold'>京大マーケティング研究所</div>

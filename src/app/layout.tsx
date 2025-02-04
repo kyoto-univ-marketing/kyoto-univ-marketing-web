@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster'
 import type { Metadata, Viewport } from 'next'
 
 import './globals.css'
+import { Header } from '@/components/common/Header/Header'
 
 export const revalidate = 3600
 
@@ -55,6 +56,7 @@ export default function RootLayout({
         <html lang='ja'>
             <body className={`${bizUdpMincho.variable} ${hinaMincho.variable}`}>
                 <div className=''>
+                    <Header />
                     <Suspense>{children}</Suspense>
                     <Footer />
                 </div>
