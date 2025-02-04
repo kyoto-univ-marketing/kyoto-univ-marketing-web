@@ -8,5 +8,6 @@ services:
                 - MICROCMS_SERVICE_DOMAIN=${MICROCMS_SERVICE_DOMAIN}
                 - MICROCMS_API_KEY=${MICROCMS_API_KEY}
                 - NEXT_PUBLIC_MEASUREMENT_ID=${NEXT_PUBLIC_MEASUREMENT_ID}
+                - CONTACT_FORM_API_URL=${CONTACT_FORM_API_URL}
         ports:
             - '3000:3000'

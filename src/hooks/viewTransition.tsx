@@ -4,17 +4,14 @@ import { NavigateOptions } from 'next/dist/shared/lib/app-router-context.shared-
 import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const useViewTransition = <T extends (...args: any[]) => void>(callback: T) => {
-    const startViewTransition = (...args: Parameters<T>) => {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        if (!(document as any).startViewTransition) {
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+export const useViewTransition = <S extends readonly any[], T extends (...args: S) => void>(callback: T) => {
+    const startViewTransition = (...args: S) => {
+        if (!document.startViewTransition) {
             callback(...args)
             return
         }
-
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ;(document as any).startViewTransition(async () => {
+        document.startViewTransition(async () => {
             await Promise.resolve(callback(...args))
         })
     }

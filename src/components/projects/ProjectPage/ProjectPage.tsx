@@ -44,7 +44,7 @@ const Projects = async () => {
     const projects = (await client.GET('/api/project/')).data ?? []
     return (
         <>
-            <div className='bg-backgroundSecondary pb-12'>
+            <div className='bg-background-secondary pb-12'>
                 <ProjectList
                     projects={projects.filter((pr) => pr.tag === 'マーケティング支援')}
                     tag='マーケティング支援'
@@ -62,7 +62,7 @@ const Projects = async () => {
                     </NextLink>
                 </Button>
             </div>
-            <div className='bg-backgroundSecondary pb-12'>
+            <div className='bg-background-secondary pb-12'>
                 <ProjectList
                     projects={projects.filter((pr) => pr.tag === 'オリジナルプロジェクト')}
                     tag='オリジナルプロジェクト'

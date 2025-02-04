@@ -52,11 +52,11 @@ export const ContactPage: FC<ContactPageProps> = async ({ ...props }) => {
                     </h2>
                     <div className='space-y-4 px-8'>
                         <h3 className='text-lg'>企業、その他団体・個人の皆様</h3>
-                        <p className='bg-backgroundSecondary p-4'>{descriptionForOthers}</p>
+                        <p className='bg-background-secondary p-4'>{descriptionForOthers}</p>
                     </div>
                     <div className='space-y-4 px-8'>
                         <h3 className='text-lg'>京大生の方</h3>
-                        <p className='bg-backgroundSecondary p-4'>{descriptionForKyodai}</p>
+                        <p className='bg-background-secondary p-4'>{descriptionForKyodai}</p>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,5 @@
-import { Logo } from './Logo'
 import { AvatarProps } from '../../ui/avatar'
+import { Logo } from './Logo'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

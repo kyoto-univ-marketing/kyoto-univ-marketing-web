@@ -39,7 +39,7 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
     const subMessage = subMessageData?.text ?? ''
     return (
         <>
-            <div className='fixed top-0 z-20 flex h-[4.5rem] w-full max-w-screen-sm items-center justify-end p-4 text-white'>
+            <div className='fixed top-0 z-20 flex h-[4.5rem] w-full max-w-(--breakpoint-sm) items-center justify-end p-4 text-white'>
                 <HamburgerMenu />
             </div>
             <div className='relative w-full'>
@@ -68,7 +68,7 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                             >
                                 <Link href='/about'>サークルについて</Link>
                             </Button>
-                            <div className='!mb-8 w-fit max-w-[75%] bg-primary px-12 py-8 text-primary-foreground'>
+                            <div className='mb-8! w-fit max-w-[75%] bg-primary px-12 py-8 text-primary-foreground'>
                                 <h2 className='ml-4 text-xl'>{message}</h2>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                     </Suspense>
                 </div>
                 <div className='mb-16 grid gap-4'>
-                    <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-[64/27]' src={img3884} />
+                    <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-64/27' src={img3884} />
                     <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
                 </div>
                 <div className='mb-16'>

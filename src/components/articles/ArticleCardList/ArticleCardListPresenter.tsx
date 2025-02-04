@@ -3,7 +3,7 @@
 import { FC, useEffect } from 'react'
 
 import { useActivityCardContext } from '../ActivityArticleList/ActivityArticleListPresenter'
-import { ArticleCardProps, ArticleCard } from '../ArticleCard/ArticleCard'
+import { ArticleCard, ArticleCardProps } from '../ArticleCard/ArticleCard'
 
 export interface ArticleCardListPresenterProps {
     cardList: ArticleCardProps[]

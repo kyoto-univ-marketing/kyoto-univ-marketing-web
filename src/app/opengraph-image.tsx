@@ -21,18 +21,16 @@ export default async function Image() {
     const fontData = fs.readFileSync(path.join(process.cwd(), 'public/HinaMincho-Regular.ttf'))
 
     return new ImageResponse(
-        (
-            <div
-                style={{
-                    fontFamily: 'Hina Mincho',
-                    color: '#00215b',
-                }}
-                tw='bg-white w-full h-full flex items-center justify-center'
-            >
-                <img height={logoSize} src={logoUrl.toString()} tw='mr-12' width={logoSize} />
-                <p tw='text-6xl'>京大マーケティング研究所</p>
-            </div>
-        ),
+        <div
+            style={{
+                fontFamily: 'Hina Mincho',
+                color: '#00215b',
+            }}
+            tw='bg-white w-full h-full flex items-center justify-center'
+        >
+            <img height={logoSize} src={logoUrl.toString()} tw='mr-12' width={logoSize} />
+            <p tw='text-6xl'>京大マーケティング研究所</p>
+        </div>,
         // ImageResponse options
         {
             ...size,

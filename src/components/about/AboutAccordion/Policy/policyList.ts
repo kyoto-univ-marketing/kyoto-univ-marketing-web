@@ -1,8 +1,8 @@
+import { PolicyItem } from './PolicyItem'
 import Kyo01 from './kyo_01.png'
 import Kyo02 from './kyo_02.png'
 import Kyo03 from './kyo_03.png'
 import Kyo04 from './kyo_04.png'
-import { PolicyItem } from './PolicyItem'
 
 export default [
     {
