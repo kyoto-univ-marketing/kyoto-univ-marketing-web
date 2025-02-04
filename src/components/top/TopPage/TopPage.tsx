@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { FC, Suspense } from 'react'
 
 import { client } from '@/api/client'
-import { Navigation } from '@/components/common/Navigation/Navigation'
 import { PageImage } from '@/components/common/PageImage/PageImage'
 
 import img3884 from '../../../../public/page-images/top/IMG_3884.webp'
@@ -12,7 +11,6 @@ import img3816 from '../../../../public/top-header/IMG_3816.webp'
 import img3878 from '../../../../public/top-header/IMG_3878.webp'
 import img6855 from '../../../../public/top-header/IMG_6855.webp'
 import img9802 from '../../../../public/top-header/IMG_9802.webp'
-import { HamburgerMenu } from '../../common/HamburgerMenu/HamburgerMenu'
 import { Logo } from '../../common/Logo/Logo'
 import { Button } from '../../ui/button'
 import { ImageSwitch } from '../ImageSwitch/ImageSwitch'
@@ -39,17 +37,14 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
     const subMessage = subMessageData?.text ?? ''
     return (
         <>
-            <div className='fixed top-0 z-20 flex h-[4.5rem] w-full max-w-(--breakpoint-sm) items-center justify-end p-4 text-white'>
-                <HamburgerMenu />
-            </div>
             <div className='relative w-full'>
                 <ImageSwitch
-                    className='absolute -z-50 brightness-50'
+                    className='absolute -z-50 brightness-50 h-[calc(100svh-var(--spacing)*18)]'
                     imageList={imageList}
                     interval={7000}
                     transitionDuration={2000}
                 />
-                <div className='flex h-svh flex-col'>
+                <div className='flex h-[calc(100svh-var(--spacing)*18)] flex-col'>
                     <div className='flex w-full flex-1 select-none flex-col items-center justify-between text-white'>
                         <div className='flex flex-col items-center space-y-6 p-6 pt-16'>
                             <div>
@@ -74,9 +69,6 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
                         </div>
                     </div>
                 </div>
-                <header className='sticky top-0 z-10' id='header'>
-                    <Navigation showHamburger={false} />
-                </header>
                 <div className='p-12'>
                     <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
                 </div>
