@@ -27,7 +27,7 @@ const ArticleCardSkeletonItem = () => {
                     <Skeleton className='h-4' />
                     <Skeleton className='h-4' />
                 </div>
-                <div className='relative aspect-[4/3] w-1/3'>
+                <div className='relative aspect-4/3 w-1/3'>
                     <Skeleton className='absolute inset-0 h-full w-full' />
                 </div>
             </div>

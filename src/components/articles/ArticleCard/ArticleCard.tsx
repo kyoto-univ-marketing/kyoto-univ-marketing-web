@@ -45,7 +45,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({
                 <div className='flex-1 p-4'>
                     <p className='line-clamp-3 text-gray-600'>{description}</p>
                 </div>
-                <div className='relative aspect-[4/3] w-1/3'>
+                <div className='relative aspect-4/3 w-1/3'>
                     <Image alt={title} className='object-cover' fill src={thumbnail.url} />
                 </div>
             </div>

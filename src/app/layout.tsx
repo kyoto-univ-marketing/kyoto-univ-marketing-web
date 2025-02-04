@@ -54,7 +54,7 @@ export default function RootLayout({
     return (
         <html lang='ja'>
             <body className={`${bizUdpMincho.variable} ${hinaMincho.variable}`}>
-                <div className='mx-auto max-w-screen-sm'>
+                <div className='mx-auto max-w-(--breakpoint-sm)'>
                     {children}
                     <Footer />
                 </div>
