@@ -25,9 +25,9 @@
             "class:list",
             "tw"
         ],
-        "tailwindCSS.rootFontSize": 14,
+        "tailwindCSS.rootFontSize": 14,  // 参考： https://design2tailwind.com/blog/change-tailwindcss-base-font-size/
         "[terraform]": {
             "editor.defaultFormatter": "hashicorp.terraform"
-        }, // 参考： https://design2tailwind.com/blog/change-tailwindcss-base-font-size/
+        },
     },
 }
