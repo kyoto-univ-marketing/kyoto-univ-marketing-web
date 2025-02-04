@@ -1,7 +1,7 @@
 'use client'
 
 import { FilterIcon } from 'lucide-react'
-import { createContext, FC, ReactNode, useContext, useMemo, useState } from 'react'
+import { FC, ReactNode, createContext, useContext, useMemo, useState } from 'react'
 
 import { activityTagList } from '@/constants/activity'
 import { useTransitionRouterPush } from '@/hooks/viewTransition'

@@ -1,8 +1,8 @@
 import pick from '@/lib/pick'
 import { mockActivities } from '@/mocks/activities'
 
-import { ArticleCard } from './ArticleCard'
 import Logo from '../../../../public/logo.png'
+import { ArticleCard } from './ArticleCard'
 
 import type { Meta, StoryObj } from '@storybook/react'
 

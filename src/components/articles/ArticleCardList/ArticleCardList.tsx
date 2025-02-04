@@ -2,8 +2,8 @@ import { FC } from 'react'
 
 import { getActivityList } from '@/lib/microcms'
 
-import { ArticleCardListPresenter } from './ArticleCardListPresenter'
 import { activityListFields } from '../ArticleCard/ArticleCard'
+import { ArticleCardListPresenter } from './ArticleCardListPresenter'
 
 export interface ArticleCardListProps {
     /** ページ数 0-indexedで入力されることを想定 */

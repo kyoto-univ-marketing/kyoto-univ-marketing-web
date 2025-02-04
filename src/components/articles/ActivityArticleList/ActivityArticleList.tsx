@@ -3,8 +3,8 @@ import { z } from 'zod'
 
 import { ArticleCardSkeleton } from '@/components/ArticleCardSkeleton/ArticleCardSkeleton'
 
-import { ActivityArticleListPresenter } from './ActivityArticleListPresenter'
 import { ArticleCardList } from '../ArticleCardList/ArticleCardList'
+import { ActivityArticleListPresenter } from './ActivityArticleListPresenter'
 
 export interface ActivityArticleListProps {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>

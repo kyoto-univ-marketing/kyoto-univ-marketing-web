@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import { ChevronRight, MoreHorizontal } from 'lucide-react'
-import { ComponentProps, ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react'
+import { ComponentProps, ComponentPropsWithoutRef, ReactNode, forwardRef } from 'react'
 
 import { cn } from '@/lib/utils'
 

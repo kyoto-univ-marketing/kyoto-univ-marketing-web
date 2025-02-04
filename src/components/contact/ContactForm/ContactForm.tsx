@@ -8,7 +8,6 @@ import { z } from 'zod'
 
 import getKeys from '@/lib/getKeys'
 
-import { contactFormSchema } from './schema'
 import { FormInput } from '../../common/FormInput/FormInput'
 import { FormTextarea } from '../../common/FormTextarea/FormTextarea'
 import {
@@ -23,6 +22,7 @@ import {
 import { Button } from '../../ui/button'
 import { Form } from '../../ui/form'
 import { useToast } from '../../ui/use-toast'
+import { contactFormSchema } from './schema'
 
 export type ContactFormSchema = z.infer<typeof contactFormSchema>
 

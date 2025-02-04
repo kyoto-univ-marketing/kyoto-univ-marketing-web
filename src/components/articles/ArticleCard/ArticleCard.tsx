@@ -8,7 +8,6 @@ import { Activity } from '@/lib/microcms'
 
 import { NextLink } from '../../common/NextLink/NextLink'
 
-
 /* 記事一覧で必要なfield */
 export const activityListFields = [
     'title',

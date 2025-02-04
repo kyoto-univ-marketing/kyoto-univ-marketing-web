@@ -1,11 +1,11 @@
 import {
     ClientEndPoints,
-    createClient,
     MicroCMSContentId,
     MicroCMSDate,
     MicroCMSGetListDetailResponse,
     MicroCMSGetListResponse,
     MicroCMSImage,
+    createClient,
 } from 'microcms-ts-sdk'
 
 import { activityTagList } from '@/constants/activity'
