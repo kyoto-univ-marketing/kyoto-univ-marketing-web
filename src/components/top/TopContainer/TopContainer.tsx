@@ -8,6 +8,8 @@ export interface TopContainerProps {
     isDesktop: boolean
 }
 
+// このコンポーネントはクライアントコンポーネントだが、childrenはサーバーコンポーネントにすることが可能
+
 export const TopContainer: FC<TopContainerProps> = ({ children, isDesktop, ...props }) => {
     const isShow = isDesktop === useIsDesktop()
     if (isShow) {
