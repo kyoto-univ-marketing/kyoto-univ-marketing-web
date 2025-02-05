@@ -53,12 +53,12 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
                 <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
             </div> */}
             <div className='grid grid-cols-2 mb-24 px-8 gap-8'>
-                <div className='bg-white/75 rounded-md pb-8'>
+                <div className='bg-white/75 rounded-md pb-8 drop-shadow'>
                     <Suspense fallback={<LatestArticlesSkeleton />}>
                         <LatestArticles />
                     </Suspense>
                 </div>
-                <div className='bg-white/75 rounded-md pb-8'>
+                <div className='bg-white/75 rounded-md pb-8 drop-shadow'>
                     <TopPageProject />
                 </div>
             </div>
