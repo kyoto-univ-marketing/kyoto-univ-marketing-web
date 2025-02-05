@@ -7,8 +7,8 @@ const meta = {
     tags: ['autodocs'],
     parameters: {},
     args: {
-        children: 'children',
-        isDesktop: true,
+        mobile: 'mobile',
+        desktop: 'desktop',
     },
 } satisfies Meta<typeof TopContainer>
 

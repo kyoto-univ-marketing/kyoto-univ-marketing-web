@@ -1,21 +1,24 @@
+'use client'
+
 import { useEffect, useState } from 'react'
 
-export const useIsDesktop = (): boolean => {
-    const [isDesktop, setIsDesktop] = useState<boolean>(false)
+export const useIsDesktop = (): boolean | undefined => {
+    const mediaQuery = '(min-width: 640px)'
+    const [isDesktop, setIsDesktop] = useState<boolean | undefined>(undefined)
 
     useEffect(() => {
-        const mediaQuery = '(640px <= width)'
-        const mql = matchMedia(mediaQuery)
+        if (typeof window !== 'undefined') {
+            const mql = window.matchMedia(mediaQuery)
+            setIsDesktop(mql.matches)
 
-        const handleMatch = (e: MediaQueryListEvent) => {
-            setIsDesktop(e.matches)
-        }
+            const handleMatch = (e: MediaQueryListEvent) => {
+                setIsDesktop(e.matches)
+            }
 
-        setIsDesktop(mql.matches)
-        mql.addEventListener('change', handleMatch)
-
-        return () => {
-            mql.removeEventListener('change', handleMatch)
+            mql.addEventListener('change', handleMatch)
+            return () => {
+                mql.removeEventListener('change', handleMatch)
+            }
         }
     }, [])
 

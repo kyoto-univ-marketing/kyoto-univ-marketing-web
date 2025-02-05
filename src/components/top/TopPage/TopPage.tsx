@@ -21,13 +21,9 @@ export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
     const message = messageData?.text ?? ''
     const subMessage = subMessageData?.text ?? ''
     return (
-        <>
-            <TopContainer isDesktop={true}>
-                <TopPresenterDesktop message={message} subMessage={subMessage} />
-            </TopContainer>
-            <TopContainer isDesktop={false}>
-                <TopPresenterMobile message={message} subMessage={subMessage} />
-            </TopContainer>
-        </>
+        <TopContainer
+            desktop={<TopPresenterDesktop message={message} subMessage={subMessage} />}
+            mobile={<TopPresenterMobile message={message} subMessage={subMessage} />}
+        />
     )
 }
