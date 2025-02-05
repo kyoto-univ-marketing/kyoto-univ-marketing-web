@@ -9,7 +9,7 @@ export interface TopPageProjectProps {}
 
 export const TopPageProject: FC<TopPageProjectProps> = ({ ...props }) => {
     return (
-        <div>
+        <div className='size-full flex flex-col'>
             <PageTitle asChild>
                 <h2>プロジェクト</h2>
             </PageTitle>
@@ -22,7 +22,7 @@ export const TopPageProject: FC<TopPageProjectProps> = ({ ...props }) => {
                     </li>
                 ))}
             </ol>
-            <Button asChild className='mx-auto flex w-fit items-center justify-center px-12 py-6'>
+            <Button asChild className='mx-auto mt-auto flex w-fit items-center justify-center px-12 py-6'>
                 <NextLink href='/projects'>プロジェクトの詳細</NextLink>
             </Button>
         </div>
