@@ -28,7 +28,7 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
     return (
         <div className='relative w-full'>
             <ImageSwitch
-                className='absolute -z-50 brightness-50 h-[calc(100svh-var(--spacing)*18)]'
+                className='-z-50 absolute h-[calc(100svh-var(--spacing)*18)] brightness-50'
                 imageList={imageList}
                 interval={7000}
                 transitionDuration={2000}
@@ -39,7 +39,7 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                         <div>
                             <Logo reverse size='3xl' />
                         </div>
-                        <h1 className='w-fit px-6 font-title text-3xl font-bold'>
+                        <h1 className='w-fit px-6 font-bold font-title text-3xl'>
                             <span className='inline-block'>京大</span>
                             <span className='inline-block'>マーケティング研究所</span>
                         </h1>

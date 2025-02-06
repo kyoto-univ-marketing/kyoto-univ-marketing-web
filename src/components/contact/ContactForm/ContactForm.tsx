@@ -88,7 +88,7 @@ export const ContactForm: FC = ({ ...props }) => {
                     className='space-y-8 bg-background-secondary px-4 py-8'
                     onSubmit={form.handleSubmit(() => setDialogOpen(true))}
                 >
-                    <p className='text-sm text-destructive'>*は必須項目です</p>
+                    <p className='text-destructive text-sm'>*は必須項目です</p>
                     <FormInput
                         control={form.control}
                         disabled={disabled}
@@ -151,7 +151,7 @@ const ConfirmDialog = ({
                 <div className='space-y-4'>
                     {getKeys(values).map((key) => (
                         <div className='space-y-1' key={key}>
-                            <p className='text-sm text-gray-500 underline underline-offset-2'>{keyToLabel[key]}</p>
+                            <p className='text-gray-500 text-sm underline underline-offset-2'>{keyToLabel[key]}</p>
                             {values[key] ? (
                                 <p className='whitespace-pre-wrap break-all'>{values[key]}</p>
                             ) : (

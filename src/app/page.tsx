@@ -16,7 +16,7 @@ export default function Home() {
             <main>
                 <Suspense
                     fallback={
-                        <div className='grid h-screen w-full justify-center items-center'>
+                        <div className='grid h-screen w-full items-center justify-center'>
                             <div className='flex h-24 w-full items-center justify-center p-8'>
                                 <FaSpinner className='h-8 w-8 animate-spin' />
                             </div>

@@ -60,6 +60,6 @@ const Img: FC<ImgProps> = ({ src, alt, isShow, transitionDuration, style, ...pro
             fill
             src={src}
             style={{ transitionDuration: `${transitionDuration}ms`, ...style }}
-        ></Image>
+        />
     )
 }

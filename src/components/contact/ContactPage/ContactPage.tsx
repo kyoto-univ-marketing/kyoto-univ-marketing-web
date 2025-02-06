@@ -38,7 +38,7 @@ export const ContactPage: FC<ContactPageProps> = async ({ ...props }) => {
                 ]}
             />
             <PageTitle>{pageLinkObject.CONTACT.text}</PageTitle>
-            <div>
+            <div className='mx-auto max-w-(--breakpoint-sm)'>
                 <div className='space-y-2 p-4'>
                     <p className='text-gray-700'>以下のフォームからご自由にお問い合わせください。</p>
                 </div>

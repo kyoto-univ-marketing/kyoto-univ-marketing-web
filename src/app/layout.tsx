@@ -55,9 +55,11 @@ export default function RootLayout({
     return (
         <html lang='ja'>
             <body className={`${bizUdpMincho.variable} ${hinaMincho.variable}`}>
-                <div className=''>
+                <div className='flex min-h-dvh flex-col'>
                     <Header />
-                    <Suspense>{children}</Suspense>
+                    <div className='flex-1'>
+                        <Suspense>{children}</Suspense>
+                    </div>
                     <Footer />
                 </div>
                 <Toaster />
