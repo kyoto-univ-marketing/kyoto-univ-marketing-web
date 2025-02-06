@@ -24,17 +24,19 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ projectDescription, ..
                 ]}
             />
             <PageTitle>プロジェクト</PageTitle>
-            <p className='mb-16 px-12'>{projectDescription}</p>
-            <div className='mb-16 space-y-16'>
-                <Suspense
-                    fallback={
-                        <div className='flex h-24 w-full items-center justify-center p-8'>
-                            <FaSpinner className='h-8 w-8 animate-spin' />
-                        </div>
-                    }
-                >
-                    <Projects />
-                </Suspense>
+            <div className='mx-auto max-w-(--breakpoint-sm)'>
+                <p className='mb-16 px-12'>{projectDescription}</p>
+                <div className='mb-16 space-y-16'>
+                    <Suspense
+                        fallback={
+                            <div className='flex h-24 w-full items-center justify-center p-8'>
+                                <FaSpinner className='h-8 w-8 animate-spin' />
+                            </div>
+                        }
+                    >
+                        <Projects />
+                    </Suspense>
+                </div>
             </div>
         </>
     )

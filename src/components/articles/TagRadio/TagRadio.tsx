@@ -20,7 +20,7 @@ export interface TagRadioItemProps extends TagRadioOption {
 export const TagRadioItem: FC<TagRadioItemProps> = ({ label, value, selected, ...props }) => {
     return (
         <div className='flex items-center'>
-            <RadioGroupItem hidden id={value} value={value}></RadioGroupItem>
+            <RadioGroupItem hidden id={value} value={value} />
             <Label
                 className={cn(
                     !selected && 'hover:bg-slate-100',
@@ -64,7 +64,7 @@ export const TagRadio: FC<TagRadioProps> = ({ value: defaultValue, onChange, opt
             ))}
             {erasable && (
                 <Button className='size-fit p-1' onClick={() => handleChange('')} variant='ghost'>
-                    <XIcon className='size-3.5 text-red-500'></XIcon>
+                    <XIcon className='size-3.5 text-red-500' />
                 </Button>
             )}
         </RadioGroup>

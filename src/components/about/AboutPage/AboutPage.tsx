@@ -18,7 +18,7 @@ export const AboutPage: FC<AboutPageProps> = ({ ...props }) => {
                 ]}
             />
             <PageTitle>京大マーケティング研究所について</PageTitle>
-            <div className='mb-12 px-6'>
+            <div className='mx-auto mb-12 max-w-(--breakpoint-sm) px-6'>
                 <AboutAccordion />
             </div>
         </>

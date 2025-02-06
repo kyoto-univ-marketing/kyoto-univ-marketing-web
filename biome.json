@@ -12,7 +12,7 @@
         "lineWidth": 120,
         "attributePosition": "auto",
         "bracketSpacing": true,
-        "ignore": ["**/*.md", "**/pnpm-lock.yaml", "**/*.code-workspace"]
+        "ignore": ["**/*.md", "**/pnpm-lock.yaml", "**/*.code-workspace", "**/node_modules/*", "**/.next/*"]
     },
     "organizeImports": { "enabled": true },
     "linter": {
@@ -61,7 +61,8 @@
             "style": {
                 "noNamespace": "error",
                 "useAsConstAssertion": "error",
-                "useBlockStatements": "off"
+                "useBlockStatements": "off",
+                "useSelfClosingElements": "warn"
             },
             "suspicious": {
                 "noAssignInExpressions": "error",
@@ -95,6 +96,9 @@
                 "useGetterReturn": "error",
                 "useNamespaceKeyword": "error",
                 "useValidTypeof": "error"
+            },
+            "nursery": {
+                "useSortedClasses": "warn"
             }
         },
         "ignore": ["**/node_modules/*", "**/.next/*"]

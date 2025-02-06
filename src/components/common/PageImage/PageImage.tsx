@@ -13,7 +13,7 @@ export interface PageImageProps {
 export const PageImage: FC<PageImageProps> = ({ src, alt, containerClassName, ...props }) => {
     return (
         <div className={cn('relative aspect-video w-full drop-shadow-md', containerClassName)}>
-            <div className='absolute z-10 size-full'></div>
+            <div className='absolute z-10 size-full' />
             <Image alt={alt} className='object-cover' fill src={src} />
         </div>
     )

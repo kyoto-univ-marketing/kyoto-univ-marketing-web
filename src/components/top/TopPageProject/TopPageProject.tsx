@@ -9,9 +9,12 @@ export interface TopPageProjectProps {}
 
 export const TopPageProject: FC<TopPageProjectProps> = ({ ...props }) => {
     return (
-        <div>
+        <div className='flex size-full flex-col'>
             <PageTitle asChild>
-                <h2>プロジェクト</h2>
+                <div className='flex items-center gap-4'>
+                    <h2>プロジェクト</h2>
+                    <span className='text-primary text-sm'>Project</span>
+                </div>
             </PageTitle>
             <ol className='mb-12 list-inside list-[cjk-ideographic] space-y-2 px-16'>
                 {projectTagList.map((tag) => (
@@ -22,7 +25,7 @@ export const TopPageProject: FC<TopPageProjectProps> = ({ ...props }) => {
                     </li>
                 ))}
             </ol>
-            <Button asChild className='mx-auto flex w-fit items-center justify-center px-12 py-6'>
+            <Button asChild className='mx-auto mt-auto flex w-fit items-center justify-center px-12 py-6'>
                 <NextLink href='/projects'>プロジェクトの詳細</NextLink>
             </Button>
         </div>

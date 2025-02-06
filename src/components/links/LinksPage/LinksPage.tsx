@@ -20,21 +20,23 @@ export const LinksPage: FC<LinksPageProps> = ({ ...props }) => {
                 ]}
             />
             <PageTitle>{pageLinkObject.LINKS.text}</PageTitle>
-            <div className='mb-12 px-6'>
-                <h2 className='mb-6 text-heading'>公式アカウント</h2>
-                <OfficialAccountLinks className='px-4' />
-            </div>
-            <div className='mb-12 px-6'>
-                <h2 className='mb-6 text-heading'>プロジェクト関連</h2>
-                <Suspense
-                    fallback={
-                        <div className='flex h-24 w-full items-center justify-center p-8'>
-                            <FaSpinner className='h-8 w-8 animate-spin' />
-                        </div>
-                    }
-                >
-                    <ProjectLinkList className='px-4' />
-                </Suspense>
+            <div className='mx-auto max-w-(--breakpoint-sm)'>
+                <div className='mb-12 px-6'>
+                    <h2 className='mb-6 text-heading'>公式アカウント</h2>
+                    <OfficialAccountLinks className='px-4' />
+                </div>
+                <div className='mb-12 px-6'>
+                    <h2 className='mb-6 text-heading'>プロジェクト関連</h2>
+                    <Suspense
+                        fallback={
+                            <div className='flex h-24 w-full items-center justify-center p-8'>
+                                <FaSpinner className='h-8 w-8 animate-spin' />
+                            </div>
+                        }
+                    >
+                        <ProjectLinkList className='px-4' />
+                    </Suspense>
+                </div>
             </div>
         </>
     )
