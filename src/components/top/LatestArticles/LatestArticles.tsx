@@ -15,7 +15,10 @@ export const LatestArticles: FC<LatestArticlesProps> = async ({ ...props }) => {
     return (
         <div className='size-full flex flex-col'>
             <PageTitle asChild>
-                <h2>新着記事</h2>
+                <div className='flex items-center gap-4'>
+                    <h2>新着記事</h2>
+                    <span className='text-sm text-primary'>Topics</span>
+                </div>
             </PageTitle>
             <Suspense fallback={<LatestArticlesSkeleton />}>
                 <LatestArticleItemList />
