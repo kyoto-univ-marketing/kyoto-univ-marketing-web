@@ -24,7 +24,7 @@ export const ContactSuccessPage: FC<ContactSuccessPageProps> = async ({ ...props
                 ]}
             />
             <PageTitle>送信が完了しました</PageTitle>
-            <div className='mb-12 px-8'>
+            <div className='mx-auto mb-12 max-w-(--breakpoint-sm) px-8'>
                 <div>
                     <p className='whitespace-pre-wrap leading-10'>{message}</p>
                 </div>
