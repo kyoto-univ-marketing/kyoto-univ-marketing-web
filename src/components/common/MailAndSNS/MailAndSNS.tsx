@@ -24,7 +24,7 @@ export const MailAndSNS: FC<MailAndSNSProps> = ({
         <div
             {...props}
             className={cn(
-                'flex w-full sm:flex-row flex-col gap-4 sm:gap-x-8 items-center sm:flex-wrap justify-center',
+                'flex w-full md:flex-row flex-col gap-4 md:gap-x-8 items-center md:flex-wrap justify-center',
                 className,
             )}
         >
@@ -34,7 +34,7 @@ export const MailAndSNS: FC<MailAndSNSProps> = ({
                     {profile.mailAddress}
                 </NextLink>
             </div>
-            <div className='grid w-full grid-flow-col justify-evenly sm:justify-center sm:w-fit sm:gap-6'>
+            <div className='grid w-full grid-flow-col justify-evenly md:justify-center md:w-fit md:gap-6'>
                 <NextLink href={profile.xUrl}>
                     <FaXTwitter size={snsIconSize} />
                 </NextLink>

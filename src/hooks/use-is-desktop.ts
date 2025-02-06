@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 
 export const useIsDesktop = (): boolean | undefined => {
-    const mediaQuery = '(min-width: 640px)'
+    const mediaQuery = '(min-width: 768px)'
     const [isDesktop, setIsDesktop] = useState<boolean | undefined>(undefined)
 
     useEffect(() => {

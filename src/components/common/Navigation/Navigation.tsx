@@ -19,10 +19,10 @@ export const Navigation: FC<NavigationProps> = ({ showHamburger = true, ...props
                     <div className='font-title text-accent font-bold'>京大マーケティング研究所</div>
                 </Link>
                 {/* モバイル用 */}
-                <div className='sm:hidden'>{showHamburger && <HamburgerMenu />}</div>
+                <div className='md:hidden'>{showHamburger && <HamburgerMenu />}</div>
 
                 {/* PC用 */}
-                <ul className='items-center gap-6 hidden sm:flex'>
+                <ul className='items-center gap-6 hidden md:flex'>
                     {pageLinks
                         .filter((link) => link.href !== '/')
                         .map((link) => (

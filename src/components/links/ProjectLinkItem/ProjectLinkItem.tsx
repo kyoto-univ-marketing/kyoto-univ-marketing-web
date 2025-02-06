@@ -24,7 +24,7 @@ export const ProjectLinkItem: FC<ProjectLinkItemProps> = ({ projectName, links, 
                         key={link.href}
                     >
                         <NextLink
-                            className='min-w-0 break-words underline underline-offset-2 sm:no-underline sm:hover:underline'
+                            className='min-w-0 break-words underline underline-offset-2 md:no-underline md:hover:underline'
                             href={link.href}
                         >
                             {link.label || link.href}
