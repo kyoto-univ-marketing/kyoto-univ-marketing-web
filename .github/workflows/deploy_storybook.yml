@@ -12,16 +12,14 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - name: setup node
-              uses: actions/setup-node@v2
+            - name: setup bun
+              uses: oven-sh/setup-bun@v2
               with:
-                  node-version: '22'
-            - name: install pnpm
-              run: corepack enable
+                  bun-version: 'latest'
             - name: install packages
-              run: pnpm install --frozen-lockfile
+              run: bun install --frozen-lockfile
             - name: build storybook
-              run: pnpm build-storybook
+              run: bun run build-storybook
             - name: deploy storybook
               uses: JamesIves/github-pages-deploy-action@4.1.0
               with:
