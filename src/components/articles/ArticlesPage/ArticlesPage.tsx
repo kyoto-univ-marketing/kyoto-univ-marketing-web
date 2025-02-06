@@ -24,7 +24,7 @@ export const ArticlesPage: FC<ArticlesPageProps> = async ({ searchParams, activi
                 ]}
             />
             <PageTitle>{pageLinkObject.ARCHIVE.text}</PageTitle>
-            <div className='px-4 pb-12'>
+            <div className='mx-auto max-w-(--breakpoint-sm) px-4 pb-12'>
                 <div className='mb-12 space-y-4 px-4'>
                     {activityDescription.split('\n').map((line, i) => (
                         <p key={i}>{line}</p>

@@ -1,6 +1,6 @@
 import { Slot } from '@radix-ui/react-slot'
 import { ChevronRight, MoreHorizontal } from 'lucide-react'
-import { ComponentProps, ComponentPropsWithoutRef, forwardRef, ReactNode } from 'react'
+import { ComponentProps, ComponentPropsWithoutRef, ReactNode, forwardRef } from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -15,7 +15,7 @@ Breadcrumb.displayName = 'Breadcrumb'
 const BreadcrumbList = forwardRef<HTMLOListElement, ComponentPropsWithoutRef<'ol'>>(({ className, ...props }, ref) => (
     <ol
         className={cn(
-            'flex flex-wrap items-center gap-1.5 break-words text-sm text-muted-foreground sm:gap-2.5',
+            'flex flex-wrap items-center gap-1.5 break-words text-muted-foreground text-sm sm:gap-2.5',
             className,
         )}
         ref={ref}

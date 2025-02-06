@@ -2,13 +2,14 @@
     "recommendations": [
         "bradlc.vscode-tailwindcss",
         "gruntfuggly.todo-tree",
-        "esbenp.prettier-vscode",
         "csstools.postcss",
-        "dbaeumer.vscode-eslint",
         "editorconfig.editorconfig",
         "mikestead.dotenv",
         "ms-azuretools.vscode-docker",
         "formulahendry.auto-rename-tag",
-        "bradgashler.htmltagwrap"
+        "bradgashler.htmltagwrap",
+        "biomejs.biome",
+        "foxundermoon.shell-format",
+        "hashicorp.terraform"
     ]
 }

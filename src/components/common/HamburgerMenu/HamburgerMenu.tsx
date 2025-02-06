@@ -16,7 +16,7 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
     const [open, setOpen] = useState(false)
     return (
         <Sheet onOpenChange={setOpen} open={open}>
-            <SheetTrigger>
+            <SheetTrigger className='cursor-pointer'>
                 <Menu />
             </SheetTrigger>
             <SheetContent className='flex flex-col gap-0 border-primary bg-primary text-primary-foreground'>

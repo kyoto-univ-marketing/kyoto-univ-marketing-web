@@ -8,7 +8,6 @@ import { Activity } from '@/lib/microcms'
 
 import { NextLink } from '../../common/NextLink/NextLink'
 
-
 /* 記事一覧で必要なfield */
 export const activityListFields = [
     'title',
@@ -32,7 +31,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({
 }) => {
     const tag = _tag[0]
     return (
-        <NextLink className='block rounded-md border bg-backgroundSecondary p-2' href={`/articles/${id}`}>
+        <NextLink className='block rounded-md border bg-background-secondary p-2' href={`/articles/${id}`}>
             <div className='p-4'>
                 <div className='mb-1 flex items-end gap-4'>
                     <p className='text-gray-700'>{dayjs(publishedAt).format('YYYY/MM/DD')}</p>
@@ -46,7 +45,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({
                 <div className='flex-1 p-4'>
                     <p className='line-clamp-3 text-gray-600'>{description}</p>
                 </div>
-                <div className='relative aspect-[4/3] w-1/3'>
+                <div className='relative aspect-4/3 w-1/3'>
                     <Image alt={title} className='object-cover' fill src={thumbnail.url} />
                 </div>
             </div>

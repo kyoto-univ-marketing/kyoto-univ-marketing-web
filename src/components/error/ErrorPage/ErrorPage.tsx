@@ -1,4 +1,4 @@
-import { Home, CornerUpLeft, RotateCcw } from 'lucide-react'
+import { CornerUpLeft, Home, RotateCcw } from 'lucide-react'
 import { FC } from 'react'
 
 import { BackButton } from '@/components/common/BackButton/BackButton'

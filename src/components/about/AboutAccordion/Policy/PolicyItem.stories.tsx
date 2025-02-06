@@ -12,7 +12,7 @@ const meta = {
     args: {},
     render: (args) => (
         <div className='flex h-dvh w-dvw items-center justify-center'>
-            <div className='w-full max-w-screen-sm overflow-hidden p-4'>
+            <div className='w-full max-w-(--breakpoint-sm) overflow-hidden p-4'>
                 <PolicyItem {...args} />
             </div>
         </div>

@@ -34,7 +34,7 @@ export const CircleOutline: FC<CircleOutlineProps> = async ({ ...props }) => {
                             <StatCounter key={stat.id} label={stat.title} value={stat.number} />
                         ))}
                 </div>
-                <p className='text-right text-xs text-gray-700'>{latestDate.format('※YYYY年MM月現在')}</p>
+                <p className='text-right text-gray-700 text-xs'>{latestDate.format('※YYYY年MM月現在')}</p>
             </div>
             <PageImage alt='集合写真' src={shuugouShashin} />
         </div>

@@ -21,14 +21,20 @@ export const MailAndSNS: FC<MailAndSNSProps> = ({
     ...props
 }) => {
     return (
-        <div {...props} className={cn('flex w-full flex-col items-center', className)}>
+        <div
+            {...props}
+            className={cn(
+                'flex w-full flex-col items-center justify-center gap-4 md:flex-row md:flex-wrap md:gap-x-8',
+                className,
+            )}
+        >
             <div className='flex items-center gap-2'>
                 <MailIcon size={mailIconSize} />
                 <NextLink className={cn('text-accent-sm', mailTextClassName)} href={`mailto:${profile.mailAddress}`}>
                     {profile.mailAddress}
                 </NextLink>
             </div>
-            <div className='mt-4 grid w-full grid-flow-col justify-evenly'>
+            <div className='grid w-full grid-flow-col justify-evenly md:w-fit md:justify-center md:gap-6'>
                 <NextLink href={profile.xUrl}>
                     <FaXTwitter size={snsIconSize} />
                 </NextLink>

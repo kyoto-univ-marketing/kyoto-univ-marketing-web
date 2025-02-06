@@ -45,10 +45,9 @@ resource "google_cloudbuild_trigger" "default" {
         "run",
         "services",
         "update",
-        "$_SERVICE_NAME",
+        google_cloud_run_v2_service.default.name,
         "--platform=managed",
         "--image=${local.image}:latest",
-        "--labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID",
         "--region=${var.region}",
         "--quiet",
       ]

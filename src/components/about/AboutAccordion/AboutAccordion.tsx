@@ -1,10 +1,10 @@
 import { FC, ReactNode, Suspense } from 'react'
 import { FaSpinner } from 'react-icons/fa6'
 
+import { Accordion } from '../../common/Accordion/Accordion'
 import { CircleOutline } from './CircleOutline/CircleOutline'
 import { Origin } from './Origin/Origin'
 import { Policy } from './Policy/Policy'
-import { Accordion } from '../../common/Accordion/Accordion'
 
 export interface AboutAccordionProps {}
 
