@@ -9,11 +9,11 @@ export interface TopPageProjectProps {}
 
 export const TopPageProject: FC<TopPageProjectProps> = ({ ...props }) => {
     return (
-        <div className='size-full flex flex-col'>
+        <div className='flex size-full flex-col'>
             <PageTitle asChild>
                 <div className='flex items-center gap-4'>
                     <h2>プロジェクト</h2>
-                    <span className='text-sm text-primary'>Project</span>
+                    <span className='text-primary text-sm'>Project</span>
                 </div>
             </PageTitle>
             <ol className='mb-12 list-inside list-[cjk-ideographic] space-y-2 px-16'>

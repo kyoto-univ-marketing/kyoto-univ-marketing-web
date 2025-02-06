@@ -6,7 +6,7 @@
         "dev": "next dev --turbo",
         "build": "next build",
         "start": "next start",
-        "lint": "biome check --write",
+        "lint": "biome check --write --unsafe",
         "storybook": "storybook dev -p 6006 --no-open",
         "build-storybook": "storybook build",
         "gen": "bunx hygen generator component",

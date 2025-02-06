@@ -31,7 +31,7 @@ export const StatCounter: FC<StatCounterProps> = ({ value, label, duration = 100
                 className,
             )}
         >
-            <span className='text-3xl font-bold md:text-4xl'>{count}</span>
+            <span className='font-bold text-3xl md:text-4xl'>{count}</span>
             <span className='text-xs md:text-sm'>{label}</span>
         </div>
     )

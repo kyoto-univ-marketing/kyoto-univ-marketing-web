@@ -47,7 +47,7 @@ export const ActivityArticleListPresenter: FC<ActivityArticleListPresenterProps>
         <div>
             <div className='mb-4 flex items-center gap-4 border-b p-4'>
                 <div className='flex items-center gap-1 text-sm'>
-                    <FilterIcon className='size-3.5'></FilterIcon>
+                    <FilterIcon className='size-3.5' />
                     <span>絞り込む</span>
                 </div>
                 <div className='flex-1'>
