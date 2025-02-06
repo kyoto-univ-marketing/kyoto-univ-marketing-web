@@ -22,7 +22,7 @@ export const Navigation: FC<NavigationProps> = ({ showHamburger = true, ...props
                 <div className='md:hidden'>{showHamburger && <HamburgerMenu />}</div>
 
                 {/* PC用 */}
-                <ul className='items-center gap-6 hidden md:flex'>
+                <ul className='items-center lg:gap-6 hidden md:flex gap-4 text-sm lg:text-base'>
                     {pageLinks
                         .filter((link) => link.href !== '/')
                         .map((link) => (
