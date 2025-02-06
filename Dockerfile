@@ -1,5 +1,4 @@
-FROM --platform=linux/amd64 oven/bun:alpine as base
-
+FROM --platform=linux/amd64 oven/bun:slim as base
 
 WORKDIR /app
 
@@ -10,7 +9,6 @@ ENV NEXT_PRIVATE_STANDALONE=true
 
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
-RUN bun add lightningcss lightningcss-linux-x64-gnu
 
 ARG MICROCMS_SERVICE_DOMAIN
 ARG MICROCMS_API_KEY
