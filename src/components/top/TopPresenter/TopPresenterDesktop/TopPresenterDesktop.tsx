@@ -40,8 +40,8 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
                         <span className='inline-block'>研究所</span>
                     </h1>
                 </div>
-                <div className='relative h-full flex-1'>
-                    <div className='-translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 aspect-square w-full max-w-[33vh]'>
+                <div className='flex h-full flex-1 items-center justify-center'>
+                    <div className='aspect-square w-full max-w-[33vh]'>
                         <Logo className='size-full' />
                     </div>
                 </div>
