@@ -15,7 +15,7 @@
         "lint-staged": "lint-staged --config .lintstagedrc.js",
         "typecheck": "tsc --noEmit",
         "cp:env": "cp .env.sample .env",
-        "codegen": "openapi-typescript https://web-backend-nnxvtvdboa-an.a.run.app/api/schema/ -o ./src/api/schema.d.ts"
+        "codegen": "openapi-typescript https://web-backend-1037865983023.asia-northeast1.run.app/api/schema/ -o ./src/api/schema.d.ts"
     },
     "dependencies": {
         "@hookform/resolvers": "^4.1.3",
@@ -70,5 +70,10 @@
         "tailwindcss": "^4.0.15",
         "typescript": "^5.8.2"
     },
-    "trustedDependencies": ["@biomejs/biome", "core-js-pure", "esbuild", "sharp"]
+    "trustedDependencies": [
+        "@biomejs/biome",
+        "core-js-pure",
+        "esbuild",
+        "sharp"
+    ]
 }
