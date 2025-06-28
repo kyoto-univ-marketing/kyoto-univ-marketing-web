@@ -28,6 +28,7 @@
         "@radix-ui/react-radio-group": "^1.2.3",
         "@radix-ui/react-slot": "^1.1.2",
         "@radix-ui/react-toast": "^1.2.6",
+        "@tanstack/react-query": "^5.81.5",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
         "critters": "^0.0.25",
@@ -70,10 +71,5 @@
         "tailwindcss": "^4.0.15",
         "typescript": "^5.8.2"
     },
-    "trustedDependencies": [
-        "@biomejs/biome",
-        "core-js-pure",
-        "esbuild",
-        "sharp"
-    ]
+    "trustedDependencies": ["@biomejs/biome", "core-js-pure", "esbuild", "sharp"]
 }
