@@ -20,7 +20,7 @@ export const OriginPresenter: FC<OriginPresenterProps> = ({ text, ...props }) =>
                 ))}
             </div>
             <div className='grid grid-cols-2 gap-4'>
-                <ImageWithCaption {...SakodaImg} alt='代表 迫田周大' className='aspect-square object-cover' />
+                <ImageWithCaption {...SakodaImg} alt='創設者 迫田周大' className='aspect-square object-cover' />
                 <ImageWithCaption
                     {...MakenekoImg}
                     alt='マスコットキャラクター マケ猫'
