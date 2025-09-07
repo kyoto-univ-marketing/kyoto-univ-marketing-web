@@ -16,6 +16,4 @@ export const contactFormSchema = z.object({
     /** ご所属 */
     affiliation: z
         .string()
-        .optional()
-        .transform((value) => value || null),
 })

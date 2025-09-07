@@ -1,12 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import type { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-
 import { Button } from '../../ui/button'
 import { Form } from '../../ui/form'
 import { FormInput } from './FormInput'
-
-import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     component: FormInput,
@@ -40,7 +38,7 @@ export const Email: Story = {
         const schema = z.object({
             email: z
                 .string({
-                    required_error: 'メールアドレスは必須です',
+                    error: 'メールアドレスは必須です',
                 })
                 .email({
                     message: 'メールアドレスの形式が正しくありません',

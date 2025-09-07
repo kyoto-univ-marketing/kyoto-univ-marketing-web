@@ -1,11 +1,9 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
+import type { Metadata, Viewport } from 'next'
 import { BIZ_UDPMincho, Hina_Mincho } from 'next/font/google'
 import { ReactNode, Suspense } from 'react'
-
 import { Footer } from '@/components/common/Footer/Footer'
 import { Toaster } from '@/components/ui/toaster'
-
-import type { Metadata, Viewport } from 'next'
 
 import './globals.css'
 import { Header } from '@/components/common/Header/Header'

@@ -34,7 +34,7 @@ const keyToLabel: Record<keyof ContactFormSchema, string> = {
 } as const
 
 export const ContactForm: FC = ({ ...props }) => {
-    const form = useForm<ContactFormSchema>({
+    const form = useForm({
         resolver: zodResolver(contactFormSchema),
         defaultValues: {
             name: '',

@@ -1,10 +1,9 @@
 'use client'
 
-import { FC } from 'react'
 
 import { useSuspenseQuery } from '@tanstack/react-query'
-import { LatestArticleItem } from '../LatestArticleItem/LatestArticleItem'
-import { LatestArticle } from '../LatestArticleItem/LatestArticleItem'
+import { FC } from 'react'
+import { LatestArticle, LatestArticleItem } from '../LatestArticleItem/LatestArticleItem'
 
 export interface LatestArticleItemListProps {}
 
