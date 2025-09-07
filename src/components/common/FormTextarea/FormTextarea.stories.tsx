@@ -1,12 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
+import type { Meta, StoryObj } from '@storybook/react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
-
 import { Button } from '../../ui/button'
 import { Form } from '../../ui/form'
 import { FormTextarea } from './FormTextarea'
-
-import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     component: FormTextarea,
@@ -20,7 +18,7 @@ export const Default: Story = {
     render: ({ label, description, placeholder }) => {
         const schema = z.object({
             message: z.string({
-                required_error: 'お問い合わせ内容は必須です',
+                error: 'お問い合わせ内容は必須です',
             }),
         })
         const form = useForm<z.infer<typeof schema>>({
