@@ -33,13 +33,21 @@ export const ArticleCard: FC<ArticleCardProps> = ({
     return (
         <NextLink className='block rounded-md border bg-background-secondary p-2' href={`/articles/${id}`}>
             <div className='p-4'>
-                <div className='mb-1 flex items-end gap-4'>
-                    <p className='text-gray-700'>{dayjs(publishedAt).format('YYYY/MM/DD')}</p>
+                <div className='mb-4'>
                     <h2 className='text-lg'>{title}</h2>
                 </div>
-                <Link href={`/articles?tag=${tag}`}>
-                    <Badge>{tag}</Badge>
-                </Link>
+                    <div >
+                        <div className='flex items-center text-gray-700'>
+                            <p className='w-16'>投稿日：</p>
+                            <p >{dayjs(publishedAt).format('YYYY/MM/DD')}</p>
+                        </div>
+                        <div className='flex items-center text-gray-700'>
+                            <p className='w-16'>タグ：</p>
+                            <Link href={`/articles?tag=${tag}`}>
+                                <Badge>{tag}</Badge>
+                            </Link>
+                        </div>
+                    </div>
             </div>
             <div className='flex items-stretch'>
                 <div className='flex-1 p-4'>
