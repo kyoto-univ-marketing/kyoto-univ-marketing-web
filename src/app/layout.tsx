@@ -1,14 +1,13 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
+import type { Metadata, Viewport } from 'next'
 import { BIZ_UDPMincho, Hina_Mincho } from 'next/font/google'
 import { ReactNode, Suspense } from 'react'
-
 import { Footer } from '@/components/common/Footer/Footer'
 import { Toaster } from '@/components/ui/toaster'
 
-import type { Metadata, Viewport } from 'next'
-
 import './globals.css'
 import { Header } from '@/components/common/Header/Header'
+import TanstackProvider from '@/lib/tanstack-provider'
 
 export const revalidate = 3600
 
@@ -55,15 +54,17 @@ export default function RootLayout({
     return (
         <html lang='ja'>
             <body className={`${bizUdpMincho.variable} ${hinaMincho.variable}`}>
-                <div className='flex min-h-dvh flex-col'>
-                    <Header />
-                    <div className='flex-1'>
-                        <Suspense>{children}</Suspense>
+                <TanstackProvider>
+                    <div className='flex min-h-dvh flex-col'>
+                        <Header />
+                        <div className='flex-1'>
+                            <Suspense>{children}</Suspense>
+                        </div>
+                        <Footer />
                     </div>
-                    <Footer />
-                </div>
-                <Toaster />
-                {process.env.NODE_ENV === 'production' && <GoogleAnalytics gaId={NEXT_PUBLIC_MEASUREMENT_ID} />}
+                    <Toaster />
+                    {process.env.NODE_ENV === 'production' && <GoogleAnalytics gaId={NEXT_PUBLIC_MEASUREMENT_ID} />}
+                </TanstackProvider>
             </body>
         </html>
     )

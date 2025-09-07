@@ -1,14 +1,18 @@
+'use client'
+
+
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { FC } from 'react'
-
-import { getLatestActivityList } from '@/lib/microcms'
-
-import { LatestArticleItem } from '../LatestArticleItem/LatestArticleItem'
-import { LatestArticle } from '../LatestArticleItem/LatestArticleItem'
+import { LatestArticle, LatestArticleItem } from '../LatestArticleItem/LatestArticleItem'
 
 export interface LatestArticleItemListProps {}
 
-export const LatestArticleItemList: FC<LatestArticleItemListProps> = async ({ ...props }) => {
-    const articleList: LatestArticle[] = (await getLatestActivityList(4)).contents
+export const LatestArticleItemList: FC<LatestArticleItemListProps> = ({ ...props }) => {
+    const { data } = useSuspenseQuery({
+        queryKey: ['articleList'],
+        queryFn: async () => await fetch('/api/article/latest').then((res) => res.json()),
+    })
+    const articleList: LatestArticle[] = 'contents' in data ? data.contents : []
     return <LatestArticleItemListPresenter articleList={articleList} />
 }
 
