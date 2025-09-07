@@ -1,7 +1,13 @@
 {
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-    "vcs": { "enabled": false, "clientKind": "git", "useIgnoreFile": false },
-    "files": { "ignoreUnknown": false, "ignore": [] },
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    },
+    "files": {
+        "ignoreUnknown": false
+    },
     "formatter": {
         "enabled": true,
         "useEditorconfig": true,
@@ -12,21 +18,18 @@
         "lineWidth": 120,
         "attributePosition": "auto",
         "bracketSpacing": true,
-        "ignore": ["**/*.md", "**/pnpm-lock.yaml", "**/*.code-workspace", "**/node_modules/*", "**/.next/*"]
+        "includes": ["!**/*.md", "!**/pnpm-lock.yaml", "!**/*.code-workspace", "!**/node_modules/*", "!**/.next/*"]
     },
-    "organizeImports": { "enabled": true },
     "linter": {
         "enabled": true,
         "rules": {
             "recommended": false,
-            "a11y": { "noBlankTarget": "error" },
+            "a11y": {},
             "complexity": {
                 "noExtraBooleanCast": "error",
-                "noMultipleSpacesInRegularExpressionLiterals": "error",
                 "noUselessCatch": "error",
                 "noUselessThisAlias": "error",
-                "noUselessTypeConstraint": "error",
-                "noWith": "error"
+                "noUselessTypeConstraint": "error"
             },
             "correctness": {
                 "noChildrenProp": "error",
@@ -37,7 +40,6 @@
                 "noGlobalObjectCalls": "error",
                 "noInnerDeclarations": "error",
                 "noInvalidConstructorSuper": "error",
-                "noNewSymbol": "error",
                 "noNonoctalDecimalEscape": "error",
                 "noPrecisionLoss": "error",
                 "noSelfAssign": "error",
@@ -51,13 +53,14 @@
                 "noUnusedImports": "warn",
                 "noUnusedLabels": "error",
                 "noUnusedVariables": "off",
-                "useArrayLiterals": "off",
                 "useIsNan": "error",
                 "useJsxKeyInIterable": "error",
                 "useValidForDirection": "error",
                 "useYield": "error"
             },
-            "security": { "noDangerouslySetInnerHtmlWithChildren": "error" },
+            "security": {
+                "noDangerouslySetInnerHtmlWithChildren": "error"
+            },
             "style": {
                 "noNamespace": "error",
                 "useAsConstAssertion": "error",
@@ -94,14 +97,13 @@
                 "noUnsafeDeclarationMerging": "error",
                 "noUnsafeNegation": "error",
                 "useGetterReturn": "error",
-                "useNamespaceKeyword": "error",
-                "useValidTypeof": "error"
+                "useNamespaceKeyword": "error"
             },
             "nursery": {
                 "useSortedClasses": "warn"
             }
         },
-        "ignore": ["**/node_modules/*", "**/.next/*"]
+        "includes": ["!**/node_modules/*", "!**/.next/*"]
     },
     "javascript": {
         "formatter": {
@@ -118,7 +120,7 @@
     },
     "overrides": [
         {
-            "include": ["*.ts", "*.tsx", "*.mts", "*.cts"],
+            "includes": ["*.ts", "*.tsx", "*.mts", "*.cts"],
             "linter": {
                 "rules": {
                     "correctness": {
@@ -126,15 +128,12 @@
                         "noGlobalObjectCalls": "off",
                         "noInvalidBuiltinInstantiation": "off",
                         "noInvalidConstructorSuper": "off",
-                        "noNewSymbol": "off",
                         "noSetterReturn": "off",
                         "noUndeclaredVariables": "off",
                         "noUnreachable": "off",
                         "noUnreachableSuper": "off"
                     },
                     "style": {
-                        "noArguments": "error",
-                        "noVar": "error",
                         "useConst": "error"
                     },
                     "suspicious": {

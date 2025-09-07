@@ -5,7 +5,7 @@ import { Input } from '../../ui/input'
 
 export interface FormInputProps<
     TFieldValues extends FieldValues = FieldValues,
-    TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+    TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 > extends UseControllerProps<TFieldValues, TName> {
     label?: string
     placeholder?: string
@@ -14,7 +14,7 @@ export interface FormInputProps<
 
 export const FormInput = <
     TFieldValues extends FieldValues = FieldValues,
-    TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
+    TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
 >({
     label,
     placeholder,
