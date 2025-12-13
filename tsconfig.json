@@ -36,7 +36,8 @@
     // 参考： https://qiita.com/takagimeow/items/4b493c008fe18d3b5d91
     ".eslintrc.js",
     "_templates/**/*.js",
-    "prettier.config.js"
+    "prettier.config.js",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

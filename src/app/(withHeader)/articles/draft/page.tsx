@@ -4,9 +4,6 @@ import { notFound } from 'next/navigation'
 import { ArticleDetailsPage } from '@/components/article-details/ArticleDetailsPage/ArticleDetailsPage'
 import { getActivityById, getActivityIds } from '@/lib/microcms'
 
-export const dynamic = 'force-dynamic'
-export const revalidate = 1
-
 interface SearchParams {
     slug: string
     draftKey: string

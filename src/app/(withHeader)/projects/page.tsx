@@ -1,10 +1,10 @@
 import { Metadata } from 'next'
-import { cache } from 'react'
 
 import { client } from '@/api/client'
 import { ProjectPage } from '@/components/projects/ProjectPage/ProjectPage'
 
-const getDescription = cache(async () => {
+const getDescription = (async () => {
+    'use cache'
     const { data } = await client.GET('/api/text/{id}/', { params: { path: { id: 'project_description' } } })
     const projectDescription = data?.text ?? ''
     if (!projectDescription) {
