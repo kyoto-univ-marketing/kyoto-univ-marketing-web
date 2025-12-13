@@ -1,6 +1,5 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { cache } from 'react'
 import { Article, WithContext } from 'schema-dts'
 
 import { ArticleDetailsPage } from '@/components/article-details/ArticleDetailsPage/ArticleDetailsPage'
@@ -12,7 +11,9 @@ interface Params {
     slug: string
 }
 
-const getActivity = cache(async (slug: string) => getActivityById(slug))
+const getActivity = (async (slug: string) => {
+    "use cache"
+    return getActivityById(slug)})
 
 export const generateStaticParams = async () => {
     const allContentIds = await getActivityIds()

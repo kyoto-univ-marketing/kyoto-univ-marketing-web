@@ -9,7 +9,7 @@ const mock = (i: number) =>
     ({
         id: i,
         name: `テストプロジェクト${i}`,
-        tag: projectTagList[Math.floor(Math.random() * projectTagList.length)],
+        tag: projectTagList[i % projectTagList.length],
         thumbnail: logo.src,
         description: [
             '説明文です説明文です説明文です説明文です',

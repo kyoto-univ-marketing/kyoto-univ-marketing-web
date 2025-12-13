@@ -9,8 +9,6 @@ import './globals.css'
 import { Header } from '@/components/common/Header/Header'
 import TanstackProvider from '@/lib/tanstack-provider'
 
-export const revalidate = 3600
-
 /** 本文のフォント */
 const bizUdpMincho = BIZ_UDPMincho({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-biz-udp-mincho' })
 /** タイトルのフォント */
