@@ -1,15 +1,17 @@
 import {
     ClientEndPoints,
+    createClient,
     MicroCMSContentId,
     MicroCMSDate,
     MicroCMSGetListDetailResponse,
     MicroCMSGetListResponse,
     MicroCMSImage,
-    createClient,
 } from 'microcms-ts-sdk'
 
 import { activityTagList } from '@/constants/activity'
 import { mockActivities } from '@/mocks/activities'
+import { mockPolicies } from '@/mocks/policies'
+import { mockSiteSettings } from '@/mocks/site-settings'
 
 import pick from './pick'
 
@@ -32,9 +34,28 @@ export type Activity = Required<MicroCMSDate> &
         tag: [(typeof activityTagList)[number]]
     }
 
+export type Policy = Required<MicroCMSDate> &
+    MicroCMSContentId & {
+        text: string
+        stamp_image: MicroCMSImage
+        stamp_top: string
+        stamp_left: string
+    }
+
+export type SiteSettings = Required<MicroCMSDate> &
+    MicroCMSContentId & {
+        x_url: string
+        instagram_url: string
+        mail_address: string
+    }
+
 interface Endpoints extends ClientEndPoints {
     list: {
         activities: Activity
+        policies: Policy
+    }
+    object: {
+        site_settings: SiteSettings
     }
 }
 
@@ -158,4 +179,34 @@ export const getActivityIds = async (): Promise<string[]> => {
 /** 最新記事のリストを取得する */
 export const getLatestActivityList = async (limit: number) => {
     return getActivityList({ limit, fields: ['title', 'publishedAt', 'id'] })
+}
+
+/** 活動方針のリストを取得する */
+export const getPolicies = async (): Promise<Policy[]> => {
+    if (process.env.NODE_ENV === 'development') {
+        return mockPolicies
+    }
+
+    const res = await client
+        .getList({ endpoint: 'policies', queries: { limit: 100 } })
+        .catch((e) => {
+            console.error('Error on getPolicies')
+            throw e
+        })
+    return res.contents
+}
+
+/** サイト設定を取得する */
+export const getSiteSettings = async (): Promise<SiteSettings> => {
+    if (process.env.NODE_ENV === 'development') {
+        return mockSiteSettings
+    }
+
+    const res = await client
+        .getObject({ endpoint: 'site_settings' })
+        .catch((e) => {
+            console.error('Error on getSiteSettings')
+            throw e
+        })
+    return res
 }

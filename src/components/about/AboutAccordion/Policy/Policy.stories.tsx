@@ -1,6 +1,5 @@
-import { Policy } from './Policy'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { Policy } from './Policy'
 
 const meta = {
     component: Policy,

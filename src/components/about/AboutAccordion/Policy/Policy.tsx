@@ -1,15 +1,22 @@
-import { FC } from 'react'
+import { getPolicies } from '@/lib/microcms'
 
 import { PolicyItem } from './PolicyItem'
-import policyList from './policyList'
 
 export interface PolicyProps {}
 
-export const Policy: FC<PolicyProps> = ({ ...props }) => {
+export const Policy = async ({ ...props }: PolicyProps) => {
+    const policies = await getPolicies()
     return (
         <div className='space-y-16 p-4'>
-            {policyList.map((policy, i) => (
-                <PolicyItem key={i} reverse={i % 2 === 1} {...policy} />
+            {policies.map((policy, i) => (
+                <PolicyItem
+                    key={policy.id}
+                    reverse={i % 2 === 1}
+                    stamp_image={policy.stamp_image}
+                    stamp_left={policy.stamp_left}
+                    stamp_top={policy.stamp_top}
+                    text={policy.text}
+                />
             ))}
         </div>
     )

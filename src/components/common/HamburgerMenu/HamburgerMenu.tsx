@@ -10,9 +10,13 @@ import { Logo } from '../Logo/Logo'
 import { MailAndSNS } from '../MailAndSNS/MailAndSNS'
 import { NextLink } from '../NextLink/NextLink'
 
-export interface HamburgerMenuProps {}
+export interface HamburgerMenuProps {
+    xUrl: string
+    instagramUrl: string
+    mailAddress: string
+}
 
-export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
+export const HamburgerMenu: FC<HamburgerMenuProps> = ({ xUrl, instagramUrl, mailAddress, ...props }) => {
     const [open, setOpen] = useState(false)
     return (
         <Sheet onOpenChange={setOpen} open={open}>
@@ -42,9 +46,12 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ ...props }) => {
                 </ul>
                 <MailAndSNS
                     className='mt-auto justify-self-end'
+                    instagramUrl={instagramUrl}
+                    mailAddress={mailAddress}
                     mailIconSize={16}
                     mailTextClassName='text-xs'
                     snsIconSize={24}
+                    xUrl={xUrl}
                 />
             </SheetContent>
         </Sheet>

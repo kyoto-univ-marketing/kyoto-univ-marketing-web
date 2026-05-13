@@ -2,18 +2,23 @@ import { MailIcon } from 'lucide-react'
 import { ComponentProps, FC } from 'react'
 import { FaInstagram, FaXTwitter } from 'react-icons/fa6'
 
-import profile from '@/constants/profile'
 import { cn } from '@/lib/utils'
 
 import { NextLink } from '../NextLink/NextLink'
 
 export interface MailAndSNSProps extends ComponentProps<'div'> {
+    xUrl: string
+    instagramUrl: string
+    mailAddress: string
     snsIconSize?: number
     mailIconSize?: number
     mailTextClassName?: string
 }
 
 export const MailAndSNS: FC<MailAndSNSProps> = ({
+    xUrl,
+    instagramUrl,
+    mailAddress,
     snsIconSize = 32,
     mailIconSize = 24,
     mailTextClassName,
@@ -30,15 +35,15 @@ export const MailAndSNS: FC<MailAndSNSProps> = ({
         >
             <div className='flex items-center gap-2'>
                 <MailIcon size={mailIconSize} />
-                <NextLink className={cn('text-accent-sm', mailTextClassName)} href={`mailto:${profile.mailAddress}`}>
-                    {profile.mailAddress}
+                <NextLink className={cn('text-accent-sm', mailTextClassName)} href={`mailto:${mailAddress}`}>
+                    {mailAddress}
                 </NextLink>
             </div>
             <div className='grid w-full grid-flow-col justify-evenly md:w-fit md:justify-center md:gap-6'>
-                <NextLink href={profile.xUrl}>
+                <NextLink href={xUrl}>
                     <FaXTwitter size={snsIconSize} />
                 </NextLink>
-                <NextLink href={profile.instagramUrl}>
+                <NextLink href={instagramUrl}>
                     <FaInstagram size={snsIconSize} />
                 </NextLink>
             </div>

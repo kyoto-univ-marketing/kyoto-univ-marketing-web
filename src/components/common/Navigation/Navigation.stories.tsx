@@ -1,6 +1,5 @@
-import { Navigation } from './Navigation'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { Navigation } from './Navigation'
 
 const meta = {
     component: Navigation,

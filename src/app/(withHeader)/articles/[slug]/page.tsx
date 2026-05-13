@@ -4,16 +4,17 @@ import { Article, WithContext } from 'schema-dts'
 
 import { ArticleDetailsPage } from '@/components/article-details/ArticleDetailsPage/ArticleDetailsPage'
 import { JsonLD } from '@/components/common/JsonLD/JsonLD'
-import { organizationJson } from '@/components/common/JsonLD/OrganizationJsonLD'
-import { getActivityById, getActivityIds } from '@/lib/microcms'
+import { buildOrganizationJson } from '@/components/common/JsonLD/OrganizationJsonLD'
+import { getActivityById, getActivityIds, getSiteSettings } from '@/lib/microcms'
 
 interface Params {
     slug: string
 }
 
 const getActivity = (async (slug: string) => {
-    "use cache"
-    return getActivityById(slug)})
+    'use cache'
+    return getActivityById(slug)
+})
 
 export const generateStaticParams = async () => {
     const allContentIds = await getActivityIds()
@@ -36,7 +37,11 @@ export const generateMetadata = async ({ params }: { params: Promise<Params> }):
 
 export default async function Page({ params }: { params: Promise<Params> }) {
     const { slug } = await params
-    const content = await getActivity(slug).catch(notFound)
+    const [content, siteSettings] = await Promise.all([
+        getActivity(slug).catch(notFound),
+        getSiteSettings(),
+    ])
+    const organizationJson = buildOrganizationJson(siteSettings)
     const json = {
         '@context': 'https://schema.org',
         '@type': 'Article',

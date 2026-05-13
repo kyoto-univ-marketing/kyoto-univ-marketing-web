@@ -1,7 +1,6 @@
-import { PolicyItem } from './PolicyItem'
-import policyList from './policyList'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { mockPolicies } from '@/mocks/policies'
+import { PolicyItem } from './PolicyItem'
 
 const meta = {
     component: PolicyItem,
@@ -24,24 +23,24 @@ type Story = StoryObj<typeof meta>
 
 export const Policy1: Story = {
     args: {
-        ...policyList[0],
+        ...mockPolicies[0],
     },
 }
 
 export const Policy2: Story = {
     args: {
-        ...policyList[1],
+        ...mockPolicies[1],
     },
 }
 
 export const Policy3: Story = {
     args: {
-        ...policyList[2],
+        ...mockPolicies[2],
     },
 }
 
 export const Policy4: Story = {
     args: {
-        ...policyList[3],
+        ...mockPolicies[3],
     },
 }

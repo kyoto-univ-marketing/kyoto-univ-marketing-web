@@ -1,16 +1,16 @@
-import { FC, Suspense } from 'react'
+import { Suspense } from 'react'
 import { FaSpinner } from 'react-icons/fa6'
 
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
+import { getSiteSettings } from '@/lib/microcms'
 
 import { OfficialAccountLinks } from '../OfficialAccountLinks/OfficialAccountLinks'
 import { ProjectLinkList } from '../ProjectLinkList/ProjectLinkList'
 
-export interface LinksPageProps {}
-
-export const LinksPage: FC<LinksPageProps> = ({ ...props }) => {
+export const LinksPage = async () => {
+    const siteSettings = await getSiteSettings()
     return (
         <>
             <BreadCrumb
@@ -23,7 +23,11 @@ export const LinksPage: FC<LinksPageProps> = ({ ...props }) => {
             <div className='mx-auto max-w-(--breakpoint-sm)'>
                 <div className='mb-12 px-6'>
                     <h2 className='mb-6 text-heading'>公式アカウント</h2>
-                    <OfficialAccountLinks className='px-4' />
+                    <OfficialAccountLinks
+                        className='px-4'
+                        instagramUrl={siteSettings.instagram_url}
+                        xUrl={siteSettings.x_url}
+                    />
                 </div>
                 <div className='mb-12 px-6'>
                     <h2 className='mb-6 text-heading'>プロジェクト関連</h2>

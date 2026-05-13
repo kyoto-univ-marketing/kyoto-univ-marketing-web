@@ -1,10 +1,14 @@
-import { HamburgerMenu } from './HamburgerMenu'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { HamburgerMenu } from './HamburgerMenu'
 
 const meta = {
     component: HamburgerMenu,
     tags: ['autodocs'],
+    args: {
+        xUrl: 'https://twitter.com/ku__marketing/',
+        instagramUrl: 'https://www.instagram.com/kyotouniv_marketing/',
+        mailAddress: 'kyoto.univ.marketing@gmail.com',
+    },
 } satisfies Meta<typeof HamburgerMenu>
 
 export default meta

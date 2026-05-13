@@ -27,7 +27,11 @@ export const AboutAccordion: FC<AboutAccordionProps> = ({ ...props }) => {
                     {
                         title: <h2 className={titleClassName}>活動方針</h2>,
                         value: 'policy',
-                        content: <Policy />,
+                        content: (
+                            <AboutSuspense>
+                                <Policy />
+                            </AboutSuspense>
+                        ),
                     },
                     {
                         title: <h2 className={titleClassName}>創立の経緯</h2>,

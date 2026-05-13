@@ -2,17 +2,18 @@ import { ComponentProps, FC, ReactNode } from 'react'
 import { FaInstagram, FaXTwitter } from 'react-icons/fa6'
 
 import { NextLink } from '@/components/common/NextLink/NextLink'
-import profile from '@/constants/profile'
 import { cn } from '@/lib/utils'
 
-export interface OfficialAccountLinksProps extends Omit<ComponentProps<'div'>, 'children'> {}
+export interface OfficialAccountLinksProps extends Omit<ComponentProps<'div'>, 'children'> {
+    xUrl: string
+    instagramUrl: string
+}
 
-/* 公式アカウントのリンク集 */
-export const OfficialAccountLinks: FC<OfficialAccountLinksProps> = ({ className, ...props }) => {
+export const OfficialAccountLinks: FC<OfficialAccountLinksProps> = ({ xUrl, instagramUrl, className, ...props }) => {
     return (
         <div {...props} className={cn('space-y-12', className)}>
-            <LinkItem href={profile.instagramUrl} icon={<FaInstagram size={24} />} text='Instagram' />
-            <LinkItem href={profile.xUrl} icon={<FaXTwitter size={24} />} text='X' />
+            <LinkItem href={instagramUrl} icon={<FaInstagram size={24} />} text='Instagram' />
+            <LinkItem href={xUrl} icon={<FaXTwitter size={24} />} text='X' />
         </div>
     )
 }

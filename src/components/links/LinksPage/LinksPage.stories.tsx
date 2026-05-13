@@ -1,6 +1,5 @@
-import { LinksPage } from './LinksPage'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { LinksPage } from './LinksPage'
 
 const meta = {
     component: LinksPage,

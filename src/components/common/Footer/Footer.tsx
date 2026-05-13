@@ -1,13 +1,11 @@
-import { FC } from 'react'
-
 import pageLinks from '@/constants/pageLinks'
+import { getSiteSettings } from '@/lib/microcms'
 
 import { MailAndSNS } from '../MailAndSNS/MailAndSNS'
 import { NextLink } from '../NextLink/NextLink'
 
-export interface FooterProps {}
-
-export const Footer: FC<FooterProps> = ({ ...props }) => {
+export const Footer = async () => {
+    const siteSettings = await getSiteSettings()
     return (
         <footer className='flex w-full flex-col items-center overflow-x-hidden text-primary-foreground'>
             <div className='h-24 w-[110%] rounded-t-[100%] bg-primary' />
@@ -25,7 +23,12 @@ export const Footer: FC<FooterProps> = ({ ...props }) => {
                         <span className='inline-block'>マーケティング</span>
                         <span className='inline-block'>研究所</span>
                     </div>
-                    <MailAndSNS snsIconSize={24} />
+                    <MailAndSNS
+                        instagramUrl={siteSettings.instagram_url}
+                        mailAddress={siteSettings.mail_address}
+                        snsIconSize={24}
+                        xUrl={siteSettings.x_url}
+                    />
                 </div>
             </div>
         </footer>
