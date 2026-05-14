@@ -14,6 +14,9 @@ const bizUdpMincho = BIZ_UDPMincho({ subsets: ['latin'], weight: ['400', '700'],
 /** タイトルのフォント */
 const hinaMincho = Hina_Mincho({ subsets: ['latin'], weight: ['400'], variable: '--font-hina-mincho' })
 
+// microCMS SDKが内部でMath.random()を使用するため、静的プリレンダリングを無効化
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
     title: {
         default: '京大マーケティング研究所',
