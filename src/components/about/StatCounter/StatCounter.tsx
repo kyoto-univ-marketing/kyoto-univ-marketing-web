@@ -10,19 +10,23 @@ export interface StatCounterProps extends ComponentProps<'div'> {
     duration?: number
 }
 
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-
 /** 統計情報をカウントアップで表示するコンポーネント */
 export const StatCounter: FC<StatCounterProps> = ({ value, label, duration = 1000, className, ...props }) => {
     const [count, setCount] = useState(0)
     useEffect(() => {
-        ;(async () => {
-            setCount(0)
-            for (let i = 1; i <= value; i++) {
-                await sleep(duration / value)
-                setCount(i)
+        setCount(0)
+        const start = performance.now()
+        const update = (now: number) => {
+            const progress = Math.min((now - start) / duration, 1)
+            setCount(Math.floor(progress * value))
+            if (progress < 1) {
+                requestAnimationFrame(update)
+            } else {
+                setCount(value)
             }
-        })()
+        }
+        const id = requestAnimationFrame(update)
+        return () => cancelAnimationFrame(id)
     }, [duration, value])
     return (
         <div

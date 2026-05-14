@@ -46,7 +46,7 @@ export default function RootLayout({
 }>) {
     const { NEXT_PUBLIC_MEASUREMENT_ID } = process.env
     if (!NEXT_PUBLIC_MEASUREMENT_ID) {
-        throw new Error('Google AnalyticsのIDが設定されていません')
+        console.warn('NEXT_PUBLIC_MEASUREMENT_ID is not set. Google Analytics will be disabled.')
     }
 
     return (
@@ -61,7 +61,9 @@ export default function RootLayout({
                         <Footer />
                     </div>
                     <Toaster />
-                    {process.env.NODE_ENV === 'production' && <GoogleAnalytics gaId={NEXT_PUBLIC_MEASUREMENT_ID} />}
+                    {process.env.NODE_ENV === 'production' && NEXT_PUBLIC_MEASUREMENT_ID && (
+                        <GoogleAnalytics gaId={NEXT_PUBLIC_MEASUREMENT_ID} />
+                    )}
                 </TanstackProvider>
             </body>
         </html>

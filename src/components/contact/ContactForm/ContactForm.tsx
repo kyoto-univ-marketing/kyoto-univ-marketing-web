@@ -31,6 +31,7 @@ const keyToLabel: Record<keyof ContactFormSchema, string> = {
     email: 'メールアドレス',
     message: 'お問い合わせ内容',
     affiliation: 'ご所属(大学名、企業名、団体名)',
+    website: '',
 } as const
 
 export const ContactForm: FC = ({ ...props }) => {
@@ -41,6 +42,7 @@ export const ContactForm: FC = ({ ...props }) => {
             affiliation: '',
             email: '',
             message: '',
+            website: '',
         },
     })
     const [dialogOpen, setDialogOpen] = useState(false)
@@ -50,35 +52,34 @@ export const ContactForm: FC = ({ ...props }) => {
 
     const handleConfirm = async () => {
         setDisabled(true)
-        fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(form.getValues()),
-        })
-            .then((res) => {
-                if (!res.ok) {
-                    toast({
-                        title: '送信に失敗しました',
-                        description: '時間を置いて、もう一度お試しください。',
-                        variant: 'destructive',
-                    })
-                    setDisabled(false)
-                    return
-                }
-                // 成功時は、成功ページに移動
-                router.push('/contact/success')
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(form.getValues()),
             })
-            .catch(() => {
-                // 失敗時は、トーストを表示して再入力可能な状態にする
+            if (!res.ok) {
                 toast({
                     title: '送信に失敗しました',
                     description: '時間を置いて、もう一度お試しください。',
                     variant: 'destructive',
                 })
                 setDisabled(false)
+                return
+            }
+            // 成功時は、成功ページに移動
+            router.push('/contact/success')
+        } catch {
+            // 失敗時は、トーストを表示して再入力可能な状態にする
+            toast({
+                title: '送信に失敗しました',
+                description: '時間を置いて、もう一度お試しください。',
+                variant: 'destructive',
             })
+            setDisabled(false)
+        }
     }
 
     return (
@@ -89,6 +90,14 @@ export const ContactForm: FC = ({ ...props }) => {
                     onSubmit={form.handleSubmit(() => setDialogOpen(true))}
                 >
                     <p className='text-destructive text-sm'>*は必須項目です</p>
+                    {/* ハニーポット: ボット対策のため非表示（人間は入力しない） */}
+                    <input
+                        aria-hidden='true'
+                        autoComplete='off'
+                        className='hidden'
+                        tabIndex={-1}
+                        {...form.register('website')}
+                    />
                     <FormInput
                         control={form.control}
                         disabled={disabled}
@@ -149,16 +158,20 @@ const ConfirmDialog = ({
                     <AlertDialogTitle>入力内容のご確認</AlertDialogTitle>
                 </AlertDialogHeader>
                 <div className='space-y-4'>
-                    {getKeys(values).map((key) => (
-                        <div className='space-y-1' key={key}>
-                            <p className='text-gray-500 text-sm underline underline-offset-2'>{keyToLabel[key]}</p>
-                            {values[key] ? (
-                                <p className='whitespace-pre-wrap break-all'>{values[key]}</p>
-                            ) : (
-                                <p className='whitespace-pre-wrap break-all text-gray-500'>（入力なし）</p>
-                            )}
-                        </div>
-                    ))}
+                    {getKeys(values)
+                        .filter((key) => key !== 'website')
+                        .map((key) => (
+                            <div className='space-y-1' key={key}>
+                                <p className='text-gray-500 text-sm underline underline-offset-2'>
+                                    {keyToLabel[key]}
+                                </p>
+                                {values[key] ? (
+                                    <p className='whitespace-pre-wrap break-all'>{values[key]}</p>
+                                ) : (
+                                    <p className='whitespace-pre-wrap break-all text-gray-500'>（入力なし）</p>
+                                )}
+                            </div>
+                        ))}
                 </div>
                 <AlertDialogFooter>
                     <AlertDialogCancel>キャンセル</AlertDialogCancel>

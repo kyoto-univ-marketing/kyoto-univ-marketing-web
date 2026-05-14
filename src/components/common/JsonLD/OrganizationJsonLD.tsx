@@ -22,7 +22,7 @@ export const buildOrganizationJson = (siteSettings: SiteSettings) =>
             '@type': 'ContactPoint',
             email: siteSettings.mail_address,
         },
-        foundingDate: undefined, // TODO: 創立日を追加する
+        foundingDate: '2024-03',
     }) as const satisfies WithContext<Organization>
 
 export const OrganizationJsonLD = async () => {

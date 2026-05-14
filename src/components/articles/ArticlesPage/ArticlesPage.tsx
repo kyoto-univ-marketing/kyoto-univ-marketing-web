@@ -7,8 +7,6 @@ import { pageLinkObject } from '@/constants/pageLinks'
 
 import ActivityArticleList from '../ActivityArticleList/ActivityArticleList'
 
-export const dynamic = 'force-dynamic'
-
 export interface ArticlesPageProps {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>
     activityDescription: string

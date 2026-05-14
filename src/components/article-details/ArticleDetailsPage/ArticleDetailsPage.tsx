@@ -34,18 +34,20 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title
                             <h2 className='text-lg'>{title}</h2>
                             <div className='flex justify-end'>
                                 <table>
-                                    <tr className='text-gray-700'>
-                                        <td className='pr-2'>投稿日：</td>
-                                        <td>{dayjs(publishedAt).format('YYYY/MM/DD')}</td>
-                                    </tr>
-                                    <tr className='text-gray-700'>
-                                        <td className='pr-2'>タグ：</td>
-                                        <td>
-                                            <Link href={`/articles?tag=${tag}`}>
-                                                <Badge>{tag}</Badge>
-                                            </Link>
-                                        </td>
-                                    </tr>
+                                    <tbody>
+                                        <tr className='text-gray-700'>
+                                            <td className='pr-2'>投稿日：</td>
+                                            <td>{dayjs(publishedAt).format('YYYY/MM/DD')}</td>
+                                        </tr>
+                                        <tr className='text-gray-700'>
+                                            <td className='pr-2'>タグ：</td>
+                                            <td>
+                                                <Link href={`/articles?tag=${tag}`}>
+                                                    <Badge>{tag}</Badge>
+                                                </Link>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>

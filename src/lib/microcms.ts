@@ -121,7 +121,6 @@ export const getActivityById = async (
     id: string,
     draftKey?: string,
 ): Promise<MicroCMSGetListDetailResponse<Endpoints, { endpoint: 'activities'; contentId: string }>> => {
-    'use cache'
     if (process.env.NODE_ENV === 'development') {
         // 開発環境の場合はモックデータを返す
         const activity = mockActivities.find((activity) => activity.id === id)

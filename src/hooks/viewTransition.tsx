@@ -4,7 +4,7 @@ import { NavigateOptions } from 'next/dist/shared/lib/app-router-context.shared-
 import { useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
-// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: View Transitions APIはジェネリックな引数型が必要なためanyを使用
 export const useViewTransition = <S extends readonly any[], T extends (...args: S) => void>(callback: T) => {
     const startViewTransition = (...args: S) => {
         if (!document.startViewTransition) {

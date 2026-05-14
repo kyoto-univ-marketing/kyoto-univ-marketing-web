@@ -2,6 +2,7 @@ import { FC, Suspense } from 'react'
 import { z } from 'zod'
 
 import { ArticleCardSkeleton } from '@/components/ArticleCardSkeleton/ArticleCardSkeleton'
+import { activityTagList } from '@/constants/activity'
 
 import { ArticleCardList } from '../ArticleCardList/ArticleCardList'
 import { ActivityArticleListPresenter } from './ActivityArticleListPresenter'
@@ -14,8 +15,8 @@ const searchParamsSchema = z.object({
     page: z.coerce
         .number()
         .default(1)
-        .transform((v) => v - 1 /* 1-indexed to 0-indexed */),
-    tag: z.string().optional(),
+        .transform((v) => Math.max(1, v) - 1 /* 1-indexed to 0-indexed、最小値は0 */),
+    tag: z.enum(activityTagList).optional().catch(undefined),
 })
 
 /** 活動記録記事の取得を行うコンポーネント */

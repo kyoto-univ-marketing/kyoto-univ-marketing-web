@@ -22,6 +22,8 @@ const personJson = {
     },
     sameAs: [
         `${profile.homepageUrl}/about`,
+        'https://twitter.com/ku__marketing/',
+        'https://www.instagram.com/kyotouniv_marketing/',
     ],
 } as const satisfies WithContext<Person>
 

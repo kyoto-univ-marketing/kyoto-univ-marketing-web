@@ -7,18 +7,23 @@ import { getActivityById, getActivityIds } from '@/lib/microcms'
 interface SearchParams {
     slug: string
     draftKey: string
+    secret?: string
 }
 
 export const generateStaticParams = async () => {
     const allContentIds = await getActivityIds()
     return allContentIds.map((slug) => ({ slug }))
 }
+
 export const generateMetadata = async ({
     searchParams,
 }: {
     searchParams: Promise<SearchParams>
 }): Promise<Metadata> => {
-    const { slug, draftKey } = await searchParams
+    const { slug, draftKey, secret } = await searchParams
+    if (process.env.DRAFT_ACCESS_SECRET && secret !== process.env.DRAFT_ACCESS_SECRET) {
+        notFound()
+    }
     const { title, description, thumbnail } = await getActivityById(slug, draftKey).catch(notFound)
     return {
         title,
@@ -33,7 +38,10 @@ export const generateMetadata = async ({
 }
 
 export default async function Page({ searchParams }: { searchParams: Promise<SearchParams> }) {
-    const { slug, draftKey } = await searchParams
+    const { slug, draftKey, secret } = await searchParams
+    if (process.env.DRAFT_ACCESS_SECRET && secret !== process.env.DRAFT_ACCESS_SECRET) {
+        notFound()
+    }
     const content = await getActivityById(slug, draftKey).catch(notFound)
     return (
         <>

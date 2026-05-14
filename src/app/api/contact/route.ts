@@ -8,6 +8,10 @@ if (!url) {
 }
 export const POST = async (req: NextRequest) => {
     const data = contactFormSchema.parse(await req.json())
+    // ハニーポットチェック: ボットが自動入力する場合は拒否（サイレント）
+    if (data.website) {
+        return NextResponse.json({ message: '送信に成功しました' }, { status: 200 })
+    }
     return fetch(url, {
         method: 'POST',
         headers: {

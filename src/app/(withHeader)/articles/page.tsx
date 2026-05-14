@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { cacheLife } from 'next/cache'
+
 import { client } from '@/api/client'
 import { ArticlesPage } from '@/components/articles/ArticlesPage/ArticlesPage'
 

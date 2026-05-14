@@ -15,5 +15,7 @@ export const contactFormSchema = z.object({
     }),
     /** ご所属 */
     affiliation: z
-        .string()
+        .string(),
+    /** ハニーポット（ボット対策。人間は入力しない） */
+    website: z.string().optional(),
 })

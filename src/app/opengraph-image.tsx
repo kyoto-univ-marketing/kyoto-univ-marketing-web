@@ -1,7 +1,6 @@
 import fs from 'fs'
-import path from 'path'
-
 import { ImageResponse } from 'next/og'
+import path from 'path'
 
 import profile from '@/constants/profile'
 
@@ -28,7 +27,7 @@ export default async function Image() {
             }}
             tw='bg-white w-full h-full flex items-center justify-center'
         >
-            <img height={logoSize} src={logoUrl.toString()} tw='mr-12' width={logoSize} />
+            <img alt='京大マーケティング研究所 ロゴ' height={logoSize} src={logoUrl.toString()} tw='mr-12' width={logoSize} />
             <p tw='text-6xl'>京大マーケティング研究所</p>
         </div>,
         // ImageResponse options
