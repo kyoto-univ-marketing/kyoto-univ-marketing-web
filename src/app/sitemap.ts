@@ -1,8 +1,11 @@
 import type { MetadataRoute } from 'next'
+
 import profile from '@/constants/profile'
 import { getActivityIds } from '@/lib/microcms'
 
 const baseUrl = profile.homepageUrl
+
+export const dynamic = 'force-dynamic'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const staticRoutes: MetadataRoute.Sitemap = [
@@ -14,12 +17,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         { url: `${baseUrl}/contact`, priority: 0.6, changeFrequency: 'yearly' },
     ]
 
-    const articleIds = await getActivityIds()
-    const articleRoutes: MetadataRoute.Sitemap = articleIds.map((id) => ({
-        url: `${baseUrl}/articles/${id}`,
-        priority: 0.7,
-        changeFrequency: 'monthly',
-    }))
-
-    return [...staticRoutes, ...articleRoutes]
+    try {
+        const articleIds = await getActivityIds()
+        const articleRoutes: MetadataRoute.Sitemap = articleIds.map((id) => ({
+            url: `${baseUrl}/articles/${id}`,
+            priority: 0.7,
+            changeFrequency: 'monthly',
+        }))
+        return [...staticRoutes, ...articleRoutes]
+    } catch {
+        return staticRoutes
+    }
 }
