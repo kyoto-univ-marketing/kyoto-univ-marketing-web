@@ -211,4 +211,3 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
         })
     return res
 }
-    'use cache'
