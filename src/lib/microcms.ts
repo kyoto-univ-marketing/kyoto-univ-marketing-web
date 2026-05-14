@@ -198,6 +198,7 @@ export const getPolicies = async (): Promise<Policy[]> => {
 
 /** サイト設定を取得する */
 export const getSiteSettings = async (): Promise<SiteSettings> => {
+        'use cache'
     if (process.env.NODE_ENV === 'development') {
         return mockSiteSettings
     }
@@ -210,3 +211,4 @@ export const getSiteSettings = async (): Promise<SiteSettings> => {
         })
     return res
 }
+    'use cache'
