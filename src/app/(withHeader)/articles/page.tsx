@@ -17,6 +17,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
     return {
         title: '活動記録',
         description: await getDescription(),
+        alternates: {
+            canonical: '/articles',
+        },
     }
 }
 
