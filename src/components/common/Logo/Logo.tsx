@@ -17,9 +17,9 @@ export const Logo: FC<LogoProps> = ({ reverse, ...props }) => {
     return (
         <Avatar {...props}>
             <AvatarImage asChild src={lg.src}>
-                <Image alt='logo' fill src={lg} />
+                <Image alt='logo' fill priority src={lg} />
             </AvatarImage>
-            <AvatarFallback>logo</AvatarFallback>
+            <AvatarFallback />
         </Avatar>
     )
 }
