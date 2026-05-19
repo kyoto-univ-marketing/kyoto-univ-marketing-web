@@ -32,7 +32,7 @@ export const ImageSwitch: FC<ImageSwitchProps> = ({ imageList, interval, transit
                 <Img
                     alt={alt ?? ''}
                     isShow={current === index}
-                    key={index}
+                    key={src}
                     loading={index === 0 ? 'eager' : 'lazy'}
                     priority={index === 0}
                     src={src}

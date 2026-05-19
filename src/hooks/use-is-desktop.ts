@@ -2,24 +2,17 @@
 
 import { useEffect, useState } from 'react'
 
+const DESKTOP_MEDIA_QUERY = '(min-width: 768px)'
+
 export const useIsDesktop = (): boolean | undefined => {
-    const mediaQuery = '(min-width: 768px)'
     const [isDesktop, setIsDesktop] = useState<boolean | undefined>(undefined)
 
     useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const mql = window.matchMedia(mediaQuery)
-            setIsDesktop(mql.matches)
-
-            const handleMatch = (e: MediaQueryListEvent) => {
-                setIsDesktop(e.matches)
-            }
-
-            mql.addEventListener('change', handleMatch)
-            return () => {
-                mql.removeEventListener('change', handleMatch)
-            }
-        }
+        const mql = window.matchMedia(DESKTOP_MEDIA_QUERY)
+        setIsDesktop(mql.matches)
+        const handleMatch = (e: MediaQueryListEvent) => setIsDesktop(e.matches)
+        mql.addEventListener('change', handleMatch)
+        return () => mql.removeEventListener('change', handleMatch)
     }, [])
 
     return isDesktop

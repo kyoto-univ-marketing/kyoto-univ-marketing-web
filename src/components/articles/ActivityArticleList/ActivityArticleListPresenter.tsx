@@ -1,7 +1,7 @@
 'use client'
 
 import { FilterIcon } from 'lucide-react'
-import { FC, ReactNode, createContext, useContext, useMemo, useState } from 'react'
+import { createContext, FC, ReactNode, useContext, useMemo, useState } from 'react'
 
 import { activityTagList } from '@/constants/activity'
 import { useTransitionRouterPush } from '@/hooks/viewTransition'
@@ -41,7 +41,7 @@ export const ActivityArticleListPresenter: FC<ActivityArticleListPresenterProps>
         }
     }
     const pageLinkList = useMemo(() => {
-        return [...new Array(totalPage)].map((_, i) => `/articles?page=${i + 1}${tag ? `&tag=${tag}` : ''}`)
+        return Array.from({ length: totalPage }, (_, i) => `/articles?page=${i + 1}${tag ? `&tag=${tag}` : ''}`)
     }, [tag, totalPage])
     return (
         <div>

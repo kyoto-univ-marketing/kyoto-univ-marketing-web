@@ -3,31 +3,30 @@ import { FC } from 'react'
 
 import { client } from '@/api/client'
 import { PageImage } from '@/components/common/PageImage/PageImage'
+import { getTextById } from '@/lib/api'
 
 import shuugouShashin from '../../../../../public/page-images/about/36CB5A6E-5711-4641-8318-AF3C72572BBA.webp'
 import { StatCounter } from '../../StatCounter/StatCounter'
 
 export interface CircleOutlineProps {}
 
-export const CircleOutline: FC<CircleOutlineProps> = async ({ ...props }) => {
-    const aboutStatsRes = await client.GET('/api/about_stats/')
-    const outlineTextRes = await client.GET('/api/text/{id}/', { params: { path: { id: 'circle_outline' } } })
-    if (!outlineTextRes.data?.text) {
-        console.error("Couldn't get circle outline")
-    }
-    const outlineText = outlineTextRes.data?.text ?? ''
+export const CircleOutline: FC<CircleOutlineProps> = async () => {
+    'use cache'
+    const [aboutStatsRes, outlineText] = await Promise.all([
+        client.GET('/api/about_stats/'),
+        getTextById('circle_outline'),
+    ])
 
-    /* 最新の更新日時 */
     const latestDate = (aboutStatsRes.data ?? []).reduce((acc, cur) => {
         const date = dayjs(cur.updated_at)
         return date.isAfter(acc) ? date : acc
     }, dayjs(0))
+
     return (
         <div className='space-y-12'>
             <p className='px-6 text-gray-700'>{outlineText}</p>
             <div className='mx-auto w-fit space-y-2'>
                 <div className='flex gap-4'>
-                    {/* TODO: 順番はどこかでちゃんと実装したい */}
                     {(aboutStatsRes.data ?? [])
                         .sort((a, b) => b.number - a.number)
                         .map((stat) => (

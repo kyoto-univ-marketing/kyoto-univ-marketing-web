@@ -10,6 +10,12 @@ interface SearchParams {
     secret?: string
 }
 
+const checkSecret = (secret?: string) => {
+    if (process.env.DRAFT_ACCESS_SECRET && secret !== process.env.DRAFT_ACCESS_SECRET) {
+        notFound()
+    }
+}
+
 export const generateStaticParams = async () => {
     const allContentIds = await getActivityIds()
     return allContentIds.map((slug) => ({ slug }))
@@ -21,9 +27,7 @@ export const generateMetadata = async ({
     searchParams: Promise<SearchParams>
 }): Promise<Metadata> => {
     const { slug, draftKey, secret } = await searchParams
-    if (process.env.DRAFT_ACCESS_SECRET && secret !== process.env.DRAFT_ACCESS_SECRET) {
-        notFound()
-    }
+    checkSecret(secret)
     const { title, description, thumbnail } = await getActivityById(slug, draftKey).catch(notFound)
     return {
         title,
@@ -39,13 +43,7 @@ export const generateMetadata = async ({
 
 export default async function Page({ searchParams }: { searchParams: Promise<SearchParams> }) {
     const { slug, draftKey, secret } = await searchParams
-    if (process.env.DRAFT_ACCESS_SECRET && secret !== process.env.DRAFT_ACCESS_SECRET) {
-        notFound()
-    }
+    checkSecret(secret)
     const content = await getActivityById(slug, draftKey).catch(notFound)
-    return (
-        <>
-            <ArticleDetailsPage {...content} />
-        </>
-    )
+    return <ArticleDetailsPage {...content} />
 }

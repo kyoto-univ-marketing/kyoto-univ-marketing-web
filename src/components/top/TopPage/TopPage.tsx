@@ -1,28 +1,17 @@
-import { FC } from 'react'
+import { getTextById } from '@/lib/api'
 
-import { client } from '@/api/client'
 import { TopContainer } from '../TopContainer/TopContainer'
 import { TopPresenterDesktop } from '../TopPresenter/TopPresenterDesktop/TopPresenterDesktop'
 import { TopPresenterMobile } from '../TopPresenter/TopPresenterMobile/TopPresenterMobile'
 
-export interface TopPageProps {}
-
-export const TopPage: FC<TopPageProps> = async ({ ...props }) => {
-    const { data: messageData } = await client.GET('/api/text/{id}/', { params: { path: { id: 'top_message' } } })
-    if (!messageData?.text) {
-        console.error("Couldn't get top message")
-    }
-    const { data: subMessageData } = await client.GET('/api/text/{id}/', {
-        params: { path: { id: 'top_sub_message' } },
-    })
-    if (!subMessageData?.text) {
-        console.error("Couldn't get top sub message")
-    }
-    const message = messageData?.text ?? ''
-    const subMessage = subMessageData?.text ?? ''
+export const TopPage = async () => {
+    const [message, subMessage] = await Promise.all([
+        getTextById('top_message'),
+        getTextById('top_sub_message'),
+    ])
     return (
         <TopContainer
-            desktop={<TopPresenterDesktop message={message} subMessage={subMessage} />}
+            desktop={<TopPresenterDesktop />}
             mobile={<TopPresenterMobile message={message} subMessage={subMessage} />}
         />
     )

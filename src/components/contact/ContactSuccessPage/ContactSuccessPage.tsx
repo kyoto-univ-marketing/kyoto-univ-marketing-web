@@ -1,19 +1,16 @@
 import { FC } from 'react'
 
-import { client } from '@/api/client'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
+import { getTextById } from '@/lib/api'
 
 import { BreadCrumb } from '../../common/BreadCrumb/BreadCrumb'
 import { RedirectCountDown } from '../RedirectCountDown/RedirectCountDown'
 
 export interface ContactSuccessPageProps {}
 
-/** お問い合わせ成功ページ */
-export const ContactSuccessPage: FC<ContactSuccessPageProps> = async ({ ...props }) => {
-    const message = await client
-        .GET('/api/text/{id}/', { params: { path: { id: 'contact_success_message' } } })
-        .then((res) => res.data?.text ?? '')
+export const ContactSuccessPage: FC<ContactSuccessPageProps> = async () => {
+    const message = await getTextById('contact_success_message')
     return (
         <>
             <BreadCrumb
@@ -25,9 +22,7 @@ export const ContactSuccessPage: FC<ContactSuccessPageProps> = async ({ ...props
             />
             <PageTitle>送信が完了しました</PageTitle>
             <div className='mx-auto mb-12 max-w-(--breakpoint-sm) px-8'>
-                <div>
-                    <p className='whitespace-pre-wrap leading-10'>{message}</p>
-                </div>
+                <p className='whitespace-pre-wrap leading-10'>{message}</p>
             </div>
             <div className='mb-12'>
                 <RedirectCountDown duration={10} />

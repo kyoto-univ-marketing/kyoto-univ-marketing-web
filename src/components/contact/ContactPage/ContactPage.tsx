@@ -1,34 +1,20 @@
 import { FC } from 'react'
 
-import { client } from '@/api/client'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
+import { getTextById } from '@/lib/api'
 
 import { BreadCrumb } from '../../common/BreadCrumb/BreadCrumb'
 import { ContactForm } from '../ContactForm/ContactForm'
 
 export interface ContactPageProps {}
 
-/** お問い合わせページ */
-export const ContactPage: FC<ContactPageProps> = async ({ ...props }) => {
-    const privacyText = await client
-        .GET('/api/text/{id}/', { params: { path: { id: 'contact_privacy' } } })
-        .then((res) => res.data?.text ?? '')
-    if (!privacyText) {
-        console.error("Couldn't get privacy text")
-    }
-    const descriptionForOthers = await client
-        .GET('/api/text/{id}/', { params: { path: { id: 'contact_description_for_others' } } })
-        .then((res) => res.data?.text ?? '')
-    if (!descriptionForOthers) {
-        console.error("Couldn't get description for others text")
-    }
-    const descriptionForKyodai = await client
-        .GET('/api/text/{id}/', { params: { path: { id: 'contact_description_for_kyodai' } } })
-        .then((res) => res.data?.text ?? '')
-    if (!descriptionForKyodai) {
-        console.error("Couldn't get description for kyodai text")
-    }
+export const ContactPage: FC<ContactPageProps> = async () => {
+    const [privacyText, descriptionForOthers, descriptionForKyodai] = await Promise.all([
+        getTextById('contact_privacy'),
+        getTextById('contact_description_for_others'),
+        getTextById('contact_description_for_kyodai'),
+    ])
     return (
         <>
             <BreadCrumb
