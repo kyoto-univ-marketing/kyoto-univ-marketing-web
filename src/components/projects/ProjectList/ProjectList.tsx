@@ -1,22 +1,29 @@
 import { FC } from 'react'
 
 import { components } from '@/api/schema'
-import { projectTagList } from '@/constants/project'
 
 import { ProjectListItem } from '../ProjectListItem/ProjectListItem'
 
 export interface ProjectListProps {
-    tag: (typeof projectTagList)[number]
+    /** 見出し。アンカーの id も兼ねる */
+    heading: string
+    /** 見出し下に表示する補足説明 */
+    description?: string
     projects: Pick<components['schemas']['Project'], 'name' | 'description' | 'thumbnail'>[]
 }
 
-/** タグごとのプロジェクト一覧 */
-export const ProjectList: FC<ProjectListProps> = ({ tag, projects, ...props }) => {
+/** 見出しごとのプロジェクト一覧 */
+export const ProjectList: FC<ProjectListProps> = ({ heading, description, projects }) => {
     return (
         <div>
-            <h2 className='p-8 font-bold text-heading' id={tag}>
-                {tag}
+            <h2 className='px-8 pt-8 pb-2 font-bold text-heading' id={heading}>
+                {heading}
             </h2>
+            {description ? (
+                <p className='px-8 pb-6 text-gray-600 text-sm'>{description}</p>
+            ) : (
+                <div className='pb-6' />
+            )}
             <div className='space-y-16'>
                 {projects.length > 0 ? (
                     projects.map((project, index) => (

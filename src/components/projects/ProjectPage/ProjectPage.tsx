@@ -7,6 +7,7 @@ import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Button } from '@/components/ui/button'
 import { pageLinkObject } from '@/constants/pageLinks'
+import { isArchivedProject, stripArchivedMarker } from '@/constants/project'
 
 import { ProjectList } from '../ProjectList/ProjectList'
 
@@ -43,17 +44,24 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ projectDescription, ..
 }
 
 const Projects = async () => {
-    const projects = (await client.GET('/api/project/')).data ?? []
+    const allProjects = (await client.GET('/api/project/')).data ?? []
+    const activeProjects = allProjects.filter((pr) => !isArchivedProject(pr.name))
+    const archivedProjects = allProjects
+        .filter((pr) => isArchivedProject(pr.name))
+        .map((pr) => ({ ...pr, name: stripArchivedMarker(pr.name) }))
     return (
         <>
             <div className='bg-background-secondary pb-12'>
                 <ProjectList
-                    projects={projects.filter((pr) => pr.tag === 'マーケティング支援')}
-                    tag='マーケティング支援'
+                    projects={activeProjects.filter((pr) => pr.tag === 'マーケティング支援')}
+                    heading='マーケティング支援'
                 />
             </div>
             <div className='pb-12'>
-                <ProjectList projects={projects.filter((pr) => pr.tag === '共同プロジェクト')} tag='共同プロジェクト' />
+                <ProjectList
+                    projects={activeProjects.filter((pr) => pr.tag === '共同プロジェクト')}
+                    heading='共同プロジェクト'
+                />
                 <Button
                     asChild
                     className='mx-auto mt-12 flex h-fit w-fit max-w-[75%] flex-wrap items-center justify-center text-lg'
@@ -66,10 +74,19 @@ const Projects = async () => {
             </div>
             <div className='bg-background-secondary pb-12'>
                 <ProjectList
-                    projects={projects.filter((pr) => pr.tag === 'オリジナルプロジェクト')}
-                    tag='オリジナルプロジェクト'
+                    projects={activeProjects.filter((pr) => pr.tag === 'オリジナルプロジェクト')}
+                    heading='オリジナルプロジェクト'
                 />
             </div>
+            {archivedProjects.length > 0 && (
+                <div className='pb-12'>
+                    <ProjectList
+                        description='過去に実施したプロジェクトです。'
+                        heading='アーカイブ'
+                        projects={archivedProjects}
+                    />
+                </div>
+            )}
         </>
     )
 }
