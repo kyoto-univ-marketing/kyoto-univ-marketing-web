@@ -7,7 +7,7 @@ import { ABOUT_PAGE_DESCRIPTION } from '@/constants/description'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 export const metadata: Metadata = {
-    title: pageLinkObject.ABOUT.text,
+    title: 'サークルについて｜創設者 迫田周大',
     description: ABOUT_PAGE_DESCRIPTION,
     keywords: ['迫田周大', '京大マーケティング研究所', '創設者', '京都大学', 'マーケティング'],
 }
