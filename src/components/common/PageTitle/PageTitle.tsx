@@ -15,7 +15,7 @@ export type PageTitleProps =
 export const PageTitle: FC<PageTitleProps> = ({ asChild, children, ...props }) => {
     const Component = asChild ? Slot : 'h1'
     return (
-        <div className='my-12 w-full px-12 text-title' {...props}>
+        <div className='my-12 w-full px-12 text-title md:my-16' {...props}>
             <Component className='mx-auto w-fit'>{children}</Component>
         </div>
     )
