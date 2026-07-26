@@ -58,6 +58,7 @@ const Img: FC<ImgProps> = ({ src, alt, isShow, transitionDuration, style, ...pro
                 isShow ? 'opacity-100' : 'opacity-0',
             )}
             fill
+            sizes='100vw'
             src={src}
             style={{ transitionDuration: `${transitionDuration}ms`, ...style }}
         />

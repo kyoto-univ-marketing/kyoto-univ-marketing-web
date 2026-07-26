@@ -13,18 +13,29 @@ export interface OriginPresenterProps {
 export const OriginPresenter: FC<OriginPresenterProps> = ({ text, ...props }) => {
     return (
         <>
-            <Image {...OriginImg} alt='集合写真' className='mb-12 aspect-video object-cover' />
+            <Image
+                {...OriginImg}
+                alt='集合写真'
+                className='mb-12 aspect-video object-cover'
+                sizes='(max-width: 768px) 100vw, 640px'
+            />
             <div className='mb-12 space-y-8 p-4'>
                 {text.split('\n').map((line, i) => (
                     <p key={i}>{line}</p>
                 ))}
             </div>
             <div className='grid grid-cols-2 gap-4'>
-                <ImageWithCaption {...SakodaImg} alt='創設者 迫田周大' className='aspect-square object-cover' />
+                <ImageWithCaption
+                    {...SakodaImg}
+                    alt='創設者 迫田周大'
+                    className='aspect-square object-cover'
+                    sizes='(max-width: 768px) 50vw, 320px'
+                />
                 <ImageWithCaption
                     {...MakenekoImg}
                     alt='マスコットキャラクター マケ猫'
-                    className='aspect-squaee object-cover'
+                    className='aspect-square object-cover'
+                    sizes='(max-width: 768px) 50vw, 320px'
                 />
             </div>
         </>
