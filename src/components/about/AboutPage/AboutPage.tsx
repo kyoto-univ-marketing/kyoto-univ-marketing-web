@@ -1,10 +1,11 @@
-import { FC } from 'react'
+import { FC, Suspense } from 'react'
 
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { AboutAccordion } from '../AboutAccordion/AboutAccordion'
+import { CircleStats, CircleStatsSkeleton } from '../CircleStats/CircleStats'
 
 export interface AboutPageProps {}
 
@@ -19,6 +20,11 @@ export const AboutPage: FC<AboutPageProps> = ({ ...props }) => {
             />
             <PageTitle>京大マーケティング研究所について</PageTitle>
             <div className='mx-auto mb-12 max-w-(--breakpoint-sm) px-6'>
+                <div className='mb-16'>
+                    <Suspense fallback={<CircleStatsSkeleton />}>
+                        <CircleStats />
+                    </Suspense>
+                </div>
                 <AboutAccordion />
             </div>
         </>
