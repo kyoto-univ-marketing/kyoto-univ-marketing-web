@@ -1,6 +1,5 @@
-import { ContactSuccessPage } from './ContactSuccessPage'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { ContactSuccessPage } from './ContactSuccessPage'
 
 const meta = {
     component: ContactSuccessPage,

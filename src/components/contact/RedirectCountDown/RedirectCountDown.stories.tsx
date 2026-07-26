@@ -1,6 +1,5 @@
-import { RedirectCountDown } from './RedirectCountDown'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { RedirectCountDown } from './RedirectCountDown'
 
 const meta = {
     component: RedirectCountDown,

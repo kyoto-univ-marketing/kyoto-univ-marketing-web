@@ -1,6 +1,5 @@
-import { ContactPage } from './ContactPage'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { ContactPage } from './ContactPage'
 
 const meta = {
     component: ContactPage,

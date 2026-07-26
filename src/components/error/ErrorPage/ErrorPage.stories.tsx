@@ -1,6 +1,5 @@
-import { ErrorPage } from './ErrorPage'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { ErrorPage } from './ErrorPage'
 
 const meta = {
     component: ErrorPage,

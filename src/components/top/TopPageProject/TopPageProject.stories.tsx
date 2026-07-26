@@ -1,6 +1,5 @@
-import { TopPageProject } from './TopPageProject'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { TopPageProject } from './TopPageProject'
 
 const meta = {
     component: TopPageProject,

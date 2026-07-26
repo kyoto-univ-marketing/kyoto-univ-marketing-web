@@ -1,6 +1,5 @@
-import { OriginPresenter } from './OriginPresenter'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { OriginPresenter } from './OriginPresenter'
 
 const meta = {
     component: OriginPresenter,

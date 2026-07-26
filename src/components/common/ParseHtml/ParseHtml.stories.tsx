@@ -1,8 +1,6 @@
-import { mockActivities } from '@/mocks/activities'
-
-import { ParseHtml } from './ParseHtml'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { mockActivities } from '@/mocks/activities'
+import { ParseHtml } from './ParseHtml'
 
 const meta = {
     component: ParseHtml,

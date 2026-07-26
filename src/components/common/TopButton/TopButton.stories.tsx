@@ -1,6 +1,5 @@
-import { TopButton } from './TopButton'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { TopButton } from './TopButton'
 
 const meta = {
     component: TopButton,

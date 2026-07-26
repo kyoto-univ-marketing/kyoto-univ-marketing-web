@@ -1,7 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react'
 import { ProjectLinkItemProps } from '../ProjectLinkItem/ProjectLinkItem'
 import { ProjectLinkListPresenter } from './ProjectLinkListPresenter'
-
-import type { Meta, StoryObj } from '@storybook/react'
 
 const project = {
     projectName: 'プロジェクト名',

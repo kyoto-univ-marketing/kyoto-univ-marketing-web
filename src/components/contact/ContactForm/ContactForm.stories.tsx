@@ -1,7 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react'
 import { Toaster } from '../../ui/toaster'
 import { ContactForm } from './ContactForm'
-
-import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     component: ContactForm,

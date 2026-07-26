@@ -1,6 +1,5 @@
-import { ArticleCardSkeleton } from './ArticleCardSkeleton'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { ArticleCardSkeleton } from './ArticleCardSkeleton'
 
 const meta = {
     component: ArticleCardSkeleton,

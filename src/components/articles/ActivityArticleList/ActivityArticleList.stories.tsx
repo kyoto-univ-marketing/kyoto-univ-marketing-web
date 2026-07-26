@@ -1,6 +1,5 @@
-import { ActivityArticleListPresenter } from './ActivityArticleListPresenter'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { ActivityArticleListPresenter } from './ActivityArticleListPresenter'
 
 const meta = {
     component: ActivityArticleListPresenter,

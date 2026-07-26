@@ -1,6 +1,5 @@
-import { TopPresenterMobile } from './TopPresenterMobile'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { TopPresenterMobile } from './TopPresenterMobile'
 
 const meta = {
     component: TopPresenterMobile,

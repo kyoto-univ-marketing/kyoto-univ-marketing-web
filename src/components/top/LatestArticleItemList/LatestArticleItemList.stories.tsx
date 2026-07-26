@@ -1,6 +1,5 @@
-import { LatestArticleItemList } from './LatestArticleItemList'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { LatestArticleItemList } from './LatestArticleItemList'
 
 const meta = {
     component: LatestArticleItemList,

@@ -1,6 +1,5 @@
-import { StatCounter } from './StatCounter'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { StatCounter } from './StatCounter'
 
 const meta = {
     component: StatCounter,

@@ -1,6 +1,5 @@
-import { CircleOutline } from './CircleOutline'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { CircleOutline } from './CircleOutline'
 
 const meta = {
     component: CircleOutline,

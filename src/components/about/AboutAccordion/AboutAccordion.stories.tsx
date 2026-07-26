@@ -1,6 +1,5 @@
-import { AboutAccordion } from './AboutAccordion'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { AboutAccordion } from './AboutAccordion'
 
 const meta = {
     component: AboutAccordion,

@@ -1,6 +1,5 @@
-import { ProjectLinkItem } from './ProjectLinkItem'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { ProjectLinkItem } from './ProjectLinkItem'
 
 const meta = {
     component: ProjectLinkItem,

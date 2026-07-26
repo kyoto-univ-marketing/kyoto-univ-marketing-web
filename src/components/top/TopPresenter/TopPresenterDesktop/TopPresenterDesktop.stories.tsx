@@ -1,6 +1,5 @@
-import { TopPresenterDesktop } from './TopPresenterDesktop'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { TopPresenterDesktop } from './TopPresenterDesktop'
 
 const meta = {
     component: TopPresenterDesktop,

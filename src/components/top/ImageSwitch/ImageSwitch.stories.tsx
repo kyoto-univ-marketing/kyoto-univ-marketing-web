@@ -1,6 +1,5 @@
-import { ImageSwitch } from './ImageSwitch'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { ImageSwitch } from './ImageSwitch'
 
 const meta = {
     component: ImageSwitch,

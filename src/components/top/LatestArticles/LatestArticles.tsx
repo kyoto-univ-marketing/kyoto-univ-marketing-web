@@ -1,5 +1,4 @@
-import { FC } from 'react'
-import { Suspense } from 'react'
+import { FC, Suspense } from 'react'
 
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 

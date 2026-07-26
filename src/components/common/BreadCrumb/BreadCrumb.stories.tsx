@@ -1,8 +1,6 @@
-import { pageLinkObject } from '@/constants/pageLinks'
-
-import { BreadCrumb } from './BreadCrumb'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { pageLinkObject } from '@/constants/pageLinks'
+import { BreadCrumb } from './BreadCrumb'
 
 const meta = {
     component: BreadCrumb,

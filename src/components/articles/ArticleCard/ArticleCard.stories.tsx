@@ -1,10 +1,8 @@
+import type { Meta, StoryObj } from '@storybook/react'
 import pick from '@/lib/pick'
 import { mockActivities } from '@/mocks/activities'
-
 import Logo from '../../../../public/logo.png'
 import { ArticleCard } from './ArticleCard'
-
-import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     component: ArticleCard,

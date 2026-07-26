@@ -1,8 +1,8 @@
 'use client'
 
-import { useIsDesktop } from '@/hooks/use-is-desktop'
 import { FC, useEffect } from 'react'
 import { FaSpinner } from 'react-icons/fa6'
+import { useIsDesktop } from '@/hooks/use-is-desktop'
 
 export interface TopContainerProps {
     mobile: React.ReactNode

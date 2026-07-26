@@ -1,8 +1,6 @@
-import { mockActivities } from '@/mocks/activities'
-
-import { ArticleDetailsPage } from './ArticleDetailsPage'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { mockActivities } from '@/mocks/activities'
+import { ArticleDetailsPage } from './ArticleDetailsPage'
 
 const meta = {
     component: ArticleDetailsPage,

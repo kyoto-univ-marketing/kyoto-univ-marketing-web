@@ -1,6 +1,5 @@
-import { PageImage } from './PageImage'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { PageImage } from './PageImage'
 
 const meta = {
     component: PageImage,

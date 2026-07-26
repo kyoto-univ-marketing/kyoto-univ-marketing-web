@@ -1,8 +1,6 @@
-import { useState } from 'react'
-
-import { TagRadio } from './TagRadio'
-
 import type { Meta, StoryObj } from '@storybook/react'
+import { useState } from 'react'
+import { TagRadio } from './TagRadio'
 
 const meta = {
     component: TagRadio,

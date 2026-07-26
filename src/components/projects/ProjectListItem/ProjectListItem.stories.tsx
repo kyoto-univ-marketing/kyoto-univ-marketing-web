@@ -1,9 +1,7 @@
+import type { Meta, StoryObj } from '@storybook/react'
 import pick from '@/lib/pick'
 import { mockProjects } from '@/mocks/projects'
-
 import { ProjectListItem } from './ProjectListItem'
-
-import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     component: ProjectListItem,

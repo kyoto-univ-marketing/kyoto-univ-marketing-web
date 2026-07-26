@@ -1,7 +1,6 @@
+import type { Meta, StoryObj } from '@storybook/react'
 import { AvatarProps } from '../../ui/avatar'
 import { Logo } from './Logo'
-
-import type { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
     component: Logo,
