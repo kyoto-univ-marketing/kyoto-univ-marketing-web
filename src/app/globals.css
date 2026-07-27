@@ -41,8 +41,9 @@
 
     --font-title: var(--font-hina-mincho), var(--font-biz-udp-mincho), serif;
 
-    --text-title: 1.7857142857rem;
-    --text-heading: 1.4285714286rem;
+    /* 見出しは画面幅に応じて滑らかに拡大する。狭い画面では従来のサイズを保つ */
+    --text-title: clamp(1.7857142857rem, 1.4rem + 1.5vw, 2.5rem);
+    --text-heading: clamp(1.4285714286rem, 1.15rem + 1vw, 1.875rem);
     --text-accent: 1.0714285714rem;
     --text-accent-sm: 0.8571428571rem;
 
@@ -178,5 +179,9 @@
 
         font-family: var(--font-biz-udp-mincho), serif;
         --font-title: var(--font-hina-mincho), var(--font-biz-udp-mincho), serif;
+    }
+    /* 日本語の明朝体は行間を広めに取ると読みやすい */
+    p {
+        line-height: 1.8;
     }
 }

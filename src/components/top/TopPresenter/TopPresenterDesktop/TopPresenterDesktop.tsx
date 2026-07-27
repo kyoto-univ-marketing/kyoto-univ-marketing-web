@@ -31,7 +31,7 @@ export const TopPresenterDesktop: FC = () => {
                 </div>
                 <div className='flex h-full flex-1 items-center justify-center'>
                     <div className='aspect-square w-full max-w-[33vh]'>
-                        <Logo className='size-full' />
+                        <Logo className='size-full' sizes='360px' />
                     </div>
                 </div>
                 <div className='flex w-full max-w-1/3 items-center justify-center'>
