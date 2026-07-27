@@ -5,12 +5,15 @@ import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { AboutAccordion } from '../AboutAccordion/AboutAccordion'
-import { CircleOutline, CircleOutlineSkeleton } from '../CircleOutline/CircleOutline'
+import { CircleOutline } from '../CircleOutline/CircleOutline'
 import { CircleStats, CircleStatsSkeleton } from '../CircleStats/CircleStats'
 
-export interface AboutPageProps {}
+export interface AboutPageProps {
+    /** サークル概要の本文 */
+    outlineText: string
+}
 
-export const AboutPage: FC<AboutPageProps> = ({ ...props }) => {
+export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
     return (
         <>
             <BreadCrumb
@@ -27,9 +30,7 @@ export const AboutPage: FC<AboutPageProps> = ({ ...props }) => {
                     </Suspense>
                 </div>
                 <div className='mb-16'>
-                    <Suspense fallback={<CircleOutlineSkeleton />}>
-                        <CircleOutline />
-                    </Suspense>
+                    <CircleOutline text={outlineText} />
                 </div>
                 <AboutAccordion />
             </div>

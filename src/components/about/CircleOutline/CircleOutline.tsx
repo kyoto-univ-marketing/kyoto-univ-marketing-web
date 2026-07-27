@@ -2,35 +2,22 @@ import { FC } from 'react'
 
 import shuugouShashin from '@/../public/page-images/about/36CB5A6E-5711-4641-8318-AF3C72572BBA.webp'
 import { PageImage } from '@/components/common/PageImage/PageImage'
-import { getTextById } from '@/lib/api'
 
-export interface CircleOutlineProps {}
+export interface CircleOutlineProps {
+    text: string
+}
 
 /**
  * サークル概要。内容が短くアコーディオンに畳むほどではないため、
  * 実績数値と並べてページ上部に常時表示している。
  *
- * ここに 'use cache' は付けない。getTextById 側で既にキャッシュしており、
- * 二重に付けると Suspense の境界が postponed のまま解決されなくなる。
+ * テキストの取得はページ側で行う（/projects や /articles と同じ形）。
+ * ここで自前で取得して Suspense に包むと、境界が postponed のまま解決されず
+ * スケルトンが表示され続ける問題が起きた。
  */
-export const CircleOutline: FC<CircleOutlineProps> = async () => {
-    const outlineText = await getTextById('circle_outline')
-
-    return (
-        <div className='space-y-8'>
-            <p className='px-2 text-gray-700'>{outlineText}</p>
-            <PageImage alt='集合写真' src={shuugouShashin} />
-        </div>
-    )
-}
-
-/** CircleOutline の読み込み中に表示するプレースホルダー */
-export const CircleOutlineSkeleton = () => (
+export const CircleOutline: FC<CircleOutlineProps> = ({ text }) => (
     <div className='space-y-8'>
-        <div className='space-y-2 px-2'>
-            <div className='h-4 w-full animate-pulse rounded bg-muted' />
-            <div className='h-4 w-2/3 animate-pulse rounded bg-muted' />
-        </div>
-        <div className='aspect-video w-full animate-pulse rounded bg-muted' />
+        <p className='px-2 text-gray-700'>{text}</p>
+        <PageImage alt='集合写真' src={shuugouShashin} />
     </div>
 )
