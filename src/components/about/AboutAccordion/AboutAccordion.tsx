@@ -2,7 +2,6 @@ import { FC, ReactNode, Suspense } from 'react'
 import { FaSpinner } from 'react-icons/fa6'
 
 import { Accordion } from '../../common/Accordion/Accordion'
-import { CircleOutline } from './CircleOutline/CircleOutline'
 import { Origin } from './Origin/Origin'
 import { Policy } from './Policy/Policy'
 
@@ -15,15 +14,6 @@ export const AboutAccordion: FC<AboutAccordionProps> = ({ ...props }) => {
             <Accordion
                 contentClassName='pb-16'
                 items={[
-                    {
-                        title: <h2 className={titleClassName}>サークル概要</h2>,
-                        value: 'outline',
-                        content: (
-                            <AboutSuspense>
-                                <CircleOutline />
-                            </AboutSuspense>
-                        ),
-                    },
                     {
                         title: <h2 className={titleClassName}>活動方針</h2>,
                         value: 'policy',
