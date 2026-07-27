@@ -9,9 +9,11 @@ export interface CircleOutlineProps {}
 /**
  * サークル概要。内容が短くアコーディオンに畳むほどではないため、
  * 実績数値と並べてページ上部に常時表示している。
+ *
+ * ここに 'use cache' は付けない。getTextById 側で既にキャッシュしており、
+ * 二重に付けると Suspense の境界が postponed のまま解決されなくなる。
  */
 export const CircleOutline: FC<CircleOutlineProps> = async () => {
-    'use cache'
     const outlineText = await getTextById('circle_outline')
 
     return (
