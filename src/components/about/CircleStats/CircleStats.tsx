@@ -1,3 +1,5 @@
+import { cacheLife } from 'next/cache'
+
 import { client } from '@/api/client'
 import { STATS_AS_OF } from '@/constants/about'
 
@@ -6,6 +8,8 @@ import { StatCounter } from '../StatCounter/StatCounter'
 /** サークルの実績数値。アコーディオンの外に置き、ページを開いた時点で目に入るようにする */
 export const CircleStats = async () => {
     'use cache'
+    // 管理画面で数値を直したら数分で反映されるようにする
+    cacheLife('minutes')
     const { data } = await client.GET('/api/about_stats/')
     const stats = data ?? []
     if (stats.length === 0) {

@@ -7,6 +7,7 @@ import {
     MicroCMSGetListResponse,
     MicroCMSImage,
 } from 'microcms-ts-sdk'
+import { cacheLife } from 'next/cache'
 
 import { activityTagList } from '@/constants/activity'
 import { mockActivities } from '@/mocks/activities'
@@ -79,6 +80,8 @@ export const getActivityList = async <Fields extends (keyof Activity)[]>(option?
     fields?: Fields
 }): Promise<GetActivityListResponse<Fields>> => {
     'use cache'
+    // microCMSで記事を公開したら数分で反映されるようにする
+    cacheLife('minutes')
     if (process.env.NODE_ENV === 'development') {
         // 開発環境の場合はモックデータを返す
 
@@ -147,6 +150,7 @@ export const getActivityById = async (
 /** 活動記録のIDを全件取得する */
 export const getActivityIds = async (): Promise<string[]> => {
     'use cache'
+    cacheLife('minutes')
     if (process.env.NODE_ENV === 'development') {
         // 開発環境の場合はモックデータを返す
         return mockActivities.map((activity) => activity.id)
@@ -186,6 +190,7 @@ export const getLatestActivityList = async (limit: number) => {
 /** 活動方針のリストを取得する */
 export const getPolicies = async (): Promise<Policy[]> => {
     'use cache'
+    cacheLife('minutes')
     if (process.env.NODE_ENV === 'development') {
         return mockPolicies
     }
@@ -202,6 +207,7 @@ export const getPolicies = async (): Promise<Policy[]> => {
 /** サイト設定を取得する */
 export const getSiteSettings = async (): Promise<SiteSettings> => {
     'use cache'
+    cacheLife('minutes')
     if (process.env.NODE_ENV === 'development') {
         return mockSiteSettings
     }
