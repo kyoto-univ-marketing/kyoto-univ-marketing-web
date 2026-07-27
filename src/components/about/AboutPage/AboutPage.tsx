@@ -5,11 +5,15 @@ import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { AboutAccordion } from '../AboutAccordion/AboutAccordion'
+import { CircleOutline } from '../CircleOutline/CircleOutline'
 import { CircleStats, CircleStatsSkeleton } from '../CircleStats/CircleStats'
 
-export interface AboutPageProps {}
+export interface AboutPageProps {
+    /** サークル概要の本文 */
+    outlineText: string
+}
 
-export const AboutPage: FC<AboutPageProps> = ({ ...props }) => {
+export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
     return (
         <>
             <BreadCrumb
@@ -20,10 +24,13 @@ export const AboutPage: FC<AboutPageProps> = ({ ...props }) => {
             />
             <PageTitle>京大マーケティング研究所について</PageTitle>
             <div className='mx-auto mb-12 max-w-(--breakpoint-sm) px-6'>
-                <div className='mb-16'>
+                <div className='mb-10'>
                     <Suspense fallback={<CircleStatsSkeleton />}>
                         <CircleStats />
                     </Suspense>
+                </div>
+                <div className='mb-16'>
+                    <CircleOutline text={outlineText} />
                 </div>
                 <AboutAccordion />
             </div>
