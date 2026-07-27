@@ -1,6 +1,5 @@
-import dayjs from 'dayjs'
-
 import { client } from '@/api/client'
+import { STATS_AS_OF } from '@/constants/about'
 
 import { StatCounter } from '../StatCounter/StatCounter'
 
@@ -13,12 +12,6 @@ export const CircleStats = async () => {
         return null
     }
 
-    /** 最新の更新日時 */
-    const latestDate = stats.reduce((acc, cur) => {
-        const date = dayjs(cur.updated_at)
-        return date.isAfter(acc) ? date : acc
-    }, dayjs(0))
-
     return (
         <div className='mx-auto w-fit space-y-2'>
             <div className='flex gap-4'>
@@ -28,7 +21,7 @@ export const CircleStats = async () => {
                         <StatCounter key={stat.id} label={stat.title} value={stat.number} />
                     ))}
             </div>
-            <p className='text-right text-gray-700 text-xs'>{latestDate.format('※YYYY年MM月現在')}</p>
+            <p className='text-right text-gray-700 text-xs'>※{STATS_AS_OF}現在</p>
         </div>
     )
 }
