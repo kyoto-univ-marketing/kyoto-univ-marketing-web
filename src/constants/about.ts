@@ -6,4 +6,4 @@
  *
  * 数値を集計し直したら、Django 側の数値と合わせてここも更新すること。
  */
-export const STATS_AS_OF = '2026年5月'
+export const STATS_AS_OF = '2026年7月'
