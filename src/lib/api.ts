@@ -17,3 +17,14 @@ export const getTextById = async (id: TextId): Promise<string> => {
     }
     return data?.text ?? ''
 }
+
+/**
+ * 実績数値のうち部員数を取得する。取得できなければ undefined を返す。
+ * 説明文などに人数を書き込みたい箇所から使う。
+ */
+export const getMemberCount = async (): Promise<number | undefined> => {
+    'use cache'
+    cacheLife('minutes')
+    const { data } = await client.GET('/api/about_stats/')
+    return data?.find((stat) => stat.title.includes('部員'))?.number
+}

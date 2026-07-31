@@ -1,12 +1,13 @@
 import { Organization, WithContext } from 'schema-dts'
 
-import { TOP_PAGE_DESCRIPTION } from '@/constants/description'
+import { buildTopPageDescription } from '@/constants/description'
 import profile from '@/constants/profile'
+import { getMemberCount } from '@/lib/api'
 import { getSiteSettings, SiteSettings } from '@/lib/microcms'
 
 import { JsonLD } from './JsonLD'
 
-export const buildOrganizationJson = (siteSettings: SiteSettings) =>
+export const buildOrganizationJson = (siteSettings: SiteSettings, memberCount?: number) =>
     ({
         '@context': 'https://schema.org',
         '@type': 'Organization',
@@ -16,7 +17,7 @@ export const buildOrganizationJson = (siteSettings: SiteSettings) =>
         image: `${profile.homepageUrl}/opengraph-image`,
         email: siteSettings.mail_address,
         sameAs: [siteSettings.x_url, siteSettings.instagram_url],
-        description: TOP_PAGE_DESCRIPTION,
+        description: buildTopPageDescription(memberCount),
         address: [], // TOOD: オフィスができたら住所を追加する
         contactPoint: {
             '@type': 'ContactPoint',
@@ -26,6 +27,6 @@ export const buildOrganizationJson = (siteSettings: SiteSettings) =>
     }) as const satisfies WithContext<Organization>
 
 export const OrganizationJsonLD = async () => {
-    const siteSettings = await getSiteSettings()
-    return <JsonLD id='organization-json-ld' json={buildOrganizationJson(siteSettings)} />
+    const [siteSettings, memberCount] = await Promise.all([getSiteSettings(), getMemberCount()])
+    return <JsonLD id='organization-json-ld' json={buildOrganizationJson(siteSettings, memberCount)} />
 }

@@ -4,11 +4,12 @@ import { Suspense } from 'react'
 
 import { OrganizationJsonLD } from '@/components/common/JsonLD/OrganizationJsonLD'
 import { TopPage } from '@/components/top/TopPage/TopPage'
-import { TOP_PAGE_DESCRIPTION } from '@/constants/description'
+import { buildTopPageDescription } from '@/constants/description'
+import { getMemberCount } from '@/lib/api'
 
-export const metadata: Metadata = {
-    description: TOP_PAGE_DESCRIPTION,
-}
+export const generateMetadata = async (): Promise<Metadata> => ({
+    description: buildTopPageDescription(await getMemberCount()),
+})
 
 export default function Home() {
     return (
