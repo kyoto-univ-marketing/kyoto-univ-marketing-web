@@ -31,7 +31,7 @@ export const TopPresenterDesktop: FC = () => {
                             <span className='inline-block'>研究所</span>
                         </h1>
                     </div>
-                    <div className='flex items-center justify-center'>
+                    <div className='flex flex-1 items-center justify-center'>
                         <div className='aspect-square w-full max-w-[33vh]'>
                             <Logo className='size-full' sizes='360px' />
                         </div>
