@@ -1,6 +1,6 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
 import type { Metadata, Viewport } from 'next'
-import { BIZ_UDPMincho, Hina_Mincho } from 'next/font/google'
+import { BIZ_UDPMincho, EB_Garamond, Hina_Mincho } from 'next/font/google'
 import { ReactNode, Suspense } from 'react'
 import { Footer } from '@/components/common/Footer/Footer'
 import { Toaster } from '@/components/ui/toaster'
@@ -13,6 +13,8 @@ import TanstackProvider from '@/lib/tanstack-provider'
 const bizUdpMincho = BIZ_UDPMincho({ subsets: ['latin'], weight: ['400', '700'], variable: '--font-biz-udp-mincho' })
 /** タイトルのフォント */
 const hinaMincho = Hina_Mincho({ subsets: ['latin'], weight: ['400'], variable: '--font-hina-mincho' })
+/** 欧文のフォント */
+const ebGaramond = EB_Garamond({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-eb-garamond' })
 
 export const metadata: Metadata = {
     title: {
@@ -51,7 +53,7 @@ export default function RootLayout({
 
     return (
         <html lang='ja'>
-            <body className={`${bizUdpMincho.variable} ${hinaMincho.variable}`}>
+            <body className={`${bizUdpMincho.variable} ${hinaMincho.variable} ${ebGaramond.variable}`}>
                 <TanstackProvider>
                     <div className='flex min-h-dvh flex-col'>
                         <Header />

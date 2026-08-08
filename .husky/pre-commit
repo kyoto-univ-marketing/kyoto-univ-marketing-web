@@ -1,3 +1,5 @@
 # 参考： https://zenn.dev/risu729/articles/latest-husky-lint-staged
+# Bunランタイム（--bun）はこの開発機のセキュリティソフトと相性が悪くsegfaultするため、
+# lint-staged自体はNodeで実行する（チェック内容は同じ）
 
-bun --bun run lint-staged
+bun run lint-staged

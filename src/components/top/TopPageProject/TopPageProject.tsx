@@ -13,7 +13,7 @@ export const TopPageProject: FC<TopPageProjectProps> = ({ ...props }) => {
             <PageTitle asChild>
                 <div className='flex items-center gap-4'>
                     <h2>プロジェクト</h2>
-                    <span className='text-primary text-sm'>Project</span>
+                    <span className='font-en text-brand-accent text-sm tracking-widest'>Project</span>
                 </div>
             </PageTitle>
             <ol className='mb-12 list-inside list-[cjk-ideographic] space-y-2 px-16'>

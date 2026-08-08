@@ -17,7 +17,7 @@ export interface StatCounterProps extends ComponentProps<'div'> {
  * requestAnimationFrame が動かない状況（非アクティブなタブ、JS無効、クローラー）でも
  * 0 のまま表示され続けることがないようにするため。
  */
-export const StatCounter: FC<StatCounterProps> = ({ value, label, duration = 1000, className, ...props }) => {
+export const StatCounter: FC<StatCounterProps> = ({ value, label, duration = 700, className, ...props }) => {
     const [count, setCount] = useState(value)
     const ref = useRef<HTMLDivElement>(null)
 
@@ -40,9 +40,20 @@ export const StatCounter: FC<StatCounterProps> = ({ value, label, duration = 100
             }
         }
 
-        // 画面に入ったタイミングで再生する
+        // スクロールで画面に入ったタイミングで再生する。
+        // 読み込んだ時点で既に見えている場合は演出せず、実数を表示したままにする
+        // （ページを開いた直後に 0 へ巻き戻って見えるのを防ぐ）
+        let isFirstCheck = true
         const observer = new IntersectionObserver((entries) => {
-            if (entries.some((entry) => entry.isIntersecting)) {
+            const isVisible = entries.some((entry) => entry.isIntersecting)
+            if (isFirstCheck) {
+                isFirstCheck = false
+                if (isVisible) {
+                    observer.disconnect()
+                    return
+                }
+            }
+            if (isVisible) {
                 observer.disconnect()
                 rafId = requestAnimationFrame(step)
             }

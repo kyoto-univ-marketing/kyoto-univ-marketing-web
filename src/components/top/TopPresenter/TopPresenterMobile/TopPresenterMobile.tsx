@@ -39,7 +39,7 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                     <div className='flex w-full flex-col space-y-8'>
                         <Button
                             asChild
-                            className='w-fit min-w-[66.7%] self-center rounded-none p-6 text-primary'
+                            className='w-fit min-w-[66.7%] self-center p-6 text-primary'
                             variant='outline'
                         >
                             <Link href='/about'>サークルについて</Link>

@@ -23,7 +23,9 @@ export const LatestArticleItem: FC<LatestArticleItemProps> = ({ title, published
             <td className='whitespace-pre-wrap'>
                 <NextLink href={`/articles/${id}`}>
                     <span className='inline-block'>{title}</span>
-                    {isNew && <Badge className='ml-2 border-none text-xs'>New</Badge>}
+                    {isNew && (
+                        <Badge className='ml-2 border-none bg-brand-accent text-xs hover:bg-brand-accent'>New</Badge>
+                    )}
                 </NextLink>
             </td>
         </tr>

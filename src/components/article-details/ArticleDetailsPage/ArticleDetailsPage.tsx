@@ -36,7 +36,7 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title
                                 <table>
                                     <tbody>
                                         <tr className='text-gray-700'>
-                                            <td className='pr-2'>投稿日：</td>
+                                            <td className='pr-2'>日付：</td>
                                             <td>{dayjs(publishedAt).format('YYYY/MM/DD')}</td>
                                         </tr>
                                         <tr className='text-gray-700'>

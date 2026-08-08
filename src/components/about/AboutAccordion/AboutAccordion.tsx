@@ -1,39 +1,34 @@
 import { FC, ReactNode, Suspense } from 'react'
 import { FaSpinner } from 'react-icons/fa6'
 
-import { Accordion } from '../../common/Accordion/Accordion'
 import { Origin } from './Origin/Origin'
 import { Policy } from './Policy/Policy'
 
-export interface AboutAccordionProps {}
+export interface AboutSectionsProps {}
 
-export const AboutAccordion: FC<AboutAccordionProps> = ({ ...props }) => {
-    const titleClassName = 'text-heading px-4'
+/**
+ * 活動方針・創立の経緯のセクション。
+ * 以前はアコーディオンで畳んでいたが、畳むと読まれないため常時展開に変更した。
+ */
+export const AboutSections: FC<AboutSectionsProps> = ({ ...props }) => {
     return (
-        <div>
-            <Accordion
-                contentClassName='pb-16'
-                items={[
-                    {
-                        title: <h2 className={titleClassName}>活動方針</h2>,
-                        value: 'policy',
-                        content: (
-                            <AboutSuspense>
-                                <Policy />
-                            </AboutSuspense>
-                        ),
-                    },
-                    {
-                        title: <h2 className={titleClassName}>創立の経緯</h2>,
-                        value: 'origin',
-                        content: (
-                            <AboutSuspense>
-                                <Origin />
-                            </AboutSuspense>
-                        ),
-                    },
-                ]}
-            />
+        <div className='space-y-16'>
+            <section>
+                <h2 className='border-b px-4 pb-4 text-heading'>活動方針</h2>
+                <div className='py-8'>
+                    <AboutSuspense>
+                        <Policy />
+                    </AboutSuspense>
+                </div>
+            </section>
+            <section>
+                <h2 className='border-b px-4 pb-4 text-heading'>創立の経緯</h2>
+                <div className='py-8'>
+                    <AboutSuspense>
+                        <Origin />
+                    </AboutSuspense>
+                </div>
+            </section>
         </div>
     )
 }

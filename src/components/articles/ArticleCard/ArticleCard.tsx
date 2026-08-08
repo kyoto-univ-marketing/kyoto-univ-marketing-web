@@ -38,7 +38,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({
                 </div>
                     <div >
                         <div className='flex items-center text-gray-700'>
-                            <p className='w-16'>投稿日：</p>
+                            <p className='w-16'>日付：</p>
                             <p >{dayjs(publishedAt).format('YYYY/MM/DD')}</p>
                         </div>
                         <div className='flex items-center text-gray-700'>

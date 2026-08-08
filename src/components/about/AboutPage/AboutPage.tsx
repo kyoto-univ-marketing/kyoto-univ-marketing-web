@@ -4,7 +4,7 @@ import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
-import { AboutAccordion } from '../AboutAccordion/AboutAccordion'
+import { AboutSections } from '../AboutAccordion/AboutAccordion'
 import { CircleOutline } from '../CircleOutline/CircleOutline'
 import { CircleStats, CircleStatsSkeleton } from '../CircleStats/CircleStats'
 
@@ -32,7 +32,7 @@ export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
                 <div className='mb-16'>
                     <CircleOutline text={outlineText} />
                 </div>
-                <AboutAccordion />
+                <AboutSections />
             </div>
         </>
     )
