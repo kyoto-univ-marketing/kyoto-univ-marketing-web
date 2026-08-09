@@ -1,5 +1,6 @@
 import { FC, Suspense } from 'react'
 
+import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 
 import { Logo } from '../../../common/Logo/Logo'
@@ -8,7 +9,7 @@ import { topHeaderImageList } from '../../imageList'
 import { LatestArticles } from '../../LatestArticles/LatestArticles'
 import { LatestArticlesSkeleton } from '../../LatestArticlesSkeleton/LatestArticlesSkeleton'
 import { ScrollCue } from '../../ScrollCue/ScrollCue'
-import { TopPageProject } from '../../TopPageProject/TopPageProject'
+import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
 
 export const TopPresenterDesktop: FC = () => {
     return (
@@ -45,14 +46,21 @@ export const TopPresenterDesktop: FC = () => {
                     />
                 </div>
             </section>
-            <div className='mb-24 grid grid-cols-2 gap-8 px-8 pt-8'>
+            <div className='mb-20'>
+                <Suspense fallback={null}>
+                    <SecondOrigin />
+                </Suspense>
+            </div>
+            <Reveal className='mb-20'>
+                <Suspense fallback={<CircleStatsSkeleton />}>
+                    <CircleStats />
+                </Suspense>
+            </Reveal>
+            <div className='mx-auto mb-24 max-w-(--breakpoint-md) px-8'>
                 <Reveal className='border border-gray-200 bg-white pb-8'>
                     <Suspense fallback={<LatestArticlesSkeleton />}>
                         <LatestArticles />
                     </Suspense>
-                </Reveal>
-                <Reveal className='border border-gray-200 bg-white pb-8' delay={120}>
-                    <TopPageProject />
                 </Reveal>
             </div>
         </div>

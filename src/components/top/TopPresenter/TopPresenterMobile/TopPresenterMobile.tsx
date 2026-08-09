@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { FC, Suspense } from 'react'
 
+import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { PageImage } from '@/components/common/PageImage/PageImage'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 
@@ -12,7 +13,7 @@ import { ImageSwitch } from '../../ImageSwitch/ImageSwitch'
 import { topHeaderImageList } from '../../imageList'
 import { LatestArticles } from '../../LatestArticles/LatestArticles'
 import { LatestArticlesSkeleton } from '../../LatestArticlesSkeleton/LatestArticlesSkeleton'
-import { TopPageProject } from '../../TopPageProject/TopPageProject'
+import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
 
 export interface TopPresenterMobileProps {
     message: string
@@ -59,6 +60,16 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                 <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
             </Reveal>
             <div className='mb-16'>
+                <Suspense fallback={null}>
+                    <SecondOrigin />
+                </Suspense>
+            </div>
+            <Reveal className='mb-16'>
+                <Suspense fallback={<CircleStatsSkeleton />}>
+                    <CircleStats />
+                </Suspense>
+            </Reveal>
+            <div className='mb-16'>
                 <Suspense fallback={<LatestArticlesSkeleton />}>
                     <LatestArticles />
                 </Suspense>
@@ -67,9 +78,6 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                 <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-64/27' src={img3884} />
                 <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
             </Reveal>
-            <div className='mb-16'>
-                <TopPageProject />
-            </div>
         </div>
     )
 }

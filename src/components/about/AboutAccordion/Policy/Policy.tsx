@@ -7,15 +7,13 @@ export interface PolicyProps {}
 export const Policy = async ({ ...props }: PolicyProps) => {
     const policies = await getPolicies()
     return (
-        <div className='space-y-16 p-4'>
-            {policies.map((policy, i) => (
+        <div className='space-y-10 px-2'>
+            {policies.map((policy) => (
                 <PolicyItem
                     key={policy.id}
-                    reverse={i % 2 === 1}
-                    stamp_image={policy.stamp_image}
-                    stamp_left={policy.stamp_left}
-                    stamp_top={policy.stamp_top}
+                    subtitle={policy.subtitle}
                     text={policy.text}
+                    title={policy.title}
                 />
             ))}
         </div>

@@ -14,7 +14,12 @@ export const AboutSections: FC<AboutSectionsProps> = ({ ...props }) => {
     return (
         <div className='space-y-16'>
             <section>
-                <h2 className='border-b px-4 pb-4 text-heading'>活動方針</h2>
+                <h2 className='border-b px-4 pb-4 text-heading'>部員が得るもの</h2>
+                <p className='px-4 pt-6 text-gray-700'>
+                    大学入学までの熱量を「最高到達点」にせず「通過点」にするために、
+                    私たちは学生時代にもうひとつの原体験——「セカンド原体験」をつくることを目指しています。
+                    その活動を通じて部員が得るものを、三つの言葉で表しています。
+                </p>
                 <div className='py-8'>
                     <AboutSuspense>
                         <Policy />
