@@ -17,14 +17,10 @@ export const TopPresenterDesktop: FC = () => {
              * 写真には一切手を加えず（白膜をかけない）、文字は紺のパネルに分けて置く。
              * 写真の上に文字を重ねると、どちらも中途半端になるため。
              */}
-            <section className='relative h-[calc(100svh-var(--spacing)*18)] overflow-hidden'>
-                <ImageSwitch
-                    className='absolute inset-0 h-full'
-                    imageList={topHeaderImageList}
-                    interval={7000}
-                    transitionDuration={2000}
-                />
-                <div className='absolute inset-y-0 left-0 flex w-[46%] max-w-[34rem] flex-col justify-center gap-10 bg-primary px-12 text-primary-foreground lg:px-16'>
+            <section className='flex h-[calc(100svh-var(--spacing)*18)]'>
+                {/* 紺のパネルと写真を横に並べる。写真を全幅に敷いてパネルを重ねると
+                    被写体がパネルの裏に隠れ、写真の枠の中で中央に来ないため */}
+                <div className='relative flex w-[46%] max-w-[34rem] shrink-0 flex-col justify-center gap-10 bg-primary px-12 text-primary-foreground lg:px-16'>
                     <Reveal className='flex flex-col gap-8'>
                         <Logo className='size-20' reverse sizes='160px' />
                         <div className='flex flex-col gap-5'>
@@ -39,6 +35,14 @@ export const TopPresenterDesktop: FC = () => {
                         </p>
                     </Reveal>
                     <ScrollCue reverse />
+                </div>
+                <div className='relative flex-1 overflow-hidden'>
+                    <ImageSwitch
+                        className='absolute inset-0 h-full'
+                        imageList={topHeaderImageList}
+                        interval={7000}
+                        transitionDuration={2000}
+                    />
                 </div>
             </section>
             <div className='mb-24 grid grid-cols-2 gap-8 px-8 pt-8'>
