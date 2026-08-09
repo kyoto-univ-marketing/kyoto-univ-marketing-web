@@ -23,7 +23,7 @@ export const ContactPage: FC<ContactPageProps> = async () => {
                     { label: pageLinkObject.CONTACT.text, href: pageLinkObject.CONTACT.href },
                 ]}
             />
-            <PageTitle en='Contact'>{pageLinkObject.CONTACT.text}</PageTitle>
+            <PageTitle band en='Contact'>{pageLinkObject.CONTACT.text}</PageTitle>
             <div className='mx-auto max-w-(--breakpoint-sm)'>
                 <div className='space-y-2 p-4'>
                     <p className='text-gray-700'>以下のフォームからご自由にお問い合わせください。</p>

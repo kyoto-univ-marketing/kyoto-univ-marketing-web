@@ -24,7 +24,7 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ projectDescription, ..
                     { label: pageLinkObject.PROJECT.text, href: pageLinkObject.PROJECT.href },
                 ]}
             />
-            <PageTitle en='Project'>プロジェクト</PageTitle>
+            <PageTitle band en='Project'>プロジェクト</PageTitle>
             <div className='mx-auto max-w-(--breakpoint-sm)'>
                 <p className='mb-16 px-12'>{projectDescription}</p>
                 <div className='mb-16 space-y-16'>
