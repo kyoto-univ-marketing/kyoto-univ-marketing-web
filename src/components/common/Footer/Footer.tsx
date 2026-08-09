@@ -32,7 +32,7 @@ export const Footer = async () => {
                 </div>
             </div>
             <div className='w-full space-y-1 bg-primary px-6 pb-8 text-center text-primary-foreground/70 text-xs'>
-                <p>一般社団法人マーケティング研究所（京大マーケティング研究所）</p>
+                <p>京大マーケティング研究所（一般社団法人マーケティング研究所）</p>
                 <p>京都府京都市左京区田中大堰町13 ／ 法人番号 5130005017724</p>
             </div>
         </footer>

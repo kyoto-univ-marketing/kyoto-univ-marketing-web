@@ -9,9 +9,9 @@ import { getSiteSettings } from '@/lib/microcms'
  */
 export const CorporateInfo = async () => {
     const siteSettings = await getSiteSettings()
+    // 主たる呼称はあくまで「京大マーケティング研究所」。法人名は括弧で添える
     const items = [
-        { label: '法人名', value: '一般社団法人マーケティング研究所' },
-        { label: '通称', value: '京大マーケティング研究所（京大マーケ）' },
+        { label: '名称', value: '京大マーケティング研究所（一般社団法人マーケティング研究所）' },
         { label: '法人番号', value: '5130005017724' },
         { label: '所在地', value: '京都府京都市左京区田中大堰町13' },
         { label: '設立', value: '2026年7月（学生団体としての創立は2024年3月）' },
