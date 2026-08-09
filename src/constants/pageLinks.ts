@@ -27,6 +27,11 @@ const pageLinks = [
         textEng: 'PROJECT',
     },
     {
+        href: '/sponsorship',
+        text: '企業の方へ',
+        textEng: 'SPONSORSHIP',
+    },
+    {
         href: '/contact',
         text: 'お問い合わせ',
         textEng: 'CONTACT',

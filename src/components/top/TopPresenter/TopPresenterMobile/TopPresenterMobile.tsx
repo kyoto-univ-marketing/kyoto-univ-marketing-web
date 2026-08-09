@@ -14,6 +14,7 @@ import { topHeaderImageList } from '../../imageList'
 import { LatestArticles } from '../../LatestArticles/LatestArticles'
 import { LatestArticlesSkeleton } from '../../LatestArticlesSkeleton/LatestArticlesSkeleton'
 import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
+import { TopCta } from '../../TopCta/TopCta'
 
 export interface TopPresenterMobileProps {
     message: string
@@ -78,6 +79,8 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                 <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-64/27' src={img3884} />
                 <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
             </Reveal>
+
+            <TopCta />
         </div>
     )
 }

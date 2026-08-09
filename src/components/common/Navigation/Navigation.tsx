@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import pageLinks from '@/constants/pageLinks'
+import pageLinks, { pageLinkObject } from '@/constants/pageLinks'
 import { getSiteSettings } from '@/lib/microcms'
 
 import { HamburgerMenu } from '../HamburgerMenu/HamburgerMenu'
@@ -28,9 +28,10 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                     />
                 </div>
             )}
+            {/* 企業向けの導線は、学生向けの並びに混ぜず、金の枠で独立させる */}
             <ul className='hidden items-center gap-4 text-sm md:flex lg:gap-6 lg:text-base'>
                 {pageLinks
-                    .filter((link) => link.href !== '/')
+                    .filter((link) => link.href !== '/' && link.href !== pageLinkObject.SPONSORSHIP.href)
                     .map((link) => (
                         <li key={link.href}>
                             <NextLink
@@ -41,6 +42,14 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                             </NextLink>
                         </li>
                     ))}
+                <li>
+                    <NextLink
+                        className='block border border-brand-accent px-4 py-2 text-brand-accent text-sm transition-colors hover:bg-brand-accent hover:text-primary'
+                        href={pageLinkObject.SPONSORSHIP.href}
+                    >
+                        {pageLinkObject.SPONSORSHIP.text}
+                    </NextLink>
+                </li>
             </ul>
         </nav>
     )

@@ -13,6 +13,7 @@ import { LatestArticles } from '../../LatestArticles/LatestArticles'
 import { LatestArticlesSkeleton } from '../../LatestArticlesSkeleton/LatestArticlesSkeleton'
 import { ScrollCue } from '../../ScrollCue/ScrollCue'
 import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
+import { TopCta } from '../../TopCta/TopCta'
 
 export interface TopPresenterDesktopProps {
     message: string
@@ -87,6 +88,8 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
                     </Suspense>
                 </Reveal>
             </div>
+
+            <TopCta />
         </div>
     )
 }
