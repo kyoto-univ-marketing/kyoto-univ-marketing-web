@@ -27,11 +27,6 @@ const pageLinks = [
         textEng: 'PROJECT',
     },
     {
-        href: '/links',
-        text: 'リンク集',
-        textEng: 'LINKS',
-    },
-    {
         href: '/contact',
         text: 'お問い合わせ',
         textEng: 'CONTACT',
