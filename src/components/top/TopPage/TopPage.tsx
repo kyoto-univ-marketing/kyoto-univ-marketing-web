@@ -11,7 +11,7 @@ export const TopPage = async () => {
     ])
     return (
         <TopContainer
-            desktop={<TopPresenterDesktop />}
+            desktop={<TopPresenterDesktop message={message} subMessage={subMessage} />}
             mobile={<TopPresenterMobile message={message} subMessage={subMessage} />}
         />
     )

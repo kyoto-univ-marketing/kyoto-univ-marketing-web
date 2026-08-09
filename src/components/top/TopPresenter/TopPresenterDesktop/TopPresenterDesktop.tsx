@@ -1,8 +1,11 @@
 import { FC, Suspense } from 'react'
 
 import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
+import { PageImage } from '@/components/common/PageImage/PageImage'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 
+import img3884 from '../../../../../public/page-images/top/IMG_3884.webp'
+import img3893 from '../../../../../public/page-images/top/IMG_3893.webp'
 import { Logo } from '../../../common/Logo/Logo'
 import { ImageSwitch } from '../../ImageSwitch/ImageSwitch'
 import { topHeaderImageList } from '../../imageList'
@@ -11,7 +14,12 @@ import { LatestArticlesSkeleton } from '../../LatestArticlesSkeleton/LatestArtic
 import { ScrollCue } from '../../ScrollCue/ScrollCue'
 import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
 
-export const TopPresenterDesktop: FC = () => {
+export interface TopPresenterDesktopProps {
+    message: string
+    subMessage: string
+}
+
+export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, subMessage }) => {
     return (
         <div className='w-full'>
             {/*
@@ -46,16 +54,32 @@ export const TopPresenterDesktop: FC = () => {
                     />
                 </div>
             </section>
-            <div className='mb-20'>
+
+            {/* PCは横幅を使う。左に文章、右に写真の二段組みにして、
+                スマホと同じ縦一列にならないようにする */}
+            <Reveal className='mx-auto grid max-w-(--breakpoint-lg) grid-cols-2 items-center gap-12 px-8 py-24'>
+                <div className='space-y-6'>
+                    <h2 className='font-title text-heading leading-relaxed'>{message}</h2>
+                    <p className='whitespace-pre-wrap text-gray-700'>{subMessage}</p>
+                </div>
+                <div className='grid gap-4'>
+                    <PageImage alt='勉強会の様子' containerClassName='w-full aspect-64/27' src={img3884} />
+                    <PageImage alt='勉強会の教室' containerClassName='w-2/3 justify-self-end' src={img3893} />
+                </div>
+            </Reveal>
+
+            <div className='mb-24'>
                 <Suspense fallback={null}>
                     <SecondOrigin />
                 </Suspense>
             </div>
-            <Reveal className='mb-20'>
+
+            <Reveal className='mb-24'>
                 <Suspense fallback={<CircleStatsSkeleton />}>
                     <CircleStats />
                 </Suspense>
             </Reveal>
+
             <div className='mx-auto mb-24 max-w-(--breakpoint-md) px-8'>
                 <Reveal className='border border-gray-200 bg-white pb-8'>
                     <Suspense fallback={<LatestArticlesSkeleton />}>
