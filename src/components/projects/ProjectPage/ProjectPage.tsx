@@ -10,6 +10,7 @@ import { pageLinkObject } from '@/constants/pageLinks'
 import { isArchivedProject, stripArchivedMarker } from '@/constants/project'
 
 import { ProjectList } from '../ProjectList/ProjectList'
+import { RegularActivities } from '../RegularActivities/RegularActivities'
 
 export interface ProjectPageProps {
     projectDescription: string
@@ -24,9 +25,13 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ projectDescription, ..
                     { label: pageLinkObject.PROJECT.text, href: pageLinkObject.PROJECT.href },
                 ]}
             />
-            <PageTitle band en='Project'>プロジェクト</PageTitle>
-            <div className='mx-auto max-w-(--breakpoint-sm)'>
-                <p className='mb-16 px-12'>{projectDescription}</p>
+            <PageTitle band en='Activities'>活動内容</PageTitle>
+            <div className='mx-auto max-w-(--breakpoint-sm) px-6'>
+                <RegularActivities />
+                <PageTitle asChild en='Project'>
+                    <h2>プロジェクト</h2>
+                </PageTitle>
+                <p className='mb-16 px-2'>{projectDescription}</p>
                 <div className='mb-16 space-y-16'>
                     <Suspense
                         fallback={

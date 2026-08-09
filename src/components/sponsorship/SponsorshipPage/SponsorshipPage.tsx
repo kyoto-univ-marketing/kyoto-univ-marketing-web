@@ -18,12 +18,12 @@ const offers = [
     {
         en: 'Presence',
         title: '一年を通じた、日常のなかの接点',
-        body: '部員が毎日使うチャットへの参加・発信、活動拠点への掲示など。就職活動の時期にだけ現れる企業ではなく、学生の日常に名前がある企業になります。',
+        body: '部員が毎日使うチャットへの参加・発信、活動拠点への掲示など。一年を通じて、学生の日常のなかに貴社の名前がある状態をつくります。',
     },
     {
         en: 'Collaboration',
         title: '共創イベントの開催',
-        body: '合宿のご企画、社員の方との座談会、事業課題を題材にしたワークショップなど。選考ではない場で学生と深く関わる機会を、運営は私たちが担って共同開催します。',
+        body: '合宿のご企画、社員の方との座談会、事業課題を題材にしたワークショップなど。学生と深く関わる機会を、運営は私たちが担って共同開催します。',
     },
 ]
 
@@ -55,11 +55,12 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
             <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24'>
                 <Reveal className='mb-20 space-y-6 text-center'>
                     <p className='font-title text-heading leading-relaxed'>
-                        就職活動が始まる前に、素の京大生と出会う。
+                        志のある学生を、近くで応援するという関わり方。
                     </p>
                     <p className='mx-auto max-w-2xl text-gray-700'>
-                        京大マーケティング研究所は、企業と学生が「選考の外」で出会う場をつくっています。
-                        広告枠のご提供ではなく、一年をかけて貴社と一緒に何かを作る協賛パートナーシップです。
+                        京大マーケティング研究所は、次の時代をつくろうとする学生が集まる場です。
+                        広告枠のご提供ではなく、その育ちの過程に一年を通じて伴走していただく——
+                        そんな協賛パートナーシップをご提案しています。
                     </p>
                 </Reveal>
 
@@ -68,7 +69,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>One Company Per Industry</p>
                     <p className='mt-4 font-title text-heading leading-relaxed'>協賛枠は、1業界につき1社まで</p>
                     <p className='mt-5 text-gray-700 text-sm leading-relaxed'>
-                        学生との関係の質を守るため、また協賛企業さまが同業他社と接点を奪い合う場にならないようにするためです。
+                        学生との関係の質を守るため、また協賛企業さまが同業他社と場を奪い合うことにならないようにするためです。
                         枠が埋まっている業界については、次年度以降のご案内となります。
                     </p>
                 </Reveal>
@@ -79,7 +80,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     </Suspense>
                     <p className='mt-6 text-center text-gray-700 text-sm'>
                         文系・理系の垣根を越えた学生が、京都大学から徒歩圏の京町家「マーケハウス」に集まっています。
-                        就職活動が本格化する前の学年から在籍しているため、早い段階から関係を築けます。
+                        勉強会やゼミ、実践のプロジェクト、年3回の合宿を通じて、一年をかけて力をつけていきます。
                     </p>
                 </Reveal>
 
@@ -112,8 +113,9 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     </PageTitle>
                     <div className='space-y-6 text-gray-700'>
                         <p>
-                            この一年間の関係は、採用の枠を超えた意味も持ちます。
-                            「次代を担う人材の育成」への投資として、人的資本経営やCSRの文脈で発信していただけます。
+                            「次代を担う人材の育成に投資している」という事実は、
+                            人的資本経営やCSRの文脈で発信していただける物語になります。
+                            その発信のお手伝いをすることも可能です。
                         </p>
                         <p>
                             いただいた協賛金は、活動拠点の維持費・合宿費・活動支援費に使われ、

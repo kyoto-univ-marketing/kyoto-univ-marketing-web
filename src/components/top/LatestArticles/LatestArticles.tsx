@@ -21,7 +21,7 @@ export const LatestArticles: FC<LatestArticlesProps> = async ({ ...props }) => {
             </Suspense>
             <div className='mx-auto mt-auto w-fit'>
                 <Button asChild className='max-w-full px-12 py-6'>
-                    <NextLink href='/articles'>活動記録を見る</NextLink>
+                    <NextLink href='/articles'>お知らせをすべて見る</NextLink>
                 </Button>
             </div>
         </div>

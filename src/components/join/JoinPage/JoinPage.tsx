@@ -10,33 +10,6 @@ import { Button } from '@/components/ui/button'
 import { pageLinkObject } from '@/constants/pageLinks'
 import { getSiteSettings } from '@/lib/microcms'
 
-/**
- * ふだんの活動。事実だけを書く（協賛提案資料 v6 に準拠）。
- * 新歓日程や入会の可否は時期で変わるため、ここには固定で書かない。
- */
-const activities = [
-    {
-        en: 'Study',
-        title: '勉強会',
-        body: '週に3回、同じ内容で開催しています。どの曜日が空いていても参加できます。先輩が進行役を務める、少人数の講義とワークです。',
-    },
-    {
-        en: 'Seminar',
-        title: 'ゼミ',
-        body: '興味関心ごとに3つ。投資・企業分析、自己探求とキャリア設計、起業。ご飯を食べながら事業アイデアを壁打ちするものもあります。',
-    },
-    {
-        en: 'Project',
-        title: 'プロジェクト',
-        body: '学園祭への出店、外部のビジネスコンテスト、商品開発、企業のマーケティング支援。実際に手を動かす場です。',
-    },
-    {
-        en: 'Camp',
-        title: '合宿',
-        body: '年に3回。郊外に泊まってチームでワークをします。深夜まで語り合うことも多く、ここで関係が変わる人が多いです。',
-    },
-]
-
 export interface JoinPageProps {}
 
 export const JoinPage: FC<JoinPageProps> = async () => {
@@ -76,31 +49,15 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                     </p>
                 </Reveal>
 
-                <section className='mb-20'>
-                    <PageTitle asChild en='Activities'>
-                        <h2>ふだんの活動</h2>
-                    </PageTitle>
-                    <div className='space-y-10'>
-                        {activities.map(({ en, title, body }, i) => (
-                            <Reveal
-                                className='flex flex-col gap-4 border-gray-200 border-t pt-8 sm:flex-row sm:gap-10'
-                                delay={i * 80}
-                                key={title}
-                            >
-                                <p className='shrink-0 font-en text-brand-accent text-xs uppercase tracking-[0.3em] sm:w-32 sm:pt-1'>
-                                    {en}
-                                </p>
-                                <div className='flex-1 space-y-3'>
-                                    <h3 className='font-title text-lg leading-snug'>{title}</h3>
-                                    <p className='text-gray-700'>{body}</p>
-                                </div>
-                            </Reveal>
-                        ))}
-                    </div>
-                    <p className='mt-8 text-center text-gray-600 text-sm'>
-                        参加はいずれも任意です。学業やほかの活動と両立している部員がほとんどです。
+                <Reveal className='mb-20 space-y-6 text-center'>
+                    <p className='text-gray-700'>
+                        週3回の勉強会、3つのゼミ、実践のプロジェクト、年3回の合宿。
+                        参加はいずれも任意で、学業やほかの活動と両立している部員がほとんどです。
                     </p>
-                </section>
+                    <Button asChild className='px-8 py-5' variant='outline'>
+                        <NextLink href={pageLinkObject.PROJECT.href}>活動内容をくわしく見る</NextLink>
+                    </Button>
+                </Reveal>
 
                 {/* 入会の可否は時期の運営状況で変わるため、断定せずに相談してもらう形にする */}
                 <Reveal className='mb-20 border border-gray-200 bg-white px-6 py-10 sm:px-10'>

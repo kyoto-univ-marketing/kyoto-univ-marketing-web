@@ -18,12 +18,12 @@ const pageLinks = [
     },
     {
         href: '/articles',
-        text: '活動記録',
+        text: 'お知らせ',
         textEng: 'ARCHIVE',
     },
     {
         href: '/projects',
-        text: 'プロジェクト',
+        text: '活動内容',
         textEng: 'PROJECT',
     },
     {

@@ -4,7 +4,7 @@ import { ArticlesPage } from '@/components/articles/ArticlesPage/ArticlesPage'
 import { getTextById } from '@/lib/api'
 
 export const generateMetadata = async (): Promise<Metadata> => ({
-    title: '活動記録',
+    title: 'お知らせ',
     description: await getTextById('activity_description'),
     alternates: { canonical: '/articles' },
 })
