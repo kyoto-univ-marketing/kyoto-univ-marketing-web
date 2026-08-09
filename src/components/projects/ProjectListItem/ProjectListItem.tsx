@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { FC, useEffect, useRef, useState } from 'react'
 
 import { components } from '@/api/schema'
+import { toHttps } from '@/lib/to-https'
 import { cn } from '@/lib/utils'
 
 export interface ProjectListItemProps
@@ -38,7 +39,7 @@ export const ProjectListItem: FC<ProjectListItemProps> = ({ name, thumbnail, des
                         className='object-contain'
                         fill
                         sizes='(max-width: 640px) 50vw, 320px'
-                        src={thumbnail}
+                        src={toHttps(thumbnail)}
                     />
                 </div>
                 <p className='flex-1 whitespace-pre-wrap px-6'>{description}</p>
