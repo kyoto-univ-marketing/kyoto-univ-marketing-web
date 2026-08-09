@@ -27,6 +27,11 @@ const pageLinks = [
         textEng: 'PROJECT',
     },
     {
+        href: '/join',
+        text: '入会をお考えの方へ',
+        textEng: 'JOIN',
+    },
+    {
         href: '/sponsorship',
         text: '企業の方へ',
         textEng: 'SPONSORSHIP',

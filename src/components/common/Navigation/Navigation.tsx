@@ -31,7 +31,13 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
             {/* 企業向けの導線は、学生向けの並びに混ぜず、金の枠で独立させる */}
             <ul className='hidden items-center gap-4 text-sm md:flex lg:gap-6 lg:text-base'>
                 {pageLinks
-                    .filter((link) => link.href !== '/' && link.href !== pageLinkObject.SPONSORSHIP.href)
+                    .filter(
+                        (link) =>
+                            link.href !== '/' &&
+                            link.href !== pageLinkObject.SPONSORSHIP.href &&
+                            // 入会の導線はトップの大きなボタンとフッターに任せ、ナビは短く保つ
+                            link.href !== pageLinkObject.JOIN.href,
+                    )
                     .map((link) => (
                         <li key={link.href}>
                             <NextLink

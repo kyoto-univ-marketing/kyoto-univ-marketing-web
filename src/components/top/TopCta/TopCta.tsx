@@ -10,16 +10,15 @@ import { pageLinkObject } from '@/constants/pageLinks'
  *
  * トップページの仕事は「読み手を振り分けること」なので、最後に必ずここへ着地させる。
  * 入部希望者と企業では知りたいことが違うため、一つずつ分けて置く。
- * 入部の導線は、入会案内のページができるまではお問い合わせフォームに繋ぐ。
  */
 export const TopCta: FC = () => {
     const entries = [
         {
             en: 'Join Us',
-            title: '入部をお考えの方へ',
+            title: '入会をお考えの方へ',
             body: '学年・学部は問いません。まずは活動を見に来てください。',
-            href: pageLinkObject.CONTACT.href,
-            label: 'お問い合わせフォームへ',
+            href: pageLinkObject.JOIN.href,
+            label: '入会について見る',
         },
         {
             en: 'Sponsorship',
