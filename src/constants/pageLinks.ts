@@ -13,7 +13,7 @@ const pageLinks = [
     },
     {
         href: '/about',
-        text: 'サークルについて',
+        text: '団体概要',
         textEng: 'ABOUT',
     },
     {

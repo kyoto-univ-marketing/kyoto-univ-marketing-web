@@ -45,7 +45,7 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                     className='mt-2 border-white/70 bg-transparent px-10 py-6 text-white hover:bg-white hover:text-primary'
                     variant='outline'
                 >
-                    <Link href='/about'>サークルについて</Link>
+                    <Link href='/about'>団体概要</Link>
                 </Button>
             </div>
             <Reveal className='space-y-6 px-8 py-16'>
