@@ -12,7 +12,7 @@ export interface PageImageProps {
 /** ページ内に配置される画像のコンポーネント */
 export const PageImage: FC<PageImageProps> = ({ src, alt, containerClassName, ...props }) => {
     return (
-        <div className={cn('relative aspect-video w-full drop-shadow-md', containerClassName)}>
+        <div className={cn('relative aspect-video w-full overflow-hidden', containerClassName)}>
             <div className='absolute z-10 size-full' />
             <Image alt={alt} className='object-cover' fill sizes='(max-width: 768px) 100vw, 640px' src={src} />
         </div>

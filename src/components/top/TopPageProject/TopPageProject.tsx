@@ -10,11 +10,8 @@ export interface TopPageProjectProps {}
 export const TopPageProject: FC<TopPageProjectProps> = ({ ...props }) => {
     return (
         <div className='flex size-full flex-col'>
-            <PageTitle asChild>
-                <div className='flex items-center gap-4'>
-                    <h2>プロジェクト</h2>
-                    <span className='font-en text-brand-accent text-sm tracking-widest'>Project</span>
-                </div>
+            <PageTitle asChild en='Project'>
+                <h2>プロジェクト</h2>
             </PageTitle>
             <ol className='mb-12 list-inside list-[cjk-ideographic] space-y-2 px-16'>
                 {projectTagList.map((tag) => (

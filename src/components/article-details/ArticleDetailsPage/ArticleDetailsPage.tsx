@@ -5,7 +5,6 @@ import { FC } from 'react'
 import { BackButton } from '@/components/common/BackButton/BackButton'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { ParseHtml } from '@/components/common/ParseHtml/ParseHtml'
-import { Badge } from '@/components/ui/badge'
 import { pageLinkObject } from '@/constants/pageLinks'
 import { Activity } from '@/lib/microcms'
 
@@ -29,27 +28,19 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title
                     </BackButton>
                 </div>
                 <div className='mb-12 px-6'>
-                    <div className='bg-background-secondary px-4 py-8'>
-                        <div className='mb-16'>
-                            <h2 className='text-lg'>{title}</h2>
-                            <div className='flex justify-end'>
-                                <table>
-                                    <tbody>
-                                        <tr className='text-gray-700'>
-                                            <td className='pr-2'>日付：</td>
-                                            <td>{dayjs(publishedAt).format('YYYY/MM/DD')}</td>
-                                        </tr>
-                                        <tr className='text-gray-700'>
-                                            <td className='pr-2'>タグ：</td>
-                                            <td>
-                                                <Link href={`/articles?tag=${tag}`}>
-                                                    <Badge>{tag}</Badge>
-                                                </Link>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <div className='border border-gray-200 bg-white px-6 py-10'>
+                        {/* 日付とタグは見出しの前置きとして小さく置き、記事一覧と様式を揃える */}
+                        <div className='mb-12 space-y-4 border-gray-200 border-b pb-6'>
+                            <div className='flex flex-wrap items-center gap-3 text-gray-600 text-xs'>
+                                <span className='font-en tracking-widest'>
+                                    {dayjs(publishedAt).format('YYYY.MM.DD')}
+                                </span>
+                                <span aria-hidden className='block h-3 w-px bg-gray-300' />
+                                <Link className='transition-colors hover:text-primary' href={`/articles?tag=${tag}`}>
+                                    {tag}
+                                </Link>
                             </div>
+                            <h2 className='font-title text-heading leading-snug'>{title}</h2>
                         </div>
                         <div className='space-y-12 px-2'>
                             <ParseHtml>{content}</ParseHtml>

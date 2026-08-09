@@ -1,9 +1,7 @@
 import dayjs from 'dayjs'
 import Image from 'next/image'
-import Link from 'next/link'
 import { FC } from 'react'
 
-import { Badge } from '@/components/ui/badge'
 import { Activity } from '@/lib/microcms'
 
 import { NextLink } from '../../common/NextLink/NextLink'
@@ -31,32 +29,27 @@ export const ArticleCard: FC<ArticleCardProps> = ({
 }) => {
     const tag = _tag[0]
     return (
-        <NextLink className='block rounded-md border bg-background-secondary p-2' href={`/articles/${id}`}>
-            <div className='p-4'>
-                <div className='mb-4'>
-                    <h2 className='text-lg'>{title}</h2>
-                </div>
-                    <div >
-                        <div className='flex items-center text-gray-700'>
-                            <p className='w-16'>日付：</p>
-                            <p >{dayjs(publishedAt).format('YYYY/MM/DD')}</p>
-                        </div>
-                        <div className='flex items-center text-gray-700'>
-                            <p className='w-16'>タグ：</p>
-                            <Link href={`/articles?tag=${tag}`}>
-                                <Badge>{tag}</Badge>
-                            </Link>
-                        </div>
+        <NextLink
+            className='group block border border-gray-200 bg-white transition-colors hover:border-brand-accent'
+            href={`/articles/${id}`}
+        >
+            <div className='flex items-stretch gap-4 p-5 sm:gap-6 sm:p-6'>
+                <div className='flex min-w-0 flex-1 flex-col gap-3'>
+                    {/* 日付とタグは記事の「見出しの前置き」として小さく置く */}
+                    <div className='flex flex-wrap items-center gap-3 text-gray-600 text-xs'>
+                        <span className='font-en tracking-widest'>{dayjs(publishedAt).format('YYYY.MM.DD')}</span>
+                        <span aria-hidden className='block h-3 w-px bg-gray-300' />
+                        <span>{tag}</span>
                     </div>
-            </div>
-            <div className='flex items-stretch'>
-                <div className='flex-1 p-4'>
-                    <p className='line-clamp-3 text-gray-600'>{description}</p>
+                    <h2 className='font-title text-lg leading-snug transition-colors group-hover:text-primary'>
+                        {title}
+                    </h2>
+                    <p className='line-clamp-3 text-gray-600 text-sm'>{description}</p>
                 </div>
-                <div className='relative aspect-4/3 w-1/3'>
+                <div className='relative aspect-4/3 w-1/3 shrink-0 self-start overflow-hidden'>
                     <Image
                         alt={title}
-                        className='object-cover'
+                        className='object-cover transition-transform duration-500 group-hover:scale-105'
                         fill
                         sizes='(max-width: 640px) 33vw, 220px'
                         src={thumbnail.url}

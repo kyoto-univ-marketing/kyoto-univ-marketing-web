@@ -19,7 +19,7 @@ export const LinksPage = async () => {
                     { label: pageLinkObject.LINKS.text, href: pageLinkObject.LINKS.href },
                 ]}
             />
-            <PageTitle>{pageLinkObject.LINKS.text}</PageTitle>
+            <PageTitle en='Links'>{pageLinkObject.LINKS.text}</PageTitle>
             <div className='mx-auto max-w-(--breakpoint-sm)'>
                 <div className='mb-12 px-6'>
                     <h2 className='mb-6 text-heading'>公式アカウント</h2>

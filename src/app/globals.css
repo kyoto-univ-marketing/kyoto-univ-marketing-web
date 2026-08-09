@@ -38,6 +38,7 @@
 
     --animate-accordion-down: accordion-down 0.2s ease-out;
     --animate-accordion-up: accordion-up 0.2s ease-out;
+    --animate-scroll-cue: scroll-cue 2.2s ease-in-out infinite;
 
     --font-title: var(--font-hina-mincho), var(--font-biz-udp-mincho), serif;
     /* 欧文専用のセリフ体。日本語用明朝で欧文を組むと字形が崩れるため分ける */
@@ -66,6 +67,20 @@
         }
         to {
             height: 0;
+        }
+    }
+    /* ヒーロー下端の縦線を、上から下へ流れるように見せる */
+    @keyframes scroll-cue {
+        0% {
+            transform: translateY(0);
+            opacity: 0;
+        }
+        30% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(200%);
+            opacity: 0;
         }
     }
 }
@@ -130,7 +145,7 @@
         --input: 214.3 31.8% 91.4%;
         --ring: #00215b;
 
-        /* 金茶。紺×明朝の和のトーンに合う伝統色（比較用の金系案） */
+        /* 金茶。紺×明朝の和のトーンに合う伝統色（2026-08-08 採用決定） */
         --brand-accent: #a8863d;
 
         --radius: 0.5rem;

@@ -22,7 +22,7 @@ export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
                     { href: pageLinkObject.ABOUT.href, label: pageLinkObject.ABOUT.text },
                 ]}
             />
-            <PageTitle>京大マーケティング研究所について</PageTitle>
+            <PageTitle en='About'>京大マーケティング研究所について</PageTitle>
             <div className='mx-auto mb-12 max-w-(--breakpoint-sm) px-6'>
                 <div className='mb-10'>
                     <Suspense fallback={<CircleStatsSkeleton />}>

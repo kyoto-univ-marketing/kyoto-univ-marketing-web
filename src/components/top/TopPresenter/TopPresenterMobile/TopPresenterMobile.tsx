@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { FC, Suspense } from 'react'
 
 import { PageImage } from '@/components/common/PageImage/PageImage'
+import { Reveal } from '@/components/common/Reveal/Reveal'
 
 import img3884 from '../../../../../public/page-images/top/IMG_3884.webp'
 import img3893 from '../../../../../public/page-images/top/IMG_3893.webp'
@@ -21,47 +22,45 @@ export interface TopPresenterMobileProps {
 export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMessage }) => {
     return (
         <div className='relative w-full'>
+            {/* 写真はヘッダーの裏まで伸ばし、画面いっぱいの一枚に見せる */}
             <ImageSwitch
-                className='-z-50 absolute h-[calc(100svh-var(--spacing)*18)] brightness-50'
+                className='-z-50 -top-18 absolute h-svh brightness-[0.45]'
                 imageList={topHeaderImageList}
                 interval={7000}
                 transitionDuration={2000}
             />
-            <div className='flex h-[calc(100svh-var(--spacing)*18)] flex-col'>
-                <div className='flex w-full flex-1 select-none flex-col items-center justify-between text-white'>
-                    <div className='flex flex-col items-center space-y-6 p-6 pt-16'>
-                        <Logo reverse size='3xl' />
-                        <h1 className='w-fit px-6 font-bold font-title text-3xl'>
-                            <span className='inline-block'>京大</span>
-                            <span className='inline-block'>マーケティング研究所</span>
-                        </h1>
-                    </div>
-                    <div className='flex w-full flex-col space-y-8'>
-                        <Button
-                            asChild
-                            className='w-fit min-w-[66.7%] self-center p-6 text-primary'
-                            variant='outline'
-                        >
-                            <Link href='/about'>サークルについて</Link>
-                        </Button>
-                        <div className='mb-8! w-fit max-w-[75%] bg-primary px-12 py-8 text-primary-foreground'>
-                            <h2 className='ml-4 text-xl'>{message}</h2>
-                        </div>
-                    </div>
+            <div className='flex h-[calc(100svh-var(--spacing)*18)] select-none flex-col items-center justify-center gap-7 px-6 text-white'>
+                <Logo reverse size='3xl' />
+                <div className='flex flex-col items-center gap-4 text-center'>
+                    <h1 className='font-title text-3xl leading-tight'>
+                        <span className='inline-block'>京大</span>
+                        <span className='inline-block'>マーケティング研究所</span>
+                    </h1>
+                    <span aria-hidden className='block h-px w-12 bg-brand-accent' />
+                    <p className='font-en text-xs uppercase tracking-[0.35em]'>Kyodai Marketing Institute</p>
                 </div>
+                <p className='text-center font-title text-xl tracking-wider'>大学生に「セカンド原体験」を与える。</p>
+                <Button
+                    asChild
+                    className='mt-2 border-white/70 bg-transparent px-10 py-6 text-white hover:bg-white hover:text-primary'
+                    variant='outline'
+                >
+                    <Link href='/about'>サークルについて</Link>
+                </Button>
             </div>
-            <div className='p-12'>
+            <Reveal className='space-y-6 px-8 py-16'>
+                <h2 className='font-title text-heading leading-relaxed'>{message}</h2>
                 <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
-            </div>
+            </Reveal>
             <div className='mb-16'>
                 <Suspense fallback={<LatestArticlesSkeleton />}>
                     <LatestArticles />
                 </Suspense>
             </div>
-            <div className='mb-16 grid gap-4'>
+            <Reveal className='mb-16 grid gap-4'>
                 <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-64/27' src={img3884} />
                 <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
-            </div>
+            </Reveal>
             <div className='mb-16'>
                 <TopPageProject />
             </div>

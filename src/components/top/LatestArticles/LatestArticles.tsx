@@ -13,11 +13,8 @@ export interface LatestArticlesProps {}
 export const LatestArticles: FC<LatestArticlesProps> = async ({ ...props }) => {
     return (
         <div className='flex size-full flex-col'>
-            <PageTitle asChild>
-                <div className='flex items-center gap-4'>
-                    <h2>新着記事</h2>
-                    <span className='font-en text-brand-accent text-sm tracking-widest'>Topics</span>
-                </div>
+            <PageTitle asChild en='Topics'>
+                <h2>新着記事</h2>
             </PageTitle>
             <Suspense fallback={<LatestArticlesSkeleton />}>
                 <LatestArticleItemList />
