@@ -41,8 +41,9 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                         (link) =>
                             link.href !== '/' &&
                             link.href !== pageLinkObject.SPONSORSHIP.href &&
-                            // 入会の導線はトップの大きなボタンとフッターに任せ、ナビは短く保つ
-                            link.href !== pageLinkObject.JOIN.href,
+                            link.href !== pageLinkObject.JOIN.href &&
+                            // 3つは枠付きのボタンとして右端に独立させるため、通常の一覧からは外す
+                            link.href !== pageLinkObject.CONTACT.href,
                     )
                     .map((link) => (
                         <li key={link.href}>
@@ -68,6 +69,15 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                         href={pageLinkObject.SPONSORSHIP.href}
                     >
                         {pageLinkObject.SPONSORSHIP.text}
+                    </NextLink>
+                </li>
+                {/* 唯一の「行動」なので、ここだけ塗りつぶす。枠線の2つとは役割が違う */}
+                <li>
+                    <NextLink
+                        className='block bg-brand-accent px-4 py-2 text-primary text-sm transition-colors hover:bg-white'
+                        href={pageLinkObject.CONTACT.href}
+                    >
+                        {pageLinkObject.CONTACT.text}
                     </NextLink>
                 </li>
             </ul>
