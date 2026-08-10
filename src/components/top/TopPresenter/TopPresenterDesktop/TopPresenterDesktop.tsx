@@ -34,8 +34,11 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
                     <Reveal className='flex flex-col gap-8'>
                         <Logo className='size-20' reverse sizes='160px' />
                         <div className='flex flex-col gap-5'>
+                            {/* 語の途中（研／究所）で折り返さないよう、意味の切れ目で区切る */}
                             <h1 className='font-title text-[clamp(1.75rem,1rem+1.8vw,2.75rem)] leading-tight'>
-                                京大マーケティング研究所
+                                <span className='inline-block whitespace-nowrap'>京大</span>
+                                <span className='inline-block whitespace-nowrap'>マーケティング</span>
+                                <span className='inline-block whitespace-nowrap'>研究所</span>
                             </h1>
                             <span aria-hidden className='block h-px w-16 bg-brand-accent' />
                             <p className='font-en text-sm uppercase tracking-[0.35em]'>Kyodai Marketing Institute</p>

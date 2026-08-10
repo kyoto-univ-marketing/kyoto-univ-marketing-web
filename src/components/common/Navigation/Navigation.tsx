@@ -28,7 +28,7 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                     />
                 </div>
             )}
-            {/* 企業向けの導線は、学生向けの並びに混ぜず、金の枠で独立させる */}
+            {/* 「学生の方へ」「企業の方へ」の2つの入口は、通常メニューに混ぜず枠付きで独立させる */}
             <ul className='hidden items-center gap-4 text-sm md:flex lg:gap-6 lg:text-base'>
                 {pageLinks
                     .filter(
@@ -48,6 +48,14 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                             </NextLink>
                         </li>
                     ))}
+                <li>
+                    <NextLink
+                        className='block border border-white/60 px-4 py-2 text-sm transition-colors hover:bg-white hover:text-primary'
+                        href={pageLinkObject.JOIN.href}
+                    >
+                        学生の方へ
+                    </NextLink>
+                </li>
                 <li>
                     <NextLink
                         className='block border border-brand-accent px-4 py-2 text-brand-accent text-sm transition-colors hover:bg-brand-accent hover:text-primary'

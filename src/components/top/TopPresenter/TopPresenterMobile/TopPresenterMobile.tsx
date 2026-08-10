@@ -38,8 +38,9 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                     <div className='flex items-center gap-4'>
                         <Logo reverse size='xl' />
                         <h1 className='font-title text-2xl leading-tight'>
-                            <span className='inline-block'>京大</span>
-                            <span className='inline-block'>マーケティング研究所</span>
+                            <span className='inline-block whitespace-nowrap'>京大</span>
+                            <span className='inline-block whitespace-nowrap'>マーケティング</span>
+                            <span className='inline-block whitespace-nowrap'>研究所</span>
                         </h1>
                     </div>
                     <div className='flex flex-col gap-3'>
