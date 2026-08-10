@@ -18,7 +18,7 @@ import { pageLinkObject } from '@/constants/pageLinks'
  * 団体の話（協賛・入会など）を厚く書き足さないこと。
  */
 export const FounderPage: FC = () => {
-    const { en, role, name, reading, image, catchphrase, lead, message } = founder
+    const { en, role, name, reading, faculty, enrolledYear, image, catchphrase, lead, message } = founder
 
     return (
         <>
@@ -48,6 +48,9 @@ export const FounderPage: FC = () => {
                         <p className='font-title text-heading leading-snug'>
                             {name}
                             <span className='ml-3 align-middle text-base text-gray-600'>{reading}</span>
+                        </p>
+                        <p className='text-gray-600 text-sm'>
+                            {faculty} {enrolledYear}年入学
                         </p>
                         <p className='text-gray-600 text-sm'>
                             2024年3月に京大マーケティング研究所を設立。

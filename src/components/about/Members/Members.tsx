@@ -20,7 +20,7 @@ export const Members: FC = () => (
 )
 
 const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) => {
-    const { en, role, name, reading, image, catchphrase, lead, message } = member
+    const { en, role, name, reading, faculty, enrolledYear, image, catchphrase, lead, message } = member
     const hasWords = catchphrase !== '' || lead.length > 0 || message.length > 0
 
     return (
@@ -41,6 +41,9 @@ const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) =>
                         {name}
                         <span className='ml-3 align-middle text-base text-gray-600'>{reading}</span>
                     </h3>
+                    <p className='text-gray-600 text-sm'>
+                        {faculty} {enrolledYear}年入学
+                    </p>
                 </div>
             </div>
 

@@ -31,6 +31,9 @@ export const FounderSection: FC = () => (
                         {founder.name}
                         <span className='ml-3 align-middle text-gray-600 text-sm'>{founder.reading}</span>
                     </p>
+                    <p className='text-gray-600 text-sm'>
+                        {founder.faculty} {founder.enrolledYear}年入学
+                    </p>
                     <p className='text-gray-700 text-sm leading-relaxed'>
                         2024年3月に京大マーケティング研究所を設立。設立の考えと、これから入会する方へのことば。
                     </p>

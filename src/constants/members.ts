@@ -9,6 +9,9 @@ export interface Member {
     role: string
     name: string
     reading: string
+    /** 所属学部と入学年。「経済学部 2021年入学」の形で表示する */
+    faculty: string
+    enrolledYear: number
     image: typeof SakodaImg
     /** 京大マーケティング研究所を一言で */
     catchphrase: string
@@ -34,6 +37,8 @@ export const members: Member[] = [
         role: '創設者・初代代表',
         name: '迫田 周大',
         reading: 'さこだ しゅうた',
+        faculty: '経済学部',
+        enrolledYear: 2021,
         image: SakodaImg,
         detailHref: '/about/founder',
         catchphrase: '自分のために生き、他者のために生きる出発点',
@@ -54,6 +59,8 @@ export const members: Member[] = [
         role: '2代目代表',
         name: '中尾 優太',
         reading: 'なかお ゆうた',
+        faculty: '経済学部',
+        enrolledYear: 2024,
         image: NakaoImg,
         catchphrase: '自らの人生に狂気を見つける場所',
         lead: [
@@ -72,6 +79,8 @@ export const members: Member[] = [
         role: '3代目代表',
         name: '三上 透輝',
         reading: 'みかみ とうき',
+        faculty: '経済学部',
+        enrolledYear: 2025,
         image: MikamiImg,
         catchphrase: '本気になれる仲間と出会い、大学生活を120％充実させる場所',
         lead: [
