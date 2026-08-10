@@ -1,13 +1,9 @@
 import Link from 'next/link'
 import { FC, Suspense } from 'react'
 
-import { PageImage } from '@/components/common/PageImage/PageImage'
-import { Reveal } from '@/components/common/Reveal/Reveal'
-
-import img3884 from '../../../../../public/page-images/top/IMG_3884.webp'
-import img3893 from '../../../../../public/page-images/top/IMG_3893.webp'
 import { Logo } from '../../../common/Logo/Logo'
 import { Button } from '../../../ui/button'
+import { Activities } from '../../Activities/Activities'
 import { ImageSwitch } from '../../ImageSwitch/ImageSwitch'
 import { topHeaderImageList } from '../../imageList'
 import { LatestArticles } from '../../LatestArticles/LatestArticles'
@@ -55,14 +51,11 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = () => {
                 </div>
             </section>
             <div className='section-stack py-16'>
+                {/* 並び順はPCと同じ。していること → 考え方 → 拠点 → お知らせ */}
+                <Activities />
                 <Suspense fallback={null}>
                     <SecondOrigin />
                 </Suspense>
-                {/* 文章は付けず、活動の空気だけを見せる（PCと同じ考え方） */}
-                <Reveal className='grid gap-4 px-6'>
-                    <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-64/27' src={img3884} />
-                    <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
-                </Reveal>
                 <MakeHouse />
                 <Suspense fallback={<LatestArticlesSkeleton />}>
                     <LatestArticles />
