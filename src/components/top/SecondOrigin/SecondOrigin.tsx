@@ -1,36 +1,42 @@
+import { FC } from 'react'
+
+import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
-import { getPolicies } from '@/lib/microcms'
+import { Button } from '@/components/ui/button'
+import { pageLinkObject } from '@/constants/pageLinks'
 
 /**
- * トップに置く「セカンド原体験」の要約。
+ * トップに置く「セカンド原体験」の説明。
  *
- * 中身は /about の「部員が得るもの」と同じ microCMS の policies を使う。
- * 同じ言葉を二か所で書き分けると必ず食い違うため、出所を一つにしている。
- * トップは一語と見出しだけの簡潔版、詳しい説明は /about に置く。
+ * 以前は /about と同じ policies（火・地図・てこ）を一語ずつ並べていたが、
+ * 言葉だけでは何のことか伝わらないため、言葉の意味そのものを書く形に変えた。
+ * 三つの言葉は /about の「得られるもの」に置いてある。
  */
-export const SecondOrigin = async () => {
-    const policies = await getPolicies()
-    if (policies.length === 0) {
-        return null
-    }
-
-    return (
-        <section className='mx-auto max-w-(--breakpoint-md) px-6'>
-            <PageTitle asChild en='Second Origin Experience'>
-                <h2>大学生に「セカンド原体験」を</h2>
-            </PageTitle>
-            <div className='grid gap-8 sm:grid-cols-3'>
-                {policies.map((policy, i) => (
-                    <Reveal className='flex flex-col items-center gap-4 text-center' delay={i * 100} key={policy.id}>
-                        <span className='font-title text-[clamp(2.5rem,2rem+2vw,3.5rem)] leading-none'>
-                            {policy.title ?? policy.text}
-                        </span>
-                        <span aria-hidden className='block h-px w-8 bg-brand-accent' />
-                        {policy.subtitle && <p className='font-title text-base'>{policy.subtitle}</p>}
-                    </Reveal>
-                ))}
+export const SecondOrigin: FC = () => (
+    <section className='mx-auto max-w-(--breakpoint-md) px-6 md:px-8'>
+        <PageTitle asChild en='Second Origin Experience'>
+            <h2>セカンド原体験とは</h2>
+        </PageTitle>
+        <Reveal className='space-y-8 text-center'>
+            <p className='font-title text-heading leading-relaxed'>
+                <span className='inline-block'>大学入学の熱量を、</span>
+                <span className='inline-block'>最高到達点にしない。</span>
+            </p>
+            <div className='mx-auto max-w-2xl space-y-4 text-gray-700'>
+                <p>
+                    原体験とは、その人の価値観をかたちづくった出来事のことです。
+                    多くの人にとって、それは大学に入るまでに起きています。
+                </p>
+                <p>
+                    私たちは、学生時代にもうひとつの原体験——「セカンド原体験」——をつくることを目指しています。
+                    合宿で深夜まで語り合った時間、自分の手が社会に届いた瞬間。
+                    その一度が、卒業したあとの選び方を変えていきます。
+                </p>
             </div>
-        </section>
-    )
-}
+            <Button asChild className='px-8 py-5' variant='outline'>
+                <NextLink href={pageLinkObject.ABOUT.href}>団体概要を見る</NextLink>
+            </Button>
+        </Reveal>
+    </section>
+)

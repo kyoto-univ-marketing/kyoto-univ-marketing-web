@@ -14,8 +14,8 @@ import { pageLinkObject } from '@/constants/pageLinks'
  * 京町家を24時間使える学生団体は他にほとんどなく、最も分かりやすい差別化要素なので、
  * トップで写真付きで見せる。詳しい説明は活動内容のページに置く。
  *
- * 見出しは施設名ではなく「行けば誰かがいる」。
- * 拠点があること自体より、そこで何が起きているかの方が伝わるため。
+ * 見出しは施設名をそのまま出す。うたい文句を見出しにすると、
+ * 何の節なのかが分からないまま読み進めることになるため。
  */
 export const MakeHouse: FC = () => (
     <section className='mx-auto max-w-(--breakpoint-lg) px-6 md:px-8'>
@@ -40,9 +40,12 @@ export const MakeHouse: FC = () => (
             </Reveal>
             <div className='space-y-6'>
                 <div className='space-y-4'>
-                    <h2 className='font-title text-title leading-tight'>「行けば誰かがいる」</h2>
+                    <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>Our Base</p>
+                    <h2 className='font-title text-title leading-tight'>
+                        <span className='inline-block whitespace-nowrap'>活動拠点：</span>
+                        <span className='inline-block whitespace-nowrap'>マーケハウス</span>
+                    </h2>
                     <span aria-hidden className='block h-px w-10 bg-brand-accent' />
-                    <p className='text-gray-600 text-sm tracking-[0.15em]'>拠点：マーケハウス</p>
                 </div>
                 <div className='space-y-4 text-gray-700'>
                     <p>
@@ -51,6 +54,7 @@ export const MakeHouse: FC = () => (
                     </p>
                     <p>
                         OBや経営者、他団体の方が訪ねてくることもあり、日常の延長線上に社会があります。
+                        「行けば誰かがいる」場所があることが、関係の深さを決めています。
                     </p>
                 </div>
                 <Button asChild className='px-8 py-5' variant='outline'>
