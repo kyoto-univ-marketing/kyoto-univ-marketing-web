@@ -1,3 +1,4 @@
+import { STATS_AS_OF } from '@/constants/about'
 import { getSiteSettings } from '@/lib/microcms'
 
 /**
@@ -15,8 +16,7 @@ export const CorporateInfo = async () => {
         { label: '法人番号', value: '5130005017724' },
         { label: '所在地', value: '京都府京都市左京区田中大堰町13' },
         { label: '設立', value: '2026年7月（学生団体としての設立は2024年3月）' },
-        { label: '代表', value: '三上 透輝' },
-        { label: '創設者', value: '迫田 周大（さこだ しゅうた）' },
+        { label: '代表理事', value: '三上 透輝' },
     ]
 
     return (
@@ -46,6 +46,8 @@ export const CorporateInfo = async () => {
                         </dd>
                     </div>
                 </dl>
+                {/* 代表理事は任期で変わるため、いつ時点の情報かを明示する */}
+                <p className='mt-3 px-4 text-right text-gray-600 text-xs'>※{STATS_AS_OF}現在</p>
                 <p className='mt-6 px-4 text-gray-600 text-sm'>
                     学生団体としての活動が先にあり、法人はその運営基盤として設立したものです。
                 </p>
