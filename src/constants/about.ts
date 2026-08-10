@@ -16,16 +16,26 @@ export const STATS_AS_OF = '2026年7月'
  * 合計が100%になるよう、多い順に並べてある。
  */
 export const facultyBreakdown = [
-    { name: '経済', percent: 57.7 },
-    { name: '工', percent: 15.4 },
-    { name: '文', percent: 5.8 },
-    { name: '医', percent: 5.8 },
-    { name: '法', percent: 3.8 },
-    { name: '総人', percent: 3.8 },
-    { name: '農', percent: 3.8 },
-    { name: '理', percent: 1.9 },
-    { name: '薬', percent: 1.9 },
+    { name: '経済学部', percent: 57.7, color: '#00215b' },
+    { name: '工学部', percent: 15.4, color: '#1d4488' },
+    { name: '文学部', percent: 5.8, color: '#33609f' },
+    { name: '医学部', percent: 5.8, color: '#4b7cb6' },
+    { name: '法学部', percent: 3.8, color: '#6697cc' },
+    { name: '総合人間学部', percent: 3.8, color: '#84b0dc' },
+    { name: '農学部', percent: 3.8, color: '#a3c7e9' },
+    { name: '理学部', percent: 1.9, color: '#c1dcf3' },
+    { name: '薬学部', percent: 1.9, color: '#dceafa' },
 ] as const
 
-/** 理系学部（工・医・農・理・薬）の割合。総人は文理融合のため含めない */
+/**
+ * 文系・理系の比率。上の学部内訳から算出している。
+ * 理系＝工・医・農・理・薬（15.4＋5.8＋3.8＋1.9＋1.9＝28.8）。
+ * 総合人間学部は文理融合のため理系に数えず、文系側に含めている。
+ */
+export const scienceRatio = [
+    { name: '文系', percent: 71.2, color: '#00215b' },
+    { name: '理系', percent: 28.8, color: '#a8863d' },
+] as const
+
+/** 理系学部の割合を言葉で言うときの表現 */
 export const SCIENCE_FACULTY_SHARE = '約3割'

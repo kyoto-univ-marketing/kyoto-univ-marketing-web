@@ -1,34 +1,44 @@
 import { FC } from 'react'
 
+import { DonutChart } from '@/components/common/DonutChart/DonutChart'
 import { Reveal } from '@/components/common/Reveal/Reveal'
-import { facultyBreakdown, SCIENCE_FACULTY_SHARE, STATS_AS_OF } from '@/constants/about'
+import { facultyBreakdown, SCIENCE_FACULTY_SHARE, STATS_AS_OF, scienceRatio } from '@/constants/about'
 
 /**
- * 所属学部の内訳。
+ * 部員の構成。
  *
- * 円グラフではなく横棒にしている。9つに分かれると円では小さい区分が読めなくなるうえ、
- * 「経済が半分強、次が工」という並び順そのものが伝えたい情報のため。
- * 図の描画にライブラリは使わない（数値が9個並ぶだけなので、幅の指定で足りる）。
+ * 学部の内訳は9区分あり、図の中に文字を置くと1.9%の区分が読めなくなるので、
+ * 名前と割合は凡例側に出している。
+ * 文系・理系の比率は同じデータの言い換えだが、企業も学生も真っ先に気にする点なので、
+ * 一目で分かるようにもう一つ図を置いている。
  */
 export const FacultyChart: FC = () => (
-    <div className='space-y-6'>
-        <div className='space-y-3'>
-            {facultyBreakdown.map(({ name, percent }, i) => (
-                <Reveal className='flex items-center gap-4' delay={i * 50} key={name}>
-                    <span className='w-12 shrink-0 text-gray-600 text-sm sm:w-16'>{name}</span>
-                    <div className='h-3 flex-1 bg-background-secondary'>
-                        <div className='h-full bg-primary' style={{ width: `${percent}%` }} />
-                    </div>
-                    <span className='w-14 shrink-0 text-right font-en text-gray-600 text-sm tabular-nums'>
-                        {percent}%
-                    </span>
-                </Reveal>
-            ))}
+    <div className='space-y-12'>
+        <div className='grid gap-12 lg:grid-cols-2 lg:gap-10'>
+            <Reveal className='space-y-5'>
+                <h3 className='font-title text-lg'>所属学部の内訳</h3>
+                <DonutChart
+                    centerLabel='9学部'
+                    centerNote='教育学部を除く'
+                    data={[...facultyBreakdown]}
+                    label='所属学部の内訳を示すドーナツグラフ'
+                />
+            </Reveal>
+            <Reveal className='space-y-5' delay={100}>
+                <h3 className='font-title text-lg'>文系・理系の比率</h3>
+                <DonutChart
+                    centerLabel={SCIENCE_FACULTY_SHARE}
+                    centerNote='が理系'
+                    data={[...scienceRatio]}
+                    label='文系と理系の比率を示すドーナツグラフ'
+                />
+            </Reveal>
         </div>
-        <p className='text-gray-600 text-sm'>
-            教育学部を除く9学部が在籍しています。うち理系学部は{SCIENCE_FACULTY_SHARE}
-            。文系・理系の垣根を越えた学生が同じ机で学び合っています。
-        </p>
-        <p className='text-right text-gray-600 text-xs'>※{STATS_AS_OF}現在</p>
+        <div className='space-y-2'>
+            <p className='text-gray-600 text-sm'>
+                教育学部を除く9学部が在籍しています。文系・理系の垣根を越えた学生が同じ机で学び合っています。
+            </p>
+            <p className='text-right text-gray-600 text-xs'>※{STATS_AS_OF}現在</p>
+        </div>
     </div>
 )

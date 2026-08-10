@@ -41,10 +41,7 @@ export const AboutPage: FC<AboutPageProps> = () => {
                         <Suspense fallback={<CircleStatsSkeleton />}>
                             <CircleStats />
                         </Suspense>
-                        <div className='space-y-6'>
-                            <h3 className='font-title text-lg'>所属学部の内訳</h3>
-                            <FacultyChart />
-                        </div>
+                        <FacultyChart />
                     </section>
 
                     <AboutSections />
