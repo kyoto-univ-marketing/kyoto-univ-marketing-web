@@ -8,6 +8,8 @@ import { AboutSections } from '../AboutAccordion/AboutAccordion'
 import { CircleOutline } from '../CircleOutline/CircleOutline'
 import { CircleStats, CircleStatsSkeleton } from '../CircleStats/CircleStats'
 import { CorporateInfo } from '../CorporateInfo/CorporateInfo'
+import { Founder } from '../Founder/Founder'
+import { Representatives } from '../Representatives/Representatives'
 
 export interface AboutPageProps {
     /** サークル概要の本文 */
@@ -34,7 +36,15 @@ export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
                     <CircleOutline text={outlineText} />
                 </div>
                 <AboutSections />
-                {/* 法人概要は企業が実在性を確認する場所。活動の説明の後に置く */}
+                {/* 創設者 → 歴代代表 の順。創設者の節を厚く保ち、
+                    このページが「迫田周大」のページであることをぶらさない */}
+                <div className='mt-16'>
+                    <Founder />
+                </div>
+                <div className='mt-16'>
+                    <Representatives />
+                </div>
+                {/* 法人概要は企業が実在性を確認する場所。人の紹介の後に置く */}
                 <div className='mt-16'>
                     <Suspense fallback={null}>
                         <CorporateInfo />
