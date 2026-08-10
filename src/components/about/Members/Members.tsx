@@ -1,0 +1,82 @@
+import Image from 'next/image'
+import { FC } from 'react'
+
+import { Reveal } from '@/components/common/Reveal/Reveal'
+import { type Member, members } from '@/constants/members'
+
+/**
+ * 創設者と歴代代表の紹介。
+ *
+ * 英字（Founder など）はあくまで装飾で、**日本語の役割名・氏名・ふりがなを必ず本文に残す**。
+ * 英字だけにすると、日本語で調べた人がたどり着く手がかりが消える。
+ * 構造化データ（Person）は創設者ひとりのままにしておくこと。
+ */
+export const Members: FC = () => (
+    <section>
+        <h2 className='border-b px-4 pb-4 text-heading'>創設者・歴代代表</h2>
+        <div className='space-y-16 py-8'>
+            {members.map((member, i) => (
+                <MemberItem key={member.name} member={member} order={i} />
+            ))}
+        </div>
+    </section>
+)
+
+const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) => {
+    const { en, role, name, reading, image, catchphrase, lead, message } = member
+    const hasWords = catchphrase !== '' || lead.length > 0 || message.length > 0
+
+    return (
+        <Reveal className='space-y-8' delay={order * 80}>
+            <div className='flex flex-col gap-6 sm:flex-row sm:gap-10'>
+                <div className='mx-auto w-full max-w-48 shrink-0 sm:mx-0 sm:w-48'>
+                    <Image
+                        {...image}
+                        alt={`${role} ${name}（${reading}）`}
+                        className='aspect-square w-full object-cover'
+                        sizes='(max-width: 640px) 60vw, 192px'
+                    />
+                </div>
+                <div className='flex-1 space-y-2 self-center'>
+                    <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>{en}</p>
+                    <p className='text-gray-600 text-sm'>{role}</p>
+                    <p className='font-title text-heading leading-snug'>
+                        {name}
+                        <span className='ml-3 align-middle text-base text-gray-600'>{reading}</span>
+                    </p>
+                </div>
+            </div>
+
+            {hasWords && (
+                <div className='space-y-8 sm:pl-58'>
+                    {catchphrase && (
+                        <div className='space-y-3'>
+                            <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>
+                                In a Word
+                            </p>
+                            <p className='font-title text-lg leading-relaxed'>「{catchphrase}」</p>
+                            <div className='space-y-3 text-gray-700'>
+                                {lead.map((line) => (
+                                    <p key={line}>{line}</p>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                    {message.length > 0 && (
+                        <div className='space-y-3 border-gray-200 border-l-2 pl-6'>
+                            <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>
+                                To You
+                            </p>
+                            <p className='font-title text-base'>入部を考えている方へ</p>
+                            <div className='space-y-3 text-gray-700'>
+                                {message.map((line) => (
+                                    <p key={line}>{line}</p>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            )}
+        </Reveal>
+    )
+}
