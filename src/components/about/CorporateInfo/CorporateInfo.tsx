@@ -1,3 +1,4 @@
+import { SectionHeading } from '@/components/common/SectionHeading/SectionHeading'
 import { STATS_AS_OF } from '@/constants/about'
 import { getSiteSettings } from '@/lib/microcms'
 
@@ -21,8 +22,8 @@ export const CorporateInfo = async () => {
 
     return (
         <section>
-            <h2 className='border-b px-4 pb-4 text-heading'>法人概要</h2>
-            <div className='py-8'>
+            <SectionHeading en='Corporate'>法人概要</SectionHeading>
+            <div>
                 <dl className='divide-y divide-gray-200 border-gray-200 border-t border-b'>
                     {items.map(({ label, value }) => (
                         <div className='flex flex-col gap-1 px-4 py-4 sm:flex-row sm:gap-6' key={label}>

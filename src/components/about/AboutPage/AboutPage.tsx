@@ -2,10 +2,11 @@ import { FC, Suspense } from 'react'
 
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
+import { SectionHeading } from '@/components/common/SectionHeading/SectionHeading'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { AboutSections } from '../AboutAccordion/AboutAccordion'
-import { AboutNav } from '../AboutNav/AboutNav'
+import { FounderSection, MembersSection } from '../AboutNav/AboutNav'
 import { CircleOutline } from '../CircleOutline/CircleOutline'
 import { CircleStats, CircleStatsSkeleton } from '../CircleStats/CircleStats'
 import { CorporateInfo } from '../CorporateInfo/CorporateInfo'
@@ -15,6 +16,14 @@ export interface AboutPageProps {
     outlineText: string
 }
 
+/**
+ * 団体概要。
+ *
+ * 章を並べる順は「数字 → 団体の話 → 得られるもの → 人 → 法人」。
+ * 数字を先に置くのは、規模が分からないまま読み進めても判断ができないため。
+ * 人の紹介そのものは下層ページに置き、ここは導線だけにする
+ * （団体概要が特定の個人のページに見えないようにするため）。
+ */
 export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
     return (
         <>
@@ -25,27 +34,28 @@ export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
                 ]}
             />
             <PageTitle band en='About'>団体概要</PageTitle>
-            <div className='mx-auto mb-12 max-w-(--breakpoint-md) px-6 md:px-8'>
-                <div className='mb-10'>
+            <div className='mx-auto max-w-(--breakpoint-md) space-y-20 px-6 pb-24 md:px-8'>
+                <section>
+                    <SectionHeading en='Numbers'>数字で見る京大マーケティング研究所</SectionHeading>
                     <Suspense fallback={<CircleStatsSkeleton />}>
                         <CircleStats />
                     </Suspense>
-                </div>
-                <div className='mb-16'>
+                </section>
+
+                <section>
+                    <SectionHeading en='Outline'>京大マーケティング研究所について</SectionHeading>
                     <CircleOutline text={outlineText} />
-                </div>
+                </section>
+
                 <AboutSections />
-                {/* 人の紹介そのものは下層ページに置き、ここは導線だけにしている。
-                    団体概要が特定の個人のページに見えないようにするため */}
-                <div className='mt-16'>
-                    <AboutNav />
-                </div>
-                {/* 法人概要は企業が実在性を確認する場所。人の紹介の後に置く */}
-                <div className='mt-16'>
-                    <Suspense fallback={null}>
-                        <CorporateInfo />
-                    </Suspense>
-                </div>
+
+                <FounderSection />
+
+                <MembersSection />
+
+                <Suspense fallback={null}>
+                    <CorporateInfo />
+                </Suspense>
             </div>
         </>
     )

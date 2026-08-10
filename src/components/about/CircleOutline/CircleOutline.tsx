@@ -17,7 +17,7 @@ export interface CircleOutlineProps {
  */
 export const CircleOutline: FC<CircleOutlineProps> = ({ text }) => (
     <div className='space-y-8'>
-        <p className='px-2 text-gray-700'>{text}</p>
+        <p className='text-gray-700'>{text}</p>
         <PageImage alt='集合写真' src={shuugouShashin} />
     </div>
 )
