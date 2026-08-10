@@ -14,9 +14,9 @@ export const CorporateInfo = async () => {
         { label: '名称', value: '京大マーケティング研究所（一般社団法人マーケティング研究所）' },
         { label: '法人番号', value: '5130005017724' },
         { label: '所在地', value: '京都府京都市左京区田中大堰町13' },
-        { label: '設立', value: '2026年7月（学生団体としての創立は2024年3月）' },
+        { label: '設立', value: '2026年7月（学生団体としての設立は2024年3月）' },
         { label: '代表', value: '三上 透輝' },
-        { label: '創立者', value: '迫田 周大' },
+        { label: '創設者', value: '迫田 周大（さこだ しゅうた）' },
     ]
 
     return (

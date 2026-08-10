@@ -7,7 +7,7 @@ import { Policy } from './Policy/Policy'
 export interface AboutSectionsProps {}
 
 /**
- * 活動方針・創立の経緯のセクション。
+ * 活動方針・設立の経緯のセクション。
  * 以前はアコーディオンで畳んでいたが、畳むと読まれないため常時展開に変更した。
  */
 export const AboutSections: FC<AboutSectionsProps> = ({ ...props }) => {
@@ -27,7 +27,7 @@ export const AboutSections: FC<AboutSectionsProps> = ({ ...props }) => {
                 </div>
             </section>
             <section>
-                <h2 className='border-b px-4 pb-4 text-heading'>創立の経緯</h2>
+                <h2 className='border-b px-4 pb-4 text-heading'>設立の経緯</h2>
                 <div className='py-8'>
                     <AboutSuspense>
                         <Origin />

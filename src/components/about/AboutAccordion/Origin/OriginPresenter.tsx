@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { FC } from 'react'
 
-import MakenekoImg from '@/../public/page-images/about/makeneko.webp'
 import OriginImg from '@/../public/page-images/about/origin.webp'
 import SakodaImg from '@/../public/page-images/about/sakoda.webp'
 import { ImageWithCaption } from '@/components/common/ImageWithCaption/ImageWithCaption'
@@ -24,18 +23,12 @@ export const OriginPresenter: FC<OriginPresenterProps> = ({ text, ...props }) =>
                     <p key={i}>{line}</p>
                 ))}
             </div>
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='mx-auto w-full max-w-xs'>
                 <ImageWithCaption
                     {...SakodaImg}
-                    alt='創設者 迫田周大'
+                    alt='創設者 迫田周大（さこだしゅうた）'
                     className='aspect-square object-cover'
-                    sizes='(max-width: 768px) 50vw, 320px'
-                />
-                <ImageWithCaption
-                    {...MakenekoImg}
-                    alt='マスコットキャラクター マケ猫'
-                    className='aspect-square object-cover'
-                    sizes='(max-width: 768px) 50vw, 320px'
+                    sizes='(max-width: 768px) 60vw, 320px'
                 />
             </div>
         </>
