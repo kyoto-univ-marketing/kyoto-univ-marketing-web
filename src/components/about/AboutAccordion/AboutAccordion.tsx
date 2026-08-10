@@ -14,7 +14,9 @@ export interface AboutSectionsProps {}
 export const AboutSections: FC<AboutSectionsProps> = ({ ...props }) => {
     return (
         <section>
-            <SectionHeading en='What You Get'>京大マーケティング研究所で得られるもの</SectionHeading>
+            <SectionHeading en='What You Get' index={2}>
+                京大マーケティング研究所で得られるもの
+            </SectionHeading>
             <p className='text-gray-700'>
                 大学入学までの熱量を「最高到達点」にせず「通過点」にするために、
                 私たちは学生時代にもうひとつの原体験——「セカンド原体験」をつくることを目指しています。

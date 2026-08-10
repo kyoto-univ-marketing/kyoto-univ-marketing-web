@@ -35,7 +35,9 @@ export const AboutPage: FC<AboutPageProps> = () => {
             <div className='section-stack pb-24'>
                 <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
                     <section className='space-y-12'>
-                        <SectionHeading en='Numbers'>数字で見る京大マーケティング研究所</SectionHeading>
+                        <SectionHeading en='Numbers' index={1}>
+                            数字で見る京大マーケティング研究所
+                        </SectionHeading>
                         <Suspense fallback={<CircleStatsSkeleton />}>
                             <CircleStats />
                         </Suspense>

@@ -89,7 +89,9 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     </Reveal>
 
                     <section>
-                        <SectionHeading en='What We Offer'>ご提供するもの</SectionHeading>
+                        <SectionHeading en='What We Offer' index={1}>
+                            ご提供するもの
+                        </SectionHeading>
                         <div className='grid gap-10 md:grid-cols-3 md:gap-x-10'>
                             {offers.map(({ en, title, body }, i) => (
                                 <Reveal className='space-y-3 border-gray-200 border-t pt-8' delay={i * 80} key={title}>
@@ -102,7 +104,9 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     </section>
 
                     <section>
-                        <SectionHeading en='Social Value'>協賛による社会的価値</SectionHeading>
+                        <SectionHeading en='Social Value' index={2}>
+                            協賛による社会的価値
+                        </SectionHeading>
                         <div className='mx-auto max-w-2xl space-y-6 text-gray-700'>
                             <p>
                                 「次代を担う人材の育成に投資している」という事実は、
@@ -117,7 +121,9 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     </section>
 
                     <section>
-                        <SectionHeading en='Calendar'>年間の流れ</SectionHeading>
+                        <SectionHeading en='Calendar' index={3}>
+                            年間の流れ
+                        </SectionHeading>
                         {/* PCは2列。6項目を縦に並べると空白が目立つ */}
                         <dl className='grid border-gray-200 border-t sm:grid-cols-2 sm:gap-x-12'>
                             {calendar.map(({ month, label }) => (

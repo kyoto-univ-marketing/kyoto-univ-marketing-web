@@ -16,7 +16,9 @@ import { founder, presidents } from '@/constants/members'
  */
 export const FounderSection: FC = () => (
     <section>
-        <SectionHeading en={aboutFounderPage.textEng}>{aboutFounderPage.text}</SectionHeading>
+        <SectionHeading en={aboutFounderPage.textEng} index={3}>
+            {aboutFounderPage.text}
+        </SectionHeading>
         <Reveal>
             <NextLink className='group flex items-center gap-6' href={aboutFounderPage.href}>
                 <Image
@@ -48,7 +50,9 @@ export const FounderSection: FC = () => (
 
 export const MembersSection: FC = () => (
     <section>
-        <SectionHeading en={aboutMembersPage.textEng}>{aboutMembersPage.text}</SectionHeading>
+        <SectionHeading en={aboutMembersPage.textEng} index={4}>
+            {aboutMembersPage.text}
+        </SectionHeading>
         <Reveal>
             <NextLink className='group flex items-center gap-6' href={aboutMembersPage.href}>
                 <div className='flex shrink-0 gap-2'>

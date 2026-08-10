@@ -26,7 +26,7 @@ export const ProjectListItem: FC<ProjectListItemProps> = ({ name, description, t
     const fallback = getFallbackImage(name)
 
     return (
-        <Reveal className='flex flex-col' delay={order * 80}>
+        <Reveal className='flex flex-col' delay={order * 80} mask>
             <div className='relative aspect-video w-full overflow-hidden bg-background-secondary'>
                 {fallback ? (
                     <Image

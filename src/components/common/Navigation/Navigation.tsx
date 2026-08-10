@@ -11,9 +11,10 @@ export interface NavigationProps {
     showHamburger?: boolean
 }
 
-/** 「学生の方へ」「企業の方へ」は対等な入口なので、見た目を必ず揃える */
-const entryButtonClass =
-    'block border border-brand-accent px-4 py-2 text-brand-accent text-sm transition-colors hover:bg-brand-accent hover:text-primary'
+/** 読み手を振り分ける2つの入口。金は協賛（企業の方へ）だけに使う */
+const entryButtonClass = 'block border px-4 py-2 text-sm transition-colors'
+const studentButtonClass = `${entryButtonClass} border-white/60 hover:bg-white hover:text-primary`
+const companyButtonClass = `${entryButtonClass} border-brand-accent text-brand-accent hover:bg-brand-accent hover:text-primary`
 
 export const Navigation = async ({ showHamburger = true, ...props }: NavigationProps) => {
     const siteSettings = await getSiteSettings()
@@ -60,12 +61,12 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                         </li>
                     ))}
                 <li>
-                    <NextLink className={entryButtonClass} href={pageLinkObject.JOIN.href}>
+                    <NextLink className={studentButtonClass} href={pageLinkObject.JOIN.href}>
                         学生の方へ
                     </NextLink>
                 </li>
                 <li>
-                    <NextLink className={entryButtonClass} href={pageLinkObject.SPONSORSHIP.href}>
+                    <NextLink className={companyButtonClass} href={pageLinkObject.SPONSORSHIP.href}>
                         {pageLinkObject.SPONSORSHIP.text}
                     </NextLink>
                 </li>

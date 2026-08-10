@@ -68,7 +68,9 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                 <div className='mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
                     {/* 入会の可否は時期の運営状況で変わるため、断定せずに相談してもらう形にする */}
                     <Reveal>
-                        <SectionHeading en='How to Join'>入会について</SectionHeading>
+                        <SectionHeading en='How to Join' index={1}>
+                            入会について
+                        </SectionHeading>
                         <div className='space-y-4 text-gray-700'>
                             <p>
                                 学年・学部は問いません。まずはご連絡いただければ、活動の見学や新歓の予定をご案内します。

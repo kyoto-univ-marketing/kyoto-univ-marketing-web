@@ -22,7 +22,9 @@ export const CorporateInfo = async () => {
 
     return (
         <section>
-            <SectionHeading en='Corporate'>法人概要</SectionHeading>
+            <SectionHeading en='Corporate' index={5}>
+                法人概要
+            </SectionHeading>
             <div>
                 <dl className='divide-y divide-gray-200 border-gray-200 border-t border-b'>
                     {items.map(({ label, value }) => (

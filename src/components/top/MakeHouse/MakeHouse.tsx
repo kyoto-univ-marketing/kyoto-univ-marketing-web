@@ -22,7 +22,7 @@ export const MakeHouse: FC = () => (
         <Reveal className='grid items-center gap-10 sm:grid-cols-2 sm:gap-14'>
             {/* 外観だけだと中の空気が伝わらないので、掛け軸（内観）を並べる。
                 右側は左の写真と高さを揃えたいので fill にしている */}
-            <div className='flex gap-3'>
+            <Reveal className='flex gap-3' mask>
                 <Image
                     {...MakeHouseImg}
                     alt='活動拠点マーケハウスの外観。京都大学から徒歩圏の京町家'
@@ -37,7 +37,7 @@ export const MakeHouse: FC = () => (
                         sizes='(max-width: 640px) 38vw, 180px'
                     />
                 </div>
-            </div>
+            </Reveal>
             <div className='space-y-6'>
                 <div className='space-y-4'>
                     <h2 className='font-title text-title leading-tight'>「行けば誰かがいる」</h2>
