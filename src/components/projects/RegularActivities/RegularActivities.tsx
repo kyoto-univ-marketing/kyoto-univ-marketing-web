@@ -1,4 +1,7 @@
+import Image from 'next/image'
 import { FC } from 'react'
+
+import MakeHouseImg from '@/../public/page-images/makehouse.webp'
 
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
@@ -62,6 +65,12 @@ export const RegularActivities: FC = () => (
         <Reveal className='mb-20 border border-gray-200 bg-white px-6 py-10 sm:px-10'>
             <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>Our Base</p>
             <h2 className='mt-4 font-title text-heading leading-snug'>マーケハウス</h2>
+            <Image
+                {...MakeHouseImg}
+                alt='活動拠点マーケハウスの外観。京都大学から徒歩圏の京町家'
+                className='mt-6 w-full object-cover'
+                sizes='(max-width: 768px) 100vw, 640px'
+            />
             <div className='mt-6 space-y-4 text-gray-700'>
                 <p>
                     京都大学から徒歩圏にある、2階建ての京町家を借りています。

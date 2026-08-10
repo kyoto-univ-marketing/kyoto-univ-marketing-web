@@ -11,6 +11,7 @@ import { ImageSwitch } from '../../ImageSwitch/ImageSwitch'
 import { topHeaderImageList } from '../../imageList'
 import { LatestArticles } from '../../LatestArticles/LatestArticles'
 import { LatestArticlesSkeleton } from '../../LatestArticlesSkeleton/LatestArticlesSkeleton'
+import { MakeHouse } from '../../MakeHouse/MakeHouse'
 import { ScrollCue } from '../../ScrollCue/ScrollCue'
 import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
 import { TopCta } from '../../TopCta/TopCta'
@@ -83,6 +84,10 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
                     <CircleStats />
                 </Suspense>
             </Reveal>
+
+            <div className='mb-24'>
+                <MakeHouse />
+            </div>
 
             <div className='mx-auto mb-24 max-w-(--breakpoint-md) px-8'>
                 <Reveal className='border border-gray-200 bg-white pb-8'>

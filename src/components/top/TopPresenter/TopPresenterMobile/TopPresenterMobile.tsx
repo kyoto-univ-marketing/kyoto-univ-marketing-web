@@ -13,6 +13,7 @@ import { ImageSwitch } from '../../ImageSwitch/ImageSwitch'
 import { topHeaderImageList } from '../../imageList'
 import { LatestArticles } from '../../LatestArticles/LatestArticles'
 import { LatestArticlesSkeleton } from '../../LatestArticlesSkeleton/LatestArticlesSkeleton'
+import { MakeHouse } from '../../MakeHouse/MakeHouse'
 import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
 import { TopCta } from '../../TopCta/TopCta'
 
@@ -71,6 +72,10 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                     <CircleStats />
                 </Suspense>
             </Reveal>
+
+            <div className='mb-16'>
+                <MakeHouse />
+            </div>
             <div className='mb-16'>
                 <Suspense fallback={<LatestArticlesSkeleton />}>
                     <LatestArticles />
