@@ -29,7 +29,7 @@ export const ProjectList: FC<ProjectListProps> = ({ heading, description, projec
                 {heading}
             </h3>
             {description && <p className='mt-3 text-gray-600 text-sm'>{description}</p>}
-            <div className='mt-8 grid gap-6 sm:grid-cols-2 lg:gap-8'>
+            <div className='mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8'>
                 {projects.map((project, index) => (
                     <ProjectListItem key={project.name} order={index} {...project} />
                 ))}

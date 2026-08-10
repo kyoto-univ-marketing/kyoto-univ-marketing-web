@@ -26,8 +26,7 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ projectDescription, ..
                 ]}
             />
             <PageTitle band en='Activities'>活動内容</PageTitle>
-            {/* 読み物は読みやすい幅に、カードが並ぶ一覧は広い幅に、と分けている */}
-            <div className='mx-auto max-w-(--breakpoint-sm) px-6 md:px-8'>
+            <div className='mx-auto max-w-(--breakpoint-lg) px-6 md:px-8'>
                 <RegularActivities />
             </div>
             <div className='mx-auto max-w-(--breakpoint-lg) px-6 md:px-8'>

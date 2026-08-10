@@ -52,7 +52,8 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                 企業・協賛をご検討の方へ
             </PageTitle>
 
-            <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
+            {/* 枠はPCの横幅を使えるように広く取り、読ませる文章だけ幅を絞る */}
+            <div className='mx-auto max-w-(--breakpoint-lg) px-6 pb-24 md:px-8'>
                 <Reveal className='mb-20 space-y-6 text-center'>
                     <p className='font-title text-heading leading-relaxed'>
                         志のある学生を、近くで応援するという関わり方。
@@ -88,20 +89,16 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     <PageTitle asChild en='What We Offer'>
                         <h2>ご提供するもの</h2>
                     </PageTitle>
-                    <div className='space-y-10'>
+                    <div className='grid gap-10 md:grid-cols-3 md:gap-x-10'>
                         {offers.map(({ en, title, body }, i) => (
                             <Reveal
-                                className='flex flex-col gap-4 border-gray-200 border-t pt-8 sm:flex-row sm:gap-10'
+                                className='space-y-3 border-gray-200 border-t pt-8'
                                 delay={i * 80}
                                 key={title}
                             >
-                                <p className='shrink-0 font-en text-brand-accent text-xs uppercase tracking-[0.3em] sm:w-40 sm:pt-1'>
-                                    {en}
-                                </p>
-                                <div className='flex-1 space-y-3'>
-                                    <h3 className='font-title text-lg leading-snug'>{title}</h3>
-                                    <p className='text-gray-700'>{body}</p>
-                                </div>
+                                <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>{en}</p>
+                                <h3 className='font-title text-lg leading-snug'>{title}</h3>
+                                <p className='text-gray-700 text-sm leading-relaxed'>{body}</p>
                             </Reveal>
                         ))}
                     </div>
@@ -111,7 +108,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     <PageTitle asChild en='Social Value'>
                         <h2>協賛による社会的価値</h2>
                     </PageTitle>
-                    <div className='space-y-6 text-gray-700'>
+                    <div className='mx-auto max-w-2xl space-y-6 text-gray-700'>
                         <p>
                             「次代を担う人材の育成に投資している」という事実は、
                             人的資本経営やCSRの文脈で発信していただける物語になります。
@@ -128,9 +125,10 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     <PageTitle asChild en='Calendar'>
                         <h2>年間の流れ</h2>
                     </PageTitle>
-                    <dl className='divide-y divide-gray-200 border-gray-200 border-t border-b'>
+                    {/* PCは2列。6項目を縦に並べると空白が目立つ */}
+                    <dl className='grid border-gray-200 border-t sm:grid-cols-2 sm:gap-x-12'>
                         {calendar.map(({ month, label }) => (
-                            <div className='flex gap-6 px-2 py-4' key={month}>
+                            <div className='flex gap-6 border-gray-200 border-b px-2 py-4' key={month}>
                                 <dt className='w-16 shrink-0 font-en text-gray-600 text-sm tracking-widest'>{month}</dt>
                                 <dd className='flex-1'>{label}</dd>
                             </div>

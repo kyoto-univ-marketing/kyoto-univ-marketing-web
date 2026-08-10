@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 import { components } from '@/api/schema'
 import { Reveal } from '@/components/common/Reveal/Reveal'
-import { isPlaceholderThumbnail, projectFallbackImages } from '@/constants/projectThumbnail'
+import { getFallbackImage, isPlaceholderThumbnail } from '@/constants/projectThumbnail'
 import { toHttps } from '@/lib/to-https'
 
 export interface ProjectListItemProps
@@ -28,16 +28,13 @@ export const ProjectListItem: FC<ProjectListItemProps> = ({ name, description, t
         <Reveal className='flex flex-col border border-gray-200 bg-white' delay={order * 80}>
             <div className='relative aspect-video w-full overflow-hidden bg-background-secondary'>
                 {usesFallback ? (
-                    <>
-                        <Image
-                            alt=''
-                            className='object-cover'
-                            fill
-                            sizes='(max-width: 640px) 100vw, 480px'
-                            src={projectFallbackImages[order % projectFallbackImages.length]}
-                        />
-                        <div aria-hidden className='absolute inset-0 bg-primary/55' />
-                    </>
+                    <Image
+                        alt=''
+                        className='object-cover'
+                        fill
+                        sizes='(max-width: 640px) 100vw, 400px'
+                        src={getFallbackImage(name, order)}
+                    />
                 ) : (
                 /*
                  * unoptimized にしている理由:

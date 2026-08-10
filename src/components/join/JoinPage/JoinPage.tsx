@@ -45,7 +45,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                     <p className='mt-6 text-center text-gray-700 text-sm'>
                         文系・理系の垣根を越えた京大生が在籍しています。
                         活動拠点は、京都大学から徒歩圏の京町家「マーケハウス」。
-                        スマートロックなので、部員は深夜・早朝を含めていつでも使えます。
+                        部員は深夜・早朝を含めていつでも使えます。
                     </p>
                 </Reveal>
 
