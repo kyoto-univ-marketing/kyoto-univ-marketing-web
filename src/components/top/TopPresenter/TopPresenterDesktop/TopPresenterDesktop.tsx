@@ -61,7 +61,7 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = () => {
             </section>
 
             {/*
-             * 並び順は「していること → 考え方 → 拠点 → お知らせ」。
+             * 並び順は「活動概要 → 考え方 → 拠点 → お知らせ」。
              * はじめて来た人は、何をしている団体かを知ってからでないと
              * セカンド原体験の話を受け取れないため、活動を先に置いている。
              */}

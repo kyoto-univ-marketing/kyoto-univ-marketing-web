@@ -51,7 +51,7 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = () => {
                 </div>
             </section>
             <div className='section-stack py-16'>
-                {/* 並び順はPCと同じ。していること → 考え方 → 拠点 → お知らせ */}
+                {/* 並び順はPCと同じ。活動概要 → 考え方 → 拠点 → お知らせ */}
                 <Activities />
                 <Suspense fallback={null}>
                     <SecondOrigin />

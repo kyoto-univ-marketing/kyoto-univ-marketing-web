@@ -29,7 +29,7 @@ const activities = [
 export const Activities: FC = () => (
     <section className='mx-auto max-w-(--breakpoint-lg) px-6 md:px-8'>
         <PageTitle asChild en='What We Do'>
-            <h2>していること</h2>
+            <h2>活動概要</h2>
         </PageTitle>
         <div className='grid items-center gap-10 md:grid-cols-2 md:gap-14'>
             <Reveal className='grid gap-4' mask>
