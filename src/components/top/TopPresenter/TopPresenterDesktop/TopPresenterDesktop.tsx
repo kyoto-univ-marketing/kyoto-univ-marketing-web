@@ -1,6 +1,5 @@
 import { FC, Suspense } from 'react'
 
-import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { PageImage } from '@/components/common/PageImage/PageImage'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 
@@ -31,7 +30,7 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
             <section className='flex h-[calc(100svh-var(--spacing)*18)]'>
                 {/* 紺のパネルと写真を横に並べる。写真を全幅に敷いてパネルを重ねると
                     被写体がパネルの裏に隠れ、写真の枠の中で中央に来ないため */}
-                <div className='relative flex w-[46%] max-w-[34rem] shrink-0 flex-col justify-center gap-10 bg-primary px-12 text-primary-foreground lg:px-16'>
+                <div className='relative flex w-[46%] max-w-[34rem] shrink-0 flex-col justify-center gap-10 bg-primary px-8 text-primary-foreground md:px-10 lg:px-16'>
                     <Reveal className='flex flex-col gap-8'>
                         <Logo className='size-20' reverse sizes='160px' />
                         <div className='flex flex-col gap-5'>
@@ -78,12 +77,6 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
                     <SecondOrigin />
                 </Suspense>
             </div>
-
-            <Reveal className='mb-24'>
-                <Suspense fallback={<CircleStatsSkeleton />}>
-                    <CircleStats />
-                </Suspense>
-            </Reveal>
 
             <div className='mb-24'>
                 <MakeHouse />

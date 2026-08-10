@@ -67,7 +67,7 @@ const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) =>
                             <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>
                                 To You
                             </p>
-                            <p className='font-title text-base'>入部を考えている方へ</p>
+                            <p className='font-title text-base'>入会を考えている方へ</p>
                             <div className='space-y-3 text-gray-700'>
                                 {message.map((line) => (
                                     <p key={line}>{line}</p>

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { FC } from 'react'
 
+import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import MakeHouseImg from '@/../public/page-images/makehouse.webp'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
@@ -20,12 +21,24 @@ export const MakeHouse: FC = () => (
             <h2>マーケハウス</h2>
         </PageTitle>
         <Reveal className='grid items-center gap-10 sm:grid-cols-2 sm:gap-14'>
-            <Image
-                {...MakeHouseImg}
-                alt='活動拠点マーケハウスの外観。京都大学から徒歩圏の京町家'
-                className='w-full object-cover'
-                sizes='(max-width: 640px) 100vw, 480px'
-            />
+            {/* 外観だけだと中の空気が伝わらないので、掛け軸（内観）を並べる。
+                右側は左の写真と高さを揃えたいので fill にしている */}
+            <div className='flex gap-3'>
+                <Image
+                    {...MakeHouseImg}
+                    alt='活動拠点マーケハウスの外観。京都大学から徒歩圏の京町家'
+                    className='w-[62%] object-cover'
+                    sizes='(max-width: 640px) 62vw, 300px'
+                />
+                <div className='relative flex-1 overflow-hidden'>
+                    <Image
+                        {...KakejikuImg}
+                        alt='マーケハウスに掛かる掛け軸'
+                        className='absolute inset-0 size-full object-cover'
+                        sizes='(max-width: 640px) 38vw, 180px'
+                    />
+                </div>
+            </div>
             <div className='space-y-6'>
                 <p className='font-title text-heading leading-relaxed'>
                     「行けば誰かがいる」場所が、

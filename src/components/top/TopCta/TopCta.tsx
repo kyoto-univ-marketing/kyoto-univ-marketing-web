@@ -9,7 +9,7 @@ import { pageLinkObject } from '@/constants/pageLinks'
  * トップの末尾に置く二つの入口。
  *
  * トップページの仕事は「読み手を振り分けること」なので、最後に必ずここへ着地させる。
- * 入部希望者と企業では知りたいことが違うため、一つずつ分けて置く。
+ * 入会希望者と企業では知りたいことが違うため、一つずつ分けて置く。
  */
 export const TopCta: FC = () => {
     const entries = [

@@ -15,12 +15,18 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
     const siteSettings = await getSiteSettings()
     return (
         <nav className='flex h-18 w-full items-center justify-between gap-4 p-4 text-primary-foreground'>
-            <Link className='flex items-center gap-4' href='/'>
+            <Link className='flex min-w-0 items-center gap-3 sm:gap-4' href='/'>
                 <Logo reverse />
-                <div className='font-bold font-title text-accent'>京大マーケティング研究所</div>
+                <div className='truncate font-bold font-title text-accent-sm sm:text-accent'>
+                    京大マーケティング研究所
+                </div>
             </Link>
+            {/*
+             * 横並びのメニューは lg から。md（768px）では
+             * ロゴ＋4項目＋枠付きボタン2つが収まらず、はみ出してしまうため。
+             */}
             {showHamburger && (
-                <div className='md:hidden'>
+                <div className='lg:hidden'>
                     <HamburgerMenu
                         instagramUrl={siteSettings.instagram_url}
                         mailAddress={siteSettings.mail_address}
@@ -29,7 +35,7 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                 </div>
             )}
             {/* 「学生の方へ」「企業の方へ」の2つの入口は、通常メニューに混ぜず枠付きで独立させる */}
-            <ul className='hidden items-center gap-4 text-sm md:flex lg:gap-6 lg:text-base'>
+            <ul className='hidden shrink-0 items-center gap-4 text-sm lg:flex lg:gap-6'>
                 {pageLinks
                     .filter(
                         (link) =>

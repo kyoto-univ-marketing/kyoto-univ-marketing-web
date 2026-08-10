@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { FC, Suspense } from 'react'
 
-import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { PageImage } from '@/components/common/PageImage/PageImage'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 
@@ -67,12 +66,6 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                     <SecondOrigin />
                 </Suspense>
             </div>
-            <Reveal className='mb-16'>
-                <Suspense fallback={<CircleStatsSkeleton />}>
-                    <CircleStats />
-                </Suspense>
-            </Reveal>
-
             <div className='mb-16'>
                 <MakeHouse />
             </div>

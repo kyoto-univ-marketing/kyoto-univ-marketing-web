@@ -9,7 +9,6 @@ const meta = {
     parameters: {},
     args: {
         ...pick(mockProjects[0], 'name', 'description', 'thumbnail'),
-        reverse: false,
     },
 } satisfies Meta<typeof ProjectListItem>
 

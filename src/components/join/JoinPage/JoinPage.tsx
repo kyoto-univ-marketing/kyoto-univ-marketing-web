@@ -27,7 +27,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                 入会をお考えの方へ
             </PageTitle>
 
-            <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24'>
+            <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
                 <Reveal className='mb-20 space-y-6 text-center'>
                     <p className='font-title text-heading leading-relaxed'>
                         大学入学の熱量を、最高到達点にしない。

@@ -17,8 +17,8 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 /**
- * **活動記録の記事リスト**
+ * **お知らせの記事リスト**
  *
- * 本来はページ遷移やタグによる絞り込みが可能だがstorybookでは表示のみ
+ * 本来はページ遷移が可能だがstorybookでは表示のみ
  */
 export const Default: Story = {}

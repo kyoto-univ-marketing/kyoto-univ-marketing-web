@@ -25,7 +25,7 @@ export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
                 ]}
             />
             <PageTitle band en='About'>団体概要</PageTitle>
-            <div className='mx-auto mb-12 max-w-(--breakpoint-sm) px-6'>
+            <div className='mx-auto mb-12 max-w-(--breakpoint-md) px-6 md:px-8'>
                 <div className='mb-10'>
                     <Suspense fallback={<CircleStatsSkeleton />}>
                         <CircleStats />

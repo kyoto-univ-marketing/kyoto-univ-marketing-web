@@ -52,7 +52,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                 企業・協賛をご検討の方へ
             </PageTitle>
 
-            <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24'>
+            <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
                 <Reveal className='mb-20 space-y-6 text-center'>
                     <p className='font-title text-heading leading-relaxed'>
                         志のある学生を、近くで応援するという関わり方。

@@ -6,8 +6,11 @@ import { ComponentProps, FC, useEffect, useState } from 'react'
 import { cn } from '@/lib/utils'
 
 export interface ImageSwitchProps {
-    /** 画像データのリスト */
-    imageList: { src: string; alt?: string }[]
+    /**
+     * 画像データのリスト。
+     * objectPosition は、切り抜きで消えては困るもの（看板など）がある写真にだけ指定する。
+     */
+    imageList: { src: string; alt?: string; objectPosition?: string }[]
     /** 画像切替の間隔（ms） */
     interval: number
     /** 切り替えアニメーションの長さ（ms） */
@@ -28,7 +31,7 @@ export const ImageSwitch: FC<ImageSwitchProps> = ({ imageList, interval, transit
 
     return (
         <div className={cn('h-svh w-full', className)}>
-            {imageList.map(({ src, alt }, index) => (
+            {imageList.map(({ src, alt, objectPosition }, index) => (
                 <Img
                     alt={alt ?? ''}
                     isShow={current === index}
@@ -36,6 +39,7 @@ export const ImageSwitch: FC<ImageSwitchProps> = ({ imageList, interval, transit
                     loading={index === 0 ? 'eager' : 'lazy'}
                     priority={index === 0}
                     src={src}
+                    style={objectPosition ? { objectPosition } : undefined}
                     transitionDuration={transitionDuration}
                 />
             ))}
