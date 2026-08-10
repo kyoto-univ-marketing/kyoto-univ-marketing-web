@@ -71,10 +71,11 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                         {pageLinkObject.SPONSORSHIP.text}
                     </NextLink>
                 </li>
-                {/* 唯一の「行動」なので、ここだけ塗りつぶす。枠線の2つとは役割が違う */}
+                {/* 金は「企業の方へ」だけに使う。ここを目立たせると、
+                    先に読んでほしい2つの入口より問い合わせが強く見えてしまう */}
                 <li>
                     <NextLink
-                        className='block bg-brand-accent px-4 py-2 text-primary text-sm transition-colors hover:bg-white'
+                        className='block border border-white/60 px-4 py-2 text-sm transition-colors hover:bg-white hover:text-primary'
                         href={pageLinkObject.CONTACT.href}
                     >
                         {pageLinkObject.CONTACT.text}
