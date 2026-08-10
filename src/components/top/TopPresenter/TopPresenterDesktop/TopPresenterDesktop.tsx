@@ -15,12 +15,9 @@ import { ScrollCue } from '../../ScrollCue/ScrollCue'
 import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
 import { TopCta } from '../../TopCta/TopCta'
 
-export interface TopPresenterDesktopProps {
-    message: string
-    subMessage: string
-}
+export interface TopPresenterDesktopProps {}
 
-export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, subMessage }) => {
+export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = () => {
     return (
         <div className='w-full'>
             {/*
@@ -66,22 +63,16 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
             </section>
 
             <div className='section-stack py-24'>
-                {/* PCは横幅を使う。左に文章、右に写真の二段組みにして、
-                    スマホと同じ縦一列にならないようにする */}
-                <Reveal className='mx-auto grid w-full max-w-(--breakpoint-lg) grid-cols-2 items-center gap-12 px-8'>
-                    <div className='space-y-6'>
-                        <h2 className='font-title text-heading leading-relaxed'>{message}</h2>
-                        <p className='whitespace-pre-wrap text-gray-700'>{subMessage}</p>
-                    </div>
-                    <div className='grid gap-4'>
-                        <PageImage alt='勉強会の様子' containerClassName='w-full aspect-64/27' src={img3884} />
-                        <PageImage alt='勉強会の教室' containerClassName='w-2/3 justify-self-end' src={img3893} />
-                    </div>
-                </Reveal>
-
                 <Suspense fallback={null}>
                     <SecondOrigin />
                 </Suspense>
+
+                {/* 文章は付けず、活動の空気だけを見せる。
+                    トップで説明を重ねるより、各ページへ送るほうが読まれるため */}
+                <Reveal className='mx-auto grid w-full max-w-(--breakpoint-lg) grid-cols-2 items-center gap-6 px-8'>
+                    <PageImage alt='勉強会の様子' containerClassName='w-full aspect-64/27' src={img3884} />
+                    <PageImage alt='勉強会の教室' containerClassName='w-full aspect-64/27' src={img3893} />
+                </Reveal>
 
                 <MakeHouse />
 

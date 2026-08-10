@@ -39,8 +39,10 @@ export const FounderSection: FC = () => (
                     <p className='text-gray-700 text-sm leading-relaxed'>
                         2024年3月に京大マーケティング研究所を設立。設立の考えと、これから入会する方へのことば。
                     </p>
+                    {/* このリンクは写真から説明文までを含む一つのリンクなので、
+                        文言を短くしても氏名はリンクの中に残る */}
                     <span className='inline-block text-sm underline underline-offset-4 group-hover:text-primary'>
-                        {`${founder.role} ${founder.name}のプロフィールを見る`}
+                        {`${aboutFounderPage.text}を見る`}
                     </span>
                 </div>
             </NextLink>

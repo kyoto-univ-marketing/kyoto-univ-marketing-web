@@ -16,12 +16,9 @@ import { MakeHouse } from '../../MakeHouse/MakeHouse'
 import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
 import { TopCta } from '../../TopCta/TopCta'
 
-export interface TopPresenterMobileProps {
-    message: string
-    subMessage: string
-}
+export interface TopPresenterMobileProps {}
 
-export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMessage }) => {
+export const TopPresenterMobile: FC<TopPresenterMobileProps> = () => {
     return (
         <div className='w-full'>
             {/* 写真には手を加えず、文字は下の紺の帯に分けて置く（PCと同じ考え方） */}
@@ -58,21 +55,18 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                 </div>
             </section>
             <div className='section-stack py-16'>
-                <Reveal className='space-y-6 px-8'>
-                    <h2 className='font-title text-heading leading-relaxed'>{message}</h2>
-                    <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
-                </Reveal>
                 <Suspense fallback={null}>
                     <SecondOrigin />
                 </Suspense>
-                <MakeHouse />
-                <Suspense fallback={<LatestArticlesSkeleton />}>
-                    <LatestArticles />
-                </Suspense>
+                {/* 文章は付けず、活動の空気だけを見せる（PCと同じ考え方） */}
                 <Reveal className='grid gap-4 px-6'>
                     <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-64/27' src={img3884} />
                     <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
                 </Reveal>
+                <MakeHouse />
+                <Suspense fallback={<LatestArticlesSkeleton />}>
+                    <LatestArticles />
+                </Suspense>
             </div>
 
             <TopCta />
