@@ -210,4 +210,29 @@
     li {
         line-height: 1.8;
     }
+    /*
+      写真の色味を揃える。
+      部員が撮った写真・提供写真・フリー素材が混ざっていて彩度と色温度がばらばらなため、
+      全体をわずかに沈めて共通のトーンにする。
+      強くかけると写真が死ぬので、見て分かるかどうかの手前で止めること。
+      ロゴは白抜きなので彩度を触っても変化しない。
+    */
+    img {
+        filter: saturate(0.9) contrast(1.02);
+    }
+}
+
+/*
+  章と章のあいだの余白。
+  余白の大きさが場所ごとに違うと、どこまでが一つの話なのかが読み手に伝わらないため、
+  ページ直下のまとまりはこれに統一する（章の中は space-y-8 ＝ 2rem）。
+*/
+@utility section-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+
+    @media (width >= --theme(--breakpoint-md)) {
+        gap: 8rem;
+    }
 }

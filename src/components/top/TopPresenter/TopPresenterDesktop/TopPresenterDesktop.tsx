@@ -59,35 +59,33 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
                 </div>
             </section>
 
-            {/* PCは横幅を使う。左に文章、右に写真の二段組みにして、
-                スマホと同じ縦一列にならないようにする */}
-            <Reveal className='mx-auto grid max-w-(--breakpoint-lg) grid-cols-2 items-center gap-12 px-8 py-24'>
-                <div className='space-y-6'>
-                    <h2 className='font-title text-heading leading-relaxed'>{message}</h2>
-                    <p className='whitespace-pre-wrap text-gray-700'>{subMessage}</p>
-                </div>
-                <div className='grid gap-4'>
-                    <PageImage alt='勉強会の様子' containerClassName='w-full aspect-64/27' src={img3884} />
-                    <PageImage alt='勉強会の教室' containerClassName='w-2/3 justify-self-end' src={img3893} />
-                </div>
-            </Reveal>
+            <div className='section-stack py-24'>
+                {/* PCは横幅を使う。左に文章、右に写真の二段組みにして、
+                    スマホと同じ縦一列にならないようにする */}
+                <Reveal className='mx-auto grid w-full max-w-(--breakpoint-lg) grid-cols-2 items-center gap-12 px-8'>
+                    <div className='space-y-6'>
+                        <h2 className='font-title text-heading leading-relaxed'>{message}</h2>
+                        <p className='whitespace-pre-wrap text-gray-700'>{subMessage}</p>
+                    </div>
+                    <div className='grid gap-4'>
+                        <PageImage alt='勉強会の様子' containerClassName='w-full aspect-64/27' src={img3884} />
+                        <PageImage alt='勉強会の教室' containerClassName='w-2/3 justify-self-end' src={img3893} />
+                    </div>
+                </Reveal>
 
-            <div className='mb-24'>
                 <Suspense fallback={null}>
                     <SecondOrigin />
                 </Suspense>
-            </div>
 
-            <div className='mb-24'>
                 <MakeHouse />
-            </div>
 
-            <div className='mx-auto mb-24 max-w-(--breakpoint-md) px-8'>
-                <Reveal className='border border-gray-200 bg-white pb-8'>
-                    <Suspense fallback={<LatestArticlesSkeleton />}>
-                        <LatestArticles />
-                    </Suspense>
-                </Reveal>
+                <div className='mx-auto w-full max-w-(--breakpoint-md) px-8'>
+                    <Reveal>
+                        <Suspense fallback={<LatestArticlesSkeleton />}>
+                            <LatestArticles />
+                        </Suspense>
+                    </Reveal>
+                </div>
             </div>
 
             <TopCta />

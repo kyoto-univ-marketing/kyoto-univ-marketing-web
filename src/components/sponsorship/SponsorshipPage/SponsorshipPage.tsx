@@ -2,9 +2,11 @@ import { FC, Suspense } from 'react'
 
 import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
+import { MessageBand } from '@/components/common/MessageBand/MessageBand'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
+import { SectionHeading } from '@/components/common/SectionHeading/SectionHeading'
 import { Button } from '@/components/ui/button'
 import { pageLinkObject } from '@/constants/pageLinks'
 
@@ -52,92 +54,86 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                 企業・協賛をご検討の方へ
             </PageTitle>
 
-            {/* 枠はPCの横幅を使えるように広く取り、読ませる文章だけ幅を絞る */}
-            <div className='mx-auto max-w-(--breakpoint-lg) px-6 pb-24 md:px-8'>
-                <Reveal className='mb-20 space-y-6 text-center'>
-                    <p className='font-title text-heading leading-relaxed'>
-                        志のある学生を、近くで応援するという関わり方。
-                    </p>
-                    <p className='mx-auto max-w-2xl text-gray-700'>
-                        京大マーケティング研究所は、次の時代をつくろうとする学生が集まる場です。
-                        広告枠のご提供ではなく、その育ちの過程に一年を通じて伴走していただく——
-                        そんな協賛パートナーシップをご提案しています。
-                    </p>
-                </Reveal>
+            <div className='section-stack pb-24'>
+                <div className='mx-auto w-full max-w-(--breakpoint-lg) px-6 md:px-8'>
+                    <Reveal className='space-y-6 text-center'>
+                        <p className='font-title text-heading leading-relaxed'>
+                            志のある学生を、近くで応援するという関わり方。
+                        </p>
+                        <p className='mx-auto max-w-2xl text-gray-700'>
+                            京大マーケティング研究所は、次の時代をつくろうとする学生が集まる場です。
+                            広告枠のご提供ではなく、その育ちの過程に一年を通じて伴走していただく——
+                            そんな協賛パートナーシップをご提案しています。
+                        </p>
+                    </Reveal>
+                </div>
 
                 {/* 1業界1社限定は最初に伝える。これが協賛の価値の中心にあるため */}
-                <Reveal className='mb-20 border border-brand-accent/40 bg-white px-6 py-10 text-center sm:px-12'>
-                    <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>One Company Per Industry</p>
-                    <p className='mt-4 font-title text-heading leading-relaxed'>協賛枠は、1業界につき1社まで</p>
-                    <p className='mt-5 text-gray-700 text-sm leading-relaxed'>
-                        学生との関係の質を守るため、また協賛企業さまが同業他社と場を奪い合うことにならないようにするためです。
-                        枠が埋まっている業界については、次年度以降のご案内となります。
-                    </p>
-                </Reveal>
+                <MessageBand
+                    en='One Company Per Industry'
+                    note='学生との関係の質を守るため、また協賛企業さまが同業他社と場を奪い合うことにならないようにするためです。枠が埋まっている業界については、次年度以降のご案内となります。'
+                >
+                    協賛枠は、1業界につき1社まで
+                </MessageBand>
 
-                <Reveal className='mb-20'>
-                    <Suspense fallback={<CircleStatsSkeleton />}>
-                        <CircleStats />
-                    </Suspense>
-                    <p className='mt-6 text-center text-gray-700 text-sm'>
-                        文系・理系の垣根を越えた学生が、京都大学から徒歩圏の京町家「マーケハウス」に集まっています。
-                        勉強会やゼミ、実践のプロジェクト、年3回の合宿を通じて、一年をかけて力をつけていきます。
-                    </p>
-                </Reveal>
-
-                <section className='mb-20'>
-                    <PageTitle asChild en='What We Offer'>
-                        <h2>ご提供するもの</h2>
-                    </PageTitle>
-                    <div className='grid gap-10 md:grid-cols-3 md:gap-x-10'>
-                        {offers.map(({ en, title, body }, i) => (
-                            <Reveal
-                                className='space-y-3 border-gray-200 border-t pt-8'
-                                delay={i * 80}
-                                key={title}
-                            >
-                                <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>{en}</p>
-                                <h3 className='font-title text-lg leading-snug'>{title}</h3>
-                                <p className='text-gray-700 text-sm leading-relaxed'>{body}</p>
-                            </Reveal>
-                        ))}
-                    </div>
-                </section>
-
-                <section className='mb-20'>
-                    <PageTitle asChild en='Social Value'>
-                        <h2>協賛による社会的価値</h2>
-                    </PageTitle>
-                    <div className='mx-auto max-w-2xl space-y-6 text-gray-700'>
-                        <p>
-                            「次代を担う人材の育成に投資している」という事実は、
-                            人的資本経営やCSRの文脈で発信していただける物語になります。
-                            その発信のお手伝いをすることも可能です。
+                {/* 枠はPCの横幅を使えるように広く取り、読ませる文章だけ幅を絞る */}
+                <div className='section-stack mx-auto w-full max-w-(--breakpoint-lg) px-6 md:px-8'>
+                    <Reveal className='space-y-6'>
+                        <Suspense fallback={<CircleStatsSkeleton />}>
+                            <CircleStats />
+                        </Suspense>
+                        <p className='mx-auto max-w-2xl text-center text-gray-700 text-sm'>
+                            文系・理系の垣根を越えた学生が、京都大学から徒歩圏の京町家「マーケハウス」に集まっています。
+                            勉強会やゼミ、実践のプロジェクト、年3回の合宿を通じて、一年をかけて力をつけていきます。
                         </p>
-                        <p>
-                            いただいた協賛金は、活動拠点の維持費・合宿費・活動支援費に使われ、
-                            使途は年次レポートですべてご報告します。
-                        </p>
-                    </div>
-                </section>
+                    </Reveal>
 
-                <section className='mb-20'>
-                    <PageTitle asChild en='Calendar'>
-                        <h2>年間の流れ</h2>
-                    </PageTitle>
-                    {/* PCは2列。6項目を縦に並べると空白が目立つ */}
-                    <dl className='grid border-gray-200 border-t sm:grid-cols-2 sm:gap-x-12'>
-                        {calendar.map(({ month, label }) => (
-                            <div className='flex gap-6 border-gray-200 border-b px-2 py-4' key={month}>
-                                <dt className='w-16 shrink-0 font-en text-gray-600 text-sm tracking-widest'>{month}</dt>
-                                <dd className='flex-1'>{label}</dd>
-                            </div>
-                        ))}
-                    </dl>
-                </section>
+                    <section>
+                        <SectionHeading en='What We Offer'>ご提供するもの</SectionHeading>
+                        <div className='grid gap-10 md:grid-cols-3 md:gap-x-10'>
+                            {offers.map(({ en, title, body }, i) => (
+                                <Reveal className='space-y-3 border-gray-200 border-t pt-8' delay={i * 80} key={title}>
+                                    <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>{en}</p>
+                                    <h3 className='font-title text-lg leading-snug'>{title}</h3>
+                                    <p className='text-gray-700 text-sm leading-relaxed'>{body}</p>
+                                </Reveal>
+                            ))}
+                        </div>
+                    </section>
+
+                    <section>
+                        <SectionHeading en='Social Value'>協賛による社会的価値</SectionHeading>
+                        <div className='mx-auto max-w-2xl space-y-6 text-gray-700'>
+                            <p>
+                                「次代を担う人材の育成に投資している」という事実は、
+                                人的資本経営やCSRの文脈で発信していただける物語になります。
+                                その発信のお手伝いをすることも可能です。
+                            </p>
+                            <p>
+                                いただいた協賛金は、活動拠点の維持費・合宿費・活動支援費に使われ、
+                                使途は年次レポートですべてご報告します。
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <SectionHeading en='Calendar'>年間の流れ</SectionHeading>
+                        {/* PCは2列。6項目を縦に並べると空白が目立つ */}
+                        <dl className='grid border-gray-200 border-t sm:grid-cols-2 sm:gap-x-12'>
+                            {calendar.map(({ month, label }) => (
+                                <div className='flex gap-6 border-gray-200 border-b px-2 py-4' key={month}>
+                                    <dt className='w-16 shrink-0 font-en text-gray-600 text-sm tracking-widest'>
+                                        {month}
+                                    </dt>
+                                    <dd className='flex-1'>{label}</dd>
+                                </div>
+                            ))}
+                        </dl>
+                    </section>
+                </div>
 
                 {/* 導線は問い合わせフォームに一本化する */}
-                <Reveal className='bg-primary px-6 py-14 text-center text-primary-foreground sm:px-12'>
+                <Reveal className='bg-primary px-6 py-16 text-center text-primary-foreground md:py-20'>
                     <h2 className='font-title text-heading leading-relaxed'>まずはお気軽にご相談ください</h2>
                     <p className='mx-auto mt-5 max-w-xl text-primary-foreground/85 text-sm leading-relaxed'>
                         協賛プランの詳細資料をご用意しています。ご費用を含む条件は、

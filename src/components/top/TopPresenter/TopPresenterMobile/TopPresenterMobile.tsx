@@ -57,27 +57,23 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMe
                     </Button>
                 </div>
             </section>
-            <Reveal className='space-y-6 px-8 py-16'>
-                <h2 className='font-title text-heading leading-relaxed'>{message}</h2>
-                <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
-            </Reveal>
-            <div className='mb-16'>
+            <div className='section-stack py-16'>
+                <Reveal className='space-y-6 px-8'>
+                    <h2 className='font-title text-heading leading-relaxed'>{message}</h2>
+                    <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
+                </Reveal>
                 <Suspense fallback={null}>
                     <SecondOrigin />
                 </Suspense>
-            </div>
-            <div className='mb-16'>
                 <MakeHouse />
-            </div>
-            <div className='mb-16'>
                 <Suspense fallback={<LatestArticlesSkeleton />}>
                     <LatestArticles />
                 </Suspense>
+                <Reveal className='grid gap-4 px-6'>
+                    <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-64/27' src={img3884} />
+                    <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
+                </Reveal>
             </div>
-            <Reveal className='mb-16 grid gap-4'>
-                <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-64/27' src={img3884} />
-                <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
-            </Reveal>
 
             <TopCta />
         </div>

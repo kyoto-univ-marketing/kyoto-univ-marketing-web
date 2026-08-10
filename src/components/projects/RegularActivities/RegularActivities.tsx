@@ -1,8 +1,4 @@
-import Image from 'next/image'
 import { FC } from 'react'
-
-import KakejikuImg from '@/../public/page-images/kakejiku.webp'
-import MakeHouseImg from '@/../public/page-images/makehouse.webp'
 
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
@@ -35,59 +31,22 @@ const regulars = [
 ]
 
 export const RegularActivities: FC = () => (
-    <>
-        <section className='mb-20'>
-            <PageTitle asChild en='Weekly'>
-                <h2>ふだんの活動</h2>
-            </PageTitle>
-            {/* PCでは2列に並べる。1列だと画面の右半分が空いたまま縦に長くなるため */}
-            <div className='grid gap-10 sm:grid-cols-2 sm:gap-x-12'>
-                {regulars.map(({ en, title, body }, i) => (
-                    <Reveal className='space-y-3 border-gray-200 border-t pt-8' delay={i * 80} key={title}>
-                        <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>{en}</p>
-                        <h3 className='font-title text-lg leading-snug'>{title}</h3>
-                        <p className='text-gray-700'>{body}</p>
-                    </Reveal>
-                ))}
-            </div>
-            <p className='mt-10 text-center text-gray-600 text-sm'>
-                参加はいずれも任意です。学業やほかの活動と両立している部員がほとんどです。
-            </p>
-        </section>
-
-        {/* 拠点は他大の学生団体にない差別化要素なので、独立した節として置く */}
-        <Reveal className='mb-20 border border-gray-200 bg-white px-6 py-10 sm:px-10'>
-            <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>Our Base</p>
-            <h2 className='mt-4 font-title text-heading leading-snug'>マーケハウス</h2>
-            {/* PCでは写真を左、説明を右に。縦積みだと写真が大きくなりすぎる */}
-            <div className='mt-6 grid items-center gap-8 md:grid-cols-2 md:gap-10'>
-                <div className='flex gap-3'>
-                    <Image
-                        {...MakeHouseImg}
-                        alt='活動拠点マーケハウスの外観。京都大学から徒歩圏の京町家'
-                        className='w-[62%] object-cover'
-                        sizes='(max-width: 768px) 62vw, 260px'
-                    />
-                    <div className='relative flex-1 overflow-hidden'>
-                        <Image
-                            {...KakejikuImg}
-                            alt='マーケハウスに掛かる掛け軸'
-                            className='absolute inset-0 size-full object-cover'
-                            sizes='(max-width: 768px) 38vw, 160px'
-                        />
-                    </div>
-                </div>
-                <div className='space-y-4 text-gray-700'>
-                    <p>
-                        京都大学から徒歩圏にある、2階建ての京町家を借りています。
-                        部員は深夜・早朝を含めていつでも使えます。
-                    </p>
-                    <p>
-                        OBや経営者、他団体の方が訪ねてくることもあり、日常の延長線上に社会があります。
-                        「行けば誰かがいる」場所があることが、関係の深さを決めています。
-                    </p>
-                </div>
-            </div>
-        </Reveal>
-    </>
+    <section>
+        <PageTitle asChild en='Weekly'>
+            <h2>ふだんの活動</h2>
+        </PageTitle>
+        {/* PCでは2列に並べる。1列だと画面の右半分が空いたまま縦に長くなるため */}
+        <div className='grid gap-10 sm:grid-cols-2 sm:gap-x-12'>
+            {regulars.map(({ en, title, body }, i) => (
+                <Reveal className='space-y-3 border-gray-200 border-t pt-8' delay={i * 80} key={title}>
+                    <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>{en}</p>
+                    <h3 className='font-title text-lg leading-snug'>{title}</h3>
+                    <p className='text-gray-700'>{body}</p>
+                </Reveal>
+            ))}
+        </div>
+        <p className='mt-10 text-center text-gray-600 text-sm'>
+            参加はいずれも任意です。学業やほかの活動と両立している部員がほとんどです。
+        </p>
+    </section>
 )

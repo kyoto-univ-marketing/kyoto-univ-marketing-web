@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { pageLinkObject } from '@/constants/pageLinks'
 import { isArchivedProject, projectTagList, stripArchivedMarker } from '@/constants/project'
 
+import { MakeHouseBand } from '../MakeHouseBand/MakeHouseBand'
 import { ProjectList } from '../ProjectList/ProjectList'
 import { RegularActivities } from '../RegularActivities/RegularActivities'
 
@@ -26,24 +27,29 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ projectDescription, ..
                 ]}
             />
             <PageTitle band en='Activities'>活動内容</PageTitle>
-            <div className='mx-auto max-w-(--breakpoint-lg) px-6 md:px-8'>
-                <RegularActivities />
-            </div>
-            <div className='mx-auto max-w-(--breakpoint-lg) px-6 md:px-8'>
-                <PageTitle asChild en='Project'>
-                    <h2>プロジェクト</h2>
-                </PageTitle>
-                <p className='mx-auto mb-16 max-w-(--breakpoint-sm)'>{projectDescription}</p>
-                <div className='mb-20 space-y-16'>
-                    <Suspense
-                        fallback={
-                            <div className='flex h-24 w-full items-center justify-center p-8'>
-                                <FaSpinner className='h-8 w-8 animate-spin' />
-                            </div>
-                        }
-                    >
-                        <Projects />
-                    </Suspense>
+            <div className='section-stack pb-24'>
+                <div className='mx-auto w-full max-w-(--breakpoint-lg) px-6 md:px-8'>
+                    <RegularActivities />
+                </div>
+
+                <MakeHouseBand />
+
+                <div className='mx-auto w-full max-w-(--breakpoint-lg) px-6 md:px-8'>
+                    <PageTitle asChild en='Project'>
+                        <h2>プロジェクト</h2>
+                    </PageTitle>
+                    <p className='mx-auto mb-16 max-w-(--breakpoint-sm)'>{projectDescription}</p>
+                    <div className='space-y-16'>
+                        <Suspense
+                            fallback={
+                                <div className='flex h-24 w-full items-center justify-center p-8'>
+                                    <FaSpinner className='h-8 w-8 animate-spin' />
+                                </div>
+                            }
+                        >
+                            <Projects />
+                        </Suspense>
+                    </div>
                 </div>
             </div>
         </>

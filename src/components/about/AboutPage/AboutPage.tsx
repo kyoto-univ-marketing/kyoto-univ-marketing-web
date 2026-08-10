@@ -1,6 +1,7 @@
 import { FC, Suspense } from 'react'
 
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
+import { MessageBand } from '@/components/common/MessageBand/MessageBand'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { SectionHeading } from '@/components/common/SectionHeading/SectionHeading'
 import { pageLinkObject } from '@/constants/pageLinks'
@@ -34,28 +35,35 @@ export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
                 ]}
             />
             <PageTitle band en='About'>団体概要</PageTitle>
-            <div className='mx-auto max-w-(--breakpoint-md) space-y-20 px-6 pb-24 md:px-8'>
-                <section>
-                    <SectionHeading en='Numbers'>数字で見る京大マーケティング研究所</SectionHeading>
-                    <Suspense fallback={<CircleStatsSkeleton />}>
-                        <CircleStats />
+            <div className='section-stack pb-24'>
+                <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
+                    <section>
+                        <SectionHeading en='Numbers'>数字で見る京大マーケティング研究所</SectionHeading>
+                        <Suspense fallback={<CircleStatsSkeleton />}>
+                            <CircleStats />
+                        </Suspense>
+                    </section>
+
+                    <section>
+                        <SectionHeading en='Outline'>京大マーケティング研究所について</SectionHeading>
+                        <CircleOutline text={outlineText} />
+                    </section>
+
+                    <AboutSections />
+                </div>
+
+                {/* 長い白の連なりを一度切る。中身はこの団体の一番の主張に絞る */}
+                <MessageBand en='Second Origin Experience'>大学生に「セカンド原体験」を与える。</MessageBand>
+
+                <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
+                    <FounderSection />
+
+                    <MembersSection />
+
+                    <Suspense fallback={null}>
+                        <CorporateInfo />
                     </Suspense>
-                </section>
-
-                <section>
-                    <SectionHeading en='Outline'>京大マーケティング研究所について</SectionHeading>
-                    <CircleOutline text={outlineText} />
-                </section>
-
-                <AboutSections />
-
-                <FounderSection />
-
-                <MembersSection />
-
-                <Suspense fallback={null}>
-                    <CorporateInfo />
-                </Suspense>
+                </div>
             </div>
         </>
     )
