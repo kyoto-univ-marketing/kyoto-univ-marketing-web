@@ -4,12 +4,17 @@ import { getSiteSettings } from '@/lib/microcms'
 import { MailAndSNS } from '../MailAndSNS/MailAndSNS'
 import { NextLink } from '../NextLink/NextLink'
 
+/**
+ * フッター。
+ *
+ * 上端の円弧はやめている。直前が紺のCTAになるページでは、円弧の脇に白が残って
+ * 「隙間が空いている」ように見えるため。サイト全体で角丸を使っていないことともそろう。
+ */
 export const Footer = async () => {
     const siteSettings = await getSiteSettings()
     return (
         <footer className='flex w-full flex-col items-center overflow-x-hidden text-primary-foreground'>
-            <div className='h-24 w-[110%] rounded-t-[100%] bg-primary' />
-            <div className='flex w-full flex-col items-center justify-evenly gap-12 bg-primary px-12 pt-4 pb-12 md:flex-row-reverse md:pb-18'>
+            <div className='flex w-full flex-col items-center justify-evenly gap-12 bg-primary px-12 pt-16 pb-12 md:flex-row-reverse md:pb-18'>
                 <ul className='grid w-full max-w-96 grid-cols-1 gap-4 md:grid-cols-2'>
                     {pageLinks.map((link) => (
                         <li key={link.href}>

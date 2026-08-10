@@ -11,6 +11,10 @@ export interface NavigationProps {
     showHamburger?: boolean
 }
 
+/** 「学生の方へ」「企業の方へ」は対等な入口なので、見た目を必ず揃える */
+const entryButtonClass =
+    'block border border-brand-accent px-4 py-2 text-brand-accent text-sm transition-colors hover:bg-brand-accent hover:text-primary'
+
 export const Navigation = async ({ showHamburger = true, ...props }: NavigationProps) => {
     const siteSettings = await getSiteSettings()
     return (
@@ -34,16 +38,16 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                     />
                 </div>
             )}
-            {/* 「学生の方へ」「企業の方へ」の2つの入口は、通常メニューに混ぜず枠付きで独立させる */}
+            {/* 「学生の方へ」「企業の方へ」は読み手を振り分ける2つの入口なので、
+                通常メニューに混ぜず、同じ見た目の枠付きボタンとして右端に並べる。
+                お問い合わせは通常メニューのまま（入口の2つより先に押されると振り分けが働かない） */}
             <ul className='hidden shrink-0 items-center gap-4 text-sm lg:flex lg:gap-6'>
                 {pageLinks
                     .filter(
                         (link) =>
                             link.href !== '/' &&
                             link.href !== pageLinkObject.SPONSORSHIP.href &&
-                            link.href !== pageLinkObject.JOIN.href &&
-                            // 3つは枠付きのボタンとして右端に独立させるため、通常の一覧からは外す
-                            link.href !== pageLinkObject.CONTACT.href,
+                            link.href !== pageLinkObject.JOIN.href,
                     )
                     .map((link) => (
                         <li key={link.href}>
@@ -56,29 +60,13 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                         </li>
                     ))}
                 <li>
-                    <NextLink
-                        className='block border border-white/60 px-4 py-2 text-sm transition-colors hover:bg-white hover:text-primary'
-                        href={pageLinkObject.JOIN.href}
-                    >
+                    <NextLink className={entryButtonClass} href={pageLinkObject.JOIN.href}>
                         学生の方へ
                     </NextLink>
                 </li>
                 <li>
-                    <NextLink
-                        className='block border border-brand-accent px-4 py-2 text-brand-accent text-sm transition-colors hover:bg-brand-accent hover:text-primary'
-                        href={pageLinkObject.SPONSORSHIP.href}
-                    >
+                    <NextLink className={entryButtonClass} href={pageLinkObject.SPONSORSHIP.href}>
                         {pageLinkObject.SPONSORSHIP.text}
-                    </NextLink>
-                </li>
-                {/* 金は「企業の方へ」だけに使う。ここを目立たせると、
-                    先に読んでほしい2つの入口より問い合わせが強く見えてしまう */}
-                <li>
-                    <NextLink
-                        className='block border border-white/60 px-4 py-2 text-sm transition-colors hover:bg-white hover:text-primary'
-                        href={pageLinkObject.CONTACT.href}
-                    >
-                        {pageLinkObject.CONTACT.text}
                     </NextLink>
                 </li>
             </ul>
