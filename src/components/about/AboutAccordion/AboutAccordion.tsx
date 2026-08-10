@@ -1,13 +1,12 @@
 import { FC, ReactNode, Suspense } from 'react'
 import { FaSpinner } from 'react-icons/fa6'
 
-import { Origin } from './Origin/Origin'
 import { Policy } from './Policy/Policy'
 
 export interface AboutSectionsProps {}
 
 /**
- * 活動方針・設立の経緯のセクション。
+ * 「京大マーケティング研究所で得られるもの」の節。
  * 以前はアコーディオンで畳んでいたが、畳むと読まれないため常時展開に変更した。
  */
 export const AboutSections: FC<AboutSectionsProps> = ({ ...props }) => {
@@ -23,14 +22,6 @@ export const AboutSections: FC<AboutSectionsProps> = ({ ...props }) => {
                 <div className='py-8'>
                     <AboutSuspense>
                         <Policy />
-                    </AboutSuspense>
-                </div>
-            </section>
-            <section>
-                <h2 className='border-b px-4 pb-4 text-heading'>設立の経緯</h2>
-                <div className='py-8'>
-                    <AboutSuspense>
-                        <Origin />
                     </AboutSuspense>
                 </div>
             </section>

@@ -27,7 +27,7 @@ export interface Member {
 export const members: Member[] = [
     {
         en: 'Founder',
-        role: '創設者',
+        role: '創設者・初代代表',
         name: '迫田 周大',
         reading: 'さこだ しゅうた',
         image: SakodaImg,

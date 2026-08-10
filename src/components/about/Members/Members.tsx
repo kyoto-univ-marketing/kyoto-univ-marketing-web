@@ -5,7 +5,7 @@ import { Reveal } from '@/components/common/Reveal/Reveal'
 import { type Member, members } from '@/constants/members'
 
 /**
- * 創設者と歴代代表の紹介。
+ * 歴代代表の紹介。先頭は創設者（＝初代）。
  *
  * 英字（Founder など）はあくまで装飾で、**日本語の役割名・氏名・ふりがなを必ず本文に残す**。
  * 英字だけにすると、日本語で調べた人がたどり着く手がかりが消える。
@@ -13,7 +13,7 @@ import { type Member, members } from '@/constants/members'
  */
 export const Members: FC = () => (
     <section>
-        <h2 className='border-b px-4 pb-4 text-heading'>創設者・歴代代表</h2>
+        <h2 className='border-b px-4 pb-4 text-heading'>歴代代表</h2>
         <div className='space-y-16 py-8'>
             {members.map((member, i) => (
                 <MemberItem key={member.name} member={member} order={i} />
@@ -40,10 +40,10 @@ const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) =>
                 <div className='flex-1 space-y-2 self-center'>
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>{en}</p>
                     <p className='text-gray-600 text-sm'>{role}</p>
-                    <p className='font-title text-heading leading-snug'>
+                    <h3 className='font-title text-heading leading-snug'>
                         {name}
                         <span className='ml-3 align-middle text-base text-gray-600'>{reading}</span>
-                    </p>
+                    </h3>
                 </div>
             </div>
 

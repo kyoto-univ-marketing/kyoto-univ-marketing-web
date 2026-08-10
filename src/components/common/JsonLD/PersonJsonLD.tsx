@@ -8,8 +8,8 @@ const personJson = {
     '@context': 'https://schema.org',
     '@type': 'Person',
     name: '迫田周大',
-    alternateName: 'Shuta Sakoda',
-    jobTitle: '創設者',
+    alternateName: ['さこだしゅうた', 'Shuta Sakoda'],
+    jobTitle: '創設者・初代代表',
     url: `${profile.homepageUrl}/about`,
     worksFor: {
         '@type': 'Organization',
