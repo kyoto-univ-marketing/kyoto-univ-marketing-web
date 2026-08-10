@@ -5,10 +5,10 @@ import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 import { AboutSections } from '../AboutAccordion/AboutAccordion'
+import { AboutNav } from '../AboutNav/AboutNav'
 import { CircleOutline } from '../CircleOutline/CircleOutline'
 import { CircleStats, CircleStatsSkeleton } from '../CircleStats/CircleStats'
 import { CorporateInfo } from '../CorporateInfo/CorporateInfo'
-import { Members } from '../Members/Members'
 
 export interface AboutPageProps {
     /** サークル概要の本文 */
@@ -35,9 +35,10 @@ export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
                     <CircleOutline text={outlineText} />
                 </div>
                 <AboutSections />
-                {/* 創設者を先頭に。このページが「迫田周大」のページであることをぶらさない */}
+                {/* 人の紹介そのものは下層ページに置き、ここは導線だけにしている。
+                    団体概要が特定の個人のページに見えないようにするため */}
                 <div className='mt-16'>
-                    <Members />
+                    <AboutNav />
                 </div>
                 {/* 法人概要は企業が実在性を確認する場所。人の紹介の後に置く */}
                 <div className='mt-16'>

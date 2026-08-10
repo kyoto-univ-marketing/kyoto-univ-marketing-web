@@ -16,6 +16,8 @@ export interface Member {
     lead: string[]
     /** 入会を考えている方へ */
     message: string[]
+    /** 個別ページがある場合の遷移先 */
+    detailHref?: string
 }
 
 /**
@@ -33,6 +35,7 @@ export const members: Member[] = [
         name: '迫田 周大',
         reading: 'さこだ しゅうた',
         image: SakodaImg,
+        detailHref: '/about/founder',
         catchphrase: '自分のために生き、他者のために生きる出発点',
         lead: [
             '京大マーケティング研究所は、私がアントレプレナーシップ教育を研究していたことに端を発します。アントレプレナーとは、起業という形にかかわらず、世の中に新しい機会を見つけ、自分が持つ資源を最大限に使って新しい価値を創造する人のことです。',
@@ -83,3 +86,6 @@ export const members: Member[] = [
         ],
     },
 ]
+
+/** 創設者。個別ページ（/about/founder）で使う */
+export const founder = members[0]

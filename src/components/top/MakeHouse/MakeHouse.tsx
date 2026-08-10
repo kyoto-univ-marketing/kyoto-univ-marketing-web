@@ -4,7 +4,6 @@ import { FC } from 'react'
 import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import MakeHouseImg from '@/../public/page-images/makehouse.webp'
 import { NextLink } from '@/components/common/NextLink/NextLink'
-import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 import { Button } from '@/components/ui/button'
 import { pageLinkObject } from '@/constants/pageLinks'
@@ -14,12 +13,12 @@ import { pageLinkObject } from '@/constants/pageLinks'
  *
  * 京町家を24時間使える学生団体は他にほとんどなく、最も分かりやすい差別化要素なので、
  * トップで写真付きで見せる。詳しい説明は活動内容のページに置く。
+ *
+ * 見出しは施設名ではなく「行けば誰かがいる」。
+ * 拠点があること自体より、そこで何が起きているかの方が伝わるため。
  */
 export const MakeHouse: FC = () => (
-    <section className='mx-auto max-w-(--breakpoint-lg) px-6'>
-        <PageTitle asChild en='Our Base'>
-            <h2>マーケハウス</h2>
-        </PageTitle>
+    <section className='mx-auto max-w-(--breakpoint-lg) px-6 md:px-8'>
         <Reveal className='grid items-center gap-10 sm:grid-cols-2 sm:gap-14'>
             {/* 外観だけだと中の空気が伝わらないので、掛け軸（内観）を並べる。
                 右側は左の写真と高さを揃えたいので fill にしている */}
@@ -40,11 +39,11 @@ export const MakeHouse: FC = () => (
                 </div>
             </div>
             <div className='space-y-6'>
-                <p className='font-title text-heading leading-relaxed'>
-                    「行けば誰かがいる」場所が、
-                    <wbr />
-                    関係の深さを決めています。
-                </p>
+                <div className='space-y-4'>
+                    <h2 className='font-title text-title leading-tight'>「行けば誰かがいる」</h2>
+                    <span aria-hidden className='block h-px w-10 bg-brand-accent' />
+                    <p className='text-gray-600 text-sm tracking-[0.15em]'>拠点：マーケハウス</p>
+                </div>
                 <div className='space-y-4 text-gray-700'>
                     <p>
                         京都大学から徒歩圏にある、2階建ての京町家を借りています。

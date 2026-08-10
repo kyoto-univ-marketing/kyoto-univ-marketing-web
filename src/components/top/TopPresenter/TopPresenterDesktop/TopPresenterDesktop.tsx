@@ -7,7 +7,7 @@ import img3884 from '../../../../../public/page-images/top/IMG_3884.webp'
 import img3893 from '../../../../../public/page-images/top/IMG_3893.webp'
 import { Logo } from '../../../common/Logo/Logo'
 import { ImageSwitch } from '../../ImageSwitch/ImageSwitch'
-import { topHeaderImageListDesktop } from '../../imageList'
+import { topHeaderImageList } from '../../imageList'
 import { LatestArticles } from '../../LatestArticles/LatestArticles'
 import { LatestArticlesSkeleton } from '../../LatestArticlesSkeleton/LatestArticlesSkeleton'
 import { MakeHouse } from '../../MakeHouse/MakeHouse'
@@ -52,7 +52,7 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = ({ message, sub
                 <div className='relative flex-1 overflow-hidden'>
                     <ImageSwitch
                         className='absolute inset-0 h-full'
-                        imageList={topHeaderImageListDesktop}
+                        imageList={topHeaderImageList}
                         interval={7000}
                         transitionDuration={2000}
                     />

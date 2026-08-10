@@ -1,28 +1,25 @@
 import { Metadata } from 'next'
 
 import { AboutPage } from '@/components/about/AboutPage/AboutPage'
-import { PersonJsonLD } from '@/components/common/JsonLD/PersonJsonLD'
-import { ProfilePageJsonLD } from '@/components/common/JsonLD/ProfilePageJsonLD'
 import { ABOUT_PAGE_DESCRIPTION } from '@/constants/description'
-import { pageLinkObject } from '@/constants/pageLinks'
 import { getTextById } from '@/lib/api'
 
+/**
+ * 以前はこのページのタイトルに創設者の氏名を入れて「迫田周大」検索を受けていたが、
+ * 団体概要が個人のページに見えてしまうため、/about/founder に移した。
+ * このページからは氏名つきのリンク（AboutNav）でつないでいる。
+ */
 export const metadata: Metadata = {
-    // 「迫田周大」検索での順位向上のため、名前をtitle先頭に配置（absoluteでテンプレートを上書き）
-    title: { absolute: '迫田周大（さこだしゅうた）｜京大マーケティング研究所 創設者' },
+    title: '団体概要',
     description: ABOUT_PAGE_DESCRIPTION,
-    keywords: ['迫田周大', '京大マーケティング研究所', '創設者', '京都大学', 'マーケティング'],
+    keywords: ['京大マーケティング研究所', '団体概要', '法人概要', '京都大学', 'マーケティング'],
 }
 
 export default async function Page() {
     const outlineText = await getTextById('circle_outline')
     return (
-        <>
-            <main>
-                <AboutPage outlineText={outlineText} />
-            </main>
-            <ProfilePageJsonLD />
-            <PersonJsonLD />
-        </>
+        <main>
+            <AboutPage outlineText={outlineText} />
+        </main>
     )
 }
