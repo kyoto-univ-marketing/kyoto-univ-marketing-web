@@ -1,27 +1,26 @@
 import Image from 'next/image'
 import { FC } from 'react'
 
-import { NextLink } from '@/components/common/NextLink/NextLink'
 import { Reveal } from '@/components/common/Reveal/Reveal'
-import { type Member, members } from '@/constants/members'
+import { type Member, presidents } from '@/constants/members'
 
 /**
- * 歴代代表の紹介。先頭は創設者（＝初代）。
+ * 歴代代表の紹介。創設者（初代）は個別ページがあるのでここには載せない。
  *
- * 英字（Founder など）はあくまで装飾で、**日本語の役割名・氏名・ふりがなを必ず本文に残す**。
+ * 英字（2nd President など）はあくまで装飾で、**日本語の役割名・氏名・ふりがなを必ず本文に残す**。
  * 英字だけにすると、日本語で調べた人がたどり着く手がかりが消える。
  * 構造化データ（Person）は創設者の個別ページ側に置いてある。
  */
 export const Members: FC = () => (
     <div className='space-y-16'>
-        {members.map((member, i) => (
+        {presidents.map((member, i) => (
             <MemberItem key={member.name} member={member} order={i} />
         ))}
     </div>
 )
 
 const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) => {
-    const { en, role, name, reading, image, catchphrase, lead, message, detailHref } = member
+    const { en, role, name, reading, image, catchphrase, lead, message } = member
     const hasWords = catchphrase !== '' || lead.length > 0 || message.length > 0
 
     return (
@@ -42,16 +41,6 @@ const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) =>
                         {name}
                         <span className='ml-3 align-middle text-base text-gray-600'>{reading}</span>
                     </h3>
-                    {detailHref && (
-                        <p className='pt-2'>
-                            <NextLink
-                                className='text-sm underline underline-offset-4 hover:text-primary'
-                                href={detailHref}
-                            >
-                                {`${role} ${name}のプロフィール`}
-                            </NextLink>
-                        </p>
-                    )}
                 </div>
             </div>
 

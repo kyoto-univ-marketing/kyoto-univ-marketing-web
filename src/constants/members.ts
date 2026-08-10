@@ -89,3 +89,9 @@ export const members: Member[] = [
 
 /** 創設者。個別ページ（/about/founder）で使う */
 export const founder = members[0]
+
+/**
+ * 歴代代表ページに載せる代表。創設者は個別ページがあるので除く。
+ * 初代への言及とリンクはページ側の文章で残すこと（検索の手がかりになるため）。
+ */
+export const presidents = members.slice(1)

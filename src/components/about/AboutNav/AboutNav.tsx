@@ -5,7 +5,7 @@ import { NextLink } from '@/components/common/NextLink/NextLink'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 import { SectionHeading } from '@/components/common/SectionHeading/SectionHeading'
 import { aboutFounderPage, aboutMembersPage } from '@/constants/aboutPages'
-import { founder, members } from '@/constants/members'
+import { founder, presidents } from '@/constants/members'
 
 /**
  * 創設者・歴代代表の各ページへの導線。
@@ -49,7 +49,7 @@ export const MembersSection: FC = () => (
         <Reveal>
             <NextLink className='group flex items-center gap-6' href={aboutMembersPage.href}>
                 <div className='flex shrink-0 gap-2'>
-                    {members.map((member) => (
+                    {presidents.map((member) => (
                         <Image
                             {...member.image}
                             alt=''

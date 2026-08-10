@@ -8,24 +8,21 @@ import { pageLinkObject } from '@/constants/pageLinks'
 
 import { AboutSections } from '../AboutAccordion/AboutAccordion'
 import { FounderSection, MembersSection } from '../AboutNav/AboutNav'
-import { CircleOutline } from '../CircleOutline/CircleOutline'
 import { CircleStats, CircleStatsSkeleton } from '../CircleStats/CircleStats'
 import { CorporateInfo } from '../CorporateInfo/CorporateInfo'
+import { FacultyChart } from '../FacultyChart/FacultyChart'
 
-export interface AboutPageProps {
-    /** サークル概要の本文 */
-    outlineText: string
-}
+export interface AboutPageProps {}
 
 /**
  * 団体概要。
  *
- * 章を並べる順は「数字 → 団体の話 → 得られるもの → 人 → 法人」。
+ * 章を並べる順は「数字 → 得られるもの → 人 → 法人」。
  * 数字を先に置くのは、規模が分からないまま読み進めても判断ができないため。
  * 人の紹介そのものは下層ページに置き、ここは導線だけにする
  * （団体概要が特定の個人のページに見えないようにするため）。
  */
-export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
+export const AboutPage: FC<AboutPageProps> = () => {
     return (
         <>
             <BreadCrumb
@@ -37,16 +34,15 @@ export const AboutPage: FC<AboutPageProps> = ({ outlineText }) => {
             <PageTitle band en='About'>団体概要</PageTitle>
             <div className='section-stack pb-24'>
                 <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
-                    <section>
+                    <section className='space-y-12'>
                         <SectionHeading en='Numbers'>数字で見る京大マーケティング研究所</SectionHeading>
                         <Suspense fallback={<CircleStatsSkeleton />}>
                             <CircleStats />
                         </Suspense>
-                    </section>
-
-                    <section>
-                        <SectionHeading en='Outline'>京大マーケティング研究所について</SectionHeading>
-                        <CircleOutline text={outlineText} />
+                        <div className='space-y-6'>
+                            <h3 className='font-title text-lg'>所属学部の内訳</h3>
+                            <FacultyChart />
+                        </div>
                     </section>
 
                     <AboutSections />
