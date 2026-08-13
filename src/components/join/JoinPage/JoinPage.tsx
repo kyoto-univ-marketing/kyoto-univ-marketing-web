@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { FC, Suspense } from 'react'
 import { FaInstagram } from 'react-icons/fa6'
 
+import LogoImg from '@/../public/logo.png'
 import FeastImg from '@/../public/page-images/bands/feast.webp'
 import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
@@ -34,14 +35,26 @@ export const JoinPage: FC<JoinPageProps> = async () => {
 
             <div className='section-stack pb-24'>
                 <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
-                    <Reveal className='space-y-6 text-center'>
+                    <Reveal className='space-y-8'>
                         {/* 新歓で使っているコピー。学生に向けるページなので、ここだけこの言い回しにする
-                            （トップの「セカンド原体験とは」は別の一文） */}
-                        <p className='text-balance font-title text-heading leading-relaxed'>
-                            <span className='inline-block'>京大卒で</span>
-                            <span className='inline-block'>終わりたくない人へ</span>
-                        </p>
-                        <p className='mx-auto max-w-2xl text-justify text-gray-700'>
+                            （トップの「セカンド原体験とは」は別の一文）。
+                            新歓のビジュアル（黒地・明朝・ロゴの透かし）に合わせて組んでいる。
+                            画像で入れる手もあるが、手元の原寸が 850px しかなく、
+                            拡大すると文字がにじむため、文字とロゴを重ねて再現している */}
+                        <div className='relative isolate py-2'>
+                            <Image
+                                alt=''
+                                aria-hidden
+                                className='-z-10 -translate-y-1/2 pointer-events-none absolute top-1/2 right-0 w-40 opacity-[0.07] grayscale md:w-56'
+                                sizes='224px'
+                                src={LogoImg}
+                            />
+                            <p className='font-title text-title leading-[1.8] tracking-[0.06em]'>
+                                <span className='block'>「京大卒」で</span>
+                                <span className='block pl-[1em] md:pl-[2em]'>終わりたくない人へ</span>
+                            </p>
+                        </div>
+                        <p className='text-justify text-gray-700'>
                             京大マーケティング研究所は、学生時代にもうひとつの原体験——「セカンド原体験」を創る場です。
                             やりたいことが決まっている人も、まだ探している人も歓迎します。
                         </p>
