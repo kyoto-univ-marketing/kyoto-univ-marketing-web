@@ -42,7 +42,7 @@ export const FounderSection: FC = () => (
                     {/* このリンクは写真から説明文までを含む一つのリンクなので、
                         文言を短くしても氏名はリンクの中に残る */}
                     <span className='inline-block text-sm underline underline-offset-4 group-hover:text-primary'>
-                        {`${aboutFounderPage.text}を見る`}
+                        {`${aboutFounderPage.text}を読む`}
                     </span>
                 </div>
             </NextLink>

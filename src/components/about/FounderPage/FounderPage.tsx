@@ -11,14 +11,16 @@ import { founder } from '@/constants/members'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 /**
- * 創設者・初代代表のプロフィール。
+ * 設立の経緯。「迫田周大」で検索した人が着地するページ。
  *
- * 「迫田周大」で検索した人が着地するページ。
- * 主題が本人であることをぶらさないため、h1 は氏名、役割名とふりがなは本文に必ず残す。
- * 団体の話（協賛・入会など）を厚く書き足さないこと。
+ * 題は「設立の経緯」だが、中身の主題は創設者本人。
+ * 氏名・ふりがな・役割名は h2 と本文に必ず残すこと（title と構造化データも同様）。
+ * ここが消えると、検索で拾われる手がかりがサイトから無くなる。
+ *
+ * 歴代代表ページは2代目からにしている。初代の話はこのページが担う。
  */
 export const FounderPage: FC = () => {
-    const { en, role, name, reading, faculty, enrolledYear, image, catchphrase, lead, message } = founder
+    const { role, name, reading, faculty, enrolledYear, image, catchphrase, lead, message } = founder
 
     return (
         <>
@@ -29,11 +31,18 @@ export const FounderPage: FC = () => {
                     { href: aboutFounderPage.href, label: aboutFounderPage.text },
                 ]}
             />
-            <PageTitle band en={en}>
-                {name}
+            <PageTitle band en={aboutFounderPage.textEng}>
+                {aboutFounderPage.text}
             </PageTitle>
             <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
-                <Reveal className='flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:gap-12'>
+                <Reveal className='text-gray-700'>
+                    <p>
+                        京大マーケティング研究所は、2024年3月に京都大学の学生団体として設立しました。
+                        2026年には一般社団法人マーケティング研究所として法人化し、活動の基盤を整えています。
+                    </p>
+                </Reveal>
+
+                <Reveal className='mt-16 flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:gap-12'>
                     <div className='w-full max-w-60 shrink-0 sm:w-60'>
                         <Image
                             {...image}
@@ -44,17 +53,14 @@ export const FounderPage: FC = () => {
                         />
                     </div>
                     <div className='space-y-3 text-center sm:pt-2 sm:text-left'>
-                        <p className='text-gray-600 text-sm'>京大マーケティング研究所 {role}</p>
-                        <p className='font-title text-heading leading-snug'>
+                        <p className='text-gray-600 text-sm'>{role}</p>
+                        {/* 氏名は見出しとして置く。このページの主題が本人であることの手がかりになる */}
+                        <h2 className='font-title text-heading leading-snug'>
                             {name}
                             <span className='ml-3 align-middle text-base text-gray-600'>{reading}</span>
-                        </p>
+                        </h2>
                         <p className='text-gray-600 text-sm'>
                             {faculty} {enrolledYear}年入学
-                        </p>
-                        <p className='text-gray-600 text-sm'>
-                            2024年3月に京大マーケティング研究所を設立。
-                            2026年に一般社団法人マーケティング研究所として法人化しました。
                         </p>
                     </div>
                 </Reveal>

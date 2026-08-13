@@ -29,6 +29,11 @@ export const MembersPage: FC = () => (
             <p className='mb-16 text-gray-700'>
                 京大マーケティング研究所は、2024年3月の設立以来、一年ごとに代表が交代しています。
                 それぞれが考える「この場所は何であるか」を、そのままの言葉で載せています。
+                初代代表については
+                <NextLink className='underline underline-offset-4 hover:text-primary' href={aboutFounderPage.href}>
+                    {aboutFounderPage.text}
+                </NextLink>
+                をご覧ください。
             </p>
             <Members />
             <div className='mt-20 flex flex-col items-center justify-center gap-4 sm:flex-row'>
