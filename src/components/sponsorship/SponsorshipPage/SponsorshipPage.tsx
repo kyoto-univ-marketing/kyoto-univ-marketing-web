@@ -49,7 +49,7 @@ const calendar = [
     { month: '4月', label: '新歓' },
     { month: '6月', label: 'キックオフ合宿' },
     { month: '9月', label: '夏合宿' },
-    { month: '11月', label: '学園祭に出店' },
+    { month: '11月', label: '学祭（NF）に出店' },
     { month: '12月', label: '成果発表会（ご観覧いただけます）' },
     { month: '2月', label: '春合宿' },
 ]
