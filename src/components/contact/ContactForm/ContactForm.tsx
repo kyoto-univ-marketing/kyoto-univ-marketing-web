@@ -26,6 +26,14 @@ import { contactFormSchema } from './schema'
 
 export type ContactFormSchema = z.infer<typeof contactFormSchema>
 
+/*
+ * 送信できなかったときの案内。
+ * 以前は「時間を置いて、もう一度お試しください」と書いていたが、
+ * 失敗の原因は送信先の設定にあることが多く、待っても直らない。
+ * 待たせるより、その場でメールに切り替えてもらったほうが取りこぼしが少ない。
+ */
+const FAILURE_MESSAGE = 'お手数ですが contact@kyodaimarketing.com へ直接ご連絡ください。'
+
 const keyToLabel: Record<keyof ContactFormSchema, string> = {
     name: 'お名前',
     email: 'メールアドレス',
@@ -63,7 +71,7 @@ export const ContactForm: FC = ({ ...props }) => {
             if (!res.ok) {
                 toast({
                     title: '送信に失敗しました',
-                    description: '時間を置いて、もう一度お試しください。',
+                    description: FAILURE_MESSAGE,
                     variant: 'destructive',
                 })
                 setDisabled(false)
@@ -75,7 +83,7 @@ export const ContactForm: FC = ({ ...props }) => {
             // 失敗時は、トーストを表示して再入力可能な状態にする
             toast({
                 title: '送信に失敗しました',
-                description: '時間を置いて、もう一度お試しください。',
+                description: FAILURE_MESSAGE,
                 variant: 'destructive',
             })
             setDisabled(false)
