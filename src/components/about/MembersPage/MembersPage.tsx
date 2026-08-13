@@ -32,7 +32,7 @@ export const MembersPage: FC = () => (
             </p>
             <Members />
             <div className='mt-20 flex flex-col items-center justify-center gap-4 sm:flex-row'>
-                <Button asChild className='px-8 py-5' variant='outline'>
+                <Button asChild className='px-8 py-5'>
                     <NextLink href={aboutFounderPage.href}>{aboutFounderPage.text}を見る</NextLink>
                 </Button>
                 <Button asChild className='px-8 py-5' variant='outline'>

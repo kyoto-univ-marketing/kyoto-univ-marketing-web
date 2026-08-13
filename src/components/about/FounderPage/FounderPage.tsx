@@ -80,7 +80,7 @@ export const FounderPage: FC = () => {
                 </Reveal>
 
                 <div className='mt-20 flex flex-col items-center justify-center gap-4 sm:flex-row'>
-                    <Button asChild className='px-8 py-5' variant='outline'>
+                    <Button asChild className='px-8 py-5'>
                         <NextLink href={aboutMembersPage.href}>{aboutMembersPage.text}を見る</NextLink>
                     </Button>
                     <Button asChild className='px-8 py-5' variant='outline'>

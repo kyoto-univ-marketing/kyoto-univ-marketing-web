@@ -63,7 +63,7 @@ export const Activities: FC = () => (
             ))}
         </dl>
         <div className='mt-12 flex justify-center'>
-            <Button asChild className='px-8 py-5' variant='outline'>
+            <Button asChild className='px-8 py-5'>
                 <NextLink href={pageLinkObject.PROJECT.href}>活動内容を見る</NextLink>
             </Button>
         </div>

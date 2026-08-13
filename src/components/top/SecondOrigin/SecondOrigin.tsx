@@ -39,7 +39,7 @@ export const SecondOrigin: FC = () => (
                     一人でも多くの大学生に提供していきたいと考えています。
                 </p>
             </div>
-            <Button asChild className='px-8 py-5' variant='outline'>
+            <Button asChild className='px-8 py-5'>
                 <NextLink href={pageLinkObject.ABOUT.href}>団体概要を見る</NextLink>
             </Button>
         </Reveal>

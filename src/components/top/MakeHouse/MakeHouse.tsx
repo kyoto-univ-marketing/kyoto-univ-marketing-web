@@ -61,7 +61,7 @@ export const MakeHouse: FC = () => (
                         「行けば誰かがいる」場所があることが、関係の深さを決めています。
                     </p>
                 </div>
-                <Button asChild className='px-8 py-5' variant='outline'>
+                <Button asChild className='px-8 py-5'>
                     <NextLink href={pageLinkObject.PROJECT.href}>活動内容を見る</NextLink>
                 </Button>
             </div>

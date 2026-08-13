@@ -55,7 +55,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                             参加はいずれも任意で、学業やほかの活動と両立している部員がほとんどです。
                         </p>
                         <div className='flex justify-center'>
-                            <Button asChild className='px-8 py-5' variant='outline'>
+                            <Button asChild className='px-8 py-5'>
                                 <NextLink href={pageLinkObject.PROJECT.href}>活動内容を見る</NextLink>
                             </Button>
                         </div>
