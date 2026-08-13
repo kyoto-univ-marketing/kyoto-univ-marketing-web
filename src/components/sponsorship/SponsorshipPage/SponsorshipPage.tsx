@@ -73,23 +73,31 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                 <div className='mx-auto w-full max-w-(--breakpoint-lg) px-6 md:px-8'>
                     <Reveal className='space-y-6 text-center'>
                         <p className='text-balance font-title text-heading leading-relaxed'>
-                            志のある学生を、近くで応援するという関わり方。
+                            <span className='inline-block'>一年をかけて、</span>
+                            <span className='inline-block'>価値ある何かを</span>
+                            <span className='inline-block'>一緒に創り出す関係に。</span>
                         </p>
-                        {/* 「広告ではない」とは書かない。発信の機会も実際にご提供しているため、
-                            言い切ると事実と食い違う */}
+                        {/* 「広告ではない」とは言い切らない。発信の機会も実際にご提供しているため。
+                            「ただの広告枠ではない」であれば事実と食い違わない */}
                         <p className='mx-auto max-w-2xl text-gray-700'>
+                            弊団体の協賛は、ただの広告枠ではありません。
                             京大マーケティング研究所は、次の時代を創ろうとする学生が集まる場です。
-                            一年を通じて学生の日常に関わっていただきながら、貴社と学生とで何かを一緒に形にしていく——
-                            そんな協賛パートナーシップをご提案しています。
+                            一年を通じて学生の日常や非日常のイベントに関わっていただきながら、
+                            貴社と学生とで何かを一緒に形にしていく——
+                            そんな協賛パートナーシップをご提案しております。
                         </p>
                     </Reveal>
                 </div>
 
-                {/* 枠の限定や金額はHPに出さない。個別のご提案の場で説明する */}
-                <MessageBand en='Our Proposal'>
-                    <span className='inline-block'>一年をかけて、</span>
-                    <span className='inline-block'>価値ある何かを</span>
-                    <span className='inline-block'>一緒に創り出す関係に。</span>
+                {/* 枠の限定や金額はHPに出さない。個別のご提案の場で説明する。
+                    冒頭の一文と同じ言葉を帯にも置くと繰り返しになるので、
+                    ここには取り組みの形（企業が自社に置き換えて考えられるもの）を出す */}
+                <MessageBand
+                    en='Ways to Work Together'
+                    note='ほかにもさまざまな形でのお取り組みをご検討いただけます。お気軽にご連絡ください。'
+                >
+                    <span className='inline-block'>事業創出、起業支援、</span>
+                    <span className='inline-block'>産学連携、地方創生。</span>
                 </MessageBand>
 
                 {/* 枠はPCの横幅を使えるように広く取り、読ませる文章だけ幅を絞る */}
