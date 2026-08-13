@@ -2,7 +2,6 @@ import Campus from '@/../public/page-images/projects/campus.webp'
 import Festival from '@/../public/page-images/projects/festival.webp'
 import KyotoCulture from '@/../public/page-images/projects/kyoto-culture.webp'
 import NewBusiness from '@/../public/page-images/projects/new-business.webp'
-import Pitch from '@/../public/page-images/projects/pitch.webp'
 import WebMarketing from '@/../public/page-images/projects/web-marketing.webp'
 
 /**
@@ -20,7 +19,6 @@ const fallbackByName: Record<string, typeof Festival> = {
     NF2025: Festival,
     インバウンド向け文化体験事業: KyotoCulture,
     WEBマーケティング支援: WebMarketing,
-    知財ビジコン: Pitch,
     新規事業開発: NewBusiness,
     京大キャンパスツアー: Campus,
 }
