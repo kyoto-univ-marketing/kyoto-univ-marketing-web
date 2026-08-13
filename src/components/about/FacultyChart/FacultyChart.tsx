@@ -11,10 +11,12 @@ import { facultyBreakdown, SCIENCE_FACULTY_SHARE, STATS_AS_OF, scienceRatio } fr
  * 名前と割合は凡例側に出している。
  * 文系・理系の比率は同じデータの言い換えだが、企業も学生も真っ先に気にする点なので、
  * 一目で分かるようにもう一つ図を置いている。
+ *
+ * 2つの図は横に並べない。図と凡例で横幅を使うため、半分の幅では凡例が潰れる。
  */
 export const FacultyChart: FC = () => (
     <div className='space-y-12'>
-        <div className='grid gap-12 lg:grid-cols-2 lg:gap-10'>
+        <div className='space-y-12'>
             <Reveal className='space-y-5'>
                 <h3 className='font-title text-lg'>所属学部の内訳</h3>
                 <DonutChart

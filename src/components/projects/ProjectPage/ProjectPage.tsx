@@ -3,13 +3,13 @@ import { FaSpinner } from 'react-icons/fa6'
 
 import { client } from '@/api/client'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
+import { MakeHouseBand } from '@/components/common/MakeHouseBand/MakeHouseBand'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Button } from '@/components/ui/button'
 import { pageLinkObject } from '@/constants/pageLinks'
 import { isArchivedProject, projectTagList, stripArchivedMarker } from '@/constants/project'
 
-import { MakeHouseBand } from '../MakeHouseBand/MakeHouseBand'
 import { ProjectList } from '../ProjectList/ProjectList'
 import { RegularActivities } from '../RegularActivities/RegularActivities'
 

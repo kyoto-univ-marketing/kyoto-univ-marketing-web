@@ -3,7 +3,7 @@ import { FaInstagram } from 'react-icons/fa6'
 
 import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
-import { MessageBand } from '@/components/common/MessageBand/MessageBand'
+import { MakeHouseBand } from '@/components/common/MakeHouseBand/MakeHouseBand'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
@@ -58,19 +58,13 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                     </Reveal>
                 </div>
 
-                <MessageBand
-                    en='Our Base'
-                    note='活動拠点は、京都大学から徒歩圏の京町家「マーケハウス」。部員は深夜・早朝を含めていつでも使えます。'
-                >
-                    「行けば誰かがいる」
-                </MessageBand>
+                <MakeHouseBand />
 
                 <div className='mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
                     {/* 入会の可否は時期の運営状況で変わるため、断定せずに相談してもらう形にする */}
                     <Reveal>
-                        <SectionHeading en='How to Join' index={1}>
-                            入会について
-                        </SectionHeading>
+                        {/* このページの章はここだけなので、番号は振らない */}
+                        <SectionHeading en='How to Join'>入会について</SectionHeading>
                         <div className='space-y-4 text-gray-700'>
                             <p>
                                 学年・学部は問いません。まずはご連絡いただければ、活動の見学や新歓の予定をご案内します。

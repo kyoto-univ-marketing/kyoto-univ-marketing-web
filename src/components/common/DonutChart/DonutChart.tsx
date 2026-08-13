@@ -1,5 +1,7 @@
 import { FC } from 'react'
 
+import { cn } from '@/lib/utils'
+
 export interface DonutSlice {
     name: string
     percent: number
@@ -23,6 +25,8 @@ export interface DonutChartProps {
  * dashoffset の 25 は、12時の位置から始めるための補正。
  *
  * 図の中に文字を置くと小さい区分が読めなくなるため、名前と割合は必ず凡例側に出す。
+ * 凡例の名前は whitespace-nowrap を外さないこと。外すと幅が足りないときに
+ * 「経／済／学／部」と一文字ずつ折り返してしまう。
  */
 export const DonutChart: FC<DonutChartProps> = ({ data, centerLabel, centerNote, label }) => {
     let acc = 0
@@ -33,7 +37,7 @@ export const DonutChart: FC<DonutChartProps> = ({ data, centerLabel, centerNote,
     })
 
     return (
-        <div className='flex flex-col items-center gap-8 sm:flex-row sm:gap-10'>
+        <div className='flex flex-col items-center gap-8 sm:flex-row sm:items-center sm:gap-12'>
             <div className='relative w-40 shrink-0 sm:w-48'>
                 <svg aria-label={label} className='w-full' role='img' viewBox='0 0 42 42'>
                     {slices.map(({ name, percent, color, offset }) => (
@@ -57,11 +61,12 @@ export const DonutChart: FC<DonutChartProps> = ({ data, centerLabel, centerNote,
                     </div>
                 )}
             </div>
-            <ul className='grid flex-1 grid-cols-2 gap-x-6 gap-y-2 sm:grid-cols-1 sm:gap-y-1.5'>
+            {/* 区分が多いときは2列にする。1列だと縦に長くなり、図と高さが合わない */}
+            <ul className={cn('grid flex-1 gap-x-10 gap-y-2.5', data.length > 4 && 'sm:grid-cols-2')}>
                 {data.map(({ name, percent, color }) => (
-                    <li className='flex items-center gap-3 text-sm' key={name}>
+                    <li className='grid grid-cols-[auto_1fr_auto] items-center gap-3 text-sm' key={name}>
                         <span aria-hidden className='size-2.5 shrink-0' style={{ backgroundColor: color }} />
-                        <span className='flex-1 text-gray-700'>{name}</span>
+                        <span className='whitespace-nowrap text-gray-700'>{name}</span>
                         <span className='font-en text-gray-600 tabular-nums'>{percent}%</span>
                     </li>
                 ))}

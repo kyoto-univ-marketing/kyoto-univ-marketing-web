@@ -10,6 +10,9 @@ import { Reveal } from '@/components/common/Reveal/Reveal'
  *
  * 京町家を24時間使える学生団体は他にほとんどなく、最も分かりやすい差別化要素なので、
  * 白い枠の中に収めず、ページの途中に全幅の紺の帯として置いて区切りを兼ねさせる。
+ *
+ * 見出しは施設名をそのまま出す。うたい文句を見出しにすると、
+ * 何の節なのかが分からないまま読み進めることになるため（トップと揃えている）。
  */
 export const MakeHouseBand: FC = () => (
     <section className='bg-primary px-6 py-16 text-primary-foreground md:px-8 md:py-20'>
@@ -35,9 +38,11 @@ export const MakeHouseBand: FC = () => (
             <div className='space-y-6'>
                 <div className='space-y-4'>
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>Our Base</p>
-                    <h2 className='font-title text-title leading-tight'>「行けば誰かがいる」</h2>
+                    <h2 className='font-title text-title leading-tight'>
+                        <span className='inline-block whitespace-nowrap'>活動拠点：</span>
+                        <span className='inline-block whitespace-nowrap'>マーケハウス</span>
+                    </h2>
                     <span aria-hidden className='block h-px w-10 bg-brand-accent' />
-                    <p className='text-primary-foreground/85 text-sm tracking-[0.15em]'>拠点：マーケハウス</p>
                 </div>
                 <div className='space-y-4 text-primary-foreground/85 text-sm leading-relaxed'>
                     <p>
