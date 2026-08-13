@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { Keyword } from '@/components/common/Keyword/Keyword'
+import { HeadingSub } from '@/components/common/HeadingSub/HeadingSub'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
@@ -18,7 +18,7 @@ export const SecondOrigin: FC = () => (
     <section className='mx-auto max-w-(--breakpoint-md) px-6 md:px-8'>
         <PageTitle asChild en='Second Origin Experience'>
             <h2>
-                <Keyword>セカンド原体験</Keyword>とは
+                セカンド原体験<HeadingSub>とは</HeadingSub>
             </h2>
         </PageTitle>
         <Reveal className='space-y-8 text-center'>

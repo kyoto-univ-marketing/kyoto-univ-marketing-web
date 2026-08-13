@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import MakeHouseImg from '@/../public/page-images/makehouse.webp'
-import { Keyword } from '@/components/common/Keyword/Keyword'
+import { HeadingSub } from '@/components/common/HeadingSub/HeadingSub'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 import { Button } from '@/components/ui/button'
@@ -47,8 +47,10 @@ export const MakeHouse: FC = () => (
                 <div className='space-y-4'>
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>Our Base</p>
                     <h2 className='font-title text-title leading-tight'>
-                        <span className='inline-block whitespace-nowrap'>活動拠点：</span>
-                        <Keyword className='inline-block whitespace-nowrap'>マーケハウス</Keyword>
+                        <span className='inline-block whitespace-nowrap'>
+                            <HeadingSub>活動拠点：</HeadingSub>
+                        </span>
+                        <span className='inline-block whitespace-nowrap'>マーケハウス</span>
                     </h2>
                 </div>
                 <div className='space-y-4 text-gray-700'>
