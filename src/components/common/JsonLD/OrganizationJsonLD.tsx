@@ -1,11 +1,13 @@
 import { Organization, WithContext } from 'schema-dts'
 
+import { aboutFounderPage } from '@/constants/aboutPages'
 import { buildTopPageDescription } from '@/constants/description'
 import profile from '@/constants/profile'
 import { getMemberCount } from '@/lib/api'
 import { getSiteSettings, SiteSettings } from '@/lib/microcms'
 
 import { JsonLD } from './JsonLD'
+import { FOUNDER_ID } from './PersonJsonLD'
 
 export const buildOrganizationJson = (siteSettings: SiteSettings, memberCount?: number) =>
     ({
@@ -16,14 +18,32 @@ export const buildOrganizationJson = (siteSettings: SiteSettings, memberCount?: 
         logo: `${profile.homepageUrl}/logo.png`,
         image: `${profile.homepageUrl}/opengraph-image`,
         email: siteSettings.mail_address,
-        sameAs: [siteSettings.x_url, siteSettings.instagram_url],
+        sameAs: [siteSettings.instagram_url],
         description: buildTopPageDescription(memberCount),
-        address: [], // TOOD: オフィスができたら住所を追加する
+        address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'JP',
+            addressRegion: '京都府',
+            addressLocality: '京都市左京区',
+            streetAddress: '田中大堰町13',
+        },
         contactPoint: {
             '@type': 'ContactPoint',
             email: siteSettings.mail_address,
         },
         foundingDate: '2024-03',
+        /*
+         * 団体から創設者を指す。
+         * 「京大マーケティング研究所の創設者は誰か」「迫田周大は何者か」を
+         * 一つのつながりとして読ませるための線で、
+         * 詳細は /about/founder 側の Person（同じ @id）に書いてある。
+         */
+        founder: {
+            '@type': 'Person',
+            '@id': FOUNDER_ID,
+            name: '迫田周大',
+            url: `${profile.homepageUrl}${aboutFounderPage.href}`,
+        },
     }) as const satisfies WithContext<Organization>
 
 export const OrganizationJsonLD = async () => {

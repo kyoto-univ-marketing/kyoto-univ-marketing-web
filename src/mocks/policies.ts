@@ -1,64 +1,32 @@
 import { Policy } from '@/lib/microcms'
 
+const base = {
+    createdAt: '2024-07-13T03:57:05.965Z',
+    updatedAt: '2024-07-13T03:57:05.965Z',
+    publishedAt: '2024-07-13T03:57:05.965Z',
+    revisedAt: '2024-07-13T03:57:05.965Z',
+}
+
 export const mockPolicies: Policy[] = [
     {
+        ...base,
         id: 'policy1',
-        createdAt: '2024-07-13T03:57:05.965Z',
-        updatedAt: '2024-07-13T03:57:05.965Z',
-        publishedAt: '2024-07-13T03:57:05.965Z',
-        revisedAt: '2024-07-13T03:57:05.965Z',
-        text: '一.\n資産として、\n経験と学びを紡ぐ',
-        stamp_image: {
-            url: 'https://placehold.co/200x200/00215b/ffffff?text=kyo01',
-            width: 200,
-            height: 200,
-        },
-        stamp_top: '50%',
-        stamp_left: '50%',
+        title: '火',
+        subtitle: '内発的駆動力の理解',
+        text: 'どのような活動に対して自分のエネルギーが向くのかを言語化する能力。誰に言われなくても動き続けるエンジン。',
     },
     {
+        ...base,
         id: 'policy2',
-        createdAt: '2024-07-13T03:57:05.965Z',
-        updatedAt: '2024-07-13T03:57:05.965Z',
-        publishedAt: '2024-07-13T03:57:05.965Z',
-        revisedAt: '2024-07-13T03:57:05.965Z',
-        text: '二.\n"京都発"の\n価値を創る',
-        stamp_image: {
-            url: 'https://placehold.co/200x200/00215b/ffffff?text=kyo02',
-            width: 200,
-            height: 200,
-        },
-        stamp_top: '50%',
-        stamp_left: '45%',
+        title: '地図',
+        subtitle: '世界の構造理解力',
+        text: '視野を広げた上で、世界がどのように動いているのか、その論理と構造を見抜く能力。',
     },
     {
+        ...base,
         id: 'policy3',
-        createdAt: '2024-07-13T03:57:05.965Z',
-        updatedAt: '2024-07-13T03:57:05.965Z',
-        publishedAt: '2024-07-13T03:57:05.965Z',
-        revisedAt: '2024-07-13T03:57:05.965Z',
-        text: '三.\n理論と実践、\n学生と社会\nを結ぶ',
-        stamp_image: {
-            url: 'https://placehold.co/200x200/00215b/ffffff?text=kyo03',
-            width: 200,
-            height: 200,
-        },
-        stamp_top: '33%',
-        stamp_left: '50%',
-    },
-    {
-        id: 'policy4',
-        createdAt: '2024-07-13T03:57:05.965Z',
-        updatedAt: '2024-07-13T03:57:05.965Z',
-        publishedAt: '2024-07-13T03:57:05.965Z',
-        revisedAt: '2024-07-13T03:57:05.965Z',
-        text: '四.\n今やりたい、\n今しかできない\nことを現す',
-        stamp_image: {
-            url: 'https://placehold.co/200x200/00215b/ffffff?text=kyo04',
-            width: 200,
-            height: 200,
-        },
-        stamp_top: '40%',
-        stamp_left: '45%',
+        title: 'てこ',
+        subtitle: '非権力型の巻き込み・交渉力',
+        text: '権力や資本に頼らない状態で人を巻き込む能力。決断力や、責任を取る力なども含まれる。',
     },
 ]

@@ -1,17 +1,11 @@
 'use client'
 
-import { FilterIcon } from 'lucide-react'
 import { createContext, FC, ReactNode, useContext, useMemo, useState } from 'react'
 
-import { activityTagList } from '@/constants/activity'
-import { useTransitionRouterPush } from '@/hooks/viewTransition'
-
 import { Pagination } from '../../common/Pagination/Pagination'
-import { TagRadio } from '../TagRadio/TagRadio'
 
 export interface ActivityArticleListPresenterProps {
     page: number
-    tag?: string
     articleCardList: ReactNode
 }
 
@@ -23,42 +17,25 @@ interface ActivityArticleContext {
 export const ActivityCardContext = createContext<ActivityArticleContext>({ totalPage: 1, setTotalPage: () => null })
 export const useActivityCardContext = () => useContext(ActivityCardContext)
 
-/** 活動記録記事の表示を行うコンポーネント */
+/**
+ * お知らせ一覧の表示。
+ *
+ * タグの絞り込みは置いていない。記事の本数がそこまで多くなく、
+ * 絞り込みの操作を挟むより新しい順にそのまま読んでもらう方が早いため。
+ */
 export const ActivityArticleListPresenter: FC<ActivityArticleListPresenterProps> = ({
     page,
-    tag = '',
     articleCardList,
     ...props
 }) => {
     const [totalPage, setTotalPage] = useState(1)
 
-    const { routerPushWithTransition } = useTransitionRouterPush()
-    const onTagChange = (tag: string) => {
-        if (tag === '') {
-            routerPushWithTransition('/articles', { scroll: false })
-        } else {
-            routerPushWithTransition(`/articles?tag=${tag}`, { scroll: false })
-        }
-    }
-    const pageLinkList = useMemo(() => {
-        return Array.from({ length: totalPage }, (_, i) => `/articles?page=${i + 1}${tag ? `&tag=${tag}` : ''}`)
-    }, [tag, totalPage])
+    const pageLinkList = useMemo(
+        () => Array.from({ length: totalPage }, (_, i) => `/articles?page=${i + 1}`),
+        [totalPage],
+    )
     return (
         <div>
-            <div className='mb-4 flex items-center gap-4 border-b p-4'>
-                <div className='flex items-center gap-1 text-sm'>
-                    <FilterIcon className='size-3.5' />
-                    <span>絞り込む</span>
-                </div>
-                <div className='flex-1'>
-                    <TagRadio
-                        erasable
-                        onChange={onTagChange}
-                        options={activityTagList.map((tag) => ({ label: tag, value: tag }))}
-                        value={tag}
-                    />
-                </div>
-            </div>
             <div className='mb-12'>
                 <ActivityCardContext.Provider value={{ totalPage, setTotalPage }}>
                     {articleCardList}

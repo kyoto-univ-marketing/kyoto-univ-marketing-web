@@ -7,10 +7,6 @@ const meta = {
     parameters: {
         layout: 'fullscreen',
     },
-    args: {
-        outlineText:
-            '「京大マーケティング研究所」は2024年3月に創立されました。初年度に入部した部員を立ち上げの一期生として、多様な方面に活動の幅を広げてきました。',
-    },
 } satisfies Meta<typeof AboutPage>
 
 export default meta

@@ -1,13 +1,13 @@
 import type { Meta, StoryObj } from '@storybook/react'
-import { AboutAccordion } from './AboutAccordion'
+import { AboutSections } from './AboutAccordion'
 
 const meta = {
-    component: AboutAccordion,
+    component: AboutSections,
     tags: ['autodocs'],
     parameters: {
         layout: 'padded',
     },
-} satisfies Meta<typeof AboutAccordion>
+} satisfies Meta<typeof AboutSections>
 
 export default meta
 type Story = StoryObj<typeof meta>

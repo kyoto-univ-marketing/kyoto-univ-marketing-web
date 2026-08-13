@@ -38,8 +38,14 @@
 
     --animate-accordion-down: accordion-down 0.2s ease-out;
     --animate-accordion-up: accordion-up 0.2s ease-out;
+    --animate-scroll-cue: scroll-cue 2.2s ease-in-out infinite;
 
     --font-title: var(--font-hina-mincho), var(--font-biz-udp-mincho), serif;
+    /* 欧文専用のセリフ体。日本語用明朝で欧文を組むと字形が崩れるため分ける */
+    --font-en: var(--font-eb-garamond), Georgia, serif;
+
+    /* ブランドのアクセント色（New バッジ・英字ラベルなど、限定的にのみ使う） */
+    --color-brand-accent: var(--brand-accent);
 
     /* 見出しは画面幅に応じて滑らかに拡大する。狭い画面では従来のサイズを保つ */
     --text-title: clamp(1.7857142857rem, 1.4rem + 1.5vw, 2.5rem);
@@ -61,6 +67,20 @@
         }
         to {
             height: 0;
+        }
+    }
+    /* ヒーロー下端の縦線を、上から下へ流れるように見せる */
+    @keyframes scroll-cue {
+        0% {
+            transform: translateY(0);
+            opacity: 0;
+        }
+        30% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(200%);
+            opacity: 0;
         }
     }
 }
@@ -125,6 +145,9 @@
         --input: 214.3 31.8% 91.4%;
         --ring: #00215b;
 
+        /* 金茶。紺×明朝の和のトーンに合う伝統色（2026-08-08 採用決定） */
+        --brand-accent: #a8863d;
+
         --radius: 0.5rem;
     }
 
@@ -179,9 +202,59 @@
 
         font-family: var(--font-biz-udp-mincho), serif;
         --font-title: var(--font-hina-mincho), var(--font-biz-udp-mincho), serif;
+        /* 明朝はわずかに字間を開けると品が出る */
+        letter-spacing: 0.02em;
     }
     /* 日本語の明朝体は行間を広めに取ると読みやすい */
-    p {
+    p,
+    li {
         line-height: 1.8;
+    }
+    /*
+      日本語の折り返し。
+      既定では文字単位で折り返すため「経／済／学／部」のように語の途中で切れる。
+      auto-phrase は文節の切れ目で折り返してくれる（対応していないブラウザは従来どおり）。
+      pretty は行末に一語だけ残るのを避ける。
+    */
+    p,
+    li,
+    dt,
+    dd,
+    h1,
+    h2,
+    h3,
+    h4 {
+        word-break: auto-phrase;
+    }
+    h1,
+    h2,
+    h3,
+    h4 {
+        text-wrap: pretty;
+    }
+    /*
+      写真の色味を揃える。
+      部員が撮った写真・提供写真・フリー素材が混ざっていて彩度と色温度がばらばらなため、
+      全体をわずかに沈めて共通のトーンにする。
+      強くかけると写真が死ぬので、見て分かるかどうかの手前で止めること。
+      ロゴは白抜きなので彩度を触っても変化しない。
+    */
+    img {
+        filter: saturate(0.9) contrast(1.02);
+    }
+}
+
+/*
+  章と章のあいだの余白。
+  余白の大きさが場所ごとに違うと、どこまでが一つの話なのかが読み手に伝わらないため、
+  ページ直下のまとまりはこれに統一する（章の中は space-y-8 ＝ 2rem）。
+*/
+@utility section-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+
+    @media (width >= --theme(--breakpoint-md)) {
+        gap: 8rem;
     }
 }

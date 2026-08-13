@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { pageLinkObject } from '@/constants/pageLinks'
 import { getTextById } from '@/lib/api'
@@ -9,12 +10,15 @@ import { ContactForm } from '../ContactForm/ContactForm'
 
 export interface ContactPageProps {}
 
+/**
+ * お問い合わせ。
+ *
+ * 以前は「企業の皆様へ」「京大生の方へ」の説明文を下に置いていたが、
+ * その内容は /sponsorship と /join が担うようになったため、リンクだけ残している。
+ * 同じ説明を二か所に書くと、片方だけ古くなる。
+ */
 export const ContactPage: FC<ContactPageProps> = async () => {
-    const [privacyText, descriptionForOthers, descriptionForKyodai] = await Promise.all([
-        getTextById('contact_privacy'),
-        getTextById('contact_description_for_others'),
-        getTextById('contact_description_for_kyodai'),
-    ])
+    const privacyText = await getTextById('contact_privacy')
     return (
         <>
             <BreadCrumb
@@ -23,27 +27,29 @@ export const ContactPage: FC<ContactPageProps> = async () => {
                     { label: pageLinkObject.CONTACT.text, href: pageLinkObject.CONTACT.href },
                 ]}
             />
-            <PageTitle>{pageLinkObject.CONTACT.text}</PageTitle>
-            <div className='mx-auto max-w-(--breakpoint-sm)'>
-                <div className='space-y-2 p-4'>
-                    <p className='text-gray-700'>以下のフォームからご自由にお問い合わせください。</p>
-                </div>
-                <div className='mb-12 px-4 py-8'>
+            <PageTitle band en='Contact'>{pageLinkObject.CONTACT.text}</PageTitle>
+            <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
+                <p className='text-gray-700'>以下のフォームからご自由にお問い合わせください。</p>
+                <p className='mt-3 text-gray-600 text-sm'>
+                    協賛のご検討は
+                    <NextLink
+                        className='underline underline-offset-4 hover:text-primary'
+                        href={pageLinkObject.SPONSORSHIP.href}
+                    >
+                        {pageLinkObject.SPONSORSHIP.text}
+                    </NextLink>
+                    、入会のご相談は
+                    <NextLink
+                        className='underline underline-offset-4 hover:text-primary'
+                        href={pageLinkObject.JOIN.href}
+                    >
+                        {pageLinkObject.JOIN.text}
+                    </NextLink>
+                    もあわせてご覧ください。
+                </p>
+                <div className='mt-12'>
                     <ContactForm />
-                    <p className='mt-8 px-4 text-sm'>{privacyText}</p>
-                </div>
-                <div className='mb-16 space-y-16'>
-                    <h2 className='w-full bg-primary p-3 text-center text-primary-foreground'>
-                        お問い合わせの内容につきまして
-                    </h2>
-                    <div className='space-y-4 px-8'>
-                        <h3 className='text-lg'>企業、その他団体・個人の皆様</h3>
-                        <p className='bg-background-secondary p-4'>{descriptionForOthers}</p>
-                    </div>
-                    <div className='space-y-4 px-8'>
-                        <h3 className='text-lg'>京大生の方</h3>
-                        <p className='bg-background-secondary p-4'>{descriptionForKyodai}</p>
-                    </div>
+                    <p className='mt-8 text-sm'>{privacyText}</p>
                 </div>
             </div>
         </>

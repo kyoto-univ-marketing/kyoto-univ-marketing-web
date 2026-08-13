@@ -6,8 +6,7 @@ const meta = {
     tags: ['autodocs'],
     parameters: {},
     args: {
-        searchParams: Promise.resolve({ page: '1', tag: undefined }),
-        activityDescription: '活動内容の説明が入る場所\n活動内容の説明が入る場所',
+        searchParams: Promise.resolve({ page: '1' }),
     },
 } satisfies Meta<typeof ArticlesPage>
 

@@ -85,11 +85,12 @@ export const ContactForm: FC = ({ ...props }) => {
     return (
         <>
             <Form {...form}>
-                <form
-                    className='space-y-8 bg-background-secondary px-4 py-8'
-                    onSubmit={form.handleSubmit(() => setDialogOpen(true))}
-                >
-                    <p className='text-destructive text-sm'>*は必須項目です</p>
+                {/* 灰色の箱で囲まない。囲む見た目は押せるものに限る、というサイト全体の決まり */}
+                <form className='space-y-10' onSubmit={form.handleSubmit(() => setDialogOpen(true))}>
+                    <p className='border-gray-200 border-b pb-4 text-gray-600 text-sm'>
+                        <span className='text-brand-accent text-xs'>必須</span>
+                        と書かれた項目は必ずご入力ください。
+                    </p>
                     {/* ハニーポット: ボット対策のため非表示（人間は入力しない） */}
                     <input
                         aria-hidden='true'
@@ -125,7 +126,7 @@ export const ContactForm: FC = ({ ...props }) => {
                         name='message'
                         rules={{ required: true }}
                     />
-                    <Button className='mx-auto block h-fit min-w-[75%] py-4' disabled={disabled} type='submit'>
+                    <Button className='h-fit w-full py-5 sm:mx-auto sm:w-auto sm:px-16' disabled={disabled} type='submit'>
                         入力内容の確認へ
                     </Button>
                 </form>
@@ -155,16 +156,14 @@ const ConfirmDialog = ({
         <AlertDialog onOpenChange={onOpenChange} open={open}>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>入力内容のご確認</AlertDialogTitle>
+                    <AlertDialogTitle className='font-title text-heading'>入力内容のご確認</AlertDialogTitle>
                 </AlertDialogHeader>
-                <div className='space-y-4'>
+                <div className='max-h-[50svh] divide-y divide-gray-200 overflow-y-auto border-gray-200 border-y'>
                     {getKeys(values)
                         .filter((key) => key !== 'website')
                         .map((key) => (
-                            <div className='space-y-1' key={key}>
-                                <p className='text-gray-500 text-sm underline underline-offset-2'>
-                                    {keyToLabel[key]}
-                                </p>
+                            <div className='space-y-1 py-4' key={key}>
+                                <p className='text-gray-600 text-xs'>{keyToLabel[key]}</p>
                                 {values[key] ? (
                                     <p className='whitespace-pre-wrap break-all'>{values[key]}</p>
                                 ) : (

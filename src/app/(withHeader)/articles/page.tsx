@@ -1,11 +1,15 @@
 import { Metadata } from 'next'
 
 import { ArticlesPage } from '@/components/articles/ArticlesPage/ArticlesPage'
-import { getTextById } from '@/lib/api'
+import { ARTICLES_PAGE_DESCRIPTION } from '@/constants/description'
 
+/**
+ * Django の activity_description は使っていない。
+ * 「サークルの外部の方々と…」という古い言い回しで、記事一覧の前置きとしても不要だった。
+ */
 export const generateMetadata = async (): Promise<Metadata> => ({
-    title: '活動記録',
-    description: await getTextById('activity_description'),
+    title: 'お知らせ',
+    description: ARTICLES_PAGE_DESCRIPTION,
     alternates: { canonical: '/articles' },
 })
 
@@ -14,10 +18,9 @@ export default async function Page({
 }: {
     searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }) {
-    const description = await getTextById('activity_description')
     return (
         <main>
-            <ArticlesPage activityDescription={description} searchParams={searchParams} />
+            <ArticlesPage searchParams={searchParams} />
         </main>
     )
 }

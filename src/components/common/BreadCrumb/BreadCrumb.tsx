@@ -1,4 +1,3 @@
-import { Slash } from 'lucide-react'
 import { FC, Fragment } from 'react'
 import { BreadcrumbList as BreadcrumbListSchemaType, WithContext } from 'schema-dts'
 
@@ -44,22 +43,31 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
     const json = toJsonLD(items)
     return (
         <>
-            <Breadcrumb className='bg-background-secondary px-6 py-2'>
-                <BreadcrumbList>
+            {/*
+              灰色の帯はやめている。この直後に紺のページ見出しが来るので、
+              帯が重なると入口が二段になって見えるため。
+              現在地は控えめでよいので、小さな文字で本文と同じ左端に揃える。
+            */}
+            {/* 本文の枠には合わせず、ヘッダーと同じく画面の端から置く。
+                本文幅に揃えると、広い画面で内側に寄りすぎて浮いて見えるため */}
+            <Breadcrumb className='w-full px-4 py-4 sm:px-6'>
+                <BreadcrumbList className='gap-2 text-gray-500 text-xs sm:gap-3'>
                     {items.map((item, index) => (
                         <Fragment key={index}>
-                            <BreadcrumbItem>
+                            <BreadcrumbItem className='max-w-[16rem] truncate'>
                                 {index < items.length - 1 ? (
                                     <BreadcrumbLink asChild>
-                                        <NextLink href={item.href}>{item.label}</NextLink>
+                                        <NextLink className='hover:text-primary' href={item.href}>
+                                            {item.label}
+                                        </NextLink>
                                     </BreadcrumbLink>
                                 ) : (
-                                    <BreadcrumbPage>{item.label}</BreadcrumbPage>
+                                    <BreadcrumbPage className='truncate text-gray-600'>{item.label}</BreadcrumbPage>
                                 )}
                             </BreadcrumbItem>
                             {index < items.length - 1 && (
-                                <BreadcrumbSeparator>
-                                    <Slash />
+                                <BreadcrumbSeparator className='text-brand-accent/60'>
+                                    <span aria-hidden>/</span>
                                 </BreadcrumbSeparator>
                             )}
                         </Fragment>

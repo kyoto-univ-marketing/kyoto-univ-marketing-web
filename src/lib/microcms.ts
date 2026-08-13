@@ -37,10 +37,18 @@ export type Activity = Required<MicroCMSDate> &
 
 export type Policy = Required<MicroCMSDate> &
     MicroCMSContentId & {
+        /** 大きく組む一語（例: 火 / 地図 / てこ）。未設定なら text だけを表示する */
+        title?: string
+        /** 一語の意味（例: 内発的駆動力の理解） */
+        subtitle?: string
         text: string
-        stamp_image: MicroCMSImage
-        stamp_top: string
-        stamp_left: string
+        /**
+         * スタンプ画像。活動方針を明朝のタイポグラフィで組む方式に変えたため、
+         * 現在は表示していない（データは残っている）。
+         */
+        stamp_image?: MicroCMSImage
+        stamp_top?: string
+        stamp_left?: string
     }
 
 export type SiteSettings = Required<MicroCMSDate> &

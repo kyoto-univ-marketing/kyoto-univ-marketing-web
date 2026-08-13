@@ -19,11 +19,13 @@ export const LatestArticleItem: FC<LatestArticleItemProps> = ({ title, published
     const isNew = publishedDate.isAfter(dayjs().subtract(1, 'week'))
     return (
         <tr>
-            <td className='pr-8 align-top'>{publishedDate.format('YYYY/MM/DD')}</td>
+            <td className='pr-8 align-top font-en tracking-widest'>{publishedDate.format('YYYY.MM.DD')}</td>
             <td className='whitespace-pre-wrap'>
                 <NextLink href={`/articles/${id}`}>
                     <span className='inline-block'>{title}</span>
-                    {isNew && <Badge className='ml-2 border-none text-xs'>New</Badge>}
+                    {isNew && (
+                        <Badge className='ml-2 border-none bg-brand-accent text-xs hover:bg-brand-accent'>New</Badge>
+                    )}
                 </NextLink>
             </td>
         </tr>

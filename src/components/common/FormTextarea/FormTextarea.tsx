@@ -27,9 +27,9 @@ export const FormTextarea = <
             render={({ field }) => (
                 <FormItem>
                     {label && (
-                        <FormLabel>
+                        <FormLabel className='font-title text-base'>
                             {label}
-                            {props.rules?.required && <span className='ml-1 text-red-500'>*</span>}
+                            {props.rules?.required && <span className='ml-2 text-brand-accent text-xs'>必須</span>}
                         </FormLabel>
                     )}
                     <FormControl>

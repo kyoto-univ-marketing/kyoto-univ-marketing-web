@@ -1,70 +1,73 @@
 import Link from 'next/link'
 import { FC, Suspense } from 'react'
 
-import { PageImage } from '@/components/common/PageImage/PageImage'
-
-import img3884 from '../../../../../public/page-images/top/IMG_3884.webp'
-import img3893 from '../../../../../public/page-images/top/IMG_3893.webp'
 import { Logo } from '../../../common/Logo/Logo'
 import { Button } from '../../../ui/button'
+import { Activities } from '../../Activities/Activities'
 import { ImageSwitch } from '../../ImageSwitch/ImageSwitch'
 import { topHeaderImageList } from '../../imageList'
 import { LatestArticles } from '../../LatestArticles/LatestArticles'
 import { LatestArticlesSkeleton } from '../../LatestArticlesSkeleton/LatestArticlesSkeleton'
-import { TopPageProject } from '../../TopPageProject/TopPageProject'
+import { MakeHouse } from '../../MakeHouse/MakeHouse'
+import { SecondOrigin } from '../../SecondOrigin/SecondOrigin'
+import { TopCta } from '../../TopCta/TopCta'
 
-export interface TopPresenterMobileProps {
-    message: string
-    subMessage: string
-}
+export interface TopPresenterMobileProps {}
 
-export const TopPresenterMobile: FC<TopPresenterMobileProps> = ({ message, subMessage }) => {
+export const TopPresenterMobile: FC<TopPresenterMobileProps> = () => {
     return (
-        <div className='relative w-full'>
-            <ImageSwitch
-                className='-z-50 absolute h-[calc(100svh-var(--spacing)*18)] brightness-50'
-                imageList={topHeaderImageList}
-                interval={7000}
-                transitionDuration={2000}
-            />
-            <div className='flex h-[calc(100svh-var(--spacing)*18)] flex-col'>
-                <div className='flex w-full flex-1 select-none flex-col items-center justify-between text-white'>
-                    <div className='flex flex-col items-center space-y-6 p-6 pt-16'>
-                        <Logo reverse size='3xl' />
-                        <h1 className='w-fit px-6 font-bold font-title text-3xl'>
-                            <span className='inline-block'>京大</span>
-                            <span className='inline-block'>マーケティング研究所</span>
+        <div className='w-full'>
+            {/* 写真には手を加えず、文字は下の紺の帯に分けて置く（PCと同じ考え方） */}
+            <section className='flex h-[calc(100svh-var(--spacing)*18)] flex-col'>
+                <div className='relative flex-1 overflow-hidden'>
+                    <ImageSwitch
+                        className='absolute inset-0 h-full'
+                        imageList={topHeaderImageList}
+                        interval={7000}
+                        transitionDuration={2000}
+                    />
+                </div>
+                <div className='flex flex-col gap-5 bg-primary px-8 py-8 text-primary-foreground'>
+                    <div className='flex items-center gap-4'>
+                        <Logo reverse size='xl' />
+                        <h1 className='font-title text-2xl leading-tight'>
+                            <span className='inline-block whitespace-nowrap'>京大</span>
+                            <span className='inline-block whitespace-nowrap'>マーケティング</span>
+                            <span className='inline-block whitespace-nowrap'>研究所</span>
                         </h1>
                     </div>
-                    <div className='flex w-full flex-col space-y-8'>
-                        <Button
-                            asChild
-                            className='w-fit min-w-[66.7%] self-center rounded-none p-6 text-primary'
-                            variant='outline'
-                        >
-                            <Link href='/about'>サークルについて</Link>
-                        </Button>
-                        <div className='mb-8! w-fit max-w-[75%] bg-primary px-12 py-8 text-primary-foreground'>
-                            <h2 className='ml-4 text-xl'>{message}</h2>
-                        </div>
+                    <div className='flex flex-col gap-3'>
+                        <span aria-hidden className='block h-px w-12 bg-brand-accent' />
+                        <p className='font-en text-xs uppercase tracking-[0.3em]'>Kyodai Marketing Institute</p>
                     </div>
+                    {/* PCと同じ考え方。「セカンド原体験」だけ白のまま残す */}
+                    <p className='font-title text-lg text-primary-foreground/65'>
+                        大学生に
+                        <span className='text-primary-foreground'>「セカンド原体験」</span>
+                        を与える。
+                    </p>
+                    <Button
+                        asChild
+                        className='mt-1 w-fit border-white/70 bg-transparent px-8 py-5 text-white hover:bg-white hover:text-primary'
+                        variant='outline'
+                    >
+                        <Link href='/about'>団体概要</Link>
+                    </Button>
                 </div>
-            </div>
-            <div className='p-12'>
-                <p className='whitespace-pre-wrap text-sm'>{subMessage}</p>
-            </div>
-            <div className='mb-16'>
+            </section>
+            <div className='section-stack py-16'>
+                {/* 並び順はPCと同じ。考え方 → 活動概要 → 拠点 → お知らせ */}
+                <Suspense fallback={null}>
+                    <SecondOrigin />
+                </Suspense>
+                <Activities />
+                <MakeHouse />
                 <Suspense fallback={<LatestArticlesSkeleton />}>
                     <LatestArticles />
                 </Suspense>
             </div>
-            <div className='mb-16 grid gap-4'>
-                <PageImage alt='勉強会の様子' containerClassName='w-3/4 aspect-64/27' src={img3884} />
-                <PageImage alt='勉強会の教室' containerClassName='w-1/2 justify-self-end' src={img3893} />
-            </div>
-            <div className='mb-16'>
-                <TopPageProject />
-            </div>
+
+            <TopCta />
         </div>
     )
 }

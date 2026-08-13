@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import { ArticleDetailsPage } from '@/components/article-details/ArticleDetailsPage/ArticleDetailsPage'
-import { getActivityById, getActivityIds } from '@/lib/microcms'
+import { getActivityById } from '@/lib/microcms'
 
 interface SearchParams {
     slug: string
@@ -16,11 +16,11 @@ const checkSecret = (secret?: string) => {
     }
 }
 
-export const generateStaticParams = async () => {
-    const allContentIds = await getActivityIds()
-    return allContentIds.map((slug) => ({ slug }))
-}
-
+/*
+ * generateStaticParams は置いていない。
+ * この経路は /articles/draft?slug=... で、URL に動的な区切りが無いため効かず、
+ * ビルドのたびに microCMS を呼ぶだけになっていた。
+ */
 export const generateMetadata = async ({
     searchParams,
 }: {
@@ -32,6 +32,8 @@ export const generateMetadata = async ({
     return {
         title,
         description,
+        // 未公開記事のプレビュー。draftKey を知っている人だけの画面なので検索には載せない
+        robots: { index: false, follow: false },
         openGraph: {
             images: [{ ...thumbnail, alt: title }],
         },

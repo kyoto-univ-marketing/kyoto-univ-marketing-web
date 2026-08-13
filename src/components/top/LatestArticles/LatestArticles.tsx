@@ -13,18 +13,17 @@ export interface LatestArticlesProps {}
 export const LatestArticles: FC<LatestArticlesProps> = async ({ ...props }) => {
     return (
         <div className='flex size-full flex-col'>
-            <PageTitle asChild>
-                <div className='flex items-center gap-4'>
-                    <h2>新着記事</h2>
-                    <span className='text-primary text-sm'>Topics</span>
-                </div>
+            {/* 見出しはナビや遷移先と同じ「お知らせ」にする。
+                ここだけ「新着記事」だと、同じものを指しているのか分からない */}
+            <PageTitle asChild en='News'>
+                <h2>お知らせ</h2>
             </PageTitle>
             <Suspense fallback={<LatestArticlesSkeleton />}>
                 <LatestArticleItemList />
             </Suspense>
             <div className='mx-auto mt-auto w-fit'>
                 <Button asChild className='max-w-full px-12 py-6'>
-                    <NextLink href='/articles'>活動記録を見る</NextLink>
+                    <NextLink href='/articles'>お知らせをすべて見る</NextLink>
                 </Button>
             </div>
         </div>

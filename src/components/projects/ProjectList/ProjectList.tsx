@@ -12,27 +12,28 @@ export interface ProjectListProps {
     projects: Pick<components['schemas']['Project'], 'name' | 'description' | 'thumbnail'>[]
 }
 
-/** 見出しごとのプロジェクト一覧 */
+/**
+ * 見出しごとのプロジェクト一覧。
+ *
+ * 該当がないタグは見出しごと出さない（以前は「Comming Soon...」と出していたが、
+ * 空の区画が並ぶと活動が止まっているように見えるため）。
+ */
 export const ProjectList: FC<ProjectListProps> = ({ heading, description, projects }) => {
+    if (projects.length === 0) {
+        return null
+    }
+
     return (
-        <div>
-            <h2 className='px-8 pt-8 pb-2 font-bold text-heading' id={heading}>
+        <section>
+            <h3 className='font-title text-heading' id={heading}>
                 {heading}
-            </h2>
-            {description ? (
-                <p className='px-8 pb-6 text-gray-600 text-sm'>{description}</p>
-            ) : (
-                <div className='pb-6' />
-            )}
-            <div className='space-y-16'>
-                {projects.length > 0 ? (
-                    projects.map((project, index) => (
-                        <ProjectListItem key={project.name} reverse={Boolean(index % 2)} {...project} />
-                    ))
-                ) : (
-                    <div className='px-12'>Comming Soon...</div>
-                )}
+            </h3>
+            {description && <p className='mt-3 text-gray-600 text-sm'>{description}</p>}
+            <div className='mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8'>
+                {projects.map((project, index) => (
+                    <ProjectListItem key={project.name} order={index} {...project} />
+                ))}
             </div>
-        </div>
+        </section>
     )
 }
