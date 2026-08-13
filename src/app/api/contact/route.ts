@@ -8,7 +8,17 @@ if (!url) {
 }
 
 export const POST = async (req: NextRequest) => {
-    const data = contactFormSchema.parse(await req.json())
+    /*
+     * 形の合わないリクエストは、ここで 400 にして終える。
+     * 以前は parse がそのまま例外になり、応答が空のまま 500 で返っていた。
+     * フォームからの送信は画面側で検証済みなので、ここに来るのは
+     * 総当たりで叩いてくる類い。ログを荒らさないよう静かに断る。
+     */
+    const parsed = contactFormSchema.safeParse(await req.json().catch(() => null))
+    if (!parsed.success) {
+        return NextResponse.json({ message: '入力内容が正しくありません。' }, { status: 400 })
+    }
+    const data = parsed.data
 
     if (data.website) {
         return NextResponse.json({ message: '送信に成功しました' }, { status: 200 })
