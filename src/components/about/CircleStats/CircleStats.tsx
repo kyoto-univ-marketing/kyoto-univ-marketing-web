@@ -17,7 +17,7 @@ export const CircleStats = async () => {
     }
 
     return (
-        <div className='mx-auto w-full max-w-xl space-y-2'>
+        <div className='mx-auto w-full max-w-3xl space-y-2'>
             {/* 紺の箱を並べるのをやめ、罫線で仕切って数字を明朝で大きく見せる */}
             <div className='grid grid-cols-3 divide-x divide-gray-200 border-gray-200 border-y'>
                 {[...stats]

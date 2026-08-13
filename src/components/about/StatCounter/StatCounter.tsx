@@ -68,11 +68,11 @@ export const StatCounter: FC<StatCounterProps> = ({ value, label, duration = 700
 
     return (
         <div
-            className={cn('flex flex-col items-center justify-center gap-3 px-2 py-8 md:py-10', className)}
+            className={cn('flex flex-col items-center justify-center gap-3 px-2 py-10 md:py-12', className)}
             ref={ref}
             {...props}
         >
-            <span className='font-title text-[clamp(2.25rem,1.5rem+2.5vw,3.5rem)] leading-none tabular-nums'>
+            <span className='font-title text-[clamp(2.5rem,1.5rem+3vw,4rem)] leading-none tabular-nums'>
                 {count}
             </span>
             <span aria-hidden className='block h-px w-6 bg-brand-accent' />
