@@ -36,8 +36,14 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = () => {
                                 <span className='inline-block whitespace-nowrap'>研究所</span>
                             </h1>
                             <span aria-hidden className='block h-px w-16 bg-brand-accent' />
-                            <p className='font-title text-heading leading-relaxed'>
-                                大学生に「セカンド原体験」を与える。
+                            {/*
+                             * 「セカンド原体験」だけを白のまま残し、周りを少し落として浮かせる。
+                             * 紺地では金がくすむので、色は足さずに明るさの差で目立たせている。
+                             */}
+                            <p className='font-title text-heading text-primary-foreground/65 leading-relaxed'>
+                                大学生に
+                                <span className='text-primary-foreground'>「セカンド原体験」</span>
+                                を与える。
                             </p>
                         </div>
                     </Reveal>

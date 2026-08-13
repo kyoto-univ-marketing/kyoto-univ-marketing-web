@@ -40,7 +40,12 @@ export const TopPresenterMobile: FC<TopPresenterMobileProps> = () => {
                         <span aria-hidden className='block h-px w-12 bg-brand-accent' />
                         <p className='font-en text-xs uppercase tracking-[0.3em]'>Kyodai Marketing Institute</p>
                     </div>
-                    <p className='font-title text-lg'>大学生に「セカンド原体験」を与える。</p>
+                    {/* PCと同じ考え方。「セカンド原体験」だけ白のまま残す */}
+                    <p className='font-title text-lg text-primary-foreground/65'>
+                        大学生に
+                        <span className='text-primary-foreground'>「セカンド原体験」</span>
+                        を与える。
+                    </p>
                     <Button
                         asChild
                         className='mt-1 w-fit border-white/70 bg-transparent px-8 py-5 text-white hover:bg-white hover:text-primary'
