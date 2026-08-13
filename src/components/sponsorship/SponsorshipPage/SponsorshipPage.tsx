@@ -75,9 +75,11 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                         <p className='font-title text-heading leading-relaxed'>
                             志のある学生を、近くで応援するという関わり方。
                         </p>
+                        {/* 「広告ではない」とは書かない。発信の機会も実際にご提供しているため、
+                            言い切ると事実と食い違う */}
                         <p className='mx-auto max-w-2xl text-gray-700'>
                             京大マーケティング研究所は、次の時代をつくろうとする学生が集まる場です。
-                            広告枠のご提供ではなく、その育ちの過程に一年を通じて伴走していただく——
+                            一年を通じて学生の日常に関わっていただきながら、貴社と学生とで何かを一緒に形にしていく——
                             そんな協賛パートナーシップをご提案しています。
                         </p>
                     </Reveal>
@@ -85,8 +87,9 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
 
                 {/* 枠の限定や金額はHPに出さない。個別のご提案の場で説明する */}
                 <MessageBand en='Our Proposal'>
-                    <span className='inline-block'>広告の枠ではなく、</span>
-                    <span className='inline-block'>一年かけて一緒に何かを作る関係を。</span>
+                    <span className='inline-block'>一年をかけて、</span>
+                    <span className='inline-block'>価値ある何かを</span>
+                    <span className='inline-block'>一緒に創り出す関係に。</span>
                 </MessageBand>
 
                 {/* 枠はPCの横幅を使えるように広く取り、読ませる文章だけ幅を絞る */}

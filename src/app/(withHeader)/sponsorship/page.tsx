@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: pageLinkObject.SPONSORSHIP.text,
     // 枠の限定や金額はここにも書かない。条件は個別のご提案の場で説明する
     description:
-        '京大マーケティング研究所の協賛パートナーシップのご案内です。広告枠のご提供ではなく、志のある京大生の育ちの過程に一年をかけて伴走していただく、共創型の協賛をご提案します。',
+        '京大マーケティング研究所の協賛パートナーシップのご案内です。一年をかけて、志のある京大生と価値ある何かを一緒に創り出す共創型の協賛をご提案します。',
 }
 
 export default function Page() {
