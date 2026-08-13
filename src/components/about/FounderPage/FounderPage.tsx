@@ -25,8 +25,17 @@ import { pageLinkObject } from '@/constants/pageLinks'
  */
 export const FounderPage: FC = () => {
     const { role, name, reading, faculty, enrolledYear, image, catchphrase, lead, message } = founder
-    // 前半・写真と並べる一段・後半に分ける
-    const [beforePhoto, besidePhoto, afterPhoto] = [lead.slice(0, 2), lead[2], lead.slice(3)]
+    /*
+     * 前半・写真と並べる一段・後半に分ける。
+     * 写真と並べるのは「思考の関節を一度外して…」の段落（掛け軸の内容と対応している）。
+     * lead に段落を足し引きしたら、この番号も合わせて直すこと。
+     */
+    const BESIDE_PHOTO_INDEX = 3
+    const [beforePhoto, besidePhoto, afterPhoto] = [
+        lead.slice(0, BESIDE_PHOTO_INDEX),
+        lead[BESIDE_PHOTO_INDEX],
+        lead.slice(BESIDE_PHOTO_INDEX + 1),
+    ]
 
     return (
         <>
