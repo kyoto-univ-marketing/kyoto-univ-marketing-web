@@ -47,6 +47,10 @@ export const Activities: FC = () => (
         <PageTitle asChild en='What We Do'>
             <h2>活動概要</h2>
         </PageTitle>
+        {/* 「サークル」とは名乗らない。法人であり、企業や大学と組んで動いている実態に合わないため */}
+        <p className='mx-auto mb-12 max-w-2xl text-center text-gray-700'>
+            京大マーケティング研究所は、企業様や大学関係者との協力を得て、学生主体で運営・活動している学生団体です。
+        </p>
         <dl className='grid gap-10 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-4 lg:gap-x-8'>
             {activities.map(({ name, frequency, body }, i) => (
                 <Reveal className='space-y-3 border-gray-200 border-t pt-8' delay={i * 60} key={name}>

@@ -5,7 +5,7 @@ import { STATS_AS_OF } from '@/constants/about'
 
 import { StatCounter } from '../StatCounter/StatCounter'
 
-/** サークルの実績数値。アコーディオンの外に置き、ページを開いた時点で目に入るようにする */
+/** 団体の実績数値。ページを開いた時点で目に入る位置に置く */
 export const CircleStats = async () => {
     'use cache'
     // 管理画面で数値を直したら数分で反映されるようにする
