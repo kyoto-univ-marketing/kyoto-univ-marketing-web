@@ -21,7 +21,7 @@ export const ArticlesPage: FC<ArticlesPageProps> = async ({ searchParams, activi
                     { label: pageLinkObject.ARCHIVE.text, href: pageLinkObject.ARCHIVE.href },
                 ]}
             />
-            <PageTitle band en='Topics'>{pageLinkObject.ARCHIVE.text}</PageTitle>
+            <PageTitle band en='News'>{pageLinkObject.ARCHIVE.text}</PageTitle>
             <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-16 md:px-8'>
                 <div className='mb-12 space-y-4'>
                     {activityDescription.split('\n').map((line, i) => (

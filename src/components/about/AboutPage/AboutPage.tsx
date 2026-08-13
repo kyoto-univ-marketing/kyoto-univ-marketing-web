@@ -50,7 +50,7 @@ export const AboutPage: FC<AboutPageProps> = () => {
 
                 {/* 長い白の連なりを一度切る。中身はこの団体の一番の主張に絞る。
                     背景の写真はあらかじめぼかしてあり、顔は判別できない */}
-                <MessageBand backgroundImage={GatheringImg} en='Second Origin Experience'>
+                <MessageBand backgroundImage={GatheringImg} en='Concept'>
                     大学生に「セカンド原体験」を与える。
                 </MessageBand>
 

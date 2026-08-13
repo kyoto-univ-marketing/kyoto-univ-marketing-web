@@ -16,7 +16,7 @@ import { pageLinkObject } from '@/constants/pageLinks'
  */
 export const SecondOrigin: FC = () => (
     <section className='mx-auto max-w-(--breakpoint-md) px-6 md:px-8'>
-        <PageTitle asChild en='Second Origin Experience'>
+        <PageTitle asChild en='Concept'>
             <h2>
                 セカンド原体験<HeadingSub>とは</HeadingSub>
             </h2>
