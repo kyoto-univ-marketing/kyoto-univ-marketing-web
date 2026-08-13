@@ -10,13 +10,12 @@ import { SectionHeading } from '@/components/common/SectionHeading/SectionHeadin
 import { Button } from '@/components/ui/button'
 import { pageLinkObject } from '@/constants/pageLinks'
 
-/** 協賛企業に提供するもの。発信・交流・参画の3本立て（協賛提案資料 v6 に準拠） */
+/**
+ * 協賛企業に提供するもの。発信・交流・参画の3本立て（協賛提案資料 v6 に準拠）。
+ *
+ * ⚠️ 枠の限定（1業界1社）や金額はここに書かない。条件は個別のご提案の場で説明する。
+ */
 const offers = [
-    {
-        en: 'Exclusive',
-        title: '業界で唯一のパートナーという立場',
-        body: '協賛枠は1業界につき1社までとさせていただいています。貴社は「京大マーケと共創している、その業界で唯一の企業」になります。',
-    },
     {
         en: 'Presence',
         title: '一年を通じた、日常のなかの接点',
@@ -27,6 +26,22 @@ const offers = [
         title: '共創イベントの開催',
         body: '合宿のご企画、社員の方との座談会、事業課題を題材にしたワークショップなど。学生と深く関わる機会を、運営は私たちが担って共同開催します。',
     },
+    {
+        en: 'Involvement',
+        title: '貴社起点の企画とその実行',
+        body: '学生を知るだけでなく、貴社のテーマを持ち込めます。京大生チームが実際に動き、一年をかけて形にしていきます。',
+    },
+]
+
+/** お問い合わせから契約までの流れ。条件は打ち合わせの中でご説明する */
+const steps = [
+    { en: 'Contact', title: 'お問い合わせ', body: 'フォームからご連絡ください。数日以内にご返信します。' },
+    {
+        en: 'Meeting',
+        title: '打ち合わせ',
+        body: '貴社のご関心をうかがいながら、複数回に分けてご提案を詰めていきます。',
+    },
+    { en: 'Agreement', title: '協賛のご契約', body: '内容と条件が固まりましたら、契約を締結して一年が始まります。' },
 ]
 
 /** 年間の主な行事。協賛企業がどこで学生と会えるかを示す */
@@ -68,12 +83,10 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     </Reveal>
                 </div>
 
-                {/* 1業界1社限定は最初に伝える。これが協賛の価値の中心にあるため */}
-                <MessageBand
-                    en='One Company Per Industry'
-                    note='学生との関係の質を守るため、また協賛企業さまが同業他社と場を奪い合うことにならないようにするためです。枠が埋まっている業界については、次年度以降のご案内となります。'
-                >
-                    協賛枠は、1業界につき1社まで
+                {/* 枠の限定や金額はHPに出さない。個別のご提案の場で説明する */}
+                <MessageBand en='Our Proposal'>
+                    <span className='inline-block'>広告の枠ではなく、</span>
+                    <span className='inline-block'>一年かけて一緒に何かを作る関係を。</span>
                 </MessageBand>
 
                 {/* 枠はPCの横幅を使えるように広く取り、読ませる文章だけ幅を絞る */}
@@ -135,6 +148,37 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                                 </div>
                             ))}
                         </dl>
+                    </section>
+
+                    {/* 金額を出さない代わりに、問い合わせたあと何が起きるかを示しておく。
+                        次の展開が見えないと、条件不明のまま連絡するのは踏み出しにくい */}
+                    <section>
+                        <SectionHeading en='Process' index={4}>
+                            ご提案までの流れ
+                        </SectionHeading>
+                        <ol className='grid gap-8 md:grid-cols-3 md:gap-x-10'>
+                            {steps.map(({ en, title, body }, i) => (
+                                <Reveal
+                                    className='space-y-3 border-gray-200 border-t pt-8'
+                                    delay={i * 80}
+                                    key={title}
+                                >
+                                    <div className='flex items-baseline gap-4'>
+                                        <span aria-hidden className='font-en text-2xl text-brand-accent/50 leading-none'>
+                                            {String(i + 1).padStart(2, '0')}
+                                        </span>
+                                        <span className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>
+                                            {en}
+                                        </span>
+                                    </div>
+                                    <h3 className='font-title text-lg leading-snug'>{title}</h3>
+                                    <p className='text-gray-700 text-sm leading-relaxed'>{body}</p>
+                                </Reveal>
+                            ))}
+                        </ol>
+                        <p className='mt-8 text-gray-600 text-sm'>
+                            ご費用を含む条件は、貴社のご関心にあわせて打ち合わせの中でご説明いたします。
+                        </p>
                     </section>
                 </div>
 
