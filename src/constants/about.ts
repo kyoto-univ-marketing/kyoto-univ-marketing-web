@@ -49,6 +49,7 @@ export const SCIENCE_FACULTY_SHARE = '約3割'
 export const careerPaths = [
     '外資系消費財メーカー',
     '戦略コンサルティングファーム',
+    '総合商社',
     '政府系金融機関',
     '国家公務員',
     '大手広告代理店',
@@ -56,6 +57,6 @@ export const careerPaths = [
     '起業',
     '医師',
     '弁護士',
-    '会計士',
+    '公認会計士',
     '研究者',
 ] as const
