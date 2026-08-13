@@ -25,7 +25,9 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = () => {
             <section className='flex h-[calc(100svh-var(--spacing)*18)]'>
                 {/* 紺のパネルと写真を横に並べる。写真を全幅に敷いてパネルを重ねると
                     被写体がパネルの裏に隠れ、写真の枠の中で中央に来ないため */}
-                <div className='relative flex w-[46%] max-w-[34rem] shrink-0 flex-col justify-center gap-12 bg-primary px-8 text-primary-foreground md:px-10 lg:px-16'>
+                {/* 下に pb を取ってあるのは、画面が低いときに中央寄せの中身が
+                    スクロールの合図まで下りてこないようにするため */}
+                <div className='relative flex w-[46%] max-w-[34rem] shrink-0 flex-col justify-center gap-12 bg-primary px-8 pb-28 text-primary-foreground md:px-10 lg:px-16'>
                     <Reveal className='flex flex-col gap-10'>
                         <Logo className='size-16' reverse sizes='128px' />
                         <div className='flex flex-col gap-6'>
@@ -54,7 +56,7 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = () => {
                     <p className='-translate-y-1/2 absolute top-1/2 right-5 hidden font-en text-primary-foreground/60 text-xs uppercase tracking-[0.5em] [writing-mode:vertical-rl] lg:block'>
                         Kyodai Marketing Institute
                     </p>
-                    <ScrollCue reverse />
+                    <ScrollCue className='left-8 md:left-10 lg:left-16' reverse />
                 </div>
                 <div className='relative flex-1 overflow-hidden'>
                     <ImageSwitch

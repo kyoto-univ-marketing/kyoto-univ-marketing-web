@@ -1,7 +1,5 @@
-import Image from 'next/image'
 import { FC } from 'react'
 
-import StudyImg from '@/../public/page-images/top/study.webp'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
@@ -14,9 +12,8 @@ import { pageLinkObject } from '@/constants/pageLinks'
  * セカンド原体験の説明の直後に置く。「何を目指しているか」を読んだ人が
  * 次に知りたいのは「では実際に何をしているのか」であるため。
  *
- * 写真は勉強会の一枚だけ。代表以外の部員の顔はそのまま載せない方針のため、
- * 後ろ姿とスクリーンだけが入るように切り出してある（元写真には
- * 左右に他の部員の顔が写っている。切り出す位置を変えるときは要確認）。
+ * 写真は置かない。ここは4項目を横に並べて概要を掴ませる場所で、
+ * 実際の様子は活動内容のページで見せる。
  *
  * 回数は変わりにくいものだけを載せる。プロジェクト数のように増減するものは
  * 数を書かない（古い数字が残るほうが害が大きい）。
@@ -50,18 +47,9 @@ export const Activities: FC = () => (
             <h2>活動概要</h2>
         </PageTitle>
         {/* 「サークル」とは名乗らない。法人であり、企業や大学と組んで動いている実態に合わないため */}
-        <p className='mx-auto mb-10 max-w-2xl text-justify text-gray-700'>
+        <p className='mx-auto mb-12 max-w-2xl text-justify text-gray-700'>
             京大マーケティング研究所は、企業様や大学関係者の皆様のご協力を得て、学生主体で運営・活動している学生団体です。
         </p>
-        <Reveal className='mb-12 space-y-3'>
-            <Image
-                {...StudyImg}
-                alt='マーケハウスでの勉強会。スクリーンに映した資料を見ながら進める'
-                className='aspect-video w-full object-cover'
-                sizes='(max-width: 1024px) 100vw, 1024px'
-            />
-            <p className='text-gray-500 text-xs'>週に複数回ひらいている勉強会。担当を決めて、部員が持ち回りで話す。</p>
-        </Reveal>
         <dl className='grid gap-10 sm:grid-cols-2 sm:gap-x-12 lg:grid-cols-4 lg:gap-x-8'>
             {activities.map(({ name, frequency, body }, i) => (
                 <Reveal className='space-y-3 border-gray-200 border-t pt-8' delay={i * 60} key={name}>

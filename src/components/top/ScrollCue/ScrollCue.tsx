@@ -8,12 +8,18 @@ export interface ScrollCueProps {
     reverse?: boolean
 }
 
-/** ヒーローの下端に置く、下へ続くことを示す縦線 */
+/**
+ * ヒーローの下端に置く、下へ続くことを示す縦線。
+ *
+ * 位置は置き場所ごとに className で指定する。
+ * 以前は左右中央に置いていたが、画面の高さが足りないとき見出しの真上に重なった。
+ * 本文の左端に沿わせておけば、縦に詰まっても文字とぶつからない。
+ */
 export const ScrollCue: FC<ScrollCueProps> = ({ className, reverse }) => (
     <div
         aria-hidden
         className={cn(
-            '-translate-x-1/2 absolute bottom-10 left-1/2 flex flex-col items-center gap-3',
+            'absolute bottom-10 flex flex-col items-start gap-3',
             reverse ? 'text-white/80' : 'text-foreground/60',
             className,
         )}
