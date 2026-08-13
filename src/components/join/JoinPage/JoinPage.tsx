@@ -41,7 +41,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                             <span className='inline-block'>京大卒で</span>
                             <span className='inline-block'>終わりたくない人へ</span>
                         </p>
-                        <p className='mx-auto max-w-2xl text-left text-gray-700'>
+                        <p className='mx-auto max-w-2xl text-justify text-gray-700'>
                             京大マーケティング研究所は、学生時代にもうひとつの原体験——「セカンド原体験」を創る場です。
                             やりたいことが決まっている人も、まだ探している人も歓迎します。
                         </p>
@@ -51,7 +51,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                         <Suspense fallback={<CircleStatsSkeleton />}>
                             <CircleStats />
                         </Suspense>
-                        <p className='mx-auto max-w-2xl text-left text-gray-700 text-sm'>
+                        <p className='mx-auto max-w-2xl text-justify text-gray-700 text-sm'>
                             文系・理系の垣根を越えた京大生が在籍しています。
                             毎週複数回の勉強会、3本のゼミ、実践のプロジェクト、年3回の合宿。
                             参加はいずれも任意で、学業やほかの活動と両立している部員がほとんどです。

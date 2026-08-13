@@ -95,7 +95,7 @@ export const FounderPage: FC = () => {
                     <p className='font-title text-heading leading-relaxed'>「{catchphrase}」</p>
                 </div>
 
-                <div className='mt-10 space-y-6 text-gray-700'>
+                <div className='mt-10 space-y-6 text-justify text-gray-700'>
                     {beforePhoto.map((line) => (
                         <Reveal key={line}>
                             <p>{line}</p>
@@ -119,12 +119,12 @@ export const FounderPage: FC = () => {
                         className='w-full object-cover'
                         sizes='(max-width: 640px) 100vw, 260px'
                     />
-                    <p className='text-gray-700'>{besidePhoto}</p>
+                    <p className='text-justify text-gray-700'>{besidePhoto}</p>
                 </Reveal>
             </div>
 
             <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
-                <div className='mt-14 space-y-6 text-gray-700'>
+                <div className='mt-14 space-y-6 text-justify text-gray-700'>
                     {afterPhoto.map((line) => (
                         <Reveal key={line}>
                             <p>{line}</p>
@@ -135,7 +135,7 @@ export const FounderPage: FC = () => {
                 <Reveal className='mt-16 space-y-4 border-gray-200 border-l-2 pl-6'>
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>To Candidates</p>
                     <p className='font-title text-lg'>入会を考えている方へ</p>
-                    <div className='space-y-4 text-gray-700'>
+                    <div className='space-y-4 text-justify text-gray-700'>
                         {message.map((line) => (
                             <p key={line}>{line}</p>
                         ))}

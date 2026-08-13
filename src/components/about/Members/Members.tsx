@@ -55,7 +55,7 @@ const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) =>
                                 In a Word
                             </p>
                             <p className='font-title text-lg leading-relaxed'>「{catchphrase}」</p>
-                            <div className='space-y-3 text-gray-700'>
+                            <div className='space-y-3 text-justify text-gray-700'>
                                 {lead.map((line) => (
                                     <p key={line}>{line}</p>
                                 ))}
@@ -68,7 +68,7 @@ const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) =>
                                 To Candidates
                             </p>
                             <p className='font-title text-base'>入会を考えている方へ</p>
-                            <div className='space-y-3 text-gray-700'>
+                            <div className='space-y-3 text-justify text-gray-700'>
                                 {message.map((line) => (
                                     <p key={line}>{line}</p>
                                 ))}

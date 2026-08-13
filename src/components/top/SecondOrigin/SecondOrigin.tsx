@@ -28,7 +28,7 @@ export const SecondOrigin: FC = () => (
                 <span className='inline-block'>最高到達点にしない。</span>
             </p>
             {/* 説明の段落は左揃え。中央揃えは行頭が毎行ずれるので、数行を超えると読みにくい */}
-            <div className='mx-auto max-w-2xl space-y-4 text-left text-gray-700'>
+            <div className='mx-auto max-w-2xl space-y-4 text-justify text-gray-700'>
                 <p>
                     原体験とは、その人の価値観をかたちづくった出来事のことです。
                     多くの人にとって、それは大学に入るまでに起きています。
