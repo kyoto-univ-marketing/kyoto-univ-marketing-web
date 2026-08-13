@@ -35,10 +35,11 @@ export const JoinPage: FC<JoinPageProps> = async () => {
             <div className='section-stack pb-24'>
                 <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
                     <Reveal className='space-y-6 text-center'>
-                        {/* この一文はトップの「セカンド原体験とは」と同じ言い回しに揃える */}
+                        {/* 新歓で使っているコピー。学生に向けるページなので、ここだけこの言い回しにする
+                            （トップの「セカンド原体験とは」は別の一文） */}
                         <p className='text-balance font-title text-heading leading-relaxed'>
-                            <span className='inline-block'>大学合格・入学を、</span>
-                            <span className='inline-block'>最高到達点にしない。</span>
+                            <span className='inline-block'>京大卒で</span>
+                            <span className='inline-block'>終わりたくない人へ</span>
                         </p>
                         <p className='mx-auto max-w-2xl text-left text-gray-700'>
                             京大マーケティング研究所は、学生時代にもうひとつの原体験——「セカンド原体験」を創る場です。
@@ -73,10 +74,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                         <SectionHeading en='Message' index={1}>
                             代表からのことば
                         </SectionHeading>
-                        <p className='text-gray-700'>
-                            創設者と歴代代表が、入会を考えている方へのことばを書いています。
-                            どんな人がこの場所を創り、続けてきたのかを知ってからのほうが、判断しやすいはずです。
-                        </p>
+                        <p className='text-gray-700'>創設者と歴代代表が、入会を考えている方へのことばを書いています。</p>
                         <div className='mt-8 flex flex-col gap-4 sm:flex-row'>
                             <Button asChild className='px-8 py-5'>
                                 <NextLink href={aboutFounderPage.href}>{aboutFounderPage.text}を読む</NextLink>
