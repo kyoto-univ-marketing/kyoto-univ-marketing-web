@@ -23,18 +23,12 @@ export const MembersPage: FC = () => (
             {aboutMembersPage.text}
         </PageTitle>
         <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
-            {/* 初代への言及とリンクは必ず残す。「迫田周大」で調べた人の手がかりになるため */}
+            {/* 創設者への導線はページ下部のボタンに任せている。
+                「迫田周大」の検索は /about/founder 本体と団体概要からのリンクで受けており、
+                ここに氏名を書かなくても手がかりは足りる */}
             <p className='mb-16 text-gray-700'>
                 京大マーケティング研究所は、2024年3月の設立以来、一年ごとに代表が交代しています。
                 それぞれが考える「この場所は何であるか」を、そのままの言葉で載せています。
-                初代代表は創設者の
-                <NextLink
-                    className='underline underline-offset-4 hover:text-primary'
-                    href={aboutFounderPage.href}
-                >
-                    迫田 周大（さこだ しゅうた）
-                </NextLink>
-                です。
             </p>
             <Members />
             <div className='mt-20 flex flex-col items-center justify-center gap-4 sm:flex-row'>
