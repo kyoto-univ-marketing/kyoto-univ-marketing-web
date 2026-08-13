@@ -32,11 +32,13 @@ export const JoinPage: FC<JoinPageProps> = async () => {
             <div className='section-stack pb-24'>
                 <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
                     <Reveal className='space-y-6 text-center'>
-                        <p className='font-title text-heading leading-relaxed'>
-                            大学入学の熱量を、最高到達点にしない。
+                        {/* この一文はトップの「セカンド原体験とは」と同じ言い回しに揃える */}
+                        <p className='text-balance font-title text-heading leading-relaxed'>
+                            <span className='inline-block'>大学合格・入学を、</span>
+                            <span className='inline-block'>最高到達点にしない。</span>
                         </p>
                         <p className='mx-auto max-w-2xl text-gray-700'>
-                            京大マーケティング研究所は、学生時代にもうひとつの原体験——「セカンド原体験」をつくる場です。
+                            京大マーケティング研究所は、学生時代にもうひとつの原体験——「セカンド原体験」を創る場です。
                             やりたいことが決まっている人も、まだ探している人も歓迎します。
                         </p>
                     </Reveal>
@@ -78,7 +80,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                 </div>
 
                 <Reveal className='bg-primary px-6 py-16 text-center text-primary-foreground md:py-20'>
-                    <h2 className='font-title text-heading leading-relaxed'>まずは話を聞きに来てください</h2>
+                    <h2 className='text-balance font-title text-heading leading-relaxed'>まずは話を聞きに来てください</h2>
                     <p className='mx-auto mt-5 max-w-xl text-primary-foreground/85 text-sm leading-relaxed'>
                         お問い合わせフォームか、InstagramのDMからご連絡ください。
                     </p>

@@ -19,8 +19,8 @@ export const SecondOrigin: FC = () => (
             <h2>セカンド原体験とは</h2>
         </PageTitle>
         <Reveal className='space-y-8 text-center'>
-            <p className='font-title text-heading leading-relaxed'>
-                <span className='inline-block'>大学入学の熱量を、</span>
+            <p className='text-balance font-title text-heading leading-relaxed'>
+                <span className='inline-block'>大学合格・入学を、</span>
                 <span className='inline-block'>最高到達点にしない。</span>
             </p>
             <div className='mx-auto max-w-2xl space-y-4 text-gray-700'>
@@ -29,9 +29,11 @@ export const SecondOrigin: FC = () => (
                     多くの人にとって、それは大学に入るまでに起きています。
                 </p>
                 <p>
-                    私たちは、学生時代にもうひとつの原体験——「セカンド原体験」——をつくることを目指しています。
-                    合宿で深夜まで語り合った時間、自分の手が社会に届いた瞬間。
-                    その一度が、卒業したあとの選び方を変えていきます。
+                    私たちは、学生時代にもうひとつの原体験——「セカンド原体験」——を創ることを目指しています。
+                    自分の手が社会に届いた瞬間、想像もしなかったキャリアを歩んでいる人との出会い、
+                    仲間と激しく議論をかわした時間。
+                    卒業した後の生き方を大きく変える「セカンド原体験」を、
+                    一人でも多くの大学生に提供していきたいと考えています。
                 </p>
             </div>
             <Button asChild className='px-8 py-5' variant='outline'>

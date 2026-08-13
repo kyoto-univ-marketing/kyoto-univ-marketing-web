@@ -20,7 +20,9 @@ export const MessageBand: FC<MessageBandProps> = ({ en, children, note }) => (
     <section className='bg-primary px-6 py-16 text-center text-primary-foreground md:py-20'>
         <div className='mx-auto max-w-2xl space-y-5'>
             {en && <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>{en}</p>}
-            <p className='font-title text-title leading-relaxed'>{children}</p>
+            {/* 中央揃えの一文は text-balance で行の長さを揃える。
+                そうしないと最後の行に「を。」だけが残ることがある */}
+            <p className='text-balance font-title text-title leading-relaxed'>{children}</p>
             {note && <p className='text-primary-foreground/85 text-sm leading-relaxed'>{note}</p>}
         </div>
     </section>

@@ -37,7 +37,7 @@ export const TopCta: FC = () => {
                 {entries.map(({ en, title, body, href, label }, i) => (
                     <Reveal className='flex flex-col items-center gap-5 text-center' delay={i * 100} key={en}>
                         <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>{en}</p>
-                        <h2 className='font-title text-heading leading-snug'>
+                        <h2 className='text-balance font-title text-heading leading-snug'>
                             {title.map((part) => (
                                 <span className='inline-block whitespace-nowrap' key={part}>
                                     {part}

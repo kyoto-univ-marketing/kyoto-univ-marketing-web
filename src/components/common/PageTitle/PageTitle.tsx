@@ -40,7 +40,7 @@ export const PageTitle: FC<PageTitleProps> = ({ asChild, children, en, band, ...
         >
             <div className='mx-auto flex w-fit flex-col items-center gap-4'>
                 {en && <span className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>{en}</span>}
-                <Component className='w-fit text-center font-title text-title'>{children}</Component>
+                <Component className='w-fit text-balance text-center font-title text-title'>{children}</Component>
                 <span aria-hidden className='block h-px w-10 bg-brand-accent' />
             </div>
         </div>

@@ -19,7 +19,7 @@ const offers = [
     {
         en: 'Presence',
         title: '一年を通じた、日常のなかの接点',
-        body: '部員が毎日使うチャットへの参加・発信、活動拠点への掲示など。一年を通じて、学生の日常のなかに貴社の名前がある状態をつくります。',
+        body: '部員が毎日使うチャットへの参加・発信、活動拠点への掲示など。一年を通じて、学生の日常のなかに貴社の名前がある状態を創ります。',
     },
     {
         en: 'Collaboration',
@@ -72,13 +72,13 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
             <div className='section-stack pb-24'>
                 <div className='mx-auto w-full max-w-(--breakpoint-lg) px-6 md:px-8'>
                     <Reveal className='space-y-6 text-center'>
-                        <p className='font-title text-heading leading-relaxed'>
+                        <p className='text-balance font-title text-heading leading-relaxed'>
                             志のある学生を、近くで応援するという関わり方。
                         </p>
                         {/* 「広告ではない」とは書かない。発信の機会も実際にご提供しているため、
                             言い切ると事実と食い違う */}
                         <p className='mx-auto max-w-2xl text-gray-700'>
-                            京大マーケティング研究所は、次の時代をつくろうとする学生が集まる場です。
+                            京大マーケティング研究所は、次の時代を創ろうとする学生が集まる場です。
                             一年を通じて学生の日常に関わっていただきながら、貴社と学生とで何かを一緒に形にしていく——
                             そんな協賛パートナーシップをご提案しています。
                         </p>
@@ -187,7 +187,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
 
                 {/* 導線は問い合わせフォームに一本化する */}
                 <Reveal className='bg-primary px-6 py-16 text-center text-primary-foreground md:py-20'>
-                    <h2 className='font-title text-heading leading-relaxed'>まずはお気軽にご相談ください</h2>
+                    <h2 className='text-balance font-title text-heading leading-relaxed'>まずはお気軽にご相談ください</h2>
                     <p className='mx-auto mt-5 max-w-xl text-primary-foreground/85 text-sm leading-relaxed'>
                         協賛プランの詳細資料をご用意しています。ご費用を含む条件は、
                         貴社のご関心に合わせてご説明いたします。
