@@ -65,7 +65,7 @@ const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) =>
                     {message.length > 0 && (
                         <div className='space-y-3 border-gray-200 border-l-2 pl-6'>
                             <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>
-                                To You
+                                To Candidates
                             </p>
                             <p className='font-title text-base'>入会を考えている方へ</p>
                             <div className='space-y-3 text-gray-700'>

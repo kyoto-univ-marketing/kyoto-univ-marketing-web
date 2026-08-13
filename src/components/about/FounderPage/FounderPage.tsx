@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { FC } from 'react'
 
+import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
@@ -9,7 +10,6 @@ import { Button } from '@/components/ui/button'
 import { aboutFounderPage, aboutMembersPage } from '@/constants/aboutPages'
 import { founder } from '@/constants/members'
 import { pageLinkObject } from '@/constants/pageLinks'
-import { cn } from '@/lib/utils'
 
 /**
  * 設立の経緯。「迫田周大」で検索した人が着地するページ。
@@ -20,11 +20,13 @@ import { cn } from '@/lib/utils'
  *
  * 歴代代表ページは2代目からにしている。初代の話はこのページが担う。
  *
- * 本文は段落ごとに全幅の帯として区切る。一続きの長文だと読み始める気が起きず、
- * 一段落ずつ背景が替わることで、話が進んでいることが目で分かる。
+ * 長い本文は、途中に写真つきの一段を挟んで区切る。
+ * 段落ごとに背景を交互に替える形も試したが、縞模様に見えて落ち着かなかった。
  */
 export const FounderPage: FC = () => {
     const { role, name, reading, faculty, enrolledYear, image, catchphrase, lead, message } = founder
+    // 前半・写真と並べる一段・後半に分ける
+    const [beforePhoto, besidePhoto, afterPhoto] = [lead.slice(0, 2), lead[2], lead.slice(3)]
 
     return (
         <>
@@ -74,23 +76,43 @@ export const FounderPage: FC = () => {
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>In a Word</p>
                     <p className='font-title text-heading leading-relaxed'>「{catchphrase}」</p>
                 </div>
+
+                <div className='mt-10 space-y-6 text-gray-700'>
+                    {beforePhoto.map((line) => (
+                        <Reveal key={line}>
+                            <p>{line}</p>
+                        </Reveal>
+                    ))}
+                </div>
             </div>
 
-            {/* 一段落ずつ背景を替えて区切る */}
-            <div className='mt-10'>
-                {lead.map((line, i) => (
-                    <Reveal
-                        className={cn('px-6 py-10 md:px-8 md:py-12', i % 2 === 1 && 'bg-background-secondary')}
-                        key={line}
-                    >
-                        <p className='mx-auto max-w-(--breakpoint-md) text-gray-700'>{line}</p>
-                    </Reveal>
-                ))}
+            {/*
+             * 「思考の関節を外して生き方を見つめ直す」段落に掛け軸を並べる。
+             * 飾りではなく、この一段の内容そのものを写した写真として置いている。
+             */}
+            <div className='mt-14 bg-background-secondary py-14'>
+                <Reveal className='mx-auto grid max-w-(--breakpoint-md) items-center gap-10 px-6 sm:grid-cols-[1fr_1.4fr] md:px-8'>
+                    <Image
+                        {...KakejikuImg}
+                        alt='マーケハウスに掛かる掛け軸'
+                        className='w-full object-cover'
+                        sizes='(max-width: 640px) 100vw, 260px'
+                    />
+                    <p className='text-gray-700'>{besidePhoto}</p>
+                </Reveal>
             </div>
 
             <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
+                <div className='mt-14 space-y-6 text-gray-700'>
+                    {afterPhoto.map((line) => (
+                        <Reveal key={line}>
+                            <p>{line}</p>
+                        </Reveal>
+                    ))}
+                </div>
+
                 <Reveal className='mt-16 space-y-4 border-gray-200 border-l-2 pl-6'>
-                    <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>To You</p>
+                    <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>To Candidates</p>
                     <p className='font-title text-lg'>入会を考えている方へ</p>
                     <div className='space-y-4 text-gray-700'>
                         {message.map((line) => (
