@@ -1,5 +1,6 @@
 import { FC, Suspense } from 'react'
 
+import WorkshopImg from '@/../public/page-images/bands/workshop.webp'
 import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { MessageBand } from '@/components/common/MessageBand/MessageBand'
@@ -96,6 +97,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     冒頭の一文と同じ言葉を帯にも置くと繰り返しになるので、
                     ここには取り組みの形（企業が自社に置き換えて考えられるもの）を出す */}
                 <MessageBand
+                    backgroundImage={WorkshopImg}
                     en='Ways to Work Together'
                     note='ほかにもさまざまな形でのお取り組みをご検討いただけます。お気軽にご連絡ください。'
                 >

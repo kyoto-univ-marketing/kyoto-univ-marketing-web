@@ -1,5 +1,6 @@
 import { FC, Suspense } from 'react'
 
+import GatheringImg from '@/../public/page-images/bands/gathering.webp'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { MessageBand } from '@/components/common/MessageBand/MessageBand'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
@@ -47,8 +48,11 @@ export const AboutPage: FC<AboutPageProps> = () => {
                     <AboutSections />
                 </div>
 
-                {/* 長い白の連なりを一度切る。中身はこの団体の一番の主張に絞る */}
-                <MessageBand en='Second Origin Experience'>大学生に「セカンド原体験」を与える。</MessageBand>
+                {/* 長い白の連なりを一度切る。中身はこの団体の一番の主張に絞る。
+                    背景の写真はあらかじめぼかしてあり、顔は判別できない */}
+                <MessageBand backgroundImage={GatheringImg} en='Second Origin Experience'>
+                    大学生に「セカンド原体験」を与える。
+                </MessageBand>
 
                 <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
                     <FounderSection />
