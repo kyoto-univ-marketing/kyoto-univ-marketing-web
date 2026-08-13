@@ -1,6 +1,8 @@
+import Image from 'next/image'
 import { FC, Suspense } from 'react'
 import { FaInstagram } from 'react-icons/fa6'
 
+import FeastImg from '@/../public/page-images/bands/feast.webp'
 import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { MakeHouseBand } from '@/components/common/MakeHouseBand/MakeHouseBand'
@@ -79,12 +81,15 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                     </Reveal>
                 </div>
 
-                <Reveal className='bg-primary px-6 py-16 text-center text-primary-foreground md:py-20'>
-                    <h2 className='text-balance font-title text-heading leading-relaxed'>まずは話を聞きに来てください</h2>
-                    <p className='mx-auto mt-5 max-w-xl text-primary-foreground/85 text-sm leading-relaxed'>
+                <Reveal className='relative overflow-hidden bg-primary px-6 py-16 text-center text-primary-foreground md:py-20'>
+                    <Image alt='' className='object-cover opacity-30' fill sizes='100vw' src={FeastImg} />
+                    <h2 className='relative text-balance font-title text-heading leading-relaxed'>
+                        まずは話を聞きに来てください
+                    </h2>
+                    <p className='relative mx-auto mt-5 max-w-xl text-primary-foreground/85 text-sm leading-relaxed'>
                         お問い合わせフォームか、InstagramのDMからご連絡ください。
                     </p>
-                    <div className='mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row'>
+                    <div className='relative mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row'>
                         <Button
                             asChild
                             className='border-white/70 bg-transparent px-8 py-5 text-white hover:bg-white hover:text-primary'

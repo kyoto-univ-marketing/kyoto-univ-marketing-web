@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import { FC, Suspense } from 'react'
 
+import DeskImg from '@/../public/page-images/bands/desk.webp'
 import WorkshopImg from '@/../public/page-images/bands/workshop.webp'
 import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
@@ -187,16 +189,17 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                 </div>
 
                 {/* 導線は問い合わせフォームに一本化する */}
-                <Reveal className='bg-primary px-6 py-16 text-center text-primary-foreground md:py-20'>
-                    <h2 className='text-balance font-title text-heading leading-relaxed'>まずはお気軽にご相談ください</h2>
-                    <p className='mx-auto mt-5 max-w-xl text-primary-foreground/85 text-sm leading-relaxed'>
+                <Reveal className='relative overflow-hidden bg-primary px-6 py-16 text-center text-primary-foreground md:py-20'>
+                    <Image alt='' className='object-cover opacity-30' fill sizes='100vw' src={DeskImg} />
+                    <h2 className='relative text-balance font-title text-heading leading-relaxed'>まずはお気軽にご相談ください</h2>
+                    <p className='relative mx-auto mt-5 max-w-xl text-primary-foreground/85 text-sm leading-relaxed'>
                         協賛プランの詳細資料をご用意しています。ご費用を含む条件は、
                         貴社のご関心に合わせてご説明いたします。
                         12月の成果発表会のご見学からでも歓迎です。
                     </p>
                     <Button
                         asChild
-                        className='mt-8 border-white/70 bg-transparent px-10 py-6 text-white hover:bg-white hover:text-primary'
+                        className='relative mt-8 border-white/70 bg-transparent px-10 py-6 text-white hover:bg-white hover:text-primary'
                         variant='outline'
                     >
                         <NextLink href={pageLinkObject.CONTACT.href}>お問い合わせフォームへ</NextLink>

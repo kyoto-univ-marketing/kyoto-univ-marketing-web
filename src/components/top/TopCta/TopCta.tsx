@@ -1,5 +1,7 @@
+import Image from 'next/image'
 import { FC } from 'react'
 
+import CampImg from '@/../public/page-images/bands/camp.webp'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 import { Button } from '@/components/ui/button'
@@ -32,8 +34,10 @@ export const TopCta: FC = () => {
     ]
 
     return (
-        <section className='bg-primary px-6 py-20 text-primary-foreground'>
-            <div className='mx-auto grid max-w-(--breakpoint-md) gap-12 sm:grid-cols-2 sm:gap-16'>
+        <section className='relative overflow-hidden bg-primary px-6 py-20 text-primary-foreground'>
+            {/* 背景の写真はあらかじめぼかしてある（公開ファイル自体がぼけているので顔は復元できない） */}
+            <Image alt='' className='object-cover opacity-30' fill sizes='100vw' src={CampImg} />
+            <div className='relative mx-auto grid max-w-(--breakpoint-md) gap-12 sm:grid-cols-2 sm:gap-16'>
                 {entries.map(({ en, title, body, href, label }, i) => (
                     <Reveal className='flex flex-col items-center gap-5 text-center' delay={i * 100} key={en}>
                         <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>{en}</p>
