@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button'
 import { aboutFounderPage, aboutMembersPage } from '@/constants/aboutPages'
 import { founder } from '@/constants/members'
 import { pageLinkObject } from '@/constants/pageLinks'
+import { cn } from '@/lib/utils'
 
 /**
  * 設立の経緯。「迫田周大」で検索した人が着地するページ。
@@ -18,6 +19,9 @@ import { pageLinkObject } from '@/constants/pageLinks'
  * ここが消えると、検索で拾われる手がかりがサイトから無くなる。
  *
  * 歴代代表ページは2代目からにしている。初代の話はこのページが担う。
+ *
+ * 本文は段落ごとに全幅の帯として区切る。一続きの長文だと読み始める気が起きず、
+ * 一段落ずつ背景が替わることで、話が進んでいることが目で分かる。
  */
 export const FounderPage: FC = () => {
     const { role, name, reading, faculty, enrolledYear, image, catchphrase, lead, message } = founder
@@ -34,7 +38,8 @@ export const FounderPage: FC = () => {
             <PageTitle band en={aboutFounderPage.textEng}>
                 {aboutFounderPage.text}
             </PageTitle>
-            <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
+
+            <div className='mx-auto max-w-(--breakpoint-md) px-6 md:px-8'>
                 <Reveal className='text-gray-700'>
                     <p>
                         京大マーケティング研究所は、2024年3月に京都大学の学生団体として設立しました。
@@ -65,16 +70,25 @@ export const FounderPage: FC = () => {
                     </div>
                 </Reveal>
 
-                <Reveal className='mt-16 space-y-4'>
+                <div className='mt-16 space-y-4'>
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>In a Word</p>
                     <p className='font-title text-heading leading-relaxed'>「{catchphrase}」</p>
-                    <div className='space-y-4 text-gray-700'>
-                        {lead.map((line) => (
-                            <p key={line}>{line}</p>
-                        ))}
-                    </div>
-                </Reveal>
+                </div>
+            </div>
 
+            {/* 一段落ずつ背景を替えて区切る */}
+            <div className='mt-10'>
+                {lead.map((line, i) => (
+                    <Reveal
+                        className={cn('px-6 py-10 md:px-8 md:py-12', i % 2 === 1 && 'bg-background-secondary')}
+                        key={line}
+                    >
+                        <p className='mx-auto max-w-(--breakpoint-md) text-gray-700'>{line}</p>
+                    </Reveal>
+                ))}
+            </div>
+
+            <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
                 <Reveal className='mt-16 space-y-4 border-gray-200 border-l-2 pl-6'>
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>To You</p>
                     <p className='font-title text-lg'>入会を考えている方へ</p>
