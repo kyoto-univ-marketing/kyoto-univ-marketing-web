@@ -35,7 +35,6 @@ export const Navigation = async ({ showHamburger = true, ...props }: NavigationP
                     <HamburgerMenu
                         instagramUrl={siteSettings.instagram_url}
                         mailAddress={siteSettings.mail_address}
-                        xUrl={siteSettings.x_url}
                     />
                 </div>
             )}

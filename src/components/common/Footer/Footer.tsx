@@ -32,7 +32,6 @@ export const Footer = async () => {
                         instagramUrl={siteSettings.instagram_url}
                         mailAddress={siteSettings.mail_address}
                         snsIconSize={24}
-                        xUrl={siteSettings.x_url}
                     />
                 </div>
             </div>

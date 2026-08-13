@@ -16,7 +16,7 @@ export const buildOrganizationJson = (siteSettings: SiteSettings, memberCount?: 
         logo: `${profile.homepageUrl}/logo.png`,
         image: `${profile.homepageUrl}/opengraph-image`,
         email: siteSettings.mail_address,
-        sameAs: [siteSettings.x_url, siteSettings.instagram_url],
+        sameAs: [siteSettings.instagram_url],
         description: buildTopPageDescription(memberCount),
         address: [], // TOOD: オフィスができたら住所を追加する
         contactPoint: {

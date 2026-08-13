@@ -6,7 +6,6 @@ const meta = {
     tags: ['autodocs'],
     parameters: {},
     args: {
-        xUrl: 'https://twitter.com/ku__marketing/',
         instagramUrl: 'https://www.instagram.com/kyotouniv_marketing/',
         mailAddress: 'kyoto.univ.marketing@gmail.com',
     },

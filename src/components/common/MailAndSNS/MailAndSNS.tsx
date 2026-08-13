@@ -1,13 +1,12 @@
 import { MailIcon } from 'lucide-react'
 import { ComponentProps, FC } from 'react'
-import { FaInstagram, FaXTwitter } from 'react-icons/fa6'
+import { FaInstagram } from 'react-icons/fa6'
 
 import { cn } from '@/lib/utils'
 
 import { NextLink } from '../NextLink/NextLink'
 
 export interface MailAndSNSProps extends ComponentProps<'div'> {
-    xUrl: string
     instagramUrl: string
     mailAddress: string
     snsIconSize?: number
@@ -15,8 +14,14 @@ export interface MailAndSNSProps extends ComponentProps<'div'> {
     mailTextClassName?: string
 }
 
+/**
+ * 連絡先とSNS。
+ *
+ * X（旧Twitter）は載せていない。運用していないアカウントを出すと、
+ * 見に行った人に「止まっている団体」という印象を与えるため。
+ * 再開したら instagram と同じ形で戻せばよい。
+ */
 export const MailAndSNS: FC<MailAndSNSProps> = ({
-    xUrl,
     instagramUrl,
     mailAddress,
     snsIconSize = 32,
@@ -39,14 +44,9 @@ export const MailAndSNS: FC<MailAndSNSProps> = ({
                     {mailAddress}
                 </NextLink>
             </div>
-            <div className='grid w-full grid-flow-col justify-evenly md:w-fit md:justify-center md:gap-6'>
-                <NextLink href={xUrl}>
-                    <FaXTwitter size={snsIconSize} />
-                </NextLink>
-                <NextLink href={instagramUrl}>
-                    <FaInstagram size={snsIconSize} />
-                </NextLink>
-            </div>
+            <NextLink aria-label='Instagram' href={instagramUrl}>
+                <FaInstagram size={snsIconSize} />
+            </NextLink>
         </div>
     )
 }

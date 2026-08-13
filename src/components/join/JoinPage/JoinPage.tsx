@@ -54,7 +54,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                         </p>
                         <div className='flex justify-center'>
                             <Button asChild className='px-8 py-5' variant='outline'>
-                                <NextLink href={pageLinkObject.PROJECT.href}>活動内容をくわしく見る</NextLink>
+                                <NextLink href={pageLinkObject.PROJECT.href}>活動内容を見る</NextLink>
                             </Button>
                         </div>
                     </Reveal>
