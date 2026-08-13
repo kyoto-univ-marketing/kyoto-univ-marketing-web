@@ -46,7 +46,8 @@ export const MakeHouse: FC = () => (
             <div className='space-y-6'>
                 <div className='space-y-4'>
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>Our Base</p>
-                    <h2 className='font-title text-title leading-tight'>
+                    {/* 傍点が文字の上に出るので、行間を詰めすぎない */}
+                    <h2 className='font-title text-title leading-[1.5]'>
                         <span className='inline-block whitespace-nowrap'>活動拠点：</span>
                         <Keyword className='inline-block whitespace-nowrap'>マーケハウス</Keyword>
                     </h2>

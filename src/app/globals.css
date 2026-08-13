@@ -249,6 +249,18 @@
   余白の大きさが場所ごとに違うと、どこまでが一つの話なのかが読み手に伝わらないため、
   ページ直下のまとまりはこれに統一する（章の中は space-y-8 ＝ 2rem）。
 */
+/*
+  見出しのなかで、覚えて帰ってほしい言葉を強調する。
+  下線は PageTitle の金の罫と二重になるので使わない。日本語の伝統的な強調である
+  傍点（圏点）を金で打つ。文字の上に出るので、行間に余裕を持たせること。
+*/
+@utility keyword {
+    -webkit-text-emphasis: filled dot var(--brand-accent);
+    text-emphasis: filled dot var(--brand-accent);
+    -webkit-text-emphasis-position: over right;
+    text-emphasis-position: over right;
+}
+
 @utility section-stack {
     display: flex;
     flex-direction: column;
