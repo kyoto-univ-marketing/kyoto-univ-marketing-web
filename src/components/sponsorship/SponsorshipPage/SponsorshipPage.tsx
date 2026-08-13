@@ -25,7 +25,7 @@ const offers = [
     {
         en: 'Connection',
         title: '交流',
-        scope: '単発イベント',
+        scope: 'イベント',
         body: '社員の方との座談会、事業課題を題材にしたワークショップなど。京大生が集まる場を、運営は私たちが担って開催します。年度末の成果発表会にもご参加いただけます。',
     },
     {
@@ -119,7 +119,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                         <SectionHeading en='What We Offer' index={1}>
                             ご提供するもの
                         </SectionHeading>
-                        {/* 日常 → 単発イベント → 共創企画 の順。関わりが深くなる順に並べる */}
+                        {/* 日常 → イベント → 共創企画 の順。関わりが深くなる順に並べる */}
                         <div className='grid gap-10 md:grid-cols-3 md:gap-x-10'>
                             {offers.map(({ en, title, scope, body }, i) => (
                                 <Reveal className='space-y-4 border-gray-200 border-t pt-8' delay={i * 80} key={title}>
