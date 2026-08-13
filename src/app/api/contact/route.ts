@@ -27,9 +27,14 @@ export const POST = async (req: NextRequest) => {
          * 本文は先頭だけ。送信先が HTML のエラーページを返すことがあり、全部載せると読めない。
          */
         if (!res.ok) {
+            /*
+             * 送信先は環境変数なので、どこに送っているかはログからしか分からない。
+             * 認証情報が混じりうる path や query は載せず、ホスト名だけ残す。
+             */
             console.error('[contact] 送信先がエラーを返しました', {
+                host: new URL(url).host,
                 status: res.status,
-                body: (await res.text()).slice(0, 500),
+                body: (await res.text()).replace(/<style[\s\S]*?<\/style>/g, '').slice(0, 1500),
             })
             throw new Error('送信に失敗しました')
         }
