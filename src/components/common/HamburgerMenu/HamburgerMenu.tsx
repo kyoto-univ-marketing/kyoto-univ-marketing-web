@@ -51,7 +51,7 @@ export const HamburgerMenu: FC<HamburgerMenuProps> = ({ instagramUrl, mailAddres
                                 <NextLink className='block' href={link.href} onClick={close}>
                                     <p className='font-title text-lg leading-snug'>{link.text}</p>
                                     <p className='font-en text-brand-accent text-[0.6rem] uppercase tracking-[0.3em]'>
-                                        {link.textEng}
+                                        {link.en}
                                     </p>
                                 </NextLink>
                             </li>

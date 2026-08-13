@@ -61,16 +61,16 @@ export const TopPresenterDesktop: FC<TopPresenterDesktopProps> = () => {
             </section>
 
             {/*
-             * 並び順は「活動概要 → 考え方 → 拠点 → お知らせ」。
-             * はじめて来た人は、何をしている団体かを知ってからでないと
-             * セカンド原体験の話を受け取れないため、活動を先に置いている。
+             * 並び順は「考え方 → 活動概要 → 拠点 → お知らせ」。
+             * ヒーローで「セカンド原体験を与える。」と言い切っているので、
+             * その説明を続けてから、では何をしているのかへ進む。
              */}
             <div className='section-stack py-24'>
-                <Activities />
-
                 <Suspense fallback={null}>
                     <SecondOrigin />
                 </Suspense>
+
+                <Activities />
 
                 <MakeHouse />
 

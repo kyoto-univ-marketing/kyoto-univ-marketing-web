@@ -18,7 +18,13 @@ export const buildOrganizationJson = (siteSettings: SiteSettings, memberCount?: 
         email: siteSettings.mail_address,
         sameAs: [siteSettings.instagram_url],
         description: buildTopPageDescription(memberCount),
-        address: [], // TOOD: オフィスができたら住所を追加する
+        address: {
+            '@type': 'PostalAddress',
+            addressCountry: 'JP',
+            addressRegion: '京都府',
+            addressLocality: '京都市左京区',
+            streetAddress: '田中大堰町13',
+        },
         contactPoint: {
             '@type': 'ContactPoint',
             email: siteSettings.mail_address,

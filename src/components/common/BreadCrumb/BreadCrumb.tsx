@@ -48,7 +48,9 @@ export const BreadCrumb: FC<BreadCrumbProps> = ({ items, ...props }) => {
               帯が重なると入口が二段になって見えるため。
               現在地は控えめでよいので、小さな文字で本文と同じ左端に揃える。
             */}
-            <Breadcrumb className='mx-auto w-full max-w-(--breakpoint-lg) px-6 py-4 md:px-8'>
+            {/* 本文の枠には合わせず、ヘッダーと同じく画面の端から置く。
+                本文幅に揃えると、広い画面で内側に寄りすぎて浮いて見えるため */}
+            <Breadcrumb className='w-full px-4 py-4 sm:px-6'>
                 <BreadcrumbList className='gap-2 text-gray-500 text-xs sm:gap-3'>
                     {items.map((item, index) => (
                         <Fragment key={index}>
