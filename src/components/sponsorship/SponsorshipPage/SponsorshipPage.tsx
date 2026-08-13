@@ -18,18 +18,21 @@ import { pageLinkObject } from '@/constants/pageLinks'
 const offers = [
     {
         en: 'Presence',
-        title: '一年を通じた、日常のなかの接点',
+        title: '発信',
+        scope: '日常',
         body: '部員が毎日使うチャットへの参加・発信、活動拠点への掲示など。一年を通じて、学生の日常のなかに貴社の名前がある状態を創ります。',
     },
     {
-        en: 'Collaboration',
-        title: '共創イベントの開催',
-        body: '合宿のご企画、社員の方との座談会、事業課題を題材にしたワークショップなど。学生と深く関わる機会を、運営は私たちが担って共同開催します。',
+        en: 'Connection',
+        title: '交流',
+        scope: '単発イベント',
+        body: '社員の方との座談会、事業課題を題材にしたワークショップなど。京大生が集まる場を、運営は私たちが担って開催します。年度末の成果発表会にもご参加いただけます。',
     },
     {
         en: 'Involvement',
-        title: '貴社起点の企画とその実行',
-        body: '学生を知るだけでなく、貴社のテーマを持ち込めます。京大生チームが実際に動き、一年をかけて形にしていきます。',
+        title: '参画',
+        scope: '共創企画',
+        body: '合宿のご企画や、貴社の課題をテーマにした継続プロジェクト。京大生チームが実際に動き、一年をかけて形にしていきます。',
     },
 ]
 
@@ -116,11 +119,16 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                         <SectionHeading en='What We Offer' index={1}>
                             ご提供するもの
                         </SectionHeading>
+                        {/* 日常 → 単発イベント → 共創企画 の順。関わりが深くなる順に並べる */}
                         <div className='grid gap-10 md:grid-cols-3 md:gap-x-10'>
-                            {offers.map(({ en, title, body }, i) => (
-                                <Reveal className='space-y-3 border-gray-200 border-t pt-8' delay={i * 80} key={title}>
+                            {offers.map(({ en, title, scope, body }, i) => (
+                                <Reveal className='space-y-4 border-gray-200 border-t pt-8' delay={i * 80} key={title}>
                                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>{en}</p>
-                                    <h3 className='font-title text-lg leading-snug'>{title}</h3>
+                                    <h3 className='font-title text-[clamp(1.75rem,1.4rem+1vw,2.25rem)] leading-none'>
+                                        {title}
+                                    </h3>
+                                    <span aria-hidden className='block h-px w-8 bg-brand-accent' />
+                                    <p className='text-gray-600 text-sm tracking-[0.15em]'>{scope}</p>
                                     <p className='text-gray-700 text-sm leading-relaxed'>{body}</p>
                                 </Reveal>
                             ))}

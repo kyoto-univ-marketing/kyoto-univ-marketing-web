@@ -20,11 +20,11 @@ export const ContactSuccessPage: FC<ContactSuccessPageProps> = async () => {
                     { label: '送信完了', href: `${pageLinkObject.CONTACT.href}/success` },
                 ]}
             />
-            <PageTitle>送信が完了しました</PageTitle>
-            <div className='mx-auto mb-12 max-w-(--breakpoint-sm) px-8'>
-                <p className='whitespace-pre-wrap leading-10'>{message}</p>
-            </div>
-            <div className='mb-12'>
+            <PageTitle band en='Thank You'>
+                送信が完了しました
+            </PageTitle>
+            <div className='mx-auto max-w-(--breakpoint-md) space-y-12 px-6 pb-24 md:px-8'>
+                <p className='whitespace-pre-wrap text-gray-700'>{message}</p>
                 <RedirectCountDown duration={10} />
             </div>
         </>

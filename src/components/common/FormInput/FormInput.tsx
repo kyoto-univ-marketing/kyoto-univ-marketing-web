@@ -27,9 +27,13 @@ export const FormInput = <
             render={({ field }) => (
                 <FormItem>
                     {label && (
-                        <FormLabel>
+                        <FormLabel className='font-title text-base'>
                             {label}
-                            {props.rules?.required && <span className='ml-1 text-red-500'>*</span>}
+                            {props.rules?.required && (
+                                <span className='ml-2 font-en text-brand-accent text-xs tracking-widest'>
+                                    REQUIRED
+                                </span>
+                            )}
                         </FormLabel>
                     )}
                     <FormControl>

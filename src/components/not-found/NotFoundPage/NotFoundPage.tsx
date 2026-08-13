@@ -11,26 +11,25 @@ export interface NotFoundPageProps {}
 export const NotFoundPage: FC<NotFoundPageProps> = ({ ...props }) => {
     return (
         <>
-            <PageTitle asChild>
-                <h1 className='grid text-center'>
-                    <span className='text-5xl'>404</span>
-                    <span className='text-lg'>Not Found</span>
-                </h1>
+            <PageTitle band en='Not Found'>
+                ページが見つかりません
             </PageTitle>
-            <div className='mb-16 px-8'>
-                <p>お探しのページは見つかりませんでした。URLが正しいかご確認ください。</p>
-            </div>
-            <div className='mb-16 grid gap-4 px-8'>
-                <Button asChild>
-                    <NextLink href='/'>
-                        <Home className='mr-2 size-4' />
-                        トップページへ
-                    </NextLink>
-                </Button>
-                <BackButton>
-                    <CornerUpLeft className='mr-2 size-4' />
-                    前のページに戻る
-                </BackButton>
+            <div className='mx-auto max-w-(--breakpoint-md) space-y-10 px-6 pb-24 md:px-8'>
+                <p className='text-gray-700'>
+                    お探しのページは見つかりませんでした。アドレスが正しいかご確認ください。
+                </p>
+                <div className='flex flex-col gap-4 sm:flex-row'>
+                    <Button asChild className='px-8 py-5'>
+                        <NextLink href='/'>
+                            <Home />
+                            トップページへ
+                        </NextLink>
+                    </Button>
+                    <BackButton className='px-8 py-5' variant='outline'>
+                        <CornerUpLeft />
+                        前のページに戻る
+                    </BackButton>
+                </div>
             </div>
         </>
     )

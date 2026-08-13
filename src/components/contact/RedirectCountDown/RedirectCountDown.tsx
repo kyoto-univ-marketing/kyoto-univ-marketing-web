@@ -41,8 +41,14 @@ export const RedirectCountDown: FC<RedirectCountDownProps> = ({ duration }) => {
     }, [isCountStopped, router])
 
     return (
-        <div className='flex items-center justify-center px-8'>
-            {isCountStopped ? <Loader className='animate-spin' /> : <p>{current}秒後にトップページに遷移します</p>}
+        <div className='flex items-center justify-center gap-3 border-gray-200 border-t pt-8 text-gray-600 text-sm'>
+            {isCountStopped ? (
+                <Loader className='size-4 animate-spin' />
+            ) : (
+                <p>
+                    <span className='font-en tabular-nums'>{current}</span> 秒後にトップページへ移動します
+                </p>
+            )}
         </div>
     )
 }

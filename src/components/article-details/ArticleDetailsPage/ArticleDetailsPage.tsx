@@ -43,7 +43,7 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title
                 </div>
                 <div className='mt-16 border-gray-200 border-t pt-8'>
                     <BackButton className='h-fit p-0 hover:bg-transparent' variant='ghost'>
-                        <ArrowLeft size='1.25rem' />
+                        <ArrowLeft />
                         戻る
                     </BackButton>
                 </div>
