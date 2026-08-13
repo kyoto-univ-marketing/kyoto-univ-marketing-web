@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { FounderPage } from '@/components/about/FounderPage/FounderPage'
 import { PersonJsonLD } from '@/components/common/JsonLD/PersonJsonLD'
 import { ProfilePageJsonLD } from '@/components/common/JsonLD/ProfilePageJsonLD'
+import { aboutFounderPage } from '@/constants/aboutPages'
 import { FOUNDER_PAGE_DESCRIPTION } from '@/constants/description'
 
 /**
@@ -15,6 +16,9 @@ export const metadata: Metadata = {
     title: { absolute: '設立の経緯｜創設者・初代代表 迫田周大（さこだしゅうた）｜京大マーケティング研究所' },
     description: FOUNDER_PAGE_DESCRIPTION,
     keywords: ['迫田周大', 'さこだしゅうた', '京大マーケティング研究所', '創設者', '京都大学', 'マーケティング'],
+    // 氏名の検索でどのURLを出すかを一本に定める。
+    // 団体概要から中身を移した経緯があるので、ここを正として明示しておく
+    alternates: { canonical: aboutFounderPage.href },
 }
 
 export default function Page() {
