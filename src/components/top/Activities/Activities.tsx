@@ -7,8 +7,7 @@ import { Reveal } from '@/components/common/Reveal/Reveal'
 import { Button } from '@/components/ui/button'
 import { pageLinkObject } from '@/constants/pageLinks'
 
-import img3884 from '../../../../public/page-images/top/IMG_3884.webp'
-import img3893 from '../../../../public/page-images/top/IMG_3893.webp'
+import presentation from '../../../../public/page-images/top/presentation.webp'
 
 /**
  * トップに置く活動の要約。
@@ -32,9 +31,10 @@ export const Activities: FC = () => (
             <h2>活動概要</h2>
         </PageTitle>
         <div className='grid items-center gap-10 md:grid-cols-2 md:gap-14'>
-            <Reveal className='grid gap-4' mask>
-                <PageImage alt='勉強会の様子' containerClassName='w-full aspect-64/27' src={img3884} />
-                <PageImage alt='勉強会の教室' containerClassName='w-2/3 justify-self-end' src={img3893} />
+            {/* 代表以外の部員が写り込まない写真だけをそのまま載せる。
+                部員が写っているものは、ぼかして紺の帯の背景に使う */}
+            <Reveal mask>
+                <PageImage alt='成果発表会で登壇する代表' containerClassName='w-full' src={presentation} />
             </Reveal>
             <div>
                 <dl className='divide-y divide-gray-200 border-gray-200 border-t border-b'>
