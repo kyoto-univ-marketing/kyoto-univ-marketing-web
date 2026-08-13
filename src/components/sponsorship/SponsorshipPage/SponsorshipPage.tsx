@@ -128,24 +128,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     </section>
 
                     <section>
-                        <SectionHeading en='Social Value' index={2}>
-                            協賛による社会的価値
-                        </SectionHeading>
-                        <div className='mx-auto max-w-2xl space-y-6 text-gray-700'>
-                            <p>
-                                「次代を担う人材の育成に投資している」という事実は、
-                                人的資本経営やCSRの文脈で発信していただける物語になります。
-                                その発信のお手伝いをすることも可能です。
-                            </p>
-                            <p>
-                                いただいた協賛金は、活動拠点の維持費・合宿費・活動支援費に使われ、
-                                使途は年次レポートですべてご報告します。
-                            </p>
-                        </div>
-                    </section>
-
-                    <section>
-                        <SectionHeading en='Calendar' index={3}>
+                        <SectionHeading en='Calendar' index={2}>
                             年間の流れ
                         </SectionHeading>
                         {/* PCは2列。6項目を縦に並べると空白が目立つ */}
@@ -164,7 +147,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                     {/* 金額を出さない代わりに、問い合わせたあと何が起きるかを示しておく。
                         次の展開が見えないと、条件不明のまま連絡するのは踏み出しにくい */}
                     <section>
-                        <SectionHeading en='Process' index={4}>
+                        <SectionHeading en='Process' index={3}>
                             ご提案までの流れ
                         </SectionHeading>
                         <ol className='grid gap-8 md:grid-cols-3 md:gap-x-10'>
