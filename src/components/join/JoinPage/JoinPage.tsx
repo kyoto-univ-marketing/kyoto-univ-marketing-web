@@ -11,6 +11,7 @@ import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 import { SectionHeading } from '@/components/common/SectionHeading/SectionHeading'
 import { Button } from '@/components/ui/button'
+import { aboutFounderPage, aboutMembersPage } from '@/constants/aboutPages'
 import { pageLinkObject } from '@/constants/pageLinks'
 import { getSiteSettings } from '@/lib/microcms'
 
@@ -64,11 +65,33 @@ export const JoinPage: FC<JoinPageProps> = async () => {
 
                 <MakeHouseBand />
 
-                <div className='mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
+                {/* 「なぜ」を読んでから「どうやって」に進む順にする */}
+                <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
+                    {/* 創設者ページと歴代代表ページには、入会を考えている方へのことばが載っている。
+                        ここから読みに行けるようにしておく */}
+                    <Reveal>
+                        <SectionHeading en='Message' index={1}>
+                            代表からのことば
+                        </SectionHeading>
+                        <p className='text-gray-700'>
+                            創設者と歴代代表が、入会を考えている方へのことばを書いています。
+                            どんな人がこの場所を創り、続けてきたのかを知ってからのほうが、判断しやすいはずです。
+                        </p>
+                        <div className='mt-8 flex flex-col gap-4 sm:flex-row'>
+                            <Button asChild className='px-8 py-5'>
+                                <NextLink href={aboutFounderPage.href}>{aboutFounderPage.text}を読む</NextLink>
+                            </Button>
+                            <Button asChild className='px-8 py-5' variant='outline'>
+                                <NextLink href={aboutMembersPage.href}>{aboutMembersPage.text}を見る</NextLink>
+                            </Button>
+                        </div>
+                    </Reveal>
+
                     {/* 入会の可否は時期の運営状況で変わるため、断定せずに相談してもらう形にする */}
                     <Reveal>
-                        {/* このページの章はここだけなので、番号は振らない */}
-                        <SectionHeading en='How to Join'>入会について</SectionHeading>
+                        <SectionHeading en='How to Join' index={2}>
+                            入会について
+                        </SectionHeading>
                         <div className='space-y-4 text-gray-700'>
                             <p>
                                 学年・学部は問いません。まずはご連絡いただければ、活動の見学や新歓の予定をご案内します。
