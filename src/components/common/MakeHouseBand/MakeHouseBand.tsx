@@ -3,6 +3,7 @@ import { FC } from 'react'
 
 import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import MakeHouseImg from '@/../public/page-images/makehouse.webp'
+import { HeadingKeyword, HeadingSub } from '@/components/common/HeadingParts/HeadingParts'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 
 /**
@@ -38,9 +39,10 @@ export const MakeHouseBand: FC = () => (
             <div className='space-y-6'>
                 <div className='space-y-4'>
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.35em]'>Our Base</p>
+                    {/* 見出しの組み方はトップのマーケハウスの節と揃える */}
                     <h2 className='font-title text-title leading-tight'>
-                        <span className='inline-block whitespace-nowrap'>活動拠点：</span>
-                        <span className='inline-block whitespace-nowrap'>マーケハウス</span>
+                        <HeadingSub onDark>活動拠点：</HeadingSub>
+                        <HeadingKeyword onDark>マーケハウス</HeadingKeyword>
                     </h2>
                     <span aria-hidden className='block h-px w-10 bg-brand-accent' />
                 </div>

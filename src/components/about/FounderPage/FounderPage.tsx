@@ -30,7 +30,7 @@ export const FounderPage: FC = () => {
      * 写真と並べるのは「思考の関節を一度外して…」の段落（掛け軸の内容と対応している）。
      * lead に段落を足し引きしたら、この番号も合わせて直すこと。
      */
-    const BESIDE_PHOTO_INDEX = 3
+    const BESIDE_PHOTO_INDEX = 4
     const [beforePhoto, besidePhoto, afterPhoto] = [
         lead.slice(0, BESIDE_PHOTO_INDEX),
         lead[BESIDE_PHOTO_INDEX],
@@ -51,10 +51,19 @@ export const FounderPage: FC = () => {
             </PageTitle>
 
             <div className='mx-auto max-w-(--breakpoint-md) px-6 md:px-8'>
-                <Reveal className='text-gray-700'>
+                <Reveal className='space-y-4 text-gray-700'>
                     <p>
-                        京大マーケティング研究所は、2024年3月に京都大学の学生団体として設立しました。
-                        2026年には一般社団法人マーケティング研究所として法人化し、活動の基盤を整えています。
+                        京大マーケティング研究所は、2024年3月に京都大学の学生団体として設立。
+                        2026年には、活動の拡大に伴い、一般社団法人マーケティング研究所として法人化。
+                        企業様や大学関係者の皆様からご協力を賜りながら、毎年新たな代表の下で、活動の基盤を整えている。
+                    </p>
+                    <p>
+                        <NextLink
+                            className='text-sm underline underline-offset-4 hover:text-primary'
+                            href={aboutMembersPage.href}
+                        >
+                            {aboutMembersPage.text}はこちら
+                        </NextLink>
                     </p>
                 </Reveal>
 
