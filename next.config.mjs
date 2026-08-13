@@ -4,6 +4,16 @@ const nextConfig = {
     experimental: {
         optimizeCss: true,
     },
+    /**
+     * 改修で無くなったページの受け皿。
+     * 検索結果に残っているURLをそのまま404にすると、そこまでの評価を捨てることになる。
+     */
+    async redirects() {
+        return [
+            // リンク集は廃止し、SNSはフッターに集約した
+            { source: '/links', destination: '/', permanent: true },
+        ]
+    },
     images: {
         remotePatterns: [
             { hostname: 'images.microcms-assets.io', pathname: '/assets/**' },

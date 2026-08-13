@@ -39,7 +39,7 @@ const regulars = [
 
 export const RegularActivities: FC = () => (
     <section>
-        <PageTitle asChild en='Weekly'>
+        <PageTitle asChild en='Regularly'>
             <h2>ふだんの活動</h2>
         </PageTitle>
         {/* PCでは2列に並べる。1列だと画面の右半分が空いたまま縦に長くなるため */}
