@@ -38,20 +38,24 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                     <Reveal className='space-y-8'>
                         {/* 新歓で使っているコピー。学生に向けるページなので、ここだけこの言い回しにする
                             （トップの「セカンド原体験とは」は別の一文）。
-                            新歓のビジュアル（黒地・明朝・ロゴの透かし）に合わせて組んでいる。
                             画像で入れる手もあるが、手元の原寸が 850px しかなく、
-                            拡大すると文字がにじむため、文字とロゴを重ねて再現している */}
-                        <div className='relative isolate py-2'>
+                            拡大すると文字がにじむため、文字とロゴを重ねて組んでいる。
+
+                            縦組みにして、ロゴを大きく重ねる。ここだけは読ませる文章ではなく
+                            一枚の絵として見せたいので、本文の組み方（横組み・両端揃え）から外す。
+                            高さは em で指定してあるので、文字サイズを変えれば追随する
+                            （10.5em ＝ 長いほうの「終わりたくない人へ」9文字ぶんの余裕） */}
+                        <div className='relative isolate flex justify-center overflow-hidden py-8 md:py-12'>
                             <Image
                                 alt=''
                                 aria-hidden
-                                className='-z-10 -translate-y-1/2 pointer-events-none absolute top-1/2 right-0 w-40 opacity-[0.07] grayscale md:w-56'
-                                sizes='224px'
+                                className='-z-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none absolute top-1/2 left-1/2 w-[19rem] max-w-none opacity-[0.12] sm:w-[26rem] md:w-[30rem]'
+                                sizes='480px'
                                 src={LogoImg}
                             />
-                            <p className='font-title text-title leading-[1.8] tracking-[0.06em]'>
+                            <p className='h-[10.5em] font-title text-[clamp(1.85rem,1.2rem+2.2vw,2.75rem)] leading-[2.1] tracking-[0.1em] [writing-mode:vertical-rl]'>
                                 <span className='block'>「京大卒」で</span>
-                                <span className='block pl-[1em] md:pl-[2em]'>終わりたくない人へ</span>
+                                <span className='block'>終わりたくない人へ</span>
                             </p>
                         </div>
                         <p className='text-justify text-gray-700'>
