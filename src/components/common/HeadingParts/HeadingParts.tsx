@@ -13,7 +13,12 @@ export const HeadingSub: FC<{ children: ReactNode }> = ({ children }) => (
     <span className='text-[0.6em] text-gray-500'>{children}</span>
 )
 
-/** 「セカンド原体験」「マーケハウス」など、覚えて帰ってほしい言葉 */
+/**
+ * 「セカンド原体験」「マーケハウス」など、覚えて帰ってほしい言葉。
+ *
+ * 色は紺（本文は濃いグレー）。金ほど目立たないが、ヒーローや帯と同じ色なので
+ * 「この団体の言葉だ」という手がかりになる。
+ */
 export const HeadingKeyword: FC<{ children: ReactNode }> = ({ children }) => (
-    <span className='inline-block text-[1.1em] tracking-[0.04em] whitespace-nowrap'>{children}</span>
+    <span className='inline-block text-[1.1em] text-primary tracking-[0.04em] whitespace-nowrap'>{children}</span>
 )
