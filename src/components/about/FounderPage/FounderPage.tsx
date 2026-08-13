@@ -99,7 +99,10 @@ export const FounderPage: FC = () => {
              * 「思考の関節を外して生き方を見つめ直す」段落に掛け軸を並べる。
              * 飾りではなく、この一段の内容そのものを写した写真として置いている。
              */}
-            <div className='mt-14 bg-background-secondary py-14'>
+            {/* 背景色は付けない。灰色はサイトで他に使っていない色で浮くうえ、
+                紺にすると本文が白抜きになり、明朝では読みづらくなる。
+                区切りは細い罫線で示す（サイト全体で使っている言葉づかい） */}
+            <div className='mt-14 border-gray-200 border-y py-14'>
                 <Reveal className='mx-auto grid max-w-(--breakpoint-md) items-center gap-10 px-6 sm:grid-cols-[1fr_1.4fr] md:px-8'>
                     <Image
                         {...KakejikuImg}
