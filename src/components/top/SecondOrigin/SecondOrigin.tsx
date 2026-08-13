@@ -17,7 +17,9 @@ import { pageLinkObject } from '@/constants/pageLinks'
 export const SecondOrigin: FC = () => (
     <section className='mx-auto max-w-(--breakpoint-md) px-6 md:px-8'>
         <PageTitle asChild en='Second Origin Experience'>
-            <h2>セカンド原体験とは</h2>
+            <h2>
+                <Keyword>セカンド原体験</Keyword>とは
+            </h2>
         </PageTitle>
         <Reveal className='space-y-8 text-center'>
             <p className='text-balance font-title text-heading leading-relaxed'>
@@ -30,8 +32,7 @@ export const SecondOrigin: FC = () => (
                     多くの人にとって、それは大学に入るまでに起きています。
                 </p>
                 <p>
-                    私たちは、学生時代にもうひとつの原体験——<Keyword>「セカンド原体験」</Keyword>
-                    ——を創ることを目指しています。
+                    私たちは、学生時代にもうひとつの原体験——「セカンド原体験」——を創ることを目指しています。
                     自分の手が社会に届いた瞬間、想像もしなかったキャリアを歩んでいる人との出会い、
                     仲間と激しく議論をかわした時間。
                     卒業した後の生き方を大きく変える「セカンド原体験」を、
