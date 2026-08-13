@@ -20,10 +20,26 @@ import { pageLinkObject } from '@/constants/pageLinks'
  * 数を書かない（古い数字が残るほうが害が大きい）。
  */
 const activities = [
-    { name: '勉強会', frequency: '週3回', body: '同じ内容を週3回。どの曜日が空いていても参加できます。' },
-    { name: 'ゼミ', frequency: '3本', body: '投資・企業分析／自己探求とキャリア設計／起業。' },
-    { name: '合宿', frequency: '年3回', body: '郊外に泊まり、チームでワークをします。' },
-    { name: 'プロジェクト', frequency: '通年', body: '企業や地域と組んで、実際に手を動かします。' },
+    {
+        name: '勉強会',
+        frequency: '定期',
+        body: '毎週複数回実施。参加しやすい曜日に参加できます。大学から徒歩圏内のマーケハウスで実施。',
+    },
+    {
+        name: 'ゼミ',
+        frequency: '3本',
+        body: '自己探求とキャリア設計／起業・事業創出／投資・企業分析',
+    },
+    {
+        name: '合宿',
+        frequency: '年3回',
+        body: '協賛企業様とゼロから企画。郊外に泊まり、複数日に渡ってチームでワークをします。',
+    },
+    {
+        name: 'プロジェクト',
+        frequency: '通年',
+        body: '学生だけで行うオリジナルのプロジェクトや企業様との共創プロジェクト。手を挙げたら参加できる環境です。',
+    },
 ]
 
 export const Activities: FC = () => (

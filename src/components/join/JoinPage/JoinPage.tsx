@@ -51,7 +51,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                         </Suspense>
                         <p className='mx-auto max-w-2xl text-center text-gray-700 text-sm'>
                             文系・理系の垣根を越えた京大生が在籍しています。
-                            週3回の勉強会、3つのゼミ、実践のプロジェクト、年3回の合宿。
+                            毎週複数回の勉強会、3本のゼミ、実践のプロジェクト、年3回の合宿。
                             参加はいずれも任意で、学業やほかの活動と両立している部員がほとんどです。
                         </p>
                         <div className='flex justify-center'>
