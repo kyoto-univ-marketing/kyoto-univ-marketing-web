@@ -40,6 +40,15 @@ export const scienceRatio = [
 /** 理系学部の割合を言葉で言うときの表現 */
 export const SCIENCE_FACULTY_SHARE = '約3割'
 
+/** 活動拠点マーケハウスの住所。法人登記の所在地と同じ */
+export const MAKE_HOUSE_ADDRESS = '京都府京都市左京区田中大堰町13'
+
+/**
+ * 地図の埋め込み先。
+ * output=embed の形式は API キーが要らないので、鍵の管理が発生しない。
+ */
+export const MAP_EMBED_SRC = `https://maps.google.com/maps?q=${encodeURIComponent(MAKE_HOUSE_ADDRESS)}&z=16&output=embed`
+
 /**
  * OB・OG と現役生の主な進路・内定先。
  *

@@ -5,6 +5,7 @@ import { FaInstagram } from 'react-icons/fa6'
 import FeastImg from '@/../public/page-images/bands/feast.webp'
 import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
+import { Keyword } from '@/components/common/Keyword/Keyword'
 import { MakeHouseBand } from '@/components/common/MakeHouseBand/MakeHouseBand'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
@@ -40,7 +41,7 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                             <span className='inline-block'>最高到達点にしない。</span>
                         </p>
                         <p className='mx-auto max-w-2xl text-gray-700'>
-                            京大マーケティング研究所は、学生時代にもうひとつの原体験——「セカンド原体験」を創る場です。
+                            京大マーケティング研究所は、学生時代にもうひとつの原体験——<Keyword>「セカンド原体験」</Keyword>を創る場です。
                             やりたいことが決まっている人も、まだ探している人も歓迎します。
                         </p>
                     </Reveal>

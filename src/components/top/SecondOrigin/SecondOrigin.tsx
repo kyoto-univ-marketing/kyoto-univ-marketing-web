@@ -1,5 +1,6 @@
 import { FC } from 'react'
 
+import { Keyword } from '@/components/common/Keyword/Keyword'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
@@ -29,7 +30,8 @@ export const SecondOrigin: FC = () => (
                     多くの人にとって、それは大学に入るまでに起きています。
                 </p>
                 <p>
-                    私たちは、学生時代にもうひとつの原体験——「セカンド原体験」——を創ることを目指しています。
+                    私たちは、学生時代にもうひとつの原体験——<Keyword>「セカンド原体験」</Keyword>
+                    ——を創ることを目指しています。
                     自分の手が社会に届いた瞬間、想像もしなかったキャリアを歩んでいる人との出会い、
                     仲間と激しく議論をかわした時間。
                     卒業した後の生き方を大きく変える「セカンド原体験」を、

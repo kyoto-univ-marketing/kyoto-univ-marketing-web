@@ -5,6 +5,7 @@ import DeskImg from '@/../public/page-images/bands/desk.webp'
 import WorkshopImg from '@/../public/page-images/bands/workshop.webp'
 import { CircleStats, CircleStatsSkeleton } from '@/components/about/CircleStats/CircleStats'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
+import { Keyword } from '@/components/common/Keyword/Keyword'
 import { MessageBand } from '@/components/common/MessageBand/MessageBand'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
@@ -114,7 +115,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                             <CircleStats />
                         </Suspense>
                         <p className='mx-auto max-w-2xl text-center text-gray-700 text-sm'>
-                            文系・理系の垣根を越えた学生が、京都大学から徒歩圏の京町家「マーケハウス」に集まっています。
+                            文系・理系の垣根を越えた学生が、京都大学から徒歩圏の京町家<Keyword>「マーケハウス」</Keyword>に集まっています。
                             勉強会やゼミ、実践のプロジェクト、年3回の合宿を通じて、一年をかけて力をつけていきます。
                         </p>
                     </Reveal>

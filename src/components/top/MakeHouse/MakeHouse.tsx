@@ -3,9 +3,11 @@ import { FC } from 'react'
 
 import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import MakeHouseImg from '@/../public/page-images/makehouse.webp'
+import { Keyword } from '@/components/common/Keyword/Keyword'
 import { NextLink } from '@/components/common/NextLink/NextLink'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 import { Button } from '@/components/ui/button'
+import { MAKE_HOUSE_ADDRESS, MAP_EMBED_SRC } from '@/constants/about'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 /**
@@ -54,8 +56,22 @@ export const MakeHouse: FC = () => (
                     </p>
                     <p>
                         OBや経営者、他団体の方が訪ねてくることもあり、日常の延長線上に社会があります。
-                        「行けば誰かがいる」場所があることが、関係の深さを決めています。
+                        <Keyword>「行けば誰かがいる」</Keyword>場所があることが、関係の深さを決めています。
                     </p>
+                </div>
+                {/* 場所が実在することを示す。企業も学生も「どこにあるのか」を必ず気にする */}
+                <div className='space-y-2'>
+                    <div className='aspect-16/9 w-full overflow-hidden border border-gray-200'>
+                        <iframe
+                            allowFullScreen
+                            className='size-full'
+                            loading='lazy'
+                            referrerPolicy='no-referrer-when-downgrade'
+                            src={MAP_EMBED_SRC}
+                            title='マーケハウスの地図'
+                        />
+                    </div>
+                    <p className='text-gray-600 text-xs'>{MAKE_HOUSE_ADDRESS}</p>
                 </div>
                 <Button asChild className='px-8 py-5' variant='outline'>
                     <NextLink href={pageLinkObject.PROJECT.href}>活動内容を見る</NextLink>
