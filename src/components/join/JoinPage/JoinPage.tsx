@@ -35,33 +35,40 @@ export const JoinPage: FC<JoinPageProps> = async () => {
 
             <div className='section-stack pb-24'>
                 <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
-                    <Reveal className='space-y-8'>
-                        {/* 新歓で使っているコピー。学生に向けるページなので、ここだけこの言い回しにする
-                            （トップの「セカンド原体験とは」は別の一文）。
-                            画像で入れる手もあるが、手元の原寸が 850px しかなく、
-                            拡大すると文字がにじむため、文字とロゴを重ねて組んでいる。
+                    {/* 新歓で使っているコピー。学生に向けるページなので、ここだけこの言い回しにする
+                        （トップの「セカンド原体験とは」は別の一文）。
+                        画像で入れる手もあるが、手元の原寸が 850px しかなく、
+                        拡大すると文字がにじむため、文字とロゴを重ねて組んでいる。
 
-                            縦組みにして、ロゴを大きく重ねる。ここだけは読ませる文章ではなく
-                            一枚の絵として見せたいので、本文の組み方（横組み・両端揃え）から外す。
-                            高さは em で指定してあるので、文字サイズを変えれば追随する
-                            （10.5em ＝ 長いほうの「終わりたくない人へ」9文字ぶんの余裕） */}
-                        <div className='relative isolate flex justify-center overflow-hidden py-8 md:py-12'>
+                        縦組みの紺の面と、その左に横組みの本文。
+                        サイト全体の「紺＝言い切る枠／白＝読ませる中身」をそのまま一段に収めている。
+                        縦組みは右から左に読むので、コピーが右・本文が左。
+                        高さは em 指定なので文字サイズを変えれば追随する
+                        （10.5em ＝ 長いほうの「終わりたくない人へ」9文字ぶんの余裕） */}
+                    <Reveal className='grid gap-8 md:grid-cols-[1fr_auto] md:items-center md:gap-12'>
+                        <div className='order-2 space-y-5 md:order-1'>
+                            <span aria-hidden className='block h-px w-10 bg-brand-accent' />
+                            <p className='text-justify text-gray-700'>
+                                京大マーケティング研究所は、学生時代にもうひとつの原体験——「セカンド原体験」を創る場です。
+                                やりたいことが決まっている人も、まだ探している人も歓迎します。
+                            </p>
+                        </div>
+                        <div className='relative isolate order-1 flex items-center justify-center gap-6 overflow-hidden bg-primary px-8 py-10 text-primary-foreground md:order-2'>
+                            {/* ロゴは白抜きにして薄く敷く。紺のまま重ねても地の色に沈んで見えない */}
                             <Image
                                 alt=''
                                 aria-hidden
-                                className='-z-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none absolute top-1/2 left-1/2 w-[19rem] max-w-none opacity-[0.12] sm:w-[26rem] md:w-[30rem]'
-                                sizes='480px'
+                                className='-z-10 -translate-x-1/2 -translate-y-1/2 pointer-events-none absolute top-1/2 left-1/2 w-[22rem] max-w-none opacity-[0.14] brightness-0 invert md:w-[26rem]'
+                                sizes='416px'
                                 src={LogoImg}
                             />
-                            <p className='h-[10.5em] font-title text-[clamp(1.85rem,1.2rem+2.2vw,2.75rem)] leading-[2.1] tracking-[0.1em] [writing-mode:vertical-rl]'>
+                            <p className='h-[10.5em] font-title text-[clamp(1.6rem,1.1rem+1.4vw,2.125rem)] leading-[2.1] tracking-[0.1em] [writing-mode:vertical-rl]'>
                                 <span className='block'>「京大卒」で</span>
                                 <span className='block'>終わりたくない人へ</span>
                             </p>
+                            {/* 縦組みの起点（右側）に沿わせる金の罫。見出し下の罫を縦にしたもの */}
+                            <span aria-hidden className='block h-10 w-px shrink-0 bg-brand-accent' />
                         </div>
-                        <p className='text-justify text-gray-700'>
-                            京大マーケティング研究所は、学生時代にもうひとつの原体験——「セカンド原体験」を創る場です。
-                            やりたいことが決まっている人も、まだ探している人も歓迎します。
-                        </p>
                     </Reveal>
 
                     <Reveal className='space-y-6'>

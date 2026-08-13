@@ -1,7 +1,5 @@
-import Image from 'next/image'
 import { FC } from 'react'
 
-import StudyImg from '@/../public/page-images/projects/study.webp'
 import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 
@@ -11,9 +9,6 @@ import { Reveal } from '@/components/common/Reveal/Reveal'
  *
  * 頻度と説明はトップの「活動概要」と同じ事実で書くこと。
  * 二か所に別々に書くと、片方だけ古くなる。
- *
- * 勉強会の写真は、代表以外の部員の顔が入らない範囲に切り出してある
- * （元写真には左右に他の部員の顔が写っている。切り出す位置を変えるときは要確認）。
  */
 const regulars = [
     {
@@ -47,15 +42,6 @@ export const RegularActivities: FC = () => (
         <PageTitle asChild en='Regularly'>
             <h2>ふだんの活動</h2>
         </PageTitle>
-        <Reveal className='mb-14 space-y-3'>
-            <Image
-                {...StudyImg}
-                alt='マーケハウスでの勉強会。スクリーンに映した資料を見ながら進める'
-                className='aspect-video w-full object-cover'
-                sizes='(max-width: 1024px) 100vw, 1024px'
-            />
-            <p className='text-gray-500 text-xs'>週に複数回ひらいている勉強会。担当を決めて、部員が持ち回りで話す。</p>
-        </Reveal>
         {/* PCでは2列に並べる。1列だと画面の右半分が空いたまま縦に長くなるため */}
         <div className='grid gap-10 sm:grid-cols-2 sm:gap-x-12'>
             {regulars.map(({ en, title, frequency, body }, i) => (
