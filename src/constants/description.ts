@@ -23,6 +23,9 @@ export const ABOUT_PAGE_DESCRIPTION =
 export const FOUNDER_PAGE_DESCRIPTION =
     '迫田周大（さこだしゅうた）は、京大マーケティング研究所の創設者・初代代表です。2024年3月に京都大学の学生団体として設立し、2026年に一般社団法人マーケティング研究所として法人化しました。'
 
+export const ARTICLES_PAGE_DESCRIPTION =
+    '京大マーケティング研究所からのお知らせです。勉強会・ゼミ・合宿・プロジェクトなど、日々の活動の記録を掲載しています。'
+
 export const MEMBERS_PAGE_DESCRIPTION =
     '京大マーケティング研究所の歴代代表をご紹介します。2代目代表の中尾優太、3代目代表の三上透輝。初代代表については設立の経緯のページをご覧ください。'
 

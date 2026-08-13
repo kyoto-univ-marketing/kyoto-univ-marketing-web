@@ -29,11 +29,7 @@ export const FormTextarea = <
                     {label && (
                         <FormLabel className='font-title text-base'>
                             {label}
-                            {props.rules?.required && (
-                                <span className='ml-2 font-en text-brand-accent text-xs tracking-widest'>
-                                    REQUIRED
-                                </span>
-                            )}
+                            {props.rules?.required && <span className='ml-2 text-brand-accent text-xs'>必須</span>}
                         </FormLabel>
                     )}
                     <FormControl>

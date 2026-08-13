@@ -88,7 +88,7 @@ export const ContactForm: FC = ({ ...props }) => {
                 {/* 灰色の箱で囲まない。囲む見た目は押せるものに限る、というサイト全体の決まり */}
                 <form className='space-y-10' onSubmit={form.handleSubmit(() => setDialogOpen(true))}>
                     <p className='border-gray-200 border-b pb-4 text-gray-600 text-sm'>
-                        <span className='font-en text-brand-accent text-xs tracking-widest'>REQUIRED</span>{' '}
+                        <span className='text-brand-accent text-xs'>必須</span>
                         と書かれた項目は必ずご入力ください。
                     </p>
                     {/* ハニーポット: ボット対策のため非表示（人間は入力しない） */}

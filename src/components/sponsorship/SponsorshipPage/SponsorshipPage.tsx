@@ -85,7 +85,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                         </p>
                         {/* 「広告ではない」とは言い切らない。発信の機会も実際にご提供しているため。
                             「ただの広告枠ではない」であれば事実と食い違わない */}
-                        <p className='mx-auto max-w-2xl text-gray-700'>
+                        <p className='mx-auto max-w-2xl text-left text-gray-700'>
                             弊団体の協賛は、ただの広告枠ではありません。
                             京大マーケティング研究所は、次の時代を創ろうとする学生が集まる場です。
                             一年を通じて学生の日常や非日常のイベントに関わっていただきながら、
@@ -113,7 +113,7 @@ export const SponsorshipPage: FC<SponsorshipPageProps> = () => {
                         <Suspense fallback={<CircleStatsSkeleton />}>
                             <CircleStats />
                         </Suspense>
-                        <p className='mx-auto max-w-2xl text-center text-gray-700 text-sm'>
+                        <p className='mx-auto max-w-2xl text-left text-gray-700 text-sm'>
                             文系・理系の垣根を越えた学生が、京都大学から徒歩圏の京町家「マーケハウス」に集まっています。
                             勉強会やゼミ、実践のプロジェクト、年3回の合宿を通じて、一年をかけて力をつけていきます。
                         </p>
