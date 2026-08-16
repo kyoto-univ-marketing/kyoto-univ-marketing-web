@@ -12,8 +12,9 @@ import { FOUNDER_PAGE_DESCRIPTION } from '@/constants/description'
  * 団体概要が個人のページに見えてしまうため、主題が本人であるこのページに移した。
  */
 export const metadata: Metadata = {
-    // ページの題は「設立の経緯」だが、検索で拾わせたいのは氏名なので title は氏名から始める
-    title: { absolute: '設立の経緯｜創設者・初代代表 迫田周大（さこだしゅうた）｜京大マーケティング研究所' },
+    // 題に氏名は入れていないので、title には必ず氏名とふりがなを入れる。
+    // 「創設者」は題に含まれているため肩書きは重ねない
+    title: { absolute: '創設者の言葉｜迫田周大（さこだしゅうた）｜京大マーケティング研究所' },
     description: FOUNDER_PAGE_DESCRIPTION,
     keywords: ['迫田周大', 'さこだしゅうた', '京大マーケティング研究所', '創設者', '京都大学', 'マーケティング'],
     // 氏名の検索でどのURLを出すかを一本に定める。

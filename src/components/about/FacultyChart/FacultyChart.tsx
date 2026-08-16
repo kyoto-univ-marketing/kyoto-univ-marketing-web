@@ -46,9 +46,11 @@ export const FacultyChart: FC = () => (
         {/* 学部の内訳の次に置く。「どんな人がいるか」の次に来るのは「どこへ行くか」なので */}
         <Reveal className='space-y-5'>
             <h3 className='font-title text-lg'>OB・OG、現役生の主な進路・内定先</h3>
-            <ul className='grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-3'>
+            {/* モバイルでも2列にする。1列だと12項目が縦に並び、
+                この節だけで画面数枚分の高さになってしまうため */}
+            <ul className='grid grid-cols-2 gap-x-5 gap-y-3 sm:gap-x-8 lg:grid-cols-3'>
                 {careerPaths.map((path) => (
-                    <li className='border-gray-200 border-t pt-3 text-gray-700 text-sm' key={path}>
+                    <li className='border-gray-200 border-t pt-3 text-gray-700 text-sm leading-snug' key={path}>
                         {path}
                     </li>
                 ))}

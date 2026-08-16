@@ -29,7 +29,7 @@ export const founderPersonJson = {
     '@id': FOUNDER_ID,
     name: '迫田周大',
     alternateName: ['さこだしゅうた', 'Shuta Sakoda'],
-    jobTitle: '創設者・初代代表',
+    jobTitle: '創設者',
     description: FOUNDER_PAGE_DESCRIPTION,
     url: `${profile.homepageUrl}${aboutFounderPage.href}`,
     image: `${profile.homepageUrl}${founder.image.src}`,

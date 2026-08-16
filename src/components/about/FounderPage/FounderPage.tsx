@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { FC } from 'react'
+import { FC, Fragment } from 'react'
 
 import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
@@ -12,30 +12,21 @@ import { founder } from '@/constants/members'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 /**
- * 設立の経緯。「迫田周大」で検索した人が着地するページ。
+ * 創設者の言葉。「迫田周大」で検索した人が着地するページ。
  *
- * 題は「設立の経緯」だが、中身の主題は創設者本人。
+ * 題に氏名は入れていないが、中身の主題は本人。
  * 氏名・ふりがな・役割名は h2 と本文に必ず残すこと（title と構造化データも同様）。
  * ここが消えると、検索で拾われる手がかりがサイトから無くなる。
  *
  * 歴代代表ページは2代目からにしている。初代の話はこのページが担う。
  *
- * 長い本文は、途中に写真つきの一段を挟んで区切る。
- * 段落ごとに背景を交互に替える形も試したが、縞模様に見えて落ち着かなかった。
+ * 本文は長いが、見出しは立てない。本人の語りなので、章立てにすると報告書の口調になる。
+ * 代わりに、要になる二つの段落を紺の帯にして、そこで区切っている。
+ * 見出しを置かないおかげで h2 は氏名だけになり、検索での手がかりも濁らない。
+ * 本文の構成は constants/members.ts 側にある。
  */
 export const FounderPage: FC = () => {
-    const { role, name, reading, faculty, enrolledYear, image, catchphrase, lead, message } = founder
-    /*
-     * 前半・写真と並べる一段・後半に分ける。
-     * 写真と並べるのは「思考の関節を一度外して…」の段落（掛け軸の内容と対応している）。
-     * lead に段落を足し引きしたら、この番号も合わせて直すこと。
-     */
-    const BESIDE_PHOTO_INDEX = 4
-    const [beforePhoto, besidePhoto, afterPhoto] = [
-        lead.slice(0, BESIDE_PHOTO_INDEX),
-        lead[BESIDE_PHOTO_INDEX],
-        lead.slice(BESIDE_PHOTO_INDEX + 1),
-    ]
+    const { role, name, reading, faculty, enrolledYear, image, catchphrase, story, message } = founder
 
     return (
         <>
@@ -94,45 +85,51 @@ export const FounderPage: FC = () => {
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>In a Word</p>
                     <p className='font-title text-heading leading-relaxed'>「{catchphrase}」</p>
                 </div>
-
-                <div className='mt-10 space-y-6 text-justify text-gray-700'>
-                    {beforePhoto.map((line) => (
-                        <Reveal key={line}>
-                            <p>{line}</p>
-                        </Reveal>
-                    ))}
-                </div>
             </div>
 
             {/*
-             * 「思考の関節を外して生き方を見つめ直す」段落に掛け軸を並べる。
-             * 飾りではなく、この一段の内容そのものを写した写真として置いている。
+             * 本文と帯を順に並べる。
+             * 帯は字を大きくしない。地の色が変わるだけで十分に目が留まるし、
+             * 大きくすると本文との落差が出て、語りの調子が途切れる。
              */}
-            {/* 背景色は付けない。灰色はサイトで他に使っていない色で浮くうえ、
-                紺にすると本文が白抜きになり、明朝では読みづらくなる。
-                区切りは細い罫線で示す（サイト全体で使っている言葉づかい） */}
-            <div className='mt-14 border-gray-200 border-y py-14'>
-                <Reveal className='mx-auto grid max-w-(--breakpoint-md) items-center gap-10 px-6 sm:grid-cols-[1fr_1.4fr] md:px-8'>
-                    <Image
-                        {...KakejikuImg}
-                        alt='マーケハウスに掛かる掛け軸'
-                        className='w-full object-cover'
-                        sizes='(max-width: 640px) 100vw, 260px'
-                    />
-                    <p className='text-justify text-gray-700'>{besidePhoto}</p>
-                </Reveal>
-            </div>
+            {story.map((block) =>
+                block.kind === 'text' ? (
+                    <div
+                        className='mx-auto mt-14 max-w-(--breakpoint-md) space-y-6 px-6 text-justify text-gray-700 md:mt-16 md:px-8'
+                        key={block.body[0]}
+                    >
+                        {block.body.map((line) => (
+                            <Reveal key={line}>
+                                <p>{line}</p>
+                            </Reveal>
+                        ))}
+                    </div>
+                ) : (
+                    <Reveal
+                        className='mt-14 bg-primary py-16 text-primary-foreground md:mt-16 md:py-20'
+                        key={block.text}
+                    >
+                        {block.withKakejiku ? (
+                            <div className='mx-auto grid max-w-(--breakpoint-md) items-center gap-10 px-6 sm:grid-cols-[1fr_1.4fr] md:px-8'>
+                                <Image
+                                    {...KakejikuImg}
+                                    alt='マーケハウスに掛かる掛け軸'
+                                    className='w-full object-cover'
+                                    sizes='(max-width: 640px) 100vw, 260px'
+                                />
+                                <p className='text-justify leading-loose'>{block.text}</p>
+                            </div>
+                        ) : (
+                            <p className='mx-auto max-w-(--breakpoint-md) px-6 text-justify leading-loose md:px-8'>
+                                {block.text}
+                            </p>
+                        )}
+                    </Reveal>
+                ),
+            )}
 
             <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
-                <div className='mt-14 space-y-6 text-justify text-gray-700'>
-                    {afterPhoto.map((line) => (
-                        <Reveal key={line}>
-                            <p>{line}</p>
-                        </Reveal>
-                    ))}
-                </div>
-
-                <Reveal className='mt-16 space-y-4 border-gray-200 border-l-2 pl-6'>
+                <Reveal className='mt-20 space-y-4 border-gray-200 border-l-2 pl-6'>
                     <p className='font-en text-brand-accent text-xs uppercase tracking-[0.3em]'>To Candidates</p>
                     <p className='font-title text-lg'>入会を考えている方へ</p>
                     <div className='space-y-4 text-justify text-gray-700'>
