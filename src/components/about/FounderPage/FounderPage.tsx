@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { FC, Fragment } from 'react'
 
+import LogoMarkWhiteImg from '@/../public/logo-mark-white.png'
 import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { NextLink } from '@/components/common/NextLink/NextLink'
@@ -108,11 +109,28 @@ export const FounderPage: FC = () => {
                 ) : (
                     <Reveal
                         className={cn(
-                            'mt-14 bg-primary py-16 text-primary-foreground md:mt-16 md:py-20',
-                            block.withStars && 'star-field',
+                            'relative isolate mt-14 bg-primary py-16 text-primary-foreground md:mt-16 md:py-20',
+                            block.withLogo && 'overflow-hidden',
                         )}
                         key={block.text}
                     >
+                        {/*
+                         * 帯の地に団体のロゴを大きく透かす。
+                         * 本文は中央の一列に収まるので、その左右が空く。そこを埋める役目。
+                         *
+                         * logo.png ではなく logo-mark-white.png を使う。
+                         * logo.png は「紺の円＋白のマーク」なので、紺地に置くと円が沈んで模様が消える。
+                         * こちらは白いマークだけを抜いてあり、紺地でも形が残る。
+                         */}
+                        {block.withLogo && (
+                            <Image
+                                alt=''
+                                aria-hidden
+                                className='-z-10 -right-24 -translate-y-1/2 pointer-events-none absolute top-1/2 w-[26rem] max-w-none opacity-[0.12] sm:-right-10 md:w-[34rem] lg:right-4'
+                                sizes='544px'
+                                src={LogoMarkWhiteImg}
+                            />
+                        )}
                         {block.withKakejiku ? (
                             <div className='mx-auto grid max-w-(--breakpoint-md) items-center gap-10 px-6 sm:grid-cols-[1fr_1.4fr] md:px-8'>
                                 <Image

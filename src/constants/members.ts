@@ -36,10 +36,10 @@ export type FounderBlock =
     | { kind: 'text'; body: string[] }
     /**
      * 紺地に白抜きの一段。長い本文の区切りと、要点の強調を兼ねる。
-     * withKakejiku は掛け軸の写真を横に並べる、withStars は地に星を散らす。
+     * withKakejiku は掛け軸の写真を横に並べる、withLogo は地にロゴを大きく透かす。
      * どちらも中身と対応する段だけに付けること。飾りとして使うと帯が軽くなる。
      */
-    | { kind: 'band'; text: string; withKakejiku?: boolean; withStars?: boolean }
+    | { kind: 'band'; text: string; withKakejiku?: boolean; withLogo?: boolean }
 
 export interface Founder extends Omit<Member, 'lead'> {
     story: FounderBlock[]
@@ -86,13 +86,13 @@ const founderStory: FounderBlock[] = [
         kind: 'text',
         body: [
             '人生は長いマラソンです。ただし、ゴールも、通過点も、そこへどう向かうかも、自分で決められるマラソンです。',
-            'ところが多くの人は、就職活動が始まる大学3年生の頃になって、王道と呼ばれ、安定と言われる、数台の乗り物に選択肢を絞ってしまう。',
-            '順番が逆です。先に、自分なりのゴールと通過点を決めてしまえばいい。乗り物は、そこへ向かうために自分に合ったものを選び取ればいい。',
+            'ところが多くの人は、就職活動が始まる大学3年生の頃になって、どこに向かうのかもあやふやなまま、限られた選択肢から乗り物だけを選んでしまいます。',
+            'そうではなく、先に自分なりのゴールと通過点を決めてしまえばいい。乗り物は、そこへ向かうために自分に合ったものを選び取ればいい。',
         ],
     },
     {
         kind: 'band',
-        withStars: true,
+        withLogo: true,
         text: '宇宙に行くために、電車やバスに乗る人はいないでしょう。宇宙に行くにはロケットが要ります。ロケットがなければ、人を集めて自分で創るのです。そしてそのとき、ロケットを創っている時間そのものが、もう幸せなのだと思います。',
     },
     {
