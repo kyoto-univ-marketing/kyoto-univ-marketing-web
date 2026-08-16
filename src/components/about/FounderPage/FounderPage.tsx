@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button'
 import { aboutFounderPage, aboutMembersPage } from '@/constants/aboutPages'
 import { founder } from '@/constants/members'
 import { pageLinkObject } from '@/constants/pageLinks'
+import { cn } from '@/lib/utils'
 
 /**
  * 創設者の言葉。「迫田周大」で検索した人が着地するページ。
@@ -106,7 +107,10 @@ export const FounderPage: FC = () => {
                     </div>
                 ) : (
                     <Reveal
-                        className='mt-14 bg-primary py-16 text-primary-foreground md:mt-16 md:py-20'
+                        className={cn(
+                            'mt-14 bg-primary py-16 text-primary-foreground md:mt-16 md:py-20',
+                            block.withStars && 'star-field',
+                        )}
                         key={block.text}
                     >
                         {block.withKakejiku ? (
