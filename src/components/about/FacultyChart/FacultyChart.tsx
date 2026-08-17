@@ -5,7 +5,7 @@ import { Reveal } from '@/components/common/Reveal/Reveal'
 import { careerPaths, facultyBreakdown, SCIENCE_FACULTY_SHARE, STATS_AS_OF, scienceRatio } from '@/constants/about'
 
 /**
- * 部員の構成。
+ * 会員の構成。
  *
  * 学部の内訳は9区分あり、図の中に文字を置くと1.9%の区分が読めなくなるので、
  * 名前と割合は凡例側に出している。

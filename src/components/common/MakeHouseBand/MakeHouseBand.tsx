@@ -49,7 +49,7 @@ export const MakeHouseBand: FC = () => (
                 <div className='space-y-4 text-primary-foreground/85 text-sm leading-relaxed'>
                     <p>
                         京都大学から徒歩圏にある、2階建ての京町家を借りています。
-                        部員は深夜・早朝を含めていつでも使えます。
+                        会員は深夜・早朝を含めていつでも使えます。
                     </p>
                     <p>
                         OBや経営者、他団体の方が訪ねてくることもあり、日常の延長線上に社会があります。

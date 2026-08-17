@@ -20,7 +20,7 @@ export const AboutSections: FC<AboutSectionsProps> = ({ ...props }) => {
             <p className='text-gray-700'>
                 大学入学までの熱量を「最高到達点」にせず「通過点」にするために、
                 私たちは学生時代にもうひとつの原体験——「セカンド原体験」を創ることを目指しています。
-                その活動を通じて部員が得るものを、三つの言葉で表しています。
+                その活動を通じて会員が得るものを、三つの言葉で表しています。
             </p>
             <div className='pt-8'>
                 <AboutSuspense>

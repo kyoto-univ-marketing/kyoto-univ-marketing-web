@@ -56,7 +56,7 @@ export const RegularActivities: FC = () => (
             ))}
         </div>
         <p className='mt-10 text-center text-gray-600 text-sm'>
-            参加はいずれも任意です。学業やほかの活動と両立している部員がほとんどです。
+            参加はいずれも任意です。学業やほかの活動と両立している会員がほとんどです。
         </p>
     </section>
 )
