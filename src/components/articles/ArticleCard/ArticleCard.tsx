@@ -1,7 +1,7 @@
-import dayjs from 'dayjs'
 import Image from 'next/image'
 import { FC } from 'react'
 
+import { formatArticleDate } from '@/lib/articleDate'
 import { Activity } from '@/lib/microcms'
 
 import { NextLink } from '../../common/NextLink/NextLink'
@@ -37,7 +37,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({
                 <div className='flex min-w-0 flex-1 flex-col gap-3'>
                     {/* 日付とタグは記事の「見出しの前置き」として小さく置く */}
                     <div className='flex flex-wrap items-center gap-3 text-gray-600 text-xs'>
-                        <span className='font-en tracking-widest'>{dayjs(date).format('YYYY.MM.DD')}</span>
+                        <span className='font-en tracking-widest'>{formatArticleDate(date)}</span>
                         <span aria-hidden className='block h-3 w-px bg-gray-300' />
                         <span>{tag}</span>
                     </div>

@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import { ArrowLeft } from 'lucide-react'
 import { FC } from 'react'
 
@@ -6,6 +5,7 @@ import { BackButton } from '@/components/common/BackButton/BackButton'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { ParseHtml } from '@/components/common/ParseHtml/ParseHtml'
 import { pageLinkObject } from '@/constants/pageLinks'
+import { formatArticleDate } from '@/lib/articleDate'
 import { Activity } from '@/lib/microcms'
 
 export interface ArticleDetailsPageProps extends Activity {}
@@ -32,7 +32,7 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title
             <article className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
                 <header className='mt-12 space-y-4 border-gray-200 border-b pb-8 md:mt-16'>
                     <div className='flex flex-wrap items-center gap-3 text-gray-600 text-xs'>
-                        <span className='font-en tracking-widest'>{dayjs(date).format('YYYY.MM.DD')}</span>
+                        <span className='font-en tracking-widest'>{formatArticleDate(date)}</span>
                         <span aria-hidden className='block h-3 w-px bg-gray-300' />
                         <span>{tag}</span>
                     </div>
