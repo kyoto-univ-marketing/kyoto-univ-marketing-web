@@ -21,9 +21,13 @@ const mock = (i: number) =>
         publishedAt: dayjs()
             .subtract(i, 'days')
             .format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
+        // 掲載日。管理画面から編集できる日付で、表示と並び順はこちらを使う
+        date: dayjs()
+            .subtract(i, 'days')
+            .format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
         revisedAt: dayjs().format('YYYY-MM-DDTHH:mm:ss.SSSZ'),
     }) as const satisfies Activity
 
 export const mockActivities = [...new Array(100)]
     .map((_, i) => mock(i))
-    .sort((a, b) => dayjs(b.publishedAt).diff(dayjs(a.publishedAt)))
+    .sort((a, b) => dayjs(b.date).diff(dayjs(a.date)))

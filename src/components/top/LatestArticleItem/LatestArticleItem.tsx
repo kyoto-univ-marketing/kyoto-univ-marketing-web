@@ -8,14 +8,14 @@ import { Badge } from '@/components/ui/badge'
 
 export interface LatestArticle {
     title: string
-    publishedAt: string
+    date: string
     id: string
 }
 
 export interface LatestArticleItemProps extends LatestArticle {}
 
-export const LatestArticleItem: FC<LatestArticleItemProps> = ({ title, publishedAt, id, ...props }) => {
-    const publishedDate = dayjs(publishedAt)
+export const LatestArticleItem: FC<LatestArticleItemProps> = ({ title, date, id, ...props }) => {
+    const publishedDate = dayjs(date)
     const isNew = publishedDate.isAfter(dayjs().subtract(1, 'week'))
     return (
         <tr>

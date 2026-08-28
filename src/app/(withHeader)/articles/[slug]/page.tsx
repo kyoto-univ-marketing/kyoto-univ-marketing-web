@@ -47,7 +47,7 @@ export default async function Page({ params }: { params: Promise<Params> }) {
         '@type': 'Article',
         headline: content.title,
         image: content.thumbnail.url,
-        datePublished: content.publishedAt,
+        datePublished: content.date,
         dateModified: content.updatedAt,
         description: content.description,
         author: [organizationJson],

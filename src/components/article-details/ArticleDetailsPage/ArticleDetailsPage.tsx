@@ -19,7 +19,7 @@ export interface ArticleDetailsPageProps extends Activity {}
  * 白い枠では囲まない（囲む見た目は押せるものに限る、というサイト全体の決まり）。
  * タグは表示のみ。一覧のタグ絞り込みは廃止したので、リンクにはしない。
  */
-export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title, publishedAt, id, tag, ...props }) => {
+export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title, date, id, tag, ...props }) => {
     return (
         <>
             <BreadCrumb
@@ -32,7 +32,7 @@ export const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ content, title
             <article className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
                 <header className='mt-12 space-y-4 border-gray-200 border-b pb-8 md:mt-16'>
                     <div className='flex flex-wrap items-center gap-3 text-gray-600 text-xs'>
-                        <span className='font-en tracking-widest'>{dayjs(publishedAt).format('YYYY.MM.DD')}</span>
+                        <span className='font-en tracking-widest'>{dayjs(date).format('YYYY.MM.DD')}</span>
                         <span aria-hidden className='block h-3 w-px bg-gray-300' />
                         <span>{tag}</span>
                     </div>

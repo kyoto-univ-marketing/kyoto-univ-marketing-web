@@ -8,7 +8,7 @@ const meta = {
     component: ArticleCard,
     tags: ['autodocs'],
     args: {
-        ...pick(mockActivities[0], 'title', 'id', 'thumbnail', 'publishedAt', 'description', 'tag'),
+        ...pick(mockActivities[0], 'title', 'id', 'thumbnail', 'date', 'description', 'tag'),
         thumbnail: {
             url: Logo.src,
         },

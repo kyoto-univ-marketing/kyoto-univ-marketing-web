@@ -33,6 +33,12 @@ export type Activity = Required<MicroCMSDate> &
         thumbnail: MicroCMSImage
         content: string
         tag: [(typeof activityTagList)[number]]
+        /**
+         * 掲載日。管理画面から編集できる日付。
+         * publishedAt（microCMS が自動で付ける公開日時）は後から直せず、
+         * 過去の出来事を今日いれると日付がずれるため、こちらを正とする。
+         */
+        date: string
     }
 
 export type Policy = Required<MicroCMSDate> &
@@ -116,7 +122,7 @@ export const getActivityList = async <Fields extends (keyof Activity)[]>(option?
                 limit: option?.limit,
                 offset: option?.offset,
                 filters: option?.tag ? `tag[contains]${option.tag}` : undefined,
-                orders: '-publishedAt',
+                orders: '-date',
                 fields: option?.fields,
             },
         })
@@ -168,7 +174,7 @@ export const getActivityIds = async (): Promise<string[]> => {
     const res = await client
         .getAllContentIds({
             endpoint: 'activities',
-            orders: '-publishedAt',
+            orders: '-date',
         })
         .catch(async (e) => {
             const url = new URL(`https://${MICROCMS_SERVICE_DOMAIN}.microcms.io/api/v1/activities`)
@@ -192,7 +198,7 @@ export const getActivityIds = async (): Promise<string[]> => {
 
 /** 最新記事のリストを取得する */
 export const getLatestActivityList = async (limit: number) => {
-    return getActivityList({ limit, fields: ['title', 'publishedAt', 'id'] })
+    return getActivityList({ limit, fields: ['title', 'date', 'id'] })
 }
 
 /** 活動方針のリストを取得する */
