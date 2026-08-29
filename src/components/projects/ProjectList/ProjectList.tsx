@@ -9,7 +9,10 @@ export interface ProjectListProps {
     heading: string
     /** 見出し下に表示する補足説明 */
     description?: string
-    projects: Pick<components['schemas']['Project'], 'name' | 'description' | 'thumbnail'>[]
+    projects: (Pick<components['schemas']['Project'], 'name' | 'description' | 'thumbnail'> & {
+        /** 終了したプロジェクト。灰色に落として「実績」の札を付ける */
+        archived: boolean
+    })[]
 }
 
 /**

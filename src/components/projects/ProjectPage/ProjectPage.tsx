@@ -58,17 +58,24 @@ export const ProjectPage: FC<ProjectPageProps> = async ({ projectDescription, ..
 
 const Projects = async () => {
     const allProjects = (await client.GET('/api/project/')).data ?? []
-    const activeProjects = allProjects.filter((pr) => !isArchivedProject(pr.name))
-    const archivedProjects = allProjects
-        .filter((pr) => isArchivedProject(pr.name))
-        .map((pr) => ({ ...pr, name: stripArchivedMarker(pr.name) }))
+    /*
+     * 終了したものを別の節にまとめない。分類ごとの中で、進行中を先に、実績を後ろに並べる。
+     * 分けると「この分野で今なにをしていて、これまで何をしてきたか」が
+     * 二か所に散り、企業の方が実績を探しに行かないと見つけられなくなるため。
+     *
+     * 終了の目印はプロジェクト名の【終了】。管理画面で名前に付け外しするだけで切り替わる
+     * （バックエンドに項目を足せないので、この方式にしている）。
+     */
+    const projects = allProjects
+        .map((pr) => ({ ...pr, name: stripArchivedMarker(pr.name), archived: isArchivedProject(pr.name) }))
+        .sort((a, b) => Number(a.archived) - Number(b.archived))
     return (
         <>
             {projectTagList.map((tag) => (
                 <div className='space-y-12' key={tag}>
-                    <ProjectList heading={tag} projects={activeProjects.filter((pr) => pr.tag === tag)} />
+                    <ProjectList heading={tag} projects={projects.filter((pr) => pr.tag === tag)} />
                     {/* 問い合わせ導線は共同プロジェクトの直後に置く（他のタグには当てはまらないため） */}
-                    {tag === '共同プロジェクト' && activeProjects.some((pr) => pr.tag === tag) && (
+                    {tag === '共同プロジェクト' && projects.some((pr) => pr.tag === tag && !pr.archived) && (
                         <Button
                             asChild
                             className='mx-auto flex h-fit w-fit max-w-[75%] flex-wrap items-center justify-center text-lg'
@@ -81,11 +88,6 @@ const Projects = async () => {
                     )}
                 </div>
             ))}
-            <ProjectList
-                description='過去に実施したプロジェクトです。'
-                heading='アーカイブ'
-                projects={archivedProjects}
-            />
         </>
     )
 }

@@ -3,7 +3,7 @@ export const projectTagList = ['マーケティング支援', '共同プロジ�
 /** プロジェクト名に付与された終了の目印（Django側で名前末尾に付与する） */
 export const ARCHIVED_PROJECT_MARKER = '【終了】'
 
-/** 終了済み（アーカイブ）プロジェクトかどうかを判定する */
+/** 終了したプロジェクトかどうかを判定する。表示は分類の中で「実績」の札を付ける */
 export const isArchivedProject = (name: string) => name.includes(ARCHIVED_PROJECT_MARKER)
 
 /** 表示用に終了の目印を取り除く */

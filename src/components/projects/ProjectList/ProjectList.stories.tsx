@@ -17,7 +17,9 @@ type Story = StoryObj<typeof meta>
 export const MarketingSupport: Story = {
     args: {
         heading: 'マーケティング支援',
-        projects: mockProjects.filter((project) => project.tag[0] === 'マーケティング支援'),
+        projects: mockProjects
+            .filter((project) => project.tag[0] === 'マーケティング支援')
+            .map((project, i) => ({ ...project, archived: i % 3 === 0 })),
     },
 }
 
