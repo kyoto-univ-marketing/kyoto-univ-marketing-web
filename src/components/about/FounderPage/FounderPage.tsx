@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { FC, Fragment } from 'react'
 
-import LogoMarkWhiteImg from '@/../public/logo-mark-white.png'
 import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
 import { NextLink } from '@/components/common/NextLink/NextLink'
@@ -11,7 +10,6 @@ import { Button } from '@/components/ui/button'
 import { aboutFounderPage, aboutMembersPage } from '@/constants/aboutPages'
 import { founder } from '@/constants/members'
 import { pageLinkObject } from '@/constants/pageLinks'
-import { cn } from '@/lib/utils'
 
 /**
  * 創設者の言葉。「迫田周大」で検索した人が着地するページ。
@@ -23,7 +21,7 @@ import { cn } from '@/lib/utils'
  * 歴代代表ページは2代目からにしている。初代の話はこのページが担う。
  *
  * 本文は長いが、見出しは立てない。本人の語りなので、章立てにすると報告書の口調になる。
- * 代わりに、要になる二つの段落を紺の帯にして、そこで区切っている。
+ * 代わりに、要になる一段を紺の帯にして、そこで区切っている。
  * 見出しを置かないおかげで h2 は氏名だけになり、検索での手がかりも濁らない。
  * 本文の構成は constants/members.ts 側にある。
  */
@@ -108,29 +106,9 @@ export const FounderPage: FC = () => {
                     </div>
                 ) : (
                     <Reveal
-                        className={cn(
-                            'relative isolate mt-14 bg-primary py-16 text-primary-foreground md:mt-16 md:py-20',
-                            block.withLogo && 'overflow-hidden',
-                        )}
+                        className='mt-14 bg-primary py-16 text-primary-foreground md:mt-16 md:py-20'
                         key={block.text}
                     >
-                        {/*
-                         * 帯の地に団体のロゴを大きく透かす。
-                         * 本文は中央の一列に収まるので、その左右が空く。そこを埋める役目。
-                         *
-                         * logo.png ではなく logo-mark-white.png を使う。
-                         * logo.png は「紺の円＋白のマーク」なので、紺地に置くと円が沈んで模様が消える。
-                         * こちらは白いマークだけを抜いてあり、紺地でも形が残る。
-                         */}
-                        {block.withLogo && (
-                            <Image
-                                alt=''
-                                aria-hidden
-                                className='-z-10 -right-24 -translate-y-1/2 pointer-events-none absolute top-1/2 w-[26rem] max-w-none opacity-[0.12] sm:-right-10 md:w-[34rem] lg:right-4'
-                                sizes='544px'
-                                src={LogoMarkWhiteImg}
-                            />
-                        )}
                         {block.withKakejiku ? (
                             <div className='mx-auto grid max-w-(--breakpoint-md) items-center gap-10 px-6 sm:grid-cols-[1fr_1.4fr] md:px-8'>
                                 <Image
