@@ -4,7 +4,7 @@ import { AboutPage } from '@/components/about/AboutPage/AboutPage'
 import { ABOUT_PAGE_DESCRIPTION } from '@/constants/description'
 
 /**
- * 以前はこのページのタイトルに創設者の氏名を入れて「迫田周大」検索を受けていたが、
+ * 以前はこのページのタイトルに発起人の氏名を入れて「迫田周大」検索を受けていたが、
  * 団体概要が個人のページに見えてしまうため、/about/founder に移した。
  * このページからは氏名つきのリンク（AboutNav）でつないでいる。
  */

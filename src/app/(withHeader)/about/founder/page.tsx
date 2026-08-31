@@ -13,10 +13,10 @@ import { FOUNDER_PAGE_DESCRIPTION } from '@/constants/description'
  */
 export const metadata: Metadata = {
     // 題に氏名は入れていないので、title には必ず氏名とふりがなを入れる。
-    // 「創設者」は題に含まれているため肩書きは重ねない
-    title: { absolute: '創設者の言葉｜迫田周大（さこだしゅうた）｜京大マーケティング研究所' },
+    // 「発起人」は題に含まれているため肩書きは重ねない
+    title: { absolute: '発起人の言葉｜迫田周大（さこだしゅうた）｜京大マーケティング研究所' },
     description: FOUNDER_PAGE_DESCRIPTION,
-    keywords: ['迫田周大', 'さこだしゅうた', '京大マーケティング研究所', '創設者', '京都大学', 'マーケティング'],
+    keywords: ['迫田周大', 'さこだしゅうた', '京大マーケティング研究所', '発起人', '京都大学', 'マーケティング'],
     // 氏名の検索でどのURLを出すかを一本に定める。
     // 団体概要から中身を移した経緯があるので、ここを正として明示しておく
     alternates: { canonical: aboutFounderPage.href },

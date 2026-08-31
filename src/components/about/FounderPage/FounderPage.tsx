@@ -12,7 +12,7 @@ import { founder } from '@/constants/members'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 /**
- * 創設者の言葉。「迫田周大」で検索した人が着地するページ。
+ * 発起人の言葉。「迫田周大」で検索した人が着地するページ。
  *
  * 題に氏名は入れていないが、中身の主題は本人。
  * 氏名・ふりがな・役割名は h2 と本文に必ず残すこと（title と構造化データも同様）。

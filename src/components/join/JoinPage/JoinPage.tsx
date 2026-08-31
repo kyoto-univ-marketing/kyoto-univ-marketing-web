@@ -92,13 +92,13 @@ export const JoinPage: FC<JoinPageProps> = async () => {
 
                 {/* 「なぜ」を読んでから「どうやって」に進む順にする */}
                 <div className='section-stack mx-auto w-full max-w-(--breakpoint-md) px-6 md:px-8'>
-                    {/* 創設者ページと歴代代表ページには、入会を考えている方へのことばが載っている。
+                    {/* 発起人ページと歴代代表ページには、入会を考えている方へのことばが載っている。
                         ここから読みに行けるようにしておく */}
                     <Reveal>
                         <SectionHeading en='Message' index={1}>
                             代表からのことば
                         </SectionHeading>
-                        <p className='text-gray-700'>創設者と歴代代表が、入会を考えている方へのことばを書いています。</p>
+                        <p className='text-gray-700'>発起人と歴代代表が、入会を考えている方へのことばを書いています。</p>
                         <div className='mt-8 flex flex-col gap-4 sm:flex-row'>
                             <Button asChild className='px-8 py-5'>
                                 <NextLink href={aboutFounderPage.href}>{aboutFounderPage.text}を読む</NextLink>

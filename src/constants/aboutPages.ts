@@ -12,11 +12,11 @@
  * 主題が本人であることが消えると、検索で拾われなくなる。
  *
  * 「設立の経緯」から改題した。経緯は事実の経過を指す言葉で、
- * 中身（創設者の思想の語り）と合っていなかった。
+ * 中身（発起人の思想の語り）と合っていなかった。
  */
 export const aboutFounderPage = {
     href: '/about/founder',
-    text: '創設者の言葉',
+    text: '発起人の言葉',
     textEng: 'Founder',
 } as const
 

@@ -23,7 +23,7 @@ export const MembersPage: FC = () => (
             {aboutMembersPage.text}
         </PageTitle>
         <div className='mx-auto max-w-(--breakpoint-md) px-6 pb-24 md:px-8'>
-            {/* 創設者への導線はページ下部のボタンに任せている。
+            {/* 発起人への導線はページ下部のボタンに任せている。
                 「迫田周大」の検索は /about/founder 本体と団体概要からのリンクで受けており、
                 ここに氏名を書かなくても手がかりは足りる */}
             <p className='mb-16 text-justify text-gray-700'>

@@ -33,8 +33,8 @@ export const buildOrganizationJson = (siteSettings: SiteSettings, memberCount?: 
         },
         foundingDate: '2024-03',
         /*
-         * 団体から創設者を指す。
-         * 「京大マーケティング研究所の創設者は誰か」「迫田周大は何者か」を
+         * 団体から発起人を指す。
+         * 「京大マーケティング研究所の発起人は誰か」「迫田周大は何者か」を
          * 一つのつながりとして読ませるための線で、
          * 詳細は /about/founder 側の Person（同じ @id）に書いてある。
          */

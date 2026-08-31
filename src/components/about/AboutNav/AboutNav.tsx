@@ -8,11 +8,11 @@ import { aboutFounderPage, aboutMembersPage } from '@/constants/aboutPages'
 import { founder, presidents } from '@/constants/members'
 
 /**
- * 創設者・歴代代表の各ページへの導線。
+ * 発起人・歴代代表の各ページへの導線。
  *
- * リンクの文言に「創設者 迫田 周大」と氏名を入れておくこと。
+ * リンクの文言に「発起人 迫田 周大」と氏名を入れておくこと。
  * 検索エンジンはリンクの文言でリンク先の主題を判断するため、
- * ここが「詳しく見る」だけになると創設者ページの手がかりが弱くなる。
+ * ここが「詳しく見る」だけになると発起人ページの手がかりが弱くなる。
  */
 export const FounderSection: FC = () => (
     <section>

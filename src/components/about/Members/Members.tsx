@@ -5,11 +5,11 @@ import { Reveal } from '@/components/common/Reveal/Reveal'
 import { type Member, presidents } from '@/constants/members'
 
 /**
- * 歴代代表の紹介。創設者（初代）は個別ページがあるのでここには載せない。
+ * 歴代代表の紹介。発起人（初代）は個別ページがあるのでここには載せない。
  *
  * 英字（2nd President など）はあくまで装飾で、**日本語の役割名・氏名・ふりがなを必ず本文に残す**。
  * 英字だけにすると、日本語で調べた人がたどり着く手がかりが消える。
- * 構造化データ（Person）は創設者の個別ページ側に置いてある。
+ * 構造化データ（Person）は発起人の個別ページ側に置いてある。
  */
 export const Members: FC = () => (
     <div className='space-y-16'>
