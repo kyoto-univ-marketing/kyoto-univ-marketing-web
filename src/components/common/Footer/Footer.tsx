@@ -1,3 +1,4 @@
+import { aboutFounderPage } from '@/constants/aboutPages'
 import pageLinks from '@/constants/pageLinks'
 import { getSiteSettings } from '@/lib/microcms'
 
@@ -21,6 +22,11 @@ export const Footer = async () => {
                             <NextLink href={link.href}>{link.text}</NextLink>
                         </li>
                     ))}
+                    {/* ヘッダーには入れず、フッターにだけ置く。全ページから発起人の言葉へ1本つながり、
+                        「迫田周大」の検索で団体概要（ヘッダーから全ページにつながる）と食い合うのを和らげる */}
+                    <li>
+                        <NextLink href={aboutFounderPage.href}>{aboutFounderPage.text}</NextLink>
+                    </li>
                 </ul>
                 <div className='md:max-w-1/2'>
                     <div className='mb-4 hidden font-title text-title md:block'>

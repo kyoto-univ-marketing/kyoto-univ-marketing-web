@@ -19,10 +19,12 @@ export const FOUNDER_ID = `${profile.homepageUrl}${aboutFounderPage.href}#person
  * 発起人の情報。/about/founder を本人の正規のURLとして示す。
  * ProfilePage からも参照するので @context を持たない形で切り出してある。
  *
- * sameAs は置いていない。あそこは「同じ人物を紹介している、よそのページ」を挙げる欄で、
- * 以前は自分自身のURLと団体のSNSが入っていた。
- * 前者は何も足しておらず、後者は本人と団体を同じものとして読ませる恐れがある。
- * 本人名義の LinkedIn・note・X などができたら、そのときここに足す。
+ * sameAs は「同じ人物を紹介している、よそのページ」を挙げる欄。本人名義のものだけを入れる。
+ * 自分自身のURLや団体のSNSは入れない（前者は何も足さず、後者は本人と団体を同じものとして読ませる）。
+ * 本人名義の LinkedIn・note・X などができたら、ここに足す。
+ *
+ * Facebook はプロフィールの「ウェブサイト」欄にも /about/founder を入れてもらい、
+ * 両方向からつながるようにしてある（片道だけだと同一人物だという手がかりが弱い）。
  */
 export const founderPersonJson = {
     '@type': 'Person',
@@ -42,6 +44,7 @@ export const founderPersonJson = {
         '@type': 'EducationalOrganization',
         name: '京都大学',
     },
+    sameAs: ['https://www.facebook.com/profile.php?id=61560603594758'],
 } as const satisfies Person
 
 const personJson = {
