@@ -61,7 +61,7 @@ export const FounderPage: FC = () => {
                 <Reveal className='mt-16 flex flex-col items-center gap-8 sm:flex-row sm:items-start sm:gap-12'>
                     <div className='w-full max-w-60 shrink-0 sm:w-60'>
                         <Image
-                            {...image}
+                            src={image}
                             alt={`京大マーケティング研究所 ${role} ${name}（${reading}）`}
                             className='aspect-square w-full object-cover'
                             priority
@@ -112,7 +112,7 @@ export const FounderPage: FC = () => {
                         {block.withKakejiku ? (
                             <div className='mx-auto grid max-w-(--breakpoint-md) items-center gap-10 px-6 sm:grid-cols-[1fr_1.4fr] md:px-8'>
                                 <Image
-                                    {...KakejikuImg}
+                                    src={KakejikuImg}
                                     alt='マーケハウスに掛かる掛け軸'
                                     className='w-full object-cover'
                                     sizes='(max-width: 640px) 100vw, 260px'

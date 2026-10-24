@@ -28,7 +28,7 @@ const MemberItem: FC<{ member: Member; order: number }> = ({ member, order }) =>
             <div className='flex flex-col gap-6 sm:flex-row sm:gap-10'>
                 <div className='mx-auto w-full max-w-48 shrink-0 sm:mx-0 sm:w-48'>
                     <Image
-                        {...image}
+                        src={image}
                         alt={`${role} ${name}（${reading}）`}
                         className='aspect-square w-full object-cover'
                         sizes='(max-width: 640px) 60vw, 192px'

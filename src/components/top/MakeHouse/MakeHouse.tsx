@@ -29,14 +29,14 @@ export const MakeHouse: FC = () => (
                 右側は左の写真と高さを揃えたいので fill にしている */}
             <Reveal className='flex gap-3' mask>
                 <Image
-                    {...MakeHouseImg}
+                    src={MakeHouseImg}
                     alt='活動拠点マーケハウスの外観。京都大学から徒歩圏の京町家'
                     className='w-[64%] object-cover'
                     sizes='(max-width: 640px) 64vw, 360px'
                 />
                 <div className='relative flex-1 overflow-hidden'>
                     <Image
-                        {...KakejikuImg}
+                        src={KakejikuImg}
                         alt='マーケハウスに掛かる掛け軸'
                         className='absolute inset-0 size-full object-cover'
                         sizes='(max-width: 640px) 36vw, 200px'

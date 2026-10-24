@@ -22,7 +22,7 @@ export const FounderSection: FC = () => (
         <Reveal>
             <NextLink className='group flex items-center gap-6' href={aboutFounderPage.href}>
                 <Image
-                    {...founder.image}
+                    src={founder.image}
                     alt=''
                     className='size-24 shrink-0 object-cover sm:size-28'
                     sizes='112px'
@@ -60,7 +60,7 @@ export const MembersSection: FC = () => (
                 <div className='flex shrink-0 gap-2'>
                     {presidents.map((member) => (
                         <Image
-                            {...member.image}
+                            src={member.image}
                             alt=''
                             className='size-16 object-cover sm:size-20'
                             key={member.name}

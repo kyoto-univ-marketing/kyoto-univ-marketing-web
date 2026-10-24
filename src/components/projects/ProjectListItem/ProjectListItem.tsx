@@ -4,6 +4,7 @@ import { FC } from 'react'
 import { components } from '@/api/schema'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 import { getFallbackImage } from '@/constants/projectThumbnail'
+import { toProjectThumbnailSrc } from '@/lib/projectThumbnail'
 import { toHttps } from '@/lib/to-https'
 import { cn } from '@/lib/utils'
 
@@ -37,6 +38,7 @@ export const ProjectListItem: FC<ProjectListItemProps> = ({
     archived = false,
 }) => {
     const fallback = getFallbackImage(name)
+    const relayed = thumbnail ? toProjectThumbnailSrc(thumbnail) : null
 
     return (
         <Reveal className='flex flex-col' delay={order * 80} mask>
@@ -51,20 +53,17 @@ export const ProjectListItem: FC<ProjectListItemProps> = ({
                     />
                 ) : (
                     /*
-                     * unoptimized にしている理由:
-                     * Django が返すサムネイルは content-type が application/octet-stream で、
-                     * さらに末尾スラッシュへリダイレクトするため、next/image の最適化が
-                     * 「画像ではない」と判断して失敗する。素の img として出せば
-                     * ブラウザが中身を見て画像として描画するので表示できる。
-                     * バックエンド側で content-type を直せば unoptimized は外してよい。
+                     * Django の写真は「画像だ」という札が付いていないため、サイト内の中継口を通して
+                     * 札を付け直し、端末に合った大きさに縮めて出す（詳しくは lib/projectThumbnail.ts）。
+                     * 置き場所が想定外のURLだけは、縮めずに素のまま出す。
                      */
                     <Image
                         alt={`${name}の画像`}
                         className={cn('object-contain', archived && 'opacity-55 grayscale')}
                         fill
                         sizes='(max-width: 640px) 100vw, 400px'
-                        src={toHttps(thumbnail)}
-                        unoptimized
+                        src={relayed ?? toHttps(thumbnail)}
+                        unoptimized={!relayed}
                     />
                 )}
             </div>

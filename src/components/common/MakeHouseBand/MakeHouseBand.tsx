@@ -22,14 +22,14 @@ export const MakeHouseBand: FC = () => (
                 右側は左の写真と高さを揃えたいので fill にしている */}
             <Reveal className='flex gap-3' mask>
                 <Image
-                    {...MakeHouseImg}
+                    src={MakeHouseImg}
                     alt='活動拠点マーケハウスの外観。京都大学から徒歩圏の京町家'
                     className='w-[62%] object-cover'
                     sizes='(max-width: 768px) 62vw, 300px'
                 />
                 <div className='relative flex-1 overflow-hidden'>
                     <Image
-                        {...KakejikuImg}
+                        src={KakejikuImg}
                         alt='マーケハウスに掛かる掛け軸'
                         className='absolute inset-0 size-full object-cover'
                         sizes='(max-width: 768px) 38vw, 180px'
