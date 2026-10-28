@@ -44,7 +44,7 @@ export const founderPersonJson = {
         '@type': 'EducationalOrganization',
         name: '京都大学',
     },
-    sameAs: ['https://www.facebook.com/profile.php?id=61560603594758', 'https://x.com/shuta_sakoda'],
+    sameAs: ['https://www.facebook.com/shuta.sakoda2003', 'https://x.com/shuta_sakoda'],
 } as const satisfies Person
 
 const personJson = {
