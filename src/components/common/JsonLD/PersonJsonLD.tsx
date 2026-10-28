@@ -21,9 +21,9 @@ export const FOUNDER_ID = `${profile.homepageUrl}${aboutFounderPage.href}#person
  *
  * sameAs は「同じ人物を紹介している、よそのページ」を挙げる欄。本人名義のものだけを入れる。
  * 自分自身のURLや団体のSNSは入れない（前者は何も足さず、後者は本人と団体を同じものとして読ませる）。
- * 本人名義の LinkedIn・note・X などができたら、ここに足す。
+ * 本人名義の LinkedIn・note などができたら、ここに足す（X は 2026-10-28 に追加）。
  *
- * Facebook はプロフィールの「ウェブサイト」欄にも /about/founder を入れてもらい、
+ * Facebook・X はプロフィールの「ウェブサイト」欄にも /about/founder を入れてもらい、
  * 両方向からつながるようにしてある（片道だけだと同一人物だという手がかりが弱い）。
  */
 export const founderPersonJson = {
@@ -44,7 +44,7 @@ export const founderPersonJson = {
         '@type': 'EducationalOrganization',
         name: '京都大学',
     },
-    sameAs: ['https://www.facebook.com/profile.php?id=61560603594758'],
+    sameAs: ['https://www.facebook.com/profile.php?id=61560603594758', 'https://x.com/shuta_sakoda'],
 } as const satisfies Person
 
 const personJson = {
