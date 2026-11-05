@@ -3,6 +3,7 @@ import { Metadata } from 'next'
 import { FounderPage } from '@/components/about/FounderPage/FounderPage'
 import { PersonJsonLD } from '@/components/common/JsonLD/PersonJsonLD'
 import { ProfilePageJsonLD } from '@/components/common/JsonLD/ProfilePageJsonLD'
+import { ScholarlyArticleJsonLD } from '@/components/common/JsonLD/ScholarlyArticleJsonLD'
 import { aboutFounderPage } from '@/constants/aboutPages'
 import { FOUNDER_PAGE_DESCRIPTION } from '@/constants/description'
 
@@ -30,6 +31,7 @@ export default function Page() {
             </main>
             <ProfilePageJsonLD />
             <PersonJsonLD />
+            <ScholarlyArticleJsonLD />
         </>
     )
 }
