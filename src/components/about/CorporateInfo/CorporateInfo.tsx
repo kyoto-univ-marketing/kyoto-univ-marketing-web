@@ -12,8 +12,15 @@ import { getSiteSettings } from '@/lib/microcms'
 export const CorporateInfo = async () => {
     const siteSettings = await getSiteSettings()
     // 主たる呼称はあくまで「京大マーケティング研究所」。法人名は括弧で添える
-    const items = [
-        { label: '名称', value: '京大マーケティング研究所（一般社団法人マーケティング研究所）' },
+    // note は値のすぐ下に小さく添える注記
+    const items: { label: string; value: string; note?: string }[] = [
+        {
+            label: '名称',
+            value: '京大マーケティング研究所（一般社団法人マーケティング研究所）',
+            // 企業の方が真っ先に気にする「どこかの会社の息がかかっていないか」に答える。
+            // 名称の真下に置く（2026-11-08 本人）。発起人の個人事業も、発起人自身が OB なので食い違わない
+            note: '学生団体「京大マーケティング研究所」と一般社団法人マーケティング研究所は、所属する京都大学の学生と、かつて所属していたOB・OGだけで運営しています。特定の企業や外部の組織は、運営に加わっていません。',
+        },
         { label: '法人番号', value: '5130005017724' },
         { label: '所在地', value: '京都府京都市左京区田中大堰町13' },
         { label: '登記', value: '2026年7月（学生団体としての設立は2024年3月）' },
@@ -27,10 +34,15 @@ export const CorporateInfo = async () => {
             </SectionHeading>
             <div>
                 <dl className='divide-y divide-gray-200 border-gray-200 border-t border-b'>
-                    {items.map(({ label, value }) => (
+                    {items.map(({ label, value, note }) => (
                         <div className='flex flex-col gap-1 px-4 py-4 sm:flex-row sm:gap-6' key={label}>
                             <dt className='shrink-0 text-gray-600 text-sm sm:w-28'>{label}</dt>
-                            <dd className='flex-1'>{value}</dd>
+                            <dd className='flex-1'>
+                                {value}
+                                {note && (
+                                    <span className='mt-2 block text-gray-600 text-xs leading-relaxed'>{note}</span>
+                                )}
+                            </dd>
                         </div>
                     ))}
                     <div className='flex flex-col gap-1 px-4 py-4 sm:flex-row sm:gap-6'>
@@ -53,11 +65,6 @@ export const CorporateInfo = async () => {
                 <p className='mt-3 px-4 text-right text-gray-600 text-xs'>※{STATS_AS_OF}現在</p>
                 <p className='mt-6 px-4 text-gray-600 text-sm'>
                     学生団体としての活動が先にあり、法人はその運営基盤として設立したものです。
-                </p>
-                {/* 企業の方が真っ先に気にする「どこかの会社の息がかかっていないか」に答える（2026-11-08 本人）。
-                    発起人の個人事業も、発起人自身が OB なのでこの書き方と食い違わない */}
-                <p className='mt-3 px-4 text-gray-600 text-sm'>
-                    学生団体「京大マーケティング研究所」と一般社団法人マーケティング研究所は、所属する京都大学の学生と、かつて所属していたOB・OGだけで運営しています。特定の企業や外部の組織は、運営に加わっていません。
                 </p>
             </div>
         </section>
