@@ -12,14 +12,17 @@ import { getSiteSettings } from '@/lib/microcms'
 export const CorporateInfo = async () => {
     const siteSettings = await getSiteSettings()
     // 主たる呼称はあくまで「京大マーケティング研究所」。法人名は括弧で添える
-    // note は値のすぐ下に小さく添える注記
-    const items: { label: string; value: string; note?: string }[] = [
+    // notes は値のすぐ下に小さく添える注記（1要素＝1段落）
+    const items: { label: string; value: string; notes?: string[] }[] = [
         {
             label: '名称',
             value: '京大マーケティング研究所（一般社団法人マーケティング研究所）',
-            // 企業の方が真っ先に気にする「どこかの会社の息がかかっていないか」に答える。
-            // 名称の真下に置く（2026-11-08 本人）。発起人の個人事業も、発起人自身が OB なので食い違わない
-            note: '学生団体「京大マーケティング研究所」と一般社団法人マーケティング研究所は、所属する京都大学の学生と、かつて所属していたOB・OGだけで運営しています。特定の企業や外部の組織は、運営に加わっていません。',
+            // 学生団体と法人の関係と、企業の方が真っ先に気にする「どこかの会社の息がかかっていないか」に答える。
+            // どちらも名称の真下に置く（2026-11-08 本人）。発起人の個人事業も、発起人自身が OB なので食い違わない
+            notes: [
+                '学生団体としての活動が先にあり、法人はその運営基盤として設立したものです。',
+                '学生団体「京大マーケティング研究所」と一般社団法人マーケティング研究所は、所属する京都大学の学生と、かつて所属していたOB・OGだけで運営しています。特定の企業や外部の組織は、運営に加わっていません。',
+            ],
         },
         { label: '法人番号', value: '5130005017724' },
         { label: '所在地', value: '京都府京都市左京区田中大堰町13' },
@@ -34,14 +37,16 @@ export const CorporateInfo = async () => {
             </SectionHeading>
             <div>
                 <dl className='divide-y divide-gray-200 border-gray-200 border-t border-b'>
-                    {items.map(({ label, value, note }) => (
+                    {items.map(({ label, value, notes }) => (
                         <div className='flex flex-col gap-1 px-4 py-4 sm:flex-row sm:gap-6' key={label}>
                             <dt className='shrink-0 text-gray-600 text-sm sm:w-28'>{label}</dt>
                             <dd className='flex-1'>
                                 {value}
-                                {note && (
-                                    <span className='mt-2 block text-gray-600 text-xs leading-relaxed'>{note}</span>
-                                )}
+                                {notes?.map((note) => (
+                                    <span className='mt-2 block text-gray-600 text-xs leading-relaxed' key={note}>
+                                        {note}
+                                    </span>
+                                ))}
                             </dd>
                         </div>
                     ))}
@@ -63,9 +68,6 @@ export const CorporateInfo = async () => {
                 </dl>
                 {/* 代表理事は任期で変わるため、いつ時点の情報かを明示する */}
                 <p className='mt-3 px-4 text-right text-gray-600 text-xs'>※{STATS_AS_OF}現在</p>
-                <p className='mt-6 px-4 text-gray-600 text-sm'>
-                    学生団体としての活動が先にあり、法人はその運営基盤として設立したものです。
-                </p>
             </div>
         </section>
     )
