@@ -2,7 +2,7 @@ import { FC } from 'react'
 
 import { DonutChart } from '@/components/common/DonutChart/DonutChart'
 import { Reveal } from '@/components/common/Reveal/Reveal'
-import { careerPaths, facultyBreakdown, SCIENCE_FACULTY_SHARE, STATS_AS_OF, scienceRatio } from '@/constants/about'
+import { careerPaths, facultyBreakdown, SCIENCE_FACULTY_SHARE, SURVEY_AS_OF, scienceRatio } from '@/constants/about'
 
 /**
  * 会員の構成。
@@ -40,7 +40,7 @@ export const FacultyChart: FC = () => (
             <p className='text-gray-600 text-sm'>
                 教育学部を除く9学部が在籍しています。文系・理系の垣根を越えた学生が同じ机で学び合っています。
             </p>
-            <p className='text-right text-gray-600 text-xs'>※{STATS_AS_OF}現在</p>
+            <p className='text-right text-gray-600 text-xs'>※{SURVEY_AS_OF}現在</p>
         </div>
 
         {/* 学部の内訳の次に置く。「どんな人がいるか」の次に来るのは「どこへ行くか」なので */}
