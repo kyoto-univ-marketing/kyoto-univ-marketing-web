@@ -101,6 +101,17 @@ const founderStory: FounderBlock[] = [
  * ⚠️ このページは「迫田周大」の検索で上位を取っている資産。
  * 氏名・ふりがな・役割名は必ず残すこと。
  */
+/**
+ * 発起人本人名義の SNS。発起人ページにアイコンで出し、構造化データの sameAs にも使う。
+ * 画面に見えるリンクにしているのは、強いページ（発起人ページ）からリンクされると
+ * Google がプロフィールを早く見つけ、名前の検索に出やすくなるため（2026-11-10 本人）。
+ * 団体の SNS は入れない（本人と団体を同じものとして読ませないため）。
+ */
+export const founderSocialLinks = [
+    { label: 'Facebook', href: 'https://www.facebook.com/shuta.sakoda2003' },
+    { label: 'X', href: 'https://x.com/shuta_sakoda' },
+] as const
+
 export const founder: Founder = {
     en: 'Founder',
     // 「初代代表」は付けない。歴代代表ページ側で触れており、二つ並べると肩書きが重い

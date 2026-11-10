@@ -2,7 +2,7 @@ import { Person, WithContext } from 'schema-dts'
 
 import { aboutFounderPage } from '@/constants/aboutPages'
 import { FOUNDER_PAGE_DESCRIPTION } from '@/constants/description'
-import { founder } from '@/constants/members'
+import { founder, founderSocialLinks } from '@/constants/members'
 import profile from '@/constants/profile'
 
 import { JsonLD } from './JsonLD'
@@ -44,7 +44,8 @@ export const founderPersonJson = {
         '@type': 'EducationalOrganization',
         name: '京都大学',
     },
-    sameAs: ['https://www.facebook.com/shuta.sakoda2003', 'https://x.com/shuta_sakoda'],
+    // URL の正は constants/members.ts の founderSocialLinks（発起人ページのアイコンと共通）
+    sameAs: founderSocialLinks.map(({ href }) => href),
 } as const satisfies Person
 
 const personJson = {
