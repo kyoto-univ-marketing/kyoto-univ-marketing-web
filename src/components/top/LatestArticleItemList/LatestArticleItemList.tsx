@@ -1,18 +1,21 @@
-'use client'
-
-
-import { useSuspenseQuery } from '@tanstack/react-query'
 import { FC } from 'react'
+
+import { getLatestActivityList } from '@/lib/microcms'
+
 import { LatestArticle, LatestArticleItem } from '../LatestArticleItem/LatestArticleItem'
 
 export interface LatestArticleItemListProps {}
 
-export const LatestArticleItemList: FC<LatestArticleItemListProps> = ({ ...props }) => {
-    const { data } = useSuspenseQuery({
-        queryKey: ['articleList'],
-        queryFn: async () => await fetch('/api/article/latest').then((res) => res.json()),
-    })
-    const articleList: LatestArticle[] = 'contents' in data ? data.contents : []
+/**
+ * トップページの新着のお知らせ（4件）。
+ *
+ * サーバー側で microCMS から読む。以前はブラウザから /api/article/latest を
+ * 呼んでいたが、トップページを最初の HTML から描くようにした（2026-11-10）ため、
+ * サーバー側でも動く形にした。記事の題名が最初の HTML に入るので、検索にも載りやすい。
+ */
+export const LatestArticleItemList: FC<LatestArticleItemListProps> = async () => {
+    const data = await getLatestActivityList(4)
+    const articleList: LatestArticle[] = data.contents
     return <LatestArticleItemListPresenter articleList={articleList} />
 }
 
