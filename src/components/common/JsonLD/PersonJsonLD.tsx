@@ -44,7 +44,7 @@ export const founderPersonJson = {
         '@type': 'EducationalOrganization',
         name: '京都大学',
     },
-    // URL の正は constants/members.ts の founderSocialLinks（発起人ページのアイコンと共通）
+    // URL の正は constants/members.ts の founderSocialLinks（画面には出さない。2026-11-23 迫田さん）
     sameAs: founderSocialLinks.map(({ href }) => href),
 } as const satisfies Person
 

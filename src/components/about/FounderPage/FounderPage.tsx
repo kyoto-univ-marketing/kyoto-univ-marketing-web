@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import { FC, Fragment } from 'react'
-import { FaFacebook, FaXTwitter } from 'react-icons/fa6'
 
 import KakejikuImg from '@/../public/page-images/kakejiku.webp'
 import { BreadCrumb } from '@/components/common/BreadCrumb/BreadCrumb'
@@ -9,7 +8,7 @@ import { PageTitle } from '@/components/common/PageTitle/PageTitle'
 import { Reveal } from '@/components/common/Reveal/Reveal'
 import { Button } from '@/components/ui/button'
 import { aboutFounderPage, aboutMembersPage } from '@/constants/aboutPages'
-import { founder, founderSocialLinks } from '@/constants/members'
+import { founder } from '@/constants/members'
 import { pageLinkObject } from '@/constants/pageLinks'
 
 /**
@@ -79,24 +78,9 @@ export const FounderPage: FC = () => {
                         <p className='text-gray-600 text-sm'>
                             {faculty} {enrolledYear}年入学
                         </p>
-                        {/* 本人名義の SNS。目に見えるリンクにして、検索エンジンにも本人のプロフィールだと伝える */}
-                        <ul className='flex items-center justify-center gap-5 pt-1 text-gray-600 sm:justify-start'>
-                            {founderSocialLinks.map(({ label, href }) => {
-                                const Icon = label === 'Facebook' ? FaFacebook : FaXTwitter
-                                return (
-                                    <li key={href}>
-                                        <NextLink
-                                            aria-label={`${name}の${label}`}
-                                            className='transition-colors hover:text-primary'
-                                            href={href}
-                                            rel='me noopener noreferrer'
-                                        >
-                                            <Icon size={20} />
-                                        </NextLink>
-                                    </li>
-                                )
-                            })}
-                        </ul>
+                        {/* Facebook・X のボタンは置かない（2026-11-23 迫田さん）。
+                            本人のプロフィールだと検索エンジンに伝える役は、
+                            画面に出ない構造化データ（PersonJsonLD の sameAs）だけが担う */}
                     </div>
                 </Reveal>
 

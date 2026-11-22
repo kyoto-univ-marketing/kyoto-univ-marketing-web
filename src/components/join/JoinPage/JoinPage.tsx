@@ -109,9 +109,49 @@ export const JoinPage: FC<JoinPageProps> = async () => {
                         </div>
                     </Reveal>
 
+                    {/*
+                     * 「京大 ビジネスサークル」で探している学生に見つけてもらうための段。
+                     * 自分たちを「サークル」とは名乗らない決まりは守り、探している人の言葉として使う
+                     * （2026-11-23 迫田さん決定）。中身は活動内容ページ・提案資料と同じ事実だけ。
+                     */}
+                    <Reveal>
+                        <SectionHeading en='For You' index={2}>
+                            京大でビジネスサークルを探している方へ
+                        </SectionHeading>
+                        <div className='space-y-6 text-gray-700'>
+                            <p>
+                                京大マーケティング研究所は、ビジネスやマーケティングを学び、実践する京都大学の学生団体です。
+                                ビジネス系のサークルを探しているなら、候補のひとつに入れてみてください。
+                            </p>
+                            <dl className='space-y-4 border-gray-200 border-l pl-5 text-sm'>
+                                <div>
+                                    <dt className='font-title text-base text-gray-900'>学ぶ</dt>
+                                    <dd className='mt-1'>
+                                        基礎から学べる勉強会と、投資・企業分析／自己探求・キャリア設計／起業の3本のゼミ。
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt className='font-title text-base text-gray-900'>試す</dt>
+                                    <dd className='mt-1'>
+                                        学園祭への出店、ビジネスコンテスト、商品開発、企業と組んだプロジェクト。
+                                    </dd>
+                                </div>
+                                <div>
+                                    <dt className='font-title text-base text-gray-900'>語る</dt>
+                                    <dd className='mt-1'>
+                                        京町家の拠点「マーケハウス」で、学年や学部を越えて夜まで話せます。
+                                    </dd>
+                                </div>
+                            </dl>
+                            <p>
+                                起業を考えている人だけの場ではありません。就職、研究、法曹、官公庁など、目指す道はさまざまです。
+                            </p>
+                        </div>
+                    </Reveal>
+
                     {/* 入会の可否は時期の運営状況で変わるため、断定せずに相談してもらう形にする */}
                     <Reveal>
-                        <SectionHeading en='How to Join' index={2}>
+                        <SectionHeading en='How to Join' index={3}>
                             入会について
                         </SectionHeading>
                         <div className='space-y-4 text-gray-700'>

@@ -36,9 +36,9 @@ export const FounderSection: FC = () => (
                     <p className='text-gray-600 text-sm'>
                         {founder.faculty} {founder.enrolledYear}年入学
                     </p>
-                    <p className='text-gray-700 text-sm leading-relaxed'>
-                        2024年3月に京大マーケティング研究所を設立。設立の考えと、これから入会する方へのことば。
-                    </p>
+                    {/* 中身を説明するより、本人の言葉（発起人ページの見出し）をそのまま見せる */}
+                    <p className='font-title text-base text-gray-800 leading-relaxed'>「{founder.catchphrase}」</p>
+                    <p className='text-gray-600 text-sm'>2024年3月、京大マーケティング研究所を立ち上げる。</p>
                     {/* このリンクは写真から説明文までを含む一つのリンクなので、
                         文言を短くしても氏名はリンクの中に残る */}
                     <span className='inline-block text-sm underline underline-offset-4 group-hover:text-primary'>
@@ -69,9 +69,20 @@ export const MembersSection: FC = () => (
                     ))}
                 </div>
                 <div className='space-y-2'>
-                    <p className='text-gray-700 text-sm leading-relaxed'>
-                        初代から現代表まで。それぞれが考える「この場所は何であるか」を、そのままの言葉で。
-                    </p>
+                    {/* 説明文ではなく、各代表の一言をそのまま並べる。
+                        代表が増えたら members.ts に足すだけでここにも出る */}
+                    <ul className='space-y-3'>
+                        {presidents.map((member) => (
+                            <li key={member.name}>
+                                <p className='font-title text-base text-gray-800 leading-relaxed'>
+                                    「{member.catchphrase}」
+                                </p>
+                                <p className='text-gray-600 text-xs'>
+                                    {member.role} {member.name}
+                                </p>
+                            </li>
+                        ))}
+                    </ul>
                     <span className='inline-block text-sm underline underline-offset-4 group-hover:text-primary'>
                         {aboutMembersPage.text}を見る
                     </span>
